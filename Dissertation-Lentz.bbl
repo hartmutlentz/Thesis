@@ -1,0 +1,45 @@
+\begin{thebibliography}{5}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bajardi et~al.(2012)Bajardi, Barrat, Savini, and
+  Colizza]{Bajardi:2012}
+Paolo Bajardi, Alain Barrat, Lara Savini, and Vittoria Colizza.
+\newblock Optimizing surveillance for livestock disease spreading through
+  animal movements.
+\newblock \emph{Journal of The Royal Society Interface}, 2012.
+\newblock \doi{10.1098/rsif.2012.0289}.
+\newblock URL
+  \url{http://rsif.royalsocietypublishing.org/content/early/2012/06/21/rsif.2012.0289.abstract}.
+
+\bibitem[Bigras-Poulin et~al.(2007)Bigras-Poulin, Barfod, Mortensen, and
+  Greiner]{Bigras:2007}
+Michel Bigras-Poulin, Kristen Barfod, Sten Mortensen, and Matthias Greiner.
+\newblock Relationship of trade patterns of the danish swine industry animal
+  movements network to potential disease spread.
+\newblock \emph{Preventive Veterinary Medicine}, 80:\penalty0 143 -- 165, 2007.
+
+\bibitem[Christley(2005)]{Christley:2005}
+R.~Christley.
+\newblock Network analysis of cattle movement in great britain.
+\newblock \emph{Proc. Soc. Vet. Epidemiol. Prev. Med.}, pages 234--244, 2005.
+
+\bibitem[Green et~al.(2006)Green, Kiss, and Kao]{Green:2006}
+D.M Green, I.Z Kiss, and R.R Kao.
+\newblock Modelling the initial spread of foot-and-mouth disease through animal
+  movements.
+\newblock \emph{Proceedings of the Royal Society B: Biological Sciences},
+  273\penalty0 (1602):\penalty0 2729--2735, 2006.
+\newblock \doi{10.1098/rspb.2006.3648}.
+\newblock URL
+  \url{http://rspb.royalsocietypublishing.org/content/273/1602/2729.abstract}.
+
+\bibitem[Newman(2003)]{Newman2003}
+Mark E~J Newman.
+\newblock {The Structure and Function of Complex Networks}.
+\newblock \emph{SIAM Review}, 45\penalty0 (2):\penalty0 167--256, 2003.
+
+\end{thebibliography}

@@ -1,0 +1,316 @@
+% Style file to be used while publishing    
+% a scientific work (PhD Thesis etc.)
+% at the EDOC-Server of HU-Berlin                      
+%    developed 2003-2008 by
+% AG Elektronisches Publizieren, 
+% Computer- und Medienservice,
+% Humboldt-Universitaet zu Berlin
+%    with friendly support of
+% TeX-Stammtisch in Berlin     
+
+% $Revision: 12 $
+% $HeadURL: svn+ssh://ryckojox@svn.cms.hu-berlin.de/svn/projects/epub/latex/hudiss/hudiss.sty $
+% $Date: 2009-06-08 19:07:06 +0200 (pon, 08 cze 2009) $
+% $Author$
+% $Id: hudiss.sty 12 2009-06-08 17:07:06Z ryckojox $
+                             
+% Questions, comments, support:
+%    edoc-latex@cms.hu-berlin.de    
+
+% Documentation and information about the conditions of a publication:
+%    http://edoc.hu-berlin.de/e_autoren/latex          
+
+% Upload:
+%    https://edoc.hu-berlin.de/cgi/dokupload/dokupload.cgi
+
+% DO NOT CHANGE ANY PART OF THIS FILE!
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{hudiss}[2009/05/21 v0.2 For scientific documents at the EDOC-Server]
+
+% All the files used while compiling the sources will be
+% shown in the output together with their versions and sometimes
+% with short decriptions.
+\listfiles
+
+
+% kvoptions to provide key-value options
+\RequirePackage[patch]{kvoptions}[2007/10/18]
+% ifpdf to provide \ifpdf-macro, which determines, what happens
+% wheather pdflatex is being used or not
+\RequirePackage{ifpdf}[2007/12/12]
+% definition of a setup, that can be used after 
+% loading of the document class
+\newcommand*{\hudisssetup}[1]{\setkeys{Hu}{#1}}
+\newcommand*{\hudissmetadata}[1]{\setkeys{Hu}{#1}}
+% setup of kvoptions 
+\SetupKeyvalOptions{
+    family=Hu,            % multiple families possible
+    prefix=Hu@,           % the prefix is added to every option created with the package
+}
+
+% -- declarations of the options of the kvoptions package ----------
+	% document class options
+\DeclareStringOption[cleardoublepage=empty]{scrbook}
+
+
+% basic packages
+\DeclareStringOption[latin1]{inputenc}   % character encoding (default: latin1)
+\DeclareStringOption[T1]{fontenc}        % font encoding (default: T1)
+\DeclareStringOption[]{graphicx}         % graphics package
+\DeclareStringOption{hyperref}           % miscellanous functions of pdf
+\DeclareStringOption[english,ngerman]{babel}  % multiple languages
+\DeclareStringOption{soul}
+\DeclareStringOption{enumitem}
+\DeclareStringOption{xcolor}
+\DeclareStringOption{ifthen}
+\DeclareStringOption{setspace}
+
+
+% layout
+\DeclareStringOption[lmodern]{fontset}   % which fonts to use in the document
+\DeclareStringOption[\sffamily\Large\mdseries]{titlepagefont}
+
+% metadata
+\DeclareBoolOption[true]{hints}
+\newcommand{\default}[1]{{\Hu@titlepagefont\mdseries\texttt{\ifHu@hints\textcolor{red}{#1}\else\ \fi}}}
+
+\DeclareStringOption{authorprefix} % author's prefix
+\DeclareStringOption{authorsurname} % author's surname
+\DeclareStringOption{authorfirstname} % author's first name(s)
+\DeclareStringOption{authorsuffix}
+\DeclareStringOption{authoradd} % author's additional information
+
+\DeclareStringOption{doctitle} % title
+\DeclareStringOption{docsubtitle} % subtitle
+\DeclareStringOption{docsubject} % subject
+
+\DeclareStringOption{approvala} % approval
+\DeclareStringOption{approvalb} % approval
+\DeclareStringOption{approvalc} % approval
+\DeclareStringOption{approvald} % approval
+\DeclareStringOption{approvale} % approval
+
+\DeclareStringOption{degree} % degree
+\DeclareStringOption{subject} % subject
+\DeclareStringOption{faculty} % faculty
+
+\DeclareStringOption{university} % university
+\DeclareStringOption{dean} % dean
+\DeclareStringOption{president} % president
+
+\DeclareStringOption{datesubmitted} % date submitted
+\DeclareStringOption{dateexam} % date exam
+
+
+\DeclareStringOption{keywordsen} % keywords
+\DeclareStringOption{keywordsde} % keywords
+
+\DeclareStringOption[false]{natbib}
+\DeclareStringOption[false]{apacite}
+\DeclareStringOption[false]{jurabib}
+
+\DeclareBoolOption[true]{checktabu}
+\DeclareBoolOption[false]{draft}
+
+\DeclareBoolOption[false]{qserie}
+
+
+\ProcessKeyvalOptions*
+
+\RequirePackage{ifthen}[2001/05/26]
+
+ \ifHu@checktabu
+   \RequirePackage[l2tabu]{nag}[2008/01/27]
+   \AtBeginDocument{
+       \ObsoletePackage{ae}{the lmodern package}
+       \ObsoletePackage{bbm}{the lmodern package}
+       \ObsoletePackage{times}{the class option fontset=times}     
+       \ObsoletePackage[unforeseeable]{epstopdf}{extern programs}      
+		
+% ---------------------------------------------------------------------
+% Avoid various picture environments
+ \newcommand{\picenv}[1]{\ObsoletePackage[used to create pictures on-the-fly, which is not allowed, when publishing on the edoc-server]{#1}{the "graphicx" package and eps/pdf-graphics}}
+ 
+       \picenv{curves}
+       \picenv{epic}
+       \picenv{eepic}
+       \picenv{xypic}
+       \picenv{picture}
+       \picenv{pstricks}
+       \picenv{tikz}
+       \picenv{eso-pic}
+       \picenv{picinpar}
+       \picenv{picins}
+       \picenv{wallpaper}
+       \picenv{pictex}
+       \picenv{pictex2}
+       \picenv{xypic}
+       \picenv{pgf}
+       \picenv{tikz}
+ }
+ \fi
+
+%----------- packages -----------------------------------------
+\expandafter\RequirePackage\expandafter[\Hu@graphicx]{graphicx}
+\expandafter\RequirePackage\expandafter[\Hu@xcolor]{xcolor}
+\expandafter\RequirePackage\expandafter[\Hu@setspace]{setspace}
+\expandafter\RequirePackage\expandafter[\Hu@babel]{babel}
+\expandafter\RequirePackage\expandafter[\Hu@fontenc]{fontenc}
+\expandafter\RequirePackage\expandafter[\Hu@inputenc]{inputenc}
+
+
+\ifthenelse{
+	\equal{\Hu@fontset}{palatino}}{
+		\RequirePackage{mathpazo}[2005/04/12]
+		\RequirePackage[scaled=.95]{helvet}[2005/04/12]
+		\RequirePackage{courier}[2005/04/12]
+		}{
+\ifthenelse{
+	\equal{\Hu@fontset}{times}}{
+		\RequirePackage{mathptmx}[2005/04/12]
+		\RequirePackage[scaled=.90]{helvet}[2005/04/12]
+		\RequirePackage{courier}[2005/04/12]
+}{
+\ifthenelse{
+	\equal{\Hu@fontset}{lmodern}}{
+		\RequirePackage{lmodern}[2007/01/04]}{
+}}}
+
+
+\expandafter\RequirePackage\expandafter[\Hu@enumitem]{enumitem}[2005/05/12]
+\newenvironment{tplist}{%
+    \setlength{\parskip}{0pt}
+    \begin{enumerate}[leftmargin=*, widest=3, align=left,nolistsep]}{
+    \end{enumerate}
+    \setlength{\parskip}{\baselineskip}
+}
+\newenvironment{exlist}{%
+    \setlength{\parskip}{0pt}
+    \begin{description}[noitemsep,font=\expandafter\Hu@titlepagefont\expandafter]}{
+    \end{description}
+    \setlength{\parskip}{\baselineskip}
+}
+
+\expandafter\RequirePackage\expandafter[\Hu@soul]{soul}[2003/11/17]
+
+%----------- varioius bibliography packages -------------------
+
+\ifthenelse{
+	\equal{\Hu@natbib}{false}}{
+}{
+	\expandafter\RequirePackage\expandafter[\Hu@natbib]{natbib}[2007/02/05]
+}
+
+%------------- jurabib AFTER babel ----------------------------
+
+\ifthenelse{
+	\equal{\Hu@jurabib}{false}}{
+}{
+	\expandafter\RequirePackage\expandafter[\Hu@jurabib]{jurabib}[2004/01/25]
+}
+
+%----------- hyperref + options -------------------------------
+\ifpdf
+   \RequirePackage[pdftex]{hyperref}[2008/01/09]
+\else
+   \RequirePackage[dvips]{hyperref}[2008/01/09]
+\fi
+
+\hypersetup{
+   pdfpagemode=UseOutlines,
+   pdfpagelayout=TwoPageRight,
+   pdfstartview=Fit,
+   plainpages=false,       
+   colorlinks
+}
+
+\ifHu@draft
+   \KOMAoptions{draft=true}
+\else
+   \hypersetup{
+   		linkcolor=black,                
+   		filecolor=black,                
+   		urlcolor=black,                    
+   		citecolor=black,                
+   }
+      \KOMAoptions{draft=false}
+\fi
+
+\ifx\Hu@hyperref\empty
+\else
+   \expandafter\hypersetup\expandafter{\Hu@hyperref}
+\fi
+
+%---------------- apacite after hyperref! -----------------
+
+\ifthenelse{
+	\equal{\Hu@apacite}{false}}{
+}{
+	\expandafter\RequirePackage\expandafter[\Hu@apacite]{apacite}[2007/09/03]
+}
+
+%------------ metadata ------------------------------------------
+
+\renewenvironment{titlepage}
+{%
+ \if@twocolumn
+   \@restonecoltrue\onecolumn
+ \else
+   \@restonecolfalse\newpage
+ \fi
+ \thispagestyle{empty}%
+ \if@compatibility\setcounter{page}{0}\fi
+ \addmargin[-\oddsidemargin]{-\evensidemargin}%
+}{%
+ \endaddmargin
+ \if@restonecol\twocolumn \else \newpage \fi
+} 
+
+\renewcommand{\maketitle}{
+	\InputIfFileExists{titlepage.tex}{}{
+  	\ClassWarning{hudiss}{titlepage.tex file not found. It is necessary to create the titlepage. Copy the file from the template.}		
+	}
+}                                                                
+
+\newenvironment*{abstract}{%
+     \if@twocolumn
+       \addsec*{\abstractname}
+     \else
+       \small
+       \begin{center}%
+         {\normalfont\sectfont\nobreak\abstractname
+           \vspace{-.5em}\vspace{\z@}}%
+       \end{center}
+       \quotation
+     \fi
+     {\if@twocolumn\else\endquotation\fi}
+}
+
+\newcommand{\keywordsen}{\Hu@keywordsen}
+\newcommand{\keywordsde}{\Hu@keywordsde}
+\newcommand{\authorfirstname}{\Hu@authorfirstname\ }
+\newcommand{\authorsurname}{\Hu@authorsurname\ }
+
+\AtBeginDocument{
+\hypersetup{pdfauthor={\ifx\Hu@authorprefix\empty\else\Hu@authorprefix\ \fi\ifx\Hu@authorfirstname\empty\else\Hu@authorfirstname\ \fi\ifx\Hu@authorsurname\empty\else\Hu@authorsurname\ \fi\ifx\Hu@authorsuffix\empty\else\Hu@authorsuffix\ \fi}}
+\hypersetup{pdftitle=\ifx\Hu@doctitle\empty\else\Hu@doctitle\fi}
+\hypersetup{pdfsubject=\ifx\Hu@docsubject\empty\else\Hu@docsubject\fi}
+\hypersetup{pdfkeywords={\ifx\Hu@keywordsen\empty\else\Hu@keywordsen; \fi\if\Hu@keywordsde\empty\else\Hu@keywordsde\fi}}
+}
+
+\expandafter\KOMAoptions\expandafter{\Hu@scrbook}                    
+
+
+% Einstellungen für die Q-Print-Serie	
+\ifHu@qserie
+	\AtBeginDocument{
+        \hudisssetup{
+            fontset=palatino,
+            titlepagefont={\normalsize\sffamily}
+         }	
+        \KOMAoptions{twoside,fontsize=14pt}
+        \typearea[10mm]{classic}
+        \onehalfspacing
+    }	
+\fi

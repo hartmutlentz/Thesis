@@ -1,0 +1,58 @@
+\usepackage{amsmath,amssymb,amsfonts,amsthm,epigraph}
+\usepackage[labelsep=period, format=hang, singlelinecheck=false,font={sf,small},labelfont=bf]{caption}
+\usepackage[ngerman,english]{babel}
+
+% Papiergröße
+%\setlength{\paperwidth}{24cm}
+%\setlength{\paperheight}{17cm}
+%\recalctypearea
+%\usepackage{geometry}
+
+%% Sans Serif
+%\usepackage{cmbright}
+%\renewcommand{\familydefault}{\sfdefault}
+%% Palatino
+%\usepackage[sc]{mathpazo}
+%\linespread{1.05}         % Palatino needs more leading (space between lines)
+%\setkomafont{sectioning}{\normalcolor\bfseries}
+
+%%% Kapitelüberschriften: Mit großen Zahlen
+%\usepackage{titlesec}
+%\titleformat{\chapter}[display]
+%{\bfseries\Large}
+%{ %\Huge\textsc{\chaptertitlename} % für das Wort 'Kapitel'
+%\hfill\fontsize{120}{70}\selectfont\color{lightgray}\textbf{\thechapter}}
+%{-2ex}
+%%{\filleft\fontsize{50}{70}\selectfont\scshape} % Kapitälchen oder...
+%{\filleft\fontsize{50}{70}\selectfont\textbf} % ...oder keine Kapitälchen
+%[\vspace{0ex}]
+%
+%%%% Partüberschriften
+%\titleformat{\part}[display]
+%{\bfseries\Large}
+%{ %\Huge\textsc{\chaptertitlename} % für das Wort 'Kapitel'
+%\hfill\fontsize{120}{70}\selectfont\color{lightgray}\textbf{\thepart}}
+%{-2ex}
+%{\filleft\fontsize{50}{70}\selectfont\scshape} % Kapitälchen oder...
+%%{\filleft\fontsize{50}{70}\selectfont\textbf} % ...oder keine Kapitälchen
+%[\vspace{0ex}]
+
+
+\newcommand{\ER}{Erd\H{o}s-R\'enyi }
+\newcommand{\BA}{Barab\'asi-Albert }
+\newcommand{\mean}[1]{\left< #1 \right>}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\tgraph}{\mathcal{G}}
+
+\theoremstyle{definition} % non-italic
+\newtheorem{annahme}{Annahme} % braucht amsthm
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{satz}{Satz}
+\newtheorem{frage}{Frage}
+%\input{watermarks/watermark.tex}
+\DeclareMathOperator{\nnz}{nnz}
+
+% + Graphicspath nach begin document

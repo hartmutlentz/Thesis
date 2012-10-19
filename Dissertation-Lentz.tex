@@ -1,0 +1,123 @@
+% Template to be used while publishing    
+% a scientific work (PhD Thesis etc.)
+% at the EDOC-Server of HU-Berlin                      
+%    developed 2003-2008 by
+% AG Elektronisches Publizieren, 
+% Computer- und Medienservice,
+% Humboldt-Universitaet zu Berlin
+%    with friendly support of
+% TeX-Stammtisch in Berlin     
+
+% $Revision: 19 $
+% $HeadURL: svn+ssh://ryckojox@svn.cms.hu-berlin.de/svn/projects/epub/latex/hudiss/mustermann.tex $
+% $Date: 2009-07-03 15:49:19 +0200 (ptk, 03 lip 2009) $
+% $Author$
+% $Id: mustermann.tex 19 2009-07-03 13:49:19Z ryckojox $
+                             
+% Questions, comments, support:
+%    edoc-latex@cms.hu-berlin.de    
+
+% Documentation and information about the conditions of a publication:
+%    http://edoc.hu-berlin.de/e_autoren/latex          
+
+% Upload:
+%    https://edoc.hu-berlin.de/cgi/dokupload/dokupload.cgi
+
+\documentclass[openright,twoside,headsepline,% 
+]{scrbook}[2007/12/24]
+
+% The following package is necessary.
+% To change the default options of the packages, use the key=value interface.
+% See the documentation for details.
+% If you need to use any special characters or LaTeX-commands 
+% within the options, use \hudisssetup{} after loading this package,
+% otherwise they will NOT work correctly.
+\usepackage[
+    inputenc=applemac, % default - latin1
+    %fontset=palatino, % other possible parameters: lmodern, times, palatino
+    natbib={numbers,sort}, %include to use the natbib-package
+    % jurabib={}, %include to use the jurabib-package
+    % apacite={}, %include to use the apacite-package
+    hints=true, % set to 'false' for submission
+    checktabu=False, % set to 'false' for submission
+    draft=False, % set to 'false' for submission
+    qserie=false
+ ]{hudiss}
+
+%\usepackage{layouts} % nur für Ausgabe der Textbreite
+
+                
+\hudisssetup{%
+    titlepagefont={\Large\sffamily} % Use to change the titlepage font
+}
+
+% Fill out all the metadata here:
+\hudissmetadata{%
+    authorprefix={Dipl.-Phys.}, % e.g. Dipl.-Inf.
+    authorfirstname={Hartmut}, % first name
+    authorsurname={Lentz}, % surname
+    authorsuffix={}, % e.g. Ph.D.
+    authoradd={10/23/1980, Siegen}, % date and place of birth
+    doctitle={Complex Networks}, % title of the thesis
+    docsubtitle={for one euro}, % subtitle of the thesis
+    % docsubject={}, % subject of the thesis (used in the properties of the pdf-document)
+    approvala={Prof. Dr. Sokolov}, % approvals: a-e
+    approvalb={Prof. Dr. Schimanski-Geier},
+    approvalc={Prof. Dr. Selhorst},
+    % approvald={},
+    % approvale={},
+    degree={Dr. Rer. Nat.}, % e.g. Dr. Rer. Nat.
+    subject={Physik}, % e.g. Informatik
+    faculty={Mathematisch-Wissenschaftlichen Fakult\"at I}, % in Dativ/Genitiv! e.g. Mathematisch-Wissenschaftlichen Fakult\"at II
+    university={Humboldt-Universit\"at zu Berlin}, % e.g. Humboldt-Universit\"at zu Berlin
+    dean={Prof. Stefan Hecht PhD}, % dean of the faculty
+    president={Prof. Dr. Jan-Hendrik Olbertz}, % president of the university
+    % datesubmitted={}, % the date of the submission
+    % dateexam={}, % the date of your last exam
+    % keywordsen={}, % english keywords comma separated
+    % keywordsde={} % german keywords comma separated
+}
+
+% If you wish to load any further packages, 
+% make any own adjustments (e. g. for the package fancyhdr)
+% or define any own commands
+% put ALL of them in the following file:
+\input{adjustment.tex}
+
+
+% The order of the parts in the document is only our suggestion,
+% you can change it, if you wish.
+% Don't put any other text between those commands.
+% Do not remove the \*matter macros.
+% Use standard macros to include new chapters.
+
+%\definecolor[named]{Mokka}{rgb}{0.501,0.25,0}
+%\addtokomafont{section}{\color{Mokka}}
+%\addtokomafont{chapter}{\color{Mokka}}
+
+\begin{document}
+\graphicspath{{images/}}
+\selectlanguage{english}
+    \frontmatter
+        %\maketitle
+        %\include{chapters/dedication}
+        %\include{chapters/abstract}
+        \tableofcontents    
+    \mainmatter
+        \include{chapters/Part1/01-Introduction}
+        \include{chapters/Part2/01-Introduction}
+        \include{chapters/Part3/01-Introduction}
+        \include{chapters/Part3/05-Conceptional_tvg_problems}
+    \backmatter
+        \appendix
+        %\include{chapters/appendixA}
+        \nocite{*}                
+		% See the documentation or under
+		% http://edoc.hu-berlin.de/e_autoren/latex/bedingung.php
+		% for the list of the permitted styles.
+        \bibliographystyle{plainnat}
+        \bibliography{bibliography}
+        %\listoffigures
+        %\listoftables    
+        %\include{chapters/declaration}    % Use our template or write your own.
+\end{document}
