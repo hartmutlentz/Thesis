@@ -1,9 +1,19 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{11}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Anderson and May(1992)]{andersonmay:92}
+R~M Anderson and R~M May.
+\newblock \emph{Infectious diseases of humans}.
+\newblock Oxford University Press, 1992.
+
+\bibitem[Bailey(1957)]{bailey:57}
+N~T~J Bailey.
+\newblock \emph{The mathematical theory of infectious diseases}.
+\newblock Charles Griffin \& Company Ltd, 2nd edition, 1957.
 
 \bibitem[Bajardi et~al.(2012)Bajardi, Barrat, Savini, and
   Colizza]{Bajardi:2012}
@@ -22,6 +32,11 @@ Michel Bigras-Poulin, Kristen Barfod, Sten Mortensen, and Matthias Greiner.
   movements network to potential disease spread.
 \newblock \emph{Preventive Veterinary Medicine}, 80:\penalty0 143 -- 165, 2007.
 
+\bibitem[Chasnov(2010)]{Chasnov:2010}
+J.~R. Chasnov.
+\newblock \emph{Mathematical Biology: Lecture Notes}.
+\newblock The Hong Kong University of Science and Technology, 2010.
+
 \bibitem[Christley(2005)]{Christley:2005}
 R.~Christley.
 \newblock Network analysis of cattle movement in great britain.
@@ -36,6 +51,21 @@ D.M Green, I.Z Kiss, and R.R Kao.
 \newblock \doi{10.1098/rspb.2006.3648}.
 \newblock URL
   \url{http://rspb.royalsocietypublishing.org/content/273/1602/2729.abstract}.
+
+\bibitem[Grenfell(1992)]{grenfell:92}
+B~T Grenfell.
+\newblock Chance and chaos in measles dynamics.
+\newblock \emph{J. R. Stat. Soc. B}, 54:\penalty0 383--398, 1992.
+
+\bibitem[Hethcote(2000)]{Hethcote:2000}
+HW~Hethcote.
+\newblock {The mathematics of infectious diseases}.
+\newblock \emph{SIAM Rev.}, 42\penalty0 (4):\penalty0 599--653, 2000.
+
+\bibitem[Kermack and McKendrick(1927)]{kermack:27}
+W~O Kermack and A~G McKendrick.
+\newblock A contribution to the mathematical theory of epidemics.
+\newblock \emph{Proc. R. Soc. A}, 115:\penalty0 700--721, 1927.
 
 \bibitem[Newman(2003)]{Newman2003}
 Mark E~J Newman.
