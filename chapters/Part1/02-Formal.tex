@@ -2,33 +2,46 @@
 \usepackage{graphicx}
 \usepackage[applemac]{inputenc}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage[leftcaption]{sidecap} % inner, outer,left,right
+\sidecaptionvpos{figure}{t}
+\usepackage[labelsep=period, format=plain,singlelinecheck=false, font={sf,small},labelfont=bf]{caption}
 \begin{document}
 \graphicspath{{/Users/lentz/Documents/GitHub_locals/Thesis/images/}}
 
 
 
 \chapter{Theory}
+This chapter is devoted to the mathematical formalism that is used to model infectious diseases and networks.
+The author defines a mathematical framework and summarizes relevant results of earlier research in this area.
+In addition, section xx describes an efficient computer implementation of networks.
 
 \section{Models of infectious diseases}
-%\subsection{Observations}
-\paragraph{Observations:} Large scale patterns of epidemics have been measured \cite{geissel_der_menschheit}
+%\subsection{Very briefly:}
+\paragraph{Observations.} Large scale patterns of epidemics have been measured \cite{geissel_der_menschheit}
 The spread of infectious diseases is something that everyone is familiar with.
 
-\paragraph{The science inspired by observation.} One goal of epidemiology is to understand the principles behind the spreading process, i.e. the way how a disease is transmitted through a population.
+\paragraph{Research field: Epidemiology.} One goal of epidemiology is to understand the principles behind the spreading process, i.e. the way how a disease is transmitted through a population.
 In this context, \emph{conceptional} models are used.
 They make use of simple assumptions for the local (person-to-person) dynamics and focus on the big picture of the process.
 Conceptual models are very similar to models in theoretical physics, because they focus on the very essence of the problem (here: the macroscopic view, spreading patterns).
-However, they have to neglect many details of the real problem (here: physiology, symptoms, individual behavior, infection pathways and many more!).
+However, they have to neglect many details of the real problem (here: physiology, symptoms, individual behavior, infection pathways and many more!) in order to have mathematical feasible models.
 
 Another important issue of epidemiology is the \emph{forecast} of epidemic spreading processes.
 Forecast models incorporate as much information as possible and the main focus is not an understanding of the basic principles.
 
-This section summarizes the mathematical framework that roughly reproduces the behavior of some infectious diseases and briefly discusses some important insights.
+This section summarizes the mathematical framework that roughly reproduces the behavior of infectious diseases and briefly discusses some major insights.
 
 
-\subsection{Development}
-
-
+\subsection{Development of mathematical epidemiology}
+The modeling of infection diseases mostly uses the concept of compartment models as explained in section xx.
+Major contributions to the modern theoretical framework were provided by \cite{kermack:27}, \cite{bailey:57} and \cite{andersonmay:92}.
+In his review about the mathematics of infectious diseases Hethcote reports a model for smallpox was already formulated in 1760 by D. Bernoulli (\cite{Hethcote:2000} and references therein).
+In the early 20th century, people developed mathematical models for epidemics: a discrete time model in 1906 \cite{Hamer} and a differential equation model in 1911 \cite{Ross}.
+The epidemic threshold (section \ref{sec:sir_model}) was found in the 1920s \cite{kermack:1927_thresh} \cite{kermack:27}.
+Starting from Bailey's book \cite{bailey:57} in the 1950s, the modeling of infectious diseases became a major scientific research field.
+Modern models of infectious diseases include vaccination, demographic structure, disease vectors, quarantine and even game theory (\cite{Bauch:2004} and references in \cite{Hethcote:2000}).
+The availability of contact data in recent years led to a strong impact on network analysis on epidemiology.
+Well known concepts of mathematics (graph theory \cite{Bollobas:1985}) and social sciences (social network analysis \cite{WassermanFaust}) have been adopted to disease modeling, since the connections between individuals are related to their epidemic spreading potential \cite{Keeling:2005}.
 
 \subsection{Infection dynamics}
 
@@ -72,14 +85,18 @@ where $\alpha $ is the infection rate and $\gamma $ is the immunization or recov
 There is no analytic solution for the system \eqref{eq:sir_model}, but some fundamental conclusions can be obtained analytically.
 We show a typical solution of \eqref{eq:sir_model} in figure \ref{fig:std_sir_model}.
 %
-\begin{figure}[htbp]
-\begin{center}
+\begin{SCfigure}%[htbp]
+%\begin{center}
 \includegraphics{sir_model.pdf}
-\caption{Typical solution of a susceptible-infected-recovered (SIR) model. Parameters: $\alpha = 3$, $\gamma = 1$, $N=300$, $S_0=1$.}
+\caption{Solution of the susceptible-infected-recovered (SIR) model \eqref{eq:sir_model}.
+The number of infected shows that the spreading process is a single event.
+Note that a fraction of the population is still susceptible at the end of the process.
+Parameters: $\alpha = 3$, $\gamma = 1$, $N=300$, $S_0=1$.}
 \label{fig:std_sir_model}
-\end{center}
-\end{figure}
+%\end{center}
+\end{SCfigure}
 %
+
 
 The SIR model shows more sophisticated features than the SI model \eqref{eq:si_model}.
 To begin with, we analyze the fixed points of the system, i.e. $(S_*,I_*,R_*)$ where
@@ -198,13 +215,68 @@ Nevertheless, the results presented in section \ref{sec:sir_model} remain qualit
 Although the force of infection gives a more reasonable description of the infection process, the assumption of random mixing remains inappropriate for many real world systems.
 Due to the availability of contact data, the random mixing assumption can be improved in terms of contact networks.
 Even if the exact data of an epidemic system is not available, research on complex networks allows us to give more realistic models about mixing.
-In the next section, we briefly report important results in complex network research and focus on the interplay between networks and epidemics in section \ref{sec:epidemics_on_networks}.
+In the next section, we briefly report important results in complex network research and focus on the interplay between networks and epidemics in section xx.
 
 
-\section{Complex networks}
+\section{Network theory}
+As we have seen in the previous section, standard epidemic models make use of the random mixing assumption.
+This assumption seems reasonable, if no further information about the contact structure within a population is available, because it gives a worst case scenario of the infection dynamics.
+Even an overestimation of the outbreak size can be corrected by introducing smaller, effective disease parameters.
+However, the random mixing assumption does not allow for non homogenous mixing, i.e. each individual is considered equal.
+Nevertheless, the equality of individuals is not a reasonable assumption for many epidemic substrates.
+Examples are contact structures of humans, livestock trade, vehicles as disease vectors of links between computers.
+
+\subsection{Network matrix representations}
+A network is a system consisting of nodes that are connected by edges.
+Edges can be undirected, directed and weighted.
+In principle, a network can consist of edges of different types.
+This can be represented by multiple networks sharing the same set of nodes, but different edges.
+
+Networks are called graphs in mathematical literature.
+A graph $G=(V,E)$ is a set of nodes (or vertices) $V$ and edges (or arcs) $E$, where each edge is given by the tuple of nodes it connects, i.e. $e_1 =(u,v) \in E$ connects nodes $u$ and $v$.
+An edge $(u,v)$ being present in an undirected network implies an edge $(v,u)$.
+Apparently, this does not hold in directed networks.
+Edges of weighted networks carry additional meta information about their weight.
+This meta information can be their importance, capacity, number of transported items or the geographical distance between nodes $u$ and $v$.
+
+Graphs can be represented by different graph matrices, where different matrix representation emphasize typical properties of the network.
+The most common graph matrix is the \emph{adjacency matrix} $\mathbf{A}$ with entries
+\begin{equation}\label{eq:adjacency_matrix}
+(\mathbf{A})_{ij}= 
+\begin{cases}
+1 & \text{if $i$ is connected to $j$} \\
+0 & \text{else.}
+\end{cases} 
+\end{equation}
+The adjacency matrix contains the edges of the graph and can be seen of the most fundamental graph representation.
+Weighted networks can be represented by weight matrices, where the values of the entries in \eqref{eq:adjacency_matrix} are not restricted to zero and one.
+
+The adjacency matrix of an undirected network is symmetric, because every non-zero entry $(\mathbf{A})_{ij}=1$ implies an edge into the opposite direction, $(\mathbf{A})_{ji}=1$.
+Entries on the main diagonal $(\mathbf{A})_{ii}$ correspond to nodes with self loops, i.e. nodes with edges pointing back to themselves.
+The $i$-th row the adjacency matrix contains non-zero entries $(\mathbf{A})_{ij}=1$, whenever node $i$ is connected to node $j$.
+Hence, every row can be interpreted as the neighborhood of one node.
+This holds for undirected and for directed networks.
+The columns of $\mathbf{A}$ give the same information as the rows.
+In the directed case, however, rows contain the out-neighborhood of each node and columns contain the in-neighborhood, respectively.
+
+A Markov chain is a random process without memory and with discrete state space and discrete time.
+It is called time-homogenous, if the transition rates are constant.
+Time-homogenous Markov chains can be represented as weighted networks and the corresponding weighted adjacency matrix is the \emph{transition matrix}.
+Transition matrices are stochastic matrices, i.e. the elements of every row sum up to unity.
+Each node represents a different state of the system and the edges are weighted with the probabilities to transition into other states adjacent to these edges.
+It is obvious that a transition matrix representation is useful to describe random walks on networks.
+
+As a special case of transition matrices, the author would like to name the \emph{Google matrix}.
+It describes a random walk on a network, but allows for shortcuts to any node in the network with a certain probability.
+The eigenvectors of Google matrices are used for the computation of node rankings according to the PageRank-Algorithm \cite{PageRank}.
 
 
-\section{Epidemics on networks}\label{sec:epidemics_on_networks}
+
+\subsection{Accessibility}
+
+\subsection{Implementation}
+
 \subsection{From random mixing to developed structure}
+
 
 \end{document}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{12}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -61,6 +61,11 @@ B~T Grenfell.
 HW~Hethcote.
 \newblock {The mathematics of infectious diseases}.
 \newblock \emph{SIAM Rev.}, 42\penalty0 (4):\penalty0 599--653, 2000.
+
+\bibitem[Keeling and Eames(2005)]{Keeling:2005}
+Matt~J Keeling and K~Eames.
+\newblock {Networks and epidemic models}.
+\newblock \emph{J. R. Soc. Interface B}, 2:\penalty0 295--307, January 2005.
 
 \bibitem[Kermack and McKendrick(1927)]{kermack:27}
 W~O Kermack and A~G McKendrick.
