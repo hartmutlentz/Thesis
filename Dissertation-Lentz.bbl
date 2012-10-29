@@ -1,4 +1,4 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -25,12 +25,23 @@ Paolo Bajardi, Alain Barrat, Lara Savini, and Vittoria Colizza.
 \newblock URL
   \url{http://rsif.royalsocietypublishing.org/content/early/2012/06/21/rsif.2012.0289.abstract}.
 
+\bibitem[Bauch and Earn(2004)]{Bauch:2004}
+Chris~T Bauch and David J~D Earn.
+\newblock {Vaccination and the theory of games.}
+\newblock \emph{Proc. Natl. Acad. Sci. U.S.A.}, 101\penalty0 (36):\penalty0
+  13391--13394, September 2004.
+
 \bibitem[Bigras-Poulin et~al.(2007)Bigras-Poulin, Barfod, Mortensen, and
   Greiner]{Bigras:2007}
 Michel Bigras-Poulin, Kristen Barfod, Sten Mortensen, and Matthias Greiner.
 \newblock Relationship of trade patterns of the danish swine industry animal
   movements network to potential disease spread.
 \newblock \emph{Preventive Veterinary Medicine}, 80:\penalty0 143 -- 165, 2007.
+
+\bibitem[Bollob{\'a}s(1985)]{Bollobas:1985}
+B~Bollob{\'a}s.
+\newblock \emph{Random Graphs}.
+\newblock London: Academic Press, 1985.
 
 \bibitem[Chasnov(2010)]{Chasnov:2010}
 J.~R. Chasnov.
@@ -57,6 +68,11 @@ B~T Grenfell.
 \newblock Chance and chaos in measles dynamics.
 \newblock \emph{J. R. Stat. Soc. B}, 54:\penalty0 383--398, 1992.
 
+\bibitem[Hamer(1906)]{Hamer}
+W~H Hamer.
+\newblock Epidemic disease in england.
+\newblock \emph{Lancet}, 1:\penalty0 733--739, 1906.
+
 \bibitem[Hethcote(2000)]{Hethcote:2000}
 HW~Hethcote.
 \newblock {The mathematics of infectious diseases}.
@@ -67,14 +83,34 @@ Matt~J Keeling and K~Eames.
 \newblock {Networks and epidemic models}.
 \newblock \emph{J. R. Soc. Interface B}, 2:\penalty0 295--307, January 2005.
 
-\bibitem[Kermack and McKendrick(1927)]{kermack:27}
+\bibitem[Kermack and McKendrick(1927{\natexlab{a}})]{kermack:1927_thresh}
+W~O Kermack and A~G McKendrick.
+\newblock Contributions to the mathematical theory of epidemics, part 1.
+\newblock \emph{Proc. R. Soc. London Ser. A}, 115:\penalty0 700--721,
+  1927{\natexlab{a}}.
+
+\bibitem[Kermack and McKendrick(1927{\natexlab{b}})]{kermack:27}
 W~O Kermack and A~G McKendrick.
 \newblock A contribution to the mathematical theory of epidemics.
-\newblock \emph{Proc. R. Soc. A}, 115:\penalty0 700--721, 1927.
+\newblock \emph{Proc. R. Soc. A}, 115:\penalty0 700--721, 1927{\natexlab{b}}.
 
 \bibitem[Newman(2003)]{Newman2003}
 Mark E~J Newman.
 \newblock {The Structure and Function of Complex Networks}.
 \newblock \emph{SIAM Review}, 45\penalty0 (2):\penalty0 167--256, 2003.
+
+\bibitem[Page(1997)]{PageRank}
+Lawrence Page.
+\newblock Method for node ranking in a linked database, 01 1997.
+
+\bibitem[Ross(1911)]{Ross}
+R~Ross.
+\newblock \emph{The Prevention of Malaria}.
+\newblock Murray, London, 2nd edition, 1911.
+
+\bibitem[Wasserman and Faust(1994)]{WassermanFaust}
+S~Wasserman and K~Faust.
+\newblock \emph{{Social Network Analysis}}.
+\newblock Cambridge University Press, 1994.
 
 \end{thebibliography}

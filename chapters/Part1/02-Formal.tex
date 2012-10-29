@@ -1,10 +1,22 @@
 \documentclass[openright,twoside,headsepline]{scrbook}
 \usepackage{graphicx}
+\usepackage{color}
+\definecolor{Cayenne}{rgb}{0.502,0.0,0.0}
+\definecolor{Steel}{rgb}{0.4,0.4,0.4}
+
+\addtokomafont{disposition}{\color{Steel}}
+%\addtokomafont{chapter}{\color{blue}}
+
 \usepackage[applemac]{inputenc}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage[leftcaption]{sidecap} % inner, outer,left,right
 \sidecaptionvpos{figure}{t}
-\usepackage[labelsep=period, format=plain,singlelinecheck=false, font={sf,small},labelfont=bf]{caption}
+
+
+\usepackage[format=plain,singlelinecheck=false, font={sf,small},labelfont={bf,color=Steel}]{caption}
+\DeclareCaptionLabelSeparator{cayenne_period}{\textcolor{Cayenne}{\Large{.}} }
+\captionsetup{labelsep=cayenne_period}
+
 \begin{document}
 \graphicspath{{/Users/lentz/Documents/GitHub_locals/Thesis/images/}}
 
@@ -248,8 +260,22 @@ The most common graph matrix is the \emph{adjacency matrix} $\mathbf{A}$ with en
 0 & \text{else.}
 \end{cases} 
 \end{equation}
-The adjacency matrix contains the edges of the graph and can be seen of the most fundamental graph representation.
+An adjacency matrix contains the edges of the graph and can be seen of the most fundamental graph representation.
+Figure \ref{fig:simple_digraph} shows a simple example of a directed graph and its adjacency matrix.
+The corresponding matrix would be symmetric in the undirected case.
 Weighted networks can be represented by weight matrices, where the values of the entries in \eqref{eq:adjacency_matrix} are not restricted to zero and one.
+%
+\begin{SCfigure}%[h]
+%\begin{center}
+\includegraphics{Simple_DiGraph}
+\caption[Adjacency matrix.]{A simple directed network. The corresponding adjacency matrix is
+\[
+\mathbf{A}=\left(\begin{array}{cccc}0 & 1 & 1 & 0 \\1 & 0 & 0 & 0 \\0 & 1 & 0 & 0 \\0 & 1 & 1 & 0\end{array}\right).
+\]
+}
+\label{fig:simple_digraph}
+%\end{center}
+\end{SCfigure}
 
 The adjacency matrix of an undirected network is symmetric, because every non-zero entry $(\mathbf{A})_{ij}=1$ implies an edge into the opposite direction, $(\mathbf{A})_{ji}=1$.
 Entries on the main diagonal $(\mathbf{A})_{ii}$ correspond to nodes with self loops, i.e. nodes with edges pointing back to themselves.
@@ -265,14 +291,54 @@ Time-homogenous Markov chains can be represented as weighted networks and the co
 Transition matrices are stochastic matrices, i.e. the elements of every row sum up to unity.
 Each node represents a different state of the system and the edges are weighted with the probabilities to transition into other states adjacent to these edges.
 It is obvious that a transition matrix representation is useful to describe random walks on networks.
+An example of such a process is shown in figure \ref{fig:markov_chain}.
+The underlying network represents a line of locations, where the drunkard can be located.
+At every time-step there is a certain probability to move to another location.
+%
+\begin{SCfigure}%[htbp]
+%\begin{center}
+\includegraphics{Markov_chain.pdf}
+\caption{Trajectory of a toddling drunk man as an example of a Markov chain.
+At every location there is a probability for the drunkard to go left or right.
+The node rightmost node is an absorbing state and could model a park bench.
+Weights at arrowheads mark the transition probability.
+(inspired by \cite{Aldous_book}).}
+\label{fig:markov_chain}
+%\end{center}
+\end{SCfigure}
+%
+The state of the random walker can be described by a probability vector $\mathbf{p}$, where the initial state of figure \ref{fig:markov_chain} is $\mathbf{p}=(0,1,0,0)$.
+The transition matrix $\mathbf{M}$ is a weighted adjacency matrix as it follows from the figure.
+Given a state $\mathbf{p}_{t}$ at time $t$, the state of the next time step is given by $\mathbf{p}_{t+1}=\mathbf{p}_t \mathbf{M}^T$.
+The equilibrium state $\mathbf{p}_\mathrm{eq}$ follows in the limit $\lim _{n\rightarrow \infty } \mathbf{p}_0 (\mathbf{M}^T)^n$, i.e. the equilibrium state is given by the leading eigenvector of $\mathbf{M}$.
 
 As a special case of transition matrices, the author would like to name the \emph{Google matrix}.
 It describes a random walk on a network, but allows for shortcuts to any node in the network with a certain probability.
 The eigenvectors of Google matrices are used for the computation of node rankings according to the PageRank-Algorithm \cite{PageRank}.
 
+Finally, the \emph{Laplace-matrix} of a network is an appropriate representation to model diffusion processes.
+For undirected networks the Laplace-matrix is defined as
+\begin{equation}\label{eq:laplace_matrix}
+\mathcal{L}=\mathbf{D}-\mathbf{A},
+\end{equation}
+where $\mathbf{A}$ is the adjacency matrix and $\mathbf{D}$ is a diagonal matrix containing the degree $d_i=\sum _j a_{ij}$ of each node.
+The definition \eqref{eq:laplace_matrix} has strong analogies to the discrete Laplace-Operator \cite{Press:1992}.
+Consequently, they can be used to model diffusion processes on graphs in analogy to Laplace operators in continuous systems (see section xx).
+
+The spectra of adjacency and Laplace matrices contain information about the evolution/history of networks \cite{Banerjee2009}.
+
 
 
 \subsection{Accessibility}
+This section addresses the properties of \emph{products} of adjacency matrices.
+
+
+
+\subsection{Network measures}
+Before we address ourselves to models of real world networks, we have to introduce methods to measure structural properties of networks.
+On the micro scale, this can be done in terms of \emph{node centrality} measures.
+These measures are very important to assess the importance of single nodes in the network.
+On the macroscopic side, we are interested in the large-scale properties of networks, i.e. percolation, distributions of centralities, connected components or other large scale structures.
 
 \subsection{Implementation}
 
