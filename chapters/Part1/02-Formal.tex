@@ -1,11 +1,16 @@
 \documentclass[openright,twoside,headsepline]{scrbook}
-\usepackage{graphicx}
-\usepackage{color}
+\usepackage{graphicx,color,scrpage2}
 \definecolor{Cayenne}{rgb}{0.502,0.0,0.0}
 \definecolor{Steel}{rgb}{0.4,0.4,0.4}
 
-\addtokomafont{disposition}{\color{Steel}}
-%\addtokomafont{chapter}{\color{blue}}
+\addtokomafont{chapter}{\color{Steel}}
+\addtokomafont{section}{\color{Steel}}
+\addtokomafont{subsection}{\color{Steel}}
+\addtokomafont{paragraph}{\color{Steel}}
+\addtokomafont{pagehead}{\color{Steel}}
+\renewcommand{\pnumfont}{\color{Steel}} 
+\addtokomafont{headsepline}{\color{Steel}} 
+\pagestyle{scrheadings} 
 
 \usepackage[applemac]{inputenc}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
@@ -20,8 +25,6 @@
 \begin{document}
 \graphicspath{{/Users/lentz/Documents/GitHub_locals/Thesis/images/}}
 
-
-
 \chapter{Theory}
 This chapter is devoted to the mathematical formalism that is used to model infectious diseases and networks.
 The author defines a mathematical framework and summarizes relevant results of earlier research in this area.
@@ -29,10 +32,10 @@ In addition, section xx describes an efficient computer implementation of networ
 
 \section{Models of infectious diseases}
 %\subsection{Very briefly:}
-\paragraph{Observations.} Large scale patterns of epidemics have been measured \cite{geissel_der_menschheit}
+\paragraph{Observations\color{Cayenne}{.}} Large scale patterns of epidemics have been measured \cite{geissel_der_menschheit}
 The spread of infectious diseases is something that everyone is familiar with.
 
-\paragraph{Research field: Epidemiology.} One goal of epidemiology is to understand the principles behind the spreading process, i.e. the way how a disease is transmitted through a population.
+\paragraph{Research field: Epidemiology\color{Cayenne}{.}} One goal of epidemiology is to understand the principles behind the spreading process, i.e. the way how a disease is transmitted through a population.
 In this context, \emph{conceptional} models are used.
 They make use of simple assumptions for the local (person-to-person) dynamics and focus on the big picture of the process.
 Conceptual models are very similar to models in theoretical physics, because they focus on the very essence of the problem (here: the macroscopic view, spreading patterns).

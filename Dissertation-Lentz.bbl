@@ -1,9 +1,14 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{22}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Aldous and Wilson(2000)]{Aldous_book}
+J~M Aldous and R~J Wilson.
+\newblock \emph{{Graphs And Applications: An Introductory Approach}}.
+\newblock Springer, 2000.
 
 \bibitem[Anderson and May(1992)]{andersonmay:92}
 R~M Anderson and R~M May.
@@ -24,6 +29,17 @@ Paolo Bajardi, Alain Barrat, Lara Savini, and Vittoria Colizza.
 \newblock \doi{10.1098/rsif.2012.0289}.
 \newblock URL
   \url{http://rsif.royalsocietypublishing.org/content/early/2012/06/21/rsif.2012.0289.abstract}.
+
+\bibitem[Banerjee and Jost(2009)]{Banerjee2009}
+Anirban Banerjee and J{\"u}rgen Jost.
+\newblock Graph spectra as a systematic tool in computational biology.
+\newblock \emph{Discrete Applied Mathematics}, 157\penalty0 (10):\penalty0 2425
+  -- 2431, 2009.
+\newblock ISSN 0166-218X.
+\newblock \doi{10.1016/j.dam.2008.06.033}.
+\newblock URL
+  \url{http://www.sciencedirect.com/science/article/pii/S0166218X08003594}.
+\newblock <ce:title>Networks in Computational Biology</ce:title>.
 
 \bibitem[Bauch and Earn(2004)]{Bauch:2004}
 Chris~T Bauch and David J~D Earn.
@@ -102,6 +118,15 @@ Mark E~J Newman.
 \bibitem[Page(1997)]{PageRank}
 Lawrence Page.
 \newblock Method for node ranking in a linked database, 01 1997.
+
+\bibitem[Press et~al.(1992)Press, Teukolsky, Vetterling, and
+  Flannery]{Press:1992}
+William~H. Press, Saul~A. Teukolsky, William~T. Vetterling, and Brian~P.
+  Flannery.
+\newblock \emph{Numerical recipes in C (2nd ed.): the art of scientific
+  computing}.
+\newblock Cambridge University Press, New York, NY, USA, 1992.
+\newblock ISBN 0-521-43108-5.
 
 \bibitem[Ross(1911)]{Ross}
 R~Ross.

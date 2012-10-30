@@ -1,10 +1,26 @@
-\usepackage{amsmath,amssymb,amsfonts,amsthm,epigraph}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,epigraph,scrpage2}
 \usepackage[ngerman,english]{babel}
-\usepackage[format=plain,singlelinecheck=false, font={sf,small},labelfont={bf,color=Steel}]{caption}
+
+
 \definecolor{Cayenne}{rgb}{0.502,0.0,0.0}
 \definecolor{Steel}{rgb}{0.4,0.4,0.4}
+
+\usepackage[format=plain,singlelinecheck=false, font={sf,small},labelfont={bf,color=Steel}]{caption}
 \DeclareCaptionLabelSeparator{cayenne_period}{\textcolor{Cayenne}{\Large{.}} }
 \captionsetup{labelsep=cayenne_period}
+
+% Colors
+%\addtokomafont{disposition}{\color{Steel}}
+\addtokomafont{chapter}{\color{Steel}}
+\addtokomafont{section}{\color{Steel}}
+\addtokomafont{subsection}{\color{Steel}}
+\addtokomafont{subsubsection}{\color{Steel}}
+\addtokomafont{paragraph}{\color{Steel}}
+
+\addtokomafont{pagehead}{\color{Steel}}
+\renewcommand{\pnumfont}{\color{Steel}} 
+\addtokomafont{headsepline}{\color{Steel}} 
+\pagestyle{scrheadings} 
 
 
 \usepackage[leftcaption]{sidecap} % inner, outer,left,right
