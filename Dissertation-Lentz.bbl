@@ -1,4 +1,4 @@
-\begin{thebibliography}{22}
+\begin{thebibliography}{26}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -69,6 +69,12 @@ R.~Christley.
 \newblock Network analysis of cattle movement in great britain.
 \newblock \emph{Proc. Soc. Vet. Epidemiol. Prev. Med.}, pages 234--244, 2005.
 
+\bibitem[Giehl(2010)]{giehl:2012}
+H~J Giehl.
+\newblock \emph{Naturkatastrophen, Epidemien und Krieg. Gei{\ss}eln der
+  Menschheit.}
+\newblock Engelsdorfer, Leipzig, 2010.
+
 \bibitem[Green et~al.(2006)Green, Kiss, and Kao]{Green:2006}
 D.M Green, I.Z Kiss, and R.R Kao.
 \newblock Modelling the initial spread of foot-and-mouth disease through animal
@@ -83,6 +89,16 @@ D.M Green, I.Z Kiss, and R.R Kao.
 B~T Grenfell.
 \newblock Chance and chaos in measles dynamics.
 \newblock \emph{J. R. Stat. Soc. B}, 54:\penalty0 383--398, 1992.
+
+\bibitem[Hagberg(2012)]{networkx}
+Aric~A Hagberg, 2012.
+\newblock URL \url{http://networkx.lanl.gov/}.
+
+\bibitem[Hagberg et~al.(2008)Hagberg, Schult, and Swart]{hagberg2008}
+Aric~A. Hagberg, Daniel~A. Schult, and Pieter~J. Swart.
+\newblock Exploring network structure, dynamics, and function using {NetworkX}.
+\newblock In \emph{Proceedings of the 7th Python in Science Conference
+  (SciPy2008)}, pages 11--15, Pasadena, CA USA, August 2008.
 
 \bibitem[Hamer(1906)]{Hamer}
 W~H Hamer.
@@ -109,6 +125,13 @@ W~O Kermack and A~G McKendrick.
 W~O Kermack and A~G McKendrick.
 \newblock A contribution to the mathematical theory of epidemics.
 \newblock \emph{Proc. R. Soc. A}, 115:\penalty0 700--721, 1927{\natexlab{b}}.
+
+\bibitem[Mart{\'\i}nez-L{\'o}pez et~al.(2009)Mart{\'\i}nez-L{\'o}pez, Perez,
+  and S{\'a}nchez-Vizca{\'\i}no]{MartinezLopez2009}
+B~Mart{\'\i}nez-L{\'o}pez, A~M Perez, and JM~S{\'a}nchez-Vizca{\'\i}no.
+\newblock {Social Network Analysis. Review of General Concepts and Use in
+  Preventive Veterinary Medicine}.
+\newblock \emph{Transbound. Emerg. Dis.}, 56:\penalty0 109--120, 2009.
 
 \bibitem[Newman(2003)]{Newman2003}
 Mark E~J Newman.

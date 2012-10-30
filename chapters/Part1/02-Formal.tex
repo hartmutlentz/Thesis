@@ -6,6 +6,7 @@
 \addtokomafont{chapter}{\color{Steel}}
 \addtokomafont{section}{\color{Steel}}
 \addtokomafont{subsection}{\color{Steel}}
+\addtokomafont{subsubsection}{\color{Steel}}
 \addtokomafont{paragraph}{\color{Steel}}
 \addtokomafont{pagehead}{\color{Steel}}
 \renewcommand{\pnumfont}{\color{Steel}} 
@@ -19,7 +20,7 @@
 
 
 \usepackage[format=plain,singlelinecheck=false, font={sf,small},labelfont={bf,color=Steel}]{caption}
-\DeclareCaptionLabelSeparator{cayenne_period}{\textcolor{Cayenne}{\Large{.}} }
+\DeclareCaptionLabelSeparator{cayenne_period}{\textcolor{Cayenne}{.} }
 \captionsetup{labelsep=cayenne_period}
 
 \begin{document}
@@ -32,7 +33,7 @@ In addition, section xx describes an efficient computer implementation of networ
 
 \section{Models of infectious diseases}
 %\subsection{Very briefly:}
-\paragraph{Observations\color{Cayenne}{.}} Large scale patterns of epidemics have been measured \cite{geissel_der_menschheit}
+\paragraph{Observations\color{Cayenne}{.}} Large scale patterns of epidemics have been measured \cite{giehl:2012}.
 The spread of infectious diseases is something that everyone is familiar with.
 
 \paragraph{Research field: Epidemiology\color{Cayenne}{.}} One goal of epidemiology is to understand the principles behind the spreading process, i.e. the way how a disease is transmitted through a population.
@@ -80,9 +81,9 @@ Provided that $\alpha $ is the rate, under which new susceptible become infected
 where $S$ and $I$ are the numbers of susceptible and infected individuals respectively.
 The total population is $N=S+I$.
 Thus, \eqref{eq:si_model} can be rewritten as
-$$
+\[
 \frac{dI}{dt}=\alpha (N-I)I,
-$$
+\]
 i.e. a logistic differential equation.
 Hence, in the limit $t\rightarrow \infty $ the whole population is infected ($I(\infty )=N$). 
 
@@ -159,14 +160,14 @@ To compute the outbreak size, we consider the second fixed point of \eqref{eq:si
 At this point there are no infected and a fraction of the population is recovered.
 Hence the fixed point is $(N-R_\infty , 0, R_\infty )$.
 A simple way to obtain the outbreak size $R_\infty $ is to use equations \eqref{eq:sir_model} and compute 
-$$
+\[
 \frac{dS}{dR}=-\frac{\alpha }{\gamma } S 
-$$
+\]
 and separate the variables \cite{Chasnov:2010}.
 This yields
-$$
+\[
 \int _{S_*} ^{N-R_\infty} \frac{dS}{S}=-\frac{\alpha }{\gamma } \int _{R_*} ^{R_\infty} dR .
-$$
+\]
 We integrate from the initial condition at $t=0$ to the final condition at $t \rightarrow \infty$, where $S_\infty = N-R_\infty $.
 Using that $R_* =0$ at $t=0$ gives 
 \begin{equation}\label{eq:transcendental}
@@ -197,9 +198,9 @@ In the late phase of an SIR-type epidemic, the fraction of infected is small.
 Given sufficiently large values of $R_0$, the fraction of recovered is also small in this phase (see figure \ref{fig:transcendental}).
 Thus, we neglect the quadratic term in \eqref{eq:sir_model_only_i}.
 This gives $\frac{dI}{dt} = -\gamma I $, which has the solution
-$$
+\[
 I(t)=I(0)e^{-\gamma t}.
-$$
+\]
 Hence, the infection decays exponentially for large $t$ and the inverse recovery rate $1/\gamma $ defines the characteristic time of the epidemic.
 
 \subsection{Force of infection}
@@ -210,9 +211,9 @@ Infection rates their selves can cause complex infection dynamics.
 The term $\alpha I$ used in section \ref{sec:sir_model} is a special, very simple case of an infection rate.
 More generally, we have to replace $\alpha I$ by an abstract infection rate $\lambda $ containing more information about the interaction between susceptible and infected individuals \cite{Keeling:2005}.
 Thus, the equation for the infected becomes
-$$
+\[
 dI/dt = -\lambda S -\gamma I.
-$$
+\]
 The rate $\lambda $ is called the \emph{force of infection}.
 In principle, this parameter can be arbitrarily complex, because it contains detailed information about the mixing properties of the population.
 This information could be given as contact networks, demographic contact structures, etc.
@@ -241,7 +242,7 @@ However, the random mixing assumption does not allow for non homogenous mixing, 
 Nevertheless, the equality of individuals is not a reasonable assumption for many epidemic substrates.
 Examples are contact structures of humans, livestock trade, vehicles as disease vectors of links between computers.
 
-\subsection{Network matrix representations}
+\subsection{Network matrix representations}\label{sec:network_matrices}
 A network is a system consisting of nodes that are connected by edges.
 Edges can be undirected, directed and weighted.
 In principle, a network can consist of edges of different types.
@@ -257,7 +258,7 @@ This meta information can be their importance, capacity, number of transported i
 Graphs can be represented by different graph matrices, where different matrix representation emphasize typical properties of the network.
 The most common graph matrix is the \emph{adjacency matrix} $\mathbf{A}$ with entries
 \begin{equation}\label{eq:adjacency_matrix}
-(\mathbf{A})_{ij}= 
+a_{ij}\equiv (\mathbf{A})_{ij}= 
 \begin{cases}
 1 & \text{if $i$ is connected to $j$} \\
 0 & \text{else.}
@@ -280,9 +281,9 @@ Weighted networks can be represented by weight matrices, where the values of the
 %\end{center}
 \end{SCfigure}
 
-The adjacency matrix of an undirected network is symmetric, because every non-zero entry $(\mathbf{A})_{ij}=1$ implies an edge into the opposite direction, $(\mathbf{A})_{ji}=1$.
-Entries on the main diagonal $(\mathbf{A})_{ii}$ correspond to nodes with self loops, i.e. nodes with edges pointing back to themselves.
-The $i$-th row the adjacency matrix contains non-zero entries $(\mathbf{A})_{ij}=1$, whenever node $i$ is connected to node $j$.
+The adjacency matrix of an undirected network is symmetric, because every non-zero entry $a_{ij}=1$ implies an edge into the opposite direction, $a_{ji}=1$.
+Entries on the main diagonal $a_{ii}$ correspond to nodes with self loops, i.e. nodes with edges pointing back to themselves.
+The $i$-th row the adjacency matrix contains non-zero entries $a_{ij}=1$, whenever node $i$ is connected to node $j$.
 Hence, every row can be interpreted as the neighborhood of one node.
 This holds for undirected and for directed networks.
 The columns of $\mathbf{A}$ give the same information as the rows.
@@ -331,17 +332,103 @@ Consequently, they can be used to model diffusion processes on graphs in analogy
 The spectra of adjacency and Laplace matrices contain information about the evolution/history of networks \cite{Banerjee2009}.
 
 
-
-\subsection{Accessibility}
-This section addresses the properties of \emph{products} of adjacency matrices.
-
-
-
 \subsection{Network measures}
 Before we address ourselves to models of real world networks, we have to introduce methods to measure structural properties of networks.
 On the micro scale, this can be done in terms of \emph{node centrality} measures.
 These measures are very important to assess the importance of single nodes in the network.
 On the macroscopic side, we are interested in the large-scale properties of networks, i.e. percolation, distributions of centralities, connected components or other large scale structures.
+
+\subsubsection{Network terminology}
+Let $G=(V,E)$ be a graph consisting of a set of nodes $V$ and a set of edges $E$.
+Every route across a graph along its edges without repeating nodes is called a \emph{path}.
+Each path is given by an ordered set of the nodes traversed, i.e. $(v_1,v_2,\dots ,v_l)$, with $v_i \in V$ and all edges are in $E$, $v_i,v_{i+1} \subseteq E$.
+If there is a path from every node in the network to any other node, the network is called \emph{connected}.
+In directed networks, we have to consider two types of connectedness.
+A directed network is strongly connected, if there is a directed path between all node pairs and weakly connected, if the node pairs would be connected ignoring the direction of edges.
+
+The \emph{distance} between two nodes is the length of the shortest path between them.
+Every closed path is called a \emph{cycle}.
+Graphs that do not contain cycles are called \emph{trees}.
+The neighborhood of a node $u$ is the set of all nodes adjacent to it and the size of the neighborhood is the \emph{degree} of the node.
+Hence, a node $v$ is in the neighborhood of $u$, if $(u,v) \in E$.
+We distinguish between in-degree and out-degree in directed networks.
+Finally, $G_0=(V_0,E_0)$ is a \emph{subgraph} of $G=(V,E)$, if $V_0 \subseteq V$ and $E_0 \subseteq E$.
+
+
+\subsubsection{Microscopic measures}
+Given a network, an important question is, if some nodes are more important as other nodes.
+Therefore, we summarize measures of the \emph{centrality} of nodes.
+The idea if centrality mainly goes back to social network analysis \cite{WassermannFaust,Freeman}, but has been widely adopted and extended in network science.
+I restrict myself to those measures, that are indispensable when describing networks.
+A more exhaustive overview of centrality measures is found in the review article \cite{MartinezLopez2009} or in online documentations of network analysis software, e.g.~\cite{hagberg2008,networkx}.
+In the following, $N$ denotes the size of the network (the number of nodes) and $m$ the number of edges.
+%
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics{DiGraph-Centrality}
+\caption{A directed network for the demonstration of different centrality measures.}
+\label{fig:example_net}
+\end{center}
+\end{figure}
+%
+
+\paragraph{Degree\color{Cayenne}{.}}
+The simplest centrality measure is the degree $k$ of a node, which is the number of its neighbors.
+In directed network, we distinguish between in-degree $k^-$ and out-degree $k^+$.
+The degree follows immediately from the adjacency matrix, i.e.
+\[
+k_i ^- = \sum _j a_{ji} \quad \text{and} \quad k_i ^+ = \sum _j a_{ij}
+\]
+is the in- and out-degree of node $i$, respectively.
+In weighted networks, the degree is computed in the same way and is called in-weight and out-weight of a node.
+
+The degree centrality is used in a huge variety of applications.
+One of its most important applications is to measure the heterogeneity of network connections, i.e. the existence of hubs in the network.
+Hubs are nodes with a degree much larger than the rest of the system.
+The heterogeneity of networks can be measured in terms of degree distributions (see section xx).
+
+
+\paragraph{Closeness\color{Cayenne}{.}} 
+The closeness of a node is the reciprocal average distance to all other nodes in the network.
+It can be normalized, so that the closeness is $1$, if all other nodes are reachable within one step and $0$ in the limit of infinite distances to all other nodes.
+The closeness of a node $i$ in a network of size $N$ is defined as follows:
+\begin{equation}\label{eq:closeness}
+c(i)=N-1 \sum _j \frac{1}{ d_{ij}}
+\end{equation}
+where $d_{ij}$ is the distance between nodes $i$ and $j$.
+It should be noted that the distance between two nodes is defined to be infinite, if the underlying network is not connected.
+In this case, the corresponding terms $1/\infty $ do not make contributions in equation \eqref{eq:closeness}.
+
+The closeness centrality is capable to identify nodes with short average pathways to other parts of the network.
+Identifying high closeness nodes is therefore reasonable for network navigation.
+This holds in particular, if the exact route to the destination is unknown, because nodes with high closeness are probable to reach many destinations quickly.
+
+\paragraph{Betweenness\color{Cayenne}{.}}
+In order to identify nodes that act as bridges between two subgraphs, the measure of betweenness was developed.
+In figure \ref{fig:example_net}, node $5$ plays such a role.
+It is characteristic for these nodes to contain a relatively large number of shortest paths that have to cross them.
+Therefore, betweenness of a node $i$ is defined as
+\begin{equation}\label{eq:betweenness}
+b(i)=\sum _{s\neq i \neq t} \frac{\sigma _{st}(i)}{\sigma _{st}}
+\end{equation}
+where $\sigma $ is .
+
+Note that bridge nodes might look inconspicuous in the first place, e.g. they could have only two links.
+Nevertheless, they play an important role for the division of networks into smaller pieces.
+Betweenness centrality has been proven useful in order to divide networks into smaller components.
+Therefore, nodes of high betweenness are removed from the network, so that the system disintegrates into smaller subgraphs \cite{xx}.
+
+
+\paragraph{Eigenvector centrality\color{Cayenne}{.}}
+The idea of eigenvector centrality can be easily realized by considering Markov chains as in section \ref{sec:network_matrices}.
+
+
+
+\paragraph{Range\color{Cayenne}{.}}
+
+
+
+
 
 \subsection{Implementation}
 

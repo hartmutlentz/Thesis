@@ -9,48 +9,49 @@ A level-1 auxiliary file: chapters/Part3/01-Introduction.aux
 A level-1 auxiliary file: chapters/Part3/05-Conceptional_tvg_problems.aux
 The style file: plainnat.bst
 Database file #1: bibliography.bib
+Warning--entry type for "networkx" isn't style-file defined
+--line 20 of file bibliography.bib
 Warning--entry type for "PageRank" isn't style-file defined
---line 48 of file bibliography.bib
-Warning--I didn't find a database entry for "geissel_der_menschheit"
-You've used 22 entries,
+--line 90 of file bibliography.bib
+You've used 26 entries,
             2773 wiz_defined-function locations,
-            756 strings with 8334 characters,
-and the built_in function-call counts, 9050 in all, are:
-= -- 813
-> -- 415
-< -- 19
-+ -- 146
-- -- 123
-* -- 672
-:= -- 1407
-add.period$ -- 74
-call.type$ -- 22
-change.case$ -- 101
-chr.to.int$ -- 21
-cite$ -- 44
-duplicate$ -- 447
-empty$ -- 814
-format.name$ -- 161
-if$ -- 1901
+            776 strings with 8929 characters,
+and the built_in function-call counts, 10717 in all, are:
+= -- 960
+> -- 495
+< -- 22
++ -- 174
+- -- 147
+* -- 794
+:= -- 1656
+add.period$ -- 85
+call.type$ -- 26
+change.case$ -- 119
+chr.to.int$ -- 25
+cite$ -- 52
+duplicate$ -- 534
+empty$ -- 967
+format.name$ -- 189
+if$ -- 2258
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 29
-newline$ -- 126
-num.names$ -- 88
-pop$ -- 218
+missing$ -- 33
+newline$ -- 145
+num.names$ -- 104
+pop$ -- 267
 preamble$ -- 1
-purify$ -- 85
+purify$ -- 101
 quote$ -- 0
-skip$ -- 321
+skip$ -- 386
 stack$ -- 0
-substring$ -- 371
-swap$ -- 36
-text.length$ -- 1
+substring$ -- 428
+swap$ -- 48
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 202
+type$ -- 241
 warning$ -- 0
-while$ -- 87
+while$ -- 104
 width$ -- 0
-write$ -- 302
+write$ -- 351
 (There were 2 warnings)
