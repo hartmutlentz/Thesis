@@ -18,6 +18,8 @@
 \usepackage[leftcaption]{sidecap} % inner, outer,left,right
 \sidecaptionvpos{figure}{t}
 
+%\usepackage{cmbright}
+
 
 \usepackage[format=plain,singlelinecheck=false, font={sf,small},labelfont={bf,color=Steel}]{caption}
 \DeclareCaptionLabelSeparator{cayenne_period}{\textcolor{Cayenne}{.} }
@@ -274,7 +276,7 @@ Weighted networks can be represented by weight matrices, where the values of the
 \includegraphics{Simple_DiGraph}
 \caption[Adjacency matrix.]{A simple directed network. The corresponding adjacency matrix is
 \[
-\mathbf{A}=\left(\begin{array}{cccc}0 & 1 & 1 & 0 \\1 & 0 & 0 & 0 \\0 & 1 & 0 & 0 \\0 & 1 & 1 & 0\end{array}\right).
+\mathbf{A}=\left(\begin{array}{cccc}0 & 1 & 1 & 0 \\0 & 0 & 0 & 1 \\0 & 1 & 0 & 0 \\0 & 1 & 1 & 0\end{array}\right).
 \]
 }
 \label{fig:simple_digraph}
@@ -289,6 +291,12 @@ This holds for undirected and for directed networks.
 The columns of $\mathbf{A}$ give the same information as the rows.
 In the directed case, however, rows contain the out-neighborhood of each node and columns contain the in-neighborhood, respectively.
 
+Information about paths of a certain length can be obtained using the powers of the adjacency matrix.
+The adjacency matrix gives information about the number of paths of length $1$ between node pairs.
+Evidently, the number of paths of length $2$ between two nodes $i$ and $j$ is given by $(\mathbf{A}^2)_{ij}$.
+This applies also to paths of arbitrary length $n$ using the elements of $\mathbf{A}^n$.
+
+An important example for weighted network matrices is a \emph{Markov chain}.
 A Markov chain is a random process without memory and with discrete state space and discrete time.
 It is called time-homogenous, if the transition rates are constant.
 Time-homogenous Markov chains can be represented as weighted networks and the corresponding weighted adjacency matrix is the \emph{transition matrix}.
@@ -314,7 +322,7 @@ Weights at arrowheads mark the transition probability.
 The state of the random walker can be described by a probability vector $\mathbf{p}$, where the initial state of figure \ref{fig:markov_chain} is $\mathbf{p}=(0,1,0,0)$.
 The transition matrix $\mathbf{M}$ is a weighted adjacency matrix as it follows from the figure.
 Given a state $\mathbf{p}_{t}$ at time $t$, the state of the next time step is given by $\mathbf{p}_{t+1}=\mathbf{p}_t \mathbf{M}^T$.
-The equilibrium state $\mathbf{p}_\mathrm{eq}$ follows in the limit $\lim _{n\rightarrow \infty } \mathbf{p}_0 (\mathbf{M}^T)^n$, i.e. the equilibrium state is given by the leading eigenvector of $\mathbf{M}$.
+The equilibrium state $\mathbf{p}_\mathrm{eq}$ follows in the limit $\lim _{n\rightarrow \infty } \mathbf{p}_0 (\mathbf{M}^T)^n$, i.e. the equilibrium state is given by the dominant eigenvector of $\mathbf{M}$.
 
 As a special case of transition matrices, the author would like to name the \emph{Google matrix}.
 It describes a random walk on a network, but allows for shortcuts to any node in the network with a certain probability.
@@ -361,7 +369,7 @@ Therefore, we summarize measures of the \emph{centrality} of nodes.
 The idea if centrality mainly goes back to social network analysis \cite{WassermannFaust,Freeman}, but has been widely adopted and extended in network science.
 I restrict myself to those measures, that are indispensable when describing networks.
 A more exhaustive overview of centrality measures is found in the review article \cite{MartinezLopez2009} or in online documentations of network analysis software, e.g.~\cite{hagberg2008,networkx}.
-In the following, $N$ denotes the size of the network (the number of nodes) and $m$ the number of edges.
+In the following, $N$ denotes the order of the network (the number of nodes) and $m$ the number of edges.
 %
 \begin{figure}[htbp]
 \begin{center}
@@ -377,9 +385,10 @@ The simplest centrality measure is the degree $k$ of a node, which is the number
 In directed network, we distinguish between in-degree $k^-$ and out-degree $k^+$.
 The degree follows immediately from the adjacency matrix, i.e.
 \[
-k_i ^- = \sum _j a_{ji} \quad \text{and} \quad k_i ^+ = \sum _j a_{ij}
+k ^-(i) = \sum _j a_{ji} \quad \text{and} \quad k ^+ (i)= \sum _j a_{ij}
 \]
 is the in- and out-degree of node $i$, respectively.
+As an example, node $8$ in figure \ref{fig:example_net} has $k ^+(8)=4$ and $k ^- (8)=1$.
 In weighted networks, the degree is computed in the same way and is called in-weight and out-weight of a node.
 
 The degree centrality is used in a huge variety of applications.
@@ -391,11 +400,12 @@ The heterogeneity of networks can be measured in terms of degree distributions (
 \paragraph{Closeness\color{Cayenne}{.}} 
 The closeness of a node is the reciprocal average distance to all other nodes in the network.
 It can be normalized, so that the closeness is $1$, if all other nodes are reachable within one step and $0$ in the limit of infinite distances to all other nodes.
-The closeness of a node $i$ in a network of size $N$ is defined as follows:
+The closeness of a node $i$ in a network of order $N$ is defined as follows:
 \begin{equation}\label{eq:closeness}
 c(i)=N-1 \sum _j \frac{1}{ d_{ij}}
 \end{equation}
 where $d_{ij}$ is the distance between nodes $i$ and $j$.
+Some tools for an efficient computation of shortest-path distances are introduced in section \ref{sec:implementation}.
 It should be noted that the distance between two nodes is defined to be infinite, if the underlying network is not connected.
 In this case, the corresponding terms $1/\infty $ do not make contributions in equation \eqref{eq:closeness}.
 
@@ -403,36 +413,195 @@ The closeness centrality is capable to identify nodes with short average pathway
 Identifying high closeness nodes is therefore reasonable for network navigation.
 This holds in particular, if the exact route to the destination is unknown, because nodes with high closeness are probable to reach many destinations quickly.
 
+
 \paragraph{Betweenness\color{Cayenne}{.}}
 In order to identify nodes that act as bridges between two subgraphs, the measure of betweenness was developed.
-In figure \ref{fig:example_net}, node $5$ plays such a role.
+In figure \ref{fig:example_net}, node $4$ plays such a role.
 It is characteristic for these nodes to contain a relatively large number of shortest paths that have to cross them.
 Therefore, betweenness of a node $i$ is defined as
 \begin{equation}\label{eq:betweenness}
 b(i)=\sum _{s\neq i \neq t} \frac{\sigma _{st}(i)}{\sigma _{st}}
 \end{equation}
-where $\sigma $ is .
+where $\sigma _{st}$ is the number of shortest paths between nodes $s$ and $t$ and $\sigma _{st} (i)$ is the number of shortest paths between $s$ and $t$ going through node $i$.
+The computation of betweenness is expensive using equation \eqref{eq:betweenness}.
+Therefore, an efficient algorithm was introduced by Brandes \cite{Brandes:2001p2757}.
 
 Note that bridge nodes might look inconspicuous in the first place, e.g. they could have only two links.
-Nevertheless, they play an important role for the division of networks into smaller pieces.
-Betweenness centrality has been proven useful in order to divide networks into smaller components.
-Therefore, nodes of high betweenness are removed from the network, so that the system disintegrates into smaller subgraphs \cite{xx}.
+Removing node $5$ in figure \ref{fig:example_net}, for instance, would divide the network into two disjoint subgraphs with nodes $V_1=(1,2,3)$ and $V_2=(5,6,7,8,9)$ respectively.
+Therefore, removing nodes of high betweenness from the network has been proven useful in order to divide networks into smaller components \cite{girvan2002,Newman:2004}.
 
 
 \paragraph{Eigenvector centrality\color{Cayenne}{.}}
 The idea of eigenvector centrality can be easily realized by considering Markov chains as in section \ref{sec:network_matrices}.
+Frequent multiplication of the transition matrix $\mathbf{M}$ with a random vector gives the largest eigenvector of $\mathbf{M}$.
+This relation is known as power method or van Mises iteration \cite{van_mises}.
+The dominant eigenvector of the transition matrix gives the equilibrium state of the system.
+Using this state as a measure of centrality assigns every node with the probability to find a random walker here after a long period.
+The principle behind the dominant eigenvector of an adjacency matrix $\mathbf{A}$ is that important nodes are likely to be connected to other important nodes.
+This recursive concept is reflected in the equation
+\[
+x_i =\frac{1}{\lambda } \sum _j a_{ij} x_j ,
+\]
+where $x_i$ is the centrality of $i$, $\sum _j a_{ij} x_j$ is the centrality of the neighborhood of $i$ and $\lambda $ is a constant.
+This equation can be rewritten as
+\begin{equation}
+\mathbf{Ax}=\lambda \mathbf{x}.
+\end{equation}
+It follows from the Perron-Frobenius-Theorem that $\lambda $ must be the largest eigenvalue of $\mathbf{A}$ in order to guaranty all entries of $\mathbf{x}$ to be positive \cite{xx}.
+The theorem guaranties unique solutions only to adjacency matrices of connected networks.
+Hence, eigenvector centrality is only defined for connected graphs.
+Nevertheless, the eigenvector centrality can be computed for each component separately, if a graph is not connected \cite{Bonacich:2007}.
+
+Some important variants of eigenvector centrality are the PageRank and HITS algorithm \cite{Kleinberg:1999,PageRank}.
+
+\paragraph{Node components and range\color{Cayenne}{.}}
+The component of a node is the set of nodes it is connected to by a path of any finite length.
+We call the size of this set the \emph{range} of a node \cite{Lentz:2012pre}.
+In directed networks, we distinguish between the out-component and in-component of a node.
+The size of the former is its range and the size of the latter is its reachability.
+
+Apparently, the range of a node is of major importance for any epidemiological problem on a network, because it defines an upper bound for the size of any outbreak starting at this very node. 
+Although the range measure is rather simple, it can show an interesting distribution.
+The shape of its distribution is inherently related to percolation properties of the network.
+
+\subsubsection{Macroscopic measures}
+In order to get the big picture about a network, I discuss measures that capture large scale properties of networks.
+
+\paragraph{Degree Distribution\color{Cayenne}{.}}
+In principle, the distribution of any centrality measure could yield insights into the macroscopic network structure.
+As a matter of fact, the distribution of a networks degrees became a major criterium for the classification into different network types.
+If all nodes of a graph have the same degree, the graph is called \emph{regular}.
+Lattices are regular graphs.
+In this case, the degree distribution collapses to a single peak without statistical variation.
+A \emph{random network} is generated by generating a set of $N$ nodes and connect node pairs with a certain probability $p$.
+This procedure yields a graph with a Poisson degree distribution (see section xx), 
+\begin{equation}\label{eq:er_distribution}
+P(k) =\frac{(Np)^k e^{-Np}}{k!}
+\end{equation}
+i.e. there is variation in the degrees, but there still remains a \emph{typical degree} in the system.
+
+Observations of real-world networks have shown that their nodes show a degree variation over several orders of magnitude.
+The corresponding degree distributions are called \emph{scale-free}, because they do not show a typical degree.
+Instead, the network has nodes with only a few neighbors and hubs with very large degrees.
+These networks are called scale-free networks and their degree distribution takes the form
+\begin{equation}\label{eq:scale-free_distr}
+P(k) \propto c k^{-\gamma }
+\end{equation}
+for sufficiently large values of $k$.
+$c$ is a normalization constant and $2<\gamma <3$ for most observed networks \cite{all_scale_free_are_sparse}.
+The structural difference between random and scale-free networks is sketched in figure \ref{fig:random_scalefree}.
+%
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics{random-scalefree}
+\caption{Structural difference between random networks and scale-free networks.
+All nodes have a similar degree in the random network, while the scale-free network shows hubs with a significantly larger degree than the average.
+Hubs are highlighted in red.}
+\label{fig:random_scalefree}
+\end{center}
+\end{figure}
+
+Scale-free networks have attained remarkable attention in the last years and many real-world networks have been conjectured as scale-free \cite{Newman2003,Barabasi99}.
+Important consequences of this classification were found to be a change in the threshold behavior of epidemic processes \cite{PastorSatorras:2001} and their topological resilience to node failures \cite{Albert:2000}.
+
+\paragraph{Clustering coefficient\color{Cayenne}{.}}
+The idea of the clustering coefficient comes from social networks.
+It measures, whether a network contains a significantly large number of triangles.
+This behavior is conjectured to be typical for social networks and has the simple meaning:
+``a friend of your friend is likely to be your friend''.
+The clustering coefficient $C$ is the number of connected triples ($A\rightarrow B \rightarrow C \rightarrow A$) divided by the actual number of triples ($A\rightarrow B \rightarrow C $) in the network.
+Using the adjacency matrix $\mathbf{A}$, the clustering coefficient can be computed as follows:
+\begin{equation}\label{eq:}
+C=\frac{\operatorname{tr}(\mathbf{A}^3)}{\operatorname{sum} (A^2) -\operatorname{tr}(\mathbf{A}^2)},
+\end{equation}
+where $\operatorname{tr}(\mathbf{A} )$ denotes the trace of $\mathbf{A}$ and $\operatorname{sum} (\mathbf{A})=\sum _{ij} a_{ij}$ is the sum over all elements of $\mathbf{A}$.
+
+The clustering coefficient plays an essential role in the small-world model of networks (\cite{Watts:2006}, section \ref{sec:network_models}) and has been found to be an important property of social networks \cite{Holland1971}.
+
+
+\paragraph{Connected components\color{Cayenne}{.}}
+
+A connected component $G_\mathrm{cc}=(V_\mathrm{cc},E_\mathrm{cc})$ is a subgraph of graph $G=(V,E)$, where there is a path between any node pair in $V_\mathrm{cc}$.
+The number of connected components lies between 1 and the number of nodes in the network.
 
 
 
-\paragraph{Range\color{Cayenne}{.}}
+%The concept of giant connected components is the graph theoretical percolation problem.
+
+\paragraph{Accessibility\color{Cayenne}{.}}
+
+
+\subsection{Implementation}\label{sec:implementation}
+In order to efficiently implement networks and their analysis on a computer, it is necessary to use data structures adjusted to these problems.
+A short and transparent introduction to data structures and algorithms is in the book of Skiena \cite{algorithm_design}.
+In this section, I discuss some essential data structures appropriate for network analysis and give a brief description of fundamental algorithms.
+The purpose of this section is not to list different algorithms and source code, but rather to sketch the basic ideas behind the data structures and algorithms.
+For source code of data structures and algorithms, the reader is encouraged to the lecture of \cite{algorithm_design}.
+
+\paragraph{Matrix implementation\color{Cayenne}{.}}
+To begin with, we consider the implementation of adjacency matrices as introduced in section \ref{sec:network_matrices}.
+Matrix implementations work also for the other matrices introduced in section \ref{sec:network_matrices}.
+All adjacency matrices are by definition square matrices.
+Their entries are either $0$ or $1$, and can take any floating number value for weighted networks.
+In this work, we neglect negative edge weights.
+The number of nodes in most complex network datasets is relatively large. 
+Starting with small networks (100 nodes, conference contacts \cite{isella2011}), complex networks can be gigantic (0.5 billion nodes, twitter tweeds \cite{Yang:2011}).
+Note that the size of the adjacency matrices scales with the square of the networks size, hence large networks intractable for straightforward computer-based matrix analyses.
+
+Nevertheless, there is one feature, that most adjacency matrices of real-world networks have in common:
+they are \emph{sparse}, i.e. the vast majority of their entries are zeros\footnote{Typically, the number of edges in the network is of the same order as the number of nodes.}.
+Since zeros do not contribute to matrix operations as products or additions, it is reasonable to use data structures ignoring zeros.
+These data structures are called \verb"sparse matrices".
+Their advantages is (1) they save much memory and (2) computations are faster, because operations with zeros involved are not executed.
+Sparse matrix data structures are available in most modern computer languages (e.g. Matlab, Python: \verb"scipy" library, C/C++: \verb"boost" library).
+They perform well for all problems based on adjacency matrices, e.g. degree or eigenvector centrality.
+However, matrix methods are not suitable for the computation of many other network measures, such as betweenness, closeness or network navigation.
+
+\paragraph{Graph implementation\color{Cayenne}{.}}
+The weakness of matrix representations of networks is that it is rather complicated to \emph{traverse} a network using matrices.
+A traversal is a procedure like: start at a node, visit all of its neighbors, from each neighbor visit its neighbor and so forth, until there are no more new nodes to traverse.
+This is a searching process.
+These processes are used in many implementations of graph theoretic methods.
+
+An alternative implementation to the adjacency matrix is an \emph{adjacency list}.
+It stores the neighbors of every node and is implemented in terms of a linked list.
+Using the example network of \ref{fig:simple_digraph}, we get the following adjacency list:
+\begin{align*}
+1 &\rightarrow 2,3 \\
+2 &\rightarrow 4 \\
+3 &\rightarrow 2 \\
+4 &\rightarrow 2,3 .
+\end{align*}
+In order to traverse the graph starting at node $1$, we can choose any of the neighbors of $1$ and repeat the process until we have traversed all nodes.
+One possible traversal starting at $1$ would be $1\rightarrow 3 \rightarrow 2 \rightarrow 4$.
+
+During a traversal process, one can decide to either exploit the whole neighborhood of a node first and then traverse the next generation or choose a neighbor of every traversed node at every step.
+These two essential searching processes are called breadth-first-search (BFS) and depth-first-search (DFS), respectively.
+The difference between the two lies in the order of traversed nodes.
+Figure \ref{fig:dfs_bfs} shows resulting search trees of the two methods.
+Starting at node $1$, the traversal $1\rightarrow 3 \rightarrow 2 \rightarrow 4$ would be found using a DFS-search, while a BFS-search would yield $1\rightarrow 2 \rightarrow 3 \rightarrow 4$.
+It should be noted that in general there exist multiple BFS and DFS trees for each starting node. 
+%
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics{DFS-BFS.pdf}
+\caption{Breadth-first-search and depth-first-search trees in the directed network of fig.~\ref{fig:simple_digraph}. Searches are started at node $1$.}
+\label{fig:dfs_bfs}
+\end{center}
+\end{figure}
+
+Both search algorithms are used in many applications.
+BFS is efficient to compute shortest paths in unweighted networks.
+With every generation in a BFS tree, the distance from the starting node is incremented by 1, and thus the set of nodes with a certain distance from the starting node can be directly read from the BFS tree (see figure \ref{fig:dfs_bfs}).
+Shortest paths in weighted networks can be identified using a the algorithm of Dijkstra \cite{Dijkstra:1959}.
+DFS can be used to identify connected components in directed graphs (see next section).
+
+Implementations of graph structures as discussed above are for example available in the libraries \verb"networks" (Python), \verb"igraph" (C, Python, R), \verb"Lemon" and \verb"Boost" (C++).
 
 
 
 
-
-\subsection{Implementation}
-
-\subsection{From random mixing to developed structure}
+\subsection{From random mixing to structure: Network models}\label{sec:network_models}
 
 
 \end{document}
