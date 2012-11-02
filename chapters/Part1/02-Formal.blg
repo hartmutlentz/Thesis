@@ -1,47 +1,51 @@
 This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: 02-Formal.aux
-I found no \bibdata command---while reading file 02-Formal.aux
-I found no \bibstyle command---while reading file 02-Formal.aux
-You've used 18 entries,
-            0 wiz_defined-function locations,
-            113 strings with 825 characters,
-and the built_in function-call counts, 0 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 0
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+The style file: plain.bst
+Database file #1: /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
+Warning--entry type for "networkx" isn't style-file defined
+--line 409 of file /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
+Warning--entry type for "PageRank" isn't style-file defined
+--line 476 of file /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
+You've used 49 entries,
+            2118 wiz_defined-function locations,
+            822 strings with 10420 characters,
+and the built_in function-call counts, 15022 in all, are:
+= -- 1493
+> -- 607
+< -- 2
++ -- 245
+- -- 192
+* -- 1057
+:= -- 2536
+add.period$ -- 145
+call.type$ -- 49
+change.case$ -- 235
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 0
-format.name$ -- 0
-if$ -- 0
+cite$ -- 49
+duplicate$ -- 561
+empty$ -- 1250
+format.name$ -- 192
+if$ -- 3105
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 0
-num.names$ -- 0
-pop$ -- 0
-preamble$ -- 0
-purify$ -- 0
+int.to.str$ -- 49
+missing$ -- 57
+newline$ -- 245
+num.names$ -- 98
+pop$ -- 225
+preamble$ -- 1
+purify$ -- 194
 quote$ -- 0
-skip$ -- 0
+skip$ -- 375
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 1080
+swap$ -- 65
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 176
 warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 0
-(There were 2 error messages)
+while$ -- 156
+width$ -- 51
+write$ -- 530
+(There were 2 warnings)

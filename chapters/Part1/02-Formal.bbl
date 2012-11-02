@@ -1,0 +1,259 @@
+\begin{thebibliography}{10}
+
+\bibitem{Albert:2000p}
+R~Albert and A~Barab{\'a}si.
+\newblock Topology of evolving networks: Local events and universality.
+\newblock {\em Phys Rev Lett}, 85(24):5234--5237, 2000.
+
+\bibitem{RevModPhys.74}
+R\'eka Albert and Albert-L\'aszl\'o Barab\'asi.
+\newblock Statistical mechanics of complex networks.
+\newblock {\em Rev. Mod. Phys.}, 74:47--97, Jan 2002.
+
+\bibitem{Albert:2000}
+Reka Albert, Hawoong Jeong, and Albert-L{\'a}szl{\'o} Barab{\'a}si.
+\newblock {Error and attack tolerance of complex networks}.
+\newblock {\em Nature}, 406(6794):378--382, July 2000.
+
+\bibitem{Aldous_book}
+J~M Aldous and R~J Wilson.
+\newblock {\em {Graphs And Applications: An Introductory Approach}}.
+\newblock Springer, 2000.
+
+\bibitem{Amaral:2000}
+L.~A.~N. Amaral, A.~Scala, M.~Barth{\'e}l{\'e}my, and H.~E. Stanley.
+\newblock Classes of small-world networks.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  97(21):11149--11152, 2000.
+
+\bibitem{andersonmay:92}
+R~M Anderson and R~M May.
+\newblock {\em Infectious diseases of humans}.
+\newblock Oxford University Press, 1992.
+
+\bibitem{bailey:57}
+N~T~J Bailey.
+\newblock {\em The mathematical theory of infectious diseases}.
+\newblock Charles Griffin \& Company Ltd, 2nd edition, 1957.
+
+\bibitem{Banerjee2009}
+Anirban Banerjee and J{\"u}rgen Jost.
+\newblock Graph spectra as a systematic tool in computational biology.
+\newblock {\em Discrete Applied Mathematics}, 157(10):2425 -- 2431, 2009.
+
+\bibitem{Barabasi99}
+Albert-L{\'a}szl{\'o} Barab{\'a}si and Reka Albert.
+\newblock {Emergence of Scaling in Random Networks}.
+\newblock {\em Science}, 286:509, 1999.
+
+\bibitem{Bauch:2004}
+Chris~T Bauch and David J~D Earn.
+\newblock {Vaccination and the theory of games.}
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 101(36):13391--13394, September
+  2004.
+
+\bibitem{Bollobas:1985}
+B~Bollob{\'a}s.
+\newblock {\em Random Graphs}.
+\newblock London: Academic Press, 1985.
+
+\bibitem{Bonacich:1972}
+Phillip Bonacich.
+\newblock Factoring and weighting approaches to status scores and clique
+  identification.
+\newblock {\em The Journal of Mathematical Sociology}, 2(1):113--120, 1972.
+
+\bibitem{Bonacich:2007}
+Phillip Bonacich.
+\newblock Some unique properties of eigenvector centrality.
+\newblock {\em Social Networks}, 29(4):555 -- 564, 2007.
+
+\bibitem{Brandes:2001p2757}
+Ulrik Brandes.
+\newblock {A faster algorithm for betweenness centrality}.
+\newblock {\em J. Math. Sociol.}, January 2001.
+
+\bibitem{Chasnov:2010}
+J.~R. Chasnov.
+\newblock {\em Mathematical Biology: Lecture Notes}.
+\newblock The Hong Kong University of Science and Technology, 2010.
+
+\bibitem{Clauset:2009}
+Aaron Clauset and Mark E~J Newman.
+\newblock {Power-Law Distributions in Empirical Data}.
+\newblock {\em SIAM Rev.}, 51(4):661, 2009.
+
+\bibitem{Price:1965}
+Derek~J. de~Solla~Price.
+\newblock Networks of scientific papers.
+\newblock {\em Science}, 49(3683):510--515, 1965.
+
+\bibitem{all_scale_free_are_sparse}
+Charo~I. Del~Genio, Thilo Gross, and Kevin~E. Bassler.
+\newblock All scale-free networks are sparse.
+\newblock {\em Phys. Rev. Lett.}, 107:178701, Oct 2011.
+
+\bibitem{Dijkstra:1959}
+E~Dijkstra.
+\newblock {A note on two problems in connexion with graphs}.
+\newblock {\em Numerische Mathematik}, 1:269--271, January 1959.
+
+\bibitem{Faloutsos:1999}
+Michalis Faloutsos, Petros Faloutsos, and Christos Faloutsos.
+\newblock On power-law relationships of the internet topology.
+\newblock {\em SIGCOMM Comput. Commun. Rev.}, 29(4):251--262, August 1999.
+
+\bibitem{Freeman}
+L~C Freeman.
+\newblock Centrality in social networks.
+\newblock {\em Social networks}, 1:215--239, 1978.
+
+\bibitem{giehl:2012}
+H~J Giehl.
+\newblock {\em Naturkatastrophen, Epidemien und Krieg. Gei{\ss}eln der
+  Menschheit.}
+\newblock Engelsdorfer, Leipzig, 2010.
+
+\bibitem{girvan2002}
+Michelle Girvan and Mark E~J Newman.
+\newblock {Community structure in social and biological networks}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 99(12):7821--7826, 2002.
+
+\bibitem{grenfell:92}
+B~T Grenfell.
+\newblock Chance and chaos in measles dynamics.
+\newblock {\em J. R. Stat. Soc. B}, 54:383--398, 1992.
+
+\bibitem{networkx}
+Aric~A Hagberg, 2012.
+
+\bibitem{hagberg2008}
+Aric~A. Hagberg, Daniel~A. Schult, and Pieter~J. Swart.
+\newblock Exploring network structure, dynamics, and function using {NetworkX}.
+\newblock In {\em Proceedings of the 7th Python in Science Conference
+  (SciPy2008)}, pages 11--15, Pasadena, CA USA, August 2008.
+
+\bibitem{Hamer}
+W~H Hamer.
+\newblock Epidemic disease in england.
+\newblock {\em Lancet}, 1:733--739, 1906.
+
+\bibitem{Hethcote:2000}
+HW~Hethcote.
+\newblock {The mathematics of infectious diseases}.
+\newblock {\em SIAM Rev.}, 42(4):599--653, 2000.
+
+\bibitem{Holland1971}
+Paul~W. Holland and Samuel Leinhardt.
+\newblock Transitivity in structural models of small groups.
+\newblock {\em Small Group Research}, 2(2):107--124, 1971.
+
+\bibitem{isella2011}
+Lorenzo Isella, Juliette Stehl{\'e}, Alain Barrat, Ciro Cattuto, Jean-Fran{\c
+  c}ois Pinton, and Wouter Van~den Broeck.
+\newblock {What's in a crowd? Analysis of face-to-face behavioral networks}.
+\newblock {\em J. Theor. Biol.}, 271(1):166--180, February 2011.
+
+\bibitem{Keeling:2005}
+Matt~J Keeling and K~Eames.
+\newblock {Networks and epidemic models}.
+\newblock {\em J. R. Soc. Interface B}, 2:295--307, January 2005.
+
+\bibitem{kermack:27}
+W~O Kermack and A~G McKendrick.
+\newblock A contribution to the mathematical theory of epidemics.
+\newblock {\em Proc. R. Soc. A}, 115:700--721, 1927.
+
+\bibitem{kermack:1927_thresh}
+W~O Kermack and A~G McKendrick.
+\newblock Contributions to the mathematical theory of epidemics, part 1.
+\newblock {\em Proc. R. Soc. London Ser. A}, 115:700--721, 1927.
+
+\bibitem{Kleinberg:1999}
+Jon~M. Kleinberg.
+\newblock Hubs, authorities, and communities.
+\newblock {\em ACM Comput. Surv.}, 31(4es), December 1999.
+
+\bibitem{Lentz:2012pre}
+Hartmut Lentz, Thomas Selhorst, and Igor~M Sokolov.
+\newblock {Spread of infectious diseases in directed and modular metapopulation
+  networks}.
+\newblock {\em Phys. Rev. E}, 85:066111, June 2012.
+
+\bibitem{MartinezLopez2009}
+B~Mart{\'\i}nez-L{\'o}pez, A~M Perez, and JM~S{\'a}nchez-Vizca{\'\i}no.
+\newblock {Social Network Analysis. Review of General Concepts and Use in
+  Preventive Veterinary Medicine}.
+\newblock {\em Transbound. Emerg. Dis.}, 56:109--120, 2009.
+
+\bibitem{Newman:2001p}
+Mark E~J Newman.
+\newblock {Scientific collaboration networks. I. Network construction and
+  fundamental results}.
+\newblock {\em Phys. Rev. E}, 64:016131, January 2001.
+
+\bibitem{Newman2003}
+Mark E~J Newman.
+\newblock {The Structure and Function of Complex Networks}.
+\newblock {\em SIAM Review}, 45(2):167--256, 2003.
+
+\bibitem{Newman:2004}
+Mark E~J Newman and Michelle Girvan.
+\newblock {Finding and evaluating community structure in networks}.
+\newblock {\em Phys. Rev. E}, 69:026113, January 2004.
+
+\bibitem{PageRank}
+Lawrence Page.
+\newblock Method for node ranking in a linked database, 01 1997.
+
+\bibitem{PastorSatorras:2001}
+Romualdo Pastor-Satorras and Alessandro Vespignani.
+\newblock {Epidemic dynamics and endemic states in complex networks}.
+\newblock {\em Phys. Rev. E}, 63:066117, January 2001.
+
+\bibitem{Press:1992}
+William~H. Press, Saul~A. Teukolsky, William~T. Vetterling, and Brian~P.
+  Flannery.
+\newblock {\em Numerical recipes in C (2nd ed.): the art of scientific
+  computing}.
+\newblock Cambridge University Press, New York, NY, USA, 1992.
+
+\bibitem{Ross}
+R~Ross.
+\newblock {\em The Prevention of Malaria}.
+\newblock Murray, London, 2nd edition, 1911.
+
+\bibitem{indian_railway}
+Parongama Sen, Subinay Dasgupta, Arnab Chatterjee, P.~A. Sreeram, G.~Mukherjee,
+  and S.~S. Manna.
+\newblock Small-world properties of the indian railway network.
+\newblock {\em Phys. Rev. E}, 67:036106, Mar 2003.
+
+\bibitem{algorithm_design}
+Steven~S. Skiena.
+\newblock {\em The algorithm design manual}.
+\newblock Springer, London, 2nd edition, 2008.
+
+\bibitem{van_mises}
+R.~von Mises and H.~Pollaczek-Geiringer.
+\newblock Praktische verfahren der gleichungsaufl{\"o}sung.
+\newblock {\em ZAMM}, 9:152--164, 1929.
+
+\bibitem{WassermanFaust}
+S~Wasserman and K~Faust.
+\newblock {\em {Social Network Analysis}}.
+\newblock Cambridge University Press, 1994.
+
+\bibitem{Watts:2006}
+D~Watts and Steven Strogatz.
+\newblock {Collective dynamics of small-world networks}.
+\newblock {\em Nature}, 393:440--442, January 1998.
+
+\bibitem{Yang:2011}
+Jaewon Yang and Jure Leskovec.
+\newblock Patterns of temporal variation in online media.
+\newblock In {\em Proceedings of the fourth ACM international conference on Web
+  search and data mining}, WSDM '11, pages 177--186, New York, NY, USA, 2011.
+  ACM.
+
+\end{thebibliography}

@@ -11,15 +11,14 @@
 \addtokomafont{pagehead}{\color{Steel}}
 \renewcommand{\pnumfont}{\color{Steel}} 
 \addtokomafont{headsepline}{\color{Steel}} 
+
 \pagestyle{scrheadings} 
 
 \usepackage[applemac]{inputenc}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{natbib}
 \usepackage[leftcaption]{sidecap} % inner, outer,left,right
 \sidecaptionvpos{figure}{t}
-
-%\usepackage{cmbright}
-
 
 \usepackage[format=plain,singlelinecheck=false, font={sf,small},labelfont={bf,color=Steel}]{caption}
 \DeclareCaptionLabelSeparator{cayenne_period}{\textcolor{Cayenne}{.} }
@@ -27,15 +26,15 @@
 
 \begin{document}
 \graphicspath{{/Users/lentz/Documents/GitHub_locals/Thesis/images/}}
-
+\tableofcontents
 \chapter{Theory}
 This chapter is devoted to the mathematical formalism that is used to model infectious diseases and networks.
-The author defines a mathematical framework and summarizes relevant results of earlier research in this area.
+We define a mathematical framework and summarize relevant results of earlier research in this chapter.
 In addition, section xx describes an efficient computer implementation of networks.
 
 \section{Models of infectious diseases}
 %\subsection{Very briefly:}
-\paragraph{Observations\color{Cayenne}{.}} Large scale patterns of epidemics have been measured \cite{giehl:2012}.
+\paragraph{Main observations\color{Cayenne}{.}} Large scale patterns of epidemics have been measured \cite{giehl:2012}.
 The spread of infectious diseases is something that everyone is familiar with.
 
 \paragraph{Research field: Epidemiology\color{Cayenne}{.}} One goal of epidemiology is to understand the principles behind the spreading process, i.e. the way how a disease is transmitted through a population.
@@ -66,7 +65,7 @@ Well known concepts of mathematics (graph theory \cite{Bollobas:1985}) and socia
 The spread of infectious diseases can be modeled in terms of compartment models as described in section xx.
 We differentiate between \emph{conceptional models} and \emph{realistic disease models}.
 While the former class is used to provide conceptual results as for the computation of thresholds or to test theories \cite{Hethcote:2000}, realistic disease models use as many aspects as possible to provide a forecast of the spreading process.
-Realistic disease models can be very complex and are beyond the scope of this work, thus the author focuses on the use of conceptional models.
+Realistic disease models can be very complex and are beyond the scope of this work, thus we focus on the use of conceptional models.
 The following section is inspired by the Lecture notes of J.~R.~Chasnov \cite{Chasnov:2010}.
 
 \subsection{SI model}\label{sec:si_model}
@@ -244,7 +243,21 @@ However, the random mixing assumption does not allow for non homogenous mixing, 
 Nevertheless, the equality of individuals is not a reasonable assumption for many epidemic substrates.
 Examples are contact structures of humans, livestock trade, vehicles as disease vectors of links between computers.
 
-\subsection{Network matrix representations}\label{sec:network_matrices}
+\paragraph{Main observations\color{Cayenne}{.}}
+The random mixing assumption is obsolete in the vast majority of systems.
+Instead, these systems possess an underlying contact structure -- a network.
+Since the beginning of the 21st century, large amounts of data about these contact structures became available for social, economic, transportation and biological networks.
+Observations showed that many real-world networks share common topological properties (see section \ref{sec:macro_measures}).
+However, the number of their non-trivial topological properties is considerable, therefore they are often referred to as \emph{complex} networks.
+
+\paragraph{Research field: network science\color{Cayenne}{.}}
+Modern network science is an interdisciplinary research field, because it addresses systems of diverse scientific affinity.
+Its roots lie in graph theory (mathematics) and social network analysis (social sciences).
+Social network analysis plays a particular role for the definition of local network measures (see section \ref{sec:micro_measures}), whereas the influence of graph theory is stronger in macroscopic problems like percolation or graph partitioning.
+An important focus of network science is to find common features of different networks and to find the basic principles behind their emergence.
+Applied network science is often found in computer science.
+
+\subsection{Matrix representations}\label{sec:network_matrices}
 A network is a system consisting of nodes that are connected by edges.
 Edges can be undirected, directed and weighted.
 In principle, a network can consist of edges of different types.
@@ -363,10 +376,10 @@ We distinguish between in-degree and out-degree in directed networks.
 Finally, $G_0=(V_0,E_0)$ is a \emph{subgraph} of $G=(V,E)$, if $V_0 \subseteq V$ and $E_0 \subseteq E$.
 
 
-\subsubsection{Microscopic measures}
+\subsubsection{Microscopic measures}\label{sec:micro_measures}
 Given a network, an important question is, if some nodes are more important as other nodes.
 Therefore, we summarize measures of the \emph{centrality} of nodes.
-The idea if centrality mainly goes back to social network analysis \cite{WassermannFaust,Freeman}, but has been widely adopted and extended in network science.
+The idea if centrality mainly goes back to social network analysis \cite{WassermanFaust,Freeman}, but has been widely adopted and extended in network science.
 I restrict myself to those measures, that are indispensable when describing networks.
 A more exhaustive overview of centrality measures is found in the review article \cite{MartinezLopez2009} or in online documentations of network analysis software, e.g.~\cite{hagberg2008,networkx}.
 In the following, $N$ denotes the order of the network (the number of nodes) and $m$ the number of edges.
@@ -447,7 +460,7 @@ This equation can be rewritten as
 \begin{equation}
 \mathbf{Ax}=\lambda \mathbf{x}.
 \end{equation}
-It follows from the Perron-Frobenius-Theorem that $\lambda $ must be the largest eigenvalue of $\mathbf{A}$ in order to guaranty all entries of $\mathbf{x}$ to be positive \cite{xx}.
+It follows from the Perron-Frobenius-Theorem that $\lambda $ must be the largest eigenvalue of $\mathbf{A}$ in order to guarantee all entries of $\mathbf{x}$ to be positive \cite{Bonacich:1972,Bonacich:2007}.
 The theorem guaranties unique solutions only to adjacency matrices of connected networks.
 Hence, eigenvector centrality is only defined for connected graphs.
 Nevertheless, the eigenvector centrality can be computed for each component separately, if a graph is not connected \cite{Bonacich:2007}.
@@ -464,8 +477,10 @@ Apparently, the range of a node is of major importance for any epidemiological p
 Although the range measure is rather simple, it can show an interesting distribution.
 The shape of its distribution is inherently related to percolation properties of the network.
 
-\subsubsection{Macroscopic measures}
-In order to get the big picture about a network, I discuss measures that capture large scale properties of networks.
+\subsubsection{Macroscopic measures}\label{sec:macro_measures}
+In order to get the big picture about a network, we discuss measures that capture large scale properties of networks.
+The central question for the analysis of real-world networks is, whether different networks share similar large-scale features or whether each network is unique.
+Is network=network\textbf{\textsf{\color{Cayenne}{?}}}
 
 \paragraph{Degree Distribution\color{Cayenne}{.}}
 In principle, the distribution of any centrality measure could yield insights into the macroscopic network structure.
@@ -473,28 +488,28 @@ As a matter of fact, the distribution of a networks degrees became a major crite
 If all nodes of a graph have the same degree, the graph is called \emph{regular}.
 Lattices are regular graphs.
 In this case, the degree distribution collapses to a single peak without statistical variation.
-A \emph{random network} is generated by generating a set of $N$ nodes and connect node pairs with a certain probability $p$.
-This procedure yields a graph with a Poisson degree distribution (see section xx), 
-\begin{equation}\label{eq:er_distribution}
-P(k) =\frac{(Np)^k e^{-Np}}{k!}
-\end{equation}
-i.e. there is variation in the degrees, but there still remains a \emph{typical degree} in the system.
 
-Observations of real-world networks have shown that their nodes show a degree variation over several orders of magnitude.
-The corresponding degree distributions are called \emph{scale-free}, because they do not show a typical degree.
-Instead, the network has nodes with only a few neighbors and hubs with very large degrees.
-These networks are called scale-free networks and their degree distribution takes the form
+Observations of real-world networks have shown that some networks exhibit exponential decaying degree distributions, i.e. there is a a variance of degrees, but the system possesses a \emph{typical degree}.
+Examples are social networks and technological and economic networks, such as electric power-grids and traffic networks \cite{Amaral:2000,indian_railway}.
+
+The nodes of the vast majority of large real-world networks, however, show a degree variation over several orders of magnitude.
+Examples are the network of internet routers \cite{Faloutsos:1999}, www links \cite{Barabasi99} or scientific citations \cite{Price:1965}.
+Their degree distributions are approximated by \emph{power-laws} of the form
 \begin{equation}\label{eq:scale-free_distr}
-P(k) \propto c k^{-\gamma }
+P(k) \propto k^{-\gamma } ,
 \end{equation}
-for sufficiently large values of $k$.
-$c$ is a normalization constant and $2<\gamma <3$ for most observed networks \cite{all_scale_free_are_sparse}.
+where $2<\gamma <3$ for most observed networks \cite{all_scale_free_are_sparse,Newman2003}.
+The approximation is reasonable for the tails of the distributions, i.e. for large values of $k$.
+The identification of power-law distributions in data is discussed in \cite{Clauset:2009}.
+
+Distributions of the form \eqref{eq:scale-free_distr} are called \emph{scale-free}, because they do not show a typical value (mean).
+Instead, the network has nodes with only a few neighbors and hubs with very large degrees.
 The structural difference between random and scale-free networks is sketched in figure \ref{fig:random_scalefree}.
 %
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics{random-scalefree}
-\caption{Structural difference between random networks and scale-free networks.
+\includegraphics{exponential_scalefree}
+\caption{Structural difference between networks with exponential and scale-free degree distributions.
 All nodes have a similar degree in the random network, while the scale-free network shows hubs with a significantly larger degree than the average.
 Hubs are highlighted in red.}
 \label{fig:random_scalefree}
@@ -503,6 +518,10 @@ Hubs are highlighted in red.}
 
 Scale-free networks have attained remarkable attention in the last years and many real-world networks have been conjectured as scale-free \cite{Newman2003,Barabasi99}.
 Important consequences of this classification were found to be a change in the threshold behavior of epidemic processes \cite{PastorSatorras:2001} and their topological resilience to node failures \cite{Albert:2000}.
+The degree distributions of collaboration networks were well fitted by a scale-free distribution with a sharp cut-off \cite{Newman:2001p,Albert:2000p}, i.e. $P(K)\propto k^{-\gamma }e^{-k/\kappa }$ with fitting constants $\gamma $ and $\tau $.
+In \cite{Amaral:2000}, a possible explanation for the existence of an exponential cut-off was the aging of nodes, indicating that real systems possess a natural upper bound for their number of links.
+
+
 
 \paragraph{Clustering coefficient\color{Cayenne}{.}}
 The idea of the clustering coefficient comes from social networks.
@@ -516,7 +535,19 @@ C=\frac{\operatorname{tr}(\mathbf{A}^3)}{\operatorname{sum} (A^2) -\operatorname
 \end{equation}
 where $\operatorname{tr}(\mathbf{A} )$ denotes the trace of $\mathbf{A}$ and $\operatorname{sum} (\mathbf{A})=\sum _{ij} a_{ij}$ is the sum over all elements of $\mathbf{A}$.
 
-The clustering coefficient plays an essential role in the small-world model of networks (\cite{Watts:2006}, section \ref{sec:network_models}) and has been found to be an important property of social networks \cite{Holland1971}.
+The clustering coefficient plays an essential role in the small-world model of networks (\cite{Watts:2006}, section \ref{sec:network_models}) and has been found to be an important property not only in social networks \cite{Holland1971}, but in many real-world networks \cite{Newman2003}.
+
+\paragraph{Average shortest path length\color{Cayenne}{.}}
+The distance matrix $d_{ij}$ contains the distance between nodes $i$ and $j$ in the network.
+Ignoring those node pairs with infinite distance (i.e. setting $d_{ij}=0$) gives the average shortest path length
+\begin{equation}\label{eq:}
+l=\frac{1}{N(N-1)}\sum _{i, j} d_{ij}
+\end{equation}
+
+It is a common feature of many networks that the average shortest path length is much smaller than the number of nodes in the network, i.e. typically networks contain shortcuts \cite{RevModPhys.74}.
+This property is called \emph{small world} phenomenon.
+It is an important building block of the Watts-Strogatz network model (\cite{Watts:2006}, section \ref{sec:watts_strogatz_model}).
+
 
 
 \paragraph{Connected components\color{Cayenne}{.}}
@@ -534,7 +565,7 @@ The number of connected components lies between 1 and the number of nodes in the
 \subsection{Implementation}\label{sec:implementation}
 In order to efficiently implement networks and their analysis on a computer, it is necessary to use data structures adjusted to these problems.
 A short and transparent introduction to data structures and algorithms is in the book of Skiena \cite{algorithm_design}.
-In this section, I discuss some essential data structures appropriate for network analysis and give a brief description of fundamental algorithms.
+In this section, we discuss some essential data structures appropriate for network analysis and give a brief description of fundamental algorithms.
 The purpose of this section is not to list different algorithms and source code, but rather to sketch the basic ideas behind the data structures and algorithms.
 For source code of data structures and algorithms, the reader is encouraged to the lecture of \cite{algorithm_design}.
 
@@ -601,7 +632,24 @@ Implementations of graph structures as discussed above are for example available
 
 
 
-\subsection{From random mixing to structure: Network models}\label{sec:network_models}
+\section{Network models and epidemiology}\label{sec:network_models}
+
+\subsection{Lattice}
+
+\subsection{Watt-Strogatz model}\label{sec:watts_strogatz_model}
+
+\subsection{Erd\H{o}s-R\'enyi model}
+A \emph{random network} is generated by generating a set of $N$ nodes and connect node pairs with a certain probability $p$.
+This procedure yields a graph with a Poisson degree distribution (see section xx), 
+\begin{equation}\label{eq:er_distribution}
+P(k) =\frac{(Np)^k e^{-Np}}{k!}
+\end{equation}
+i.e. there is variation in the degrees, but there still remains a \emph{typical degree} in the system.
+
+\subsection{Barab\'asi-Albert model}
 
 
+
+\bibliographystyle{plain}
+\bibliography{/Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib}
 \end{document}
