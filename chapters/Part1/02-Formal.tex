@@ -1,32 +1,13 @@
 \documentclass[openright,twoside,headsepline]{scrbook}
-\usepackage{graphicx,color,scrpage2}
-\definecolor{Cayenne}{rgb}{0.502,0.0,0.0}
-\definecolor{Steel}{rgb}{0.4,0.4,0.4}
-
-\addtokomafont{chapter}{\color{Steel}}
-\addtokomafont{section}{\color{Steel}}
-\addtokomafont{subsection}{\color{Steel}}
-\addtokomafont{subsubsection}{\color{Steel}}
-\addtokomafont{paragraph}{\color{Steel}}
-\addtokomafont{pagehead}{\color{Steel}}
-\renewcommand{\pnumfont}{\color{Steel}} 
-\addtokomafont{headsepline}{\color{Steel}} 
-
-\pagestyle{scrheadings} 
-
 \usepackage[applemac]{inputenc}
-\usepackage{amsmath,amssymb,amsfonts,amsthm}
-\usepackage{natbib}
-\usepackage[leftcaption]{sidecap} % inner, outer,left,right
-\sidecaptionvpos{figure}{t}
+\usepackage{graphicx,color,scrpage2,natbib}
+\input{/Users/lentz/Documents/GitHub_locals/Thesis/adjustment}
 
-\usepackage[format=plain,singlelinecheck=false, font={sf,small},labelfont={bf,color=Steel}]{caption}
-\DeclareCaptionLabelSeparator{cayenne_period}{\textcolor{Cayenne}{.} }
-\captionsetup{labelsep=cayenne_period}
 
 \begin{document}
 \graphicspath{{/Users/lentz/Documents/GitHub_locals/Thesis/images/}}
 \tableofcontents
+
 \chapter{Theory}
 This chapter is devoted to the mathematical formalism that is used to model infectious diseases and networks.
 We define a mathematical framework and summarize relevant results of earlier research in this chapter.
@@ -235,7 +216,7 @@ Even if the exact data of an epidemic system is not available, research on compl
 In the next section, we briefly report important results in complex network research and focus on the interplay between networks and epidemics in section xx.
 
 
-\section{Network theory}
+\section{Network theory}\label{sec:network_theory}
 As we have seen in the previous section, standard epidemic models make use of the random mixing assumption.
 This assumption seems reasonable, if no further information about the contact structure within a population is available, because it gives a worst case scenario of the infection dynamics.
 Even an overestimation of the outbreak size can be corrected by introducing smaller, effective disease parameters.
@@ -425,6 +406,7 @@ In this case, the corresponding terms $1/\infty $ do not make contributions in e
 The closeness centrality is capable to identify nodes with short average pathways to other parts of the network.
 Identifying high closeness nodes is therefore reasonable for network navigation.
 This holds in particular, if the exact route to the destination is unknown, because nodes with high closeness are probable to reach many destinations quickly.
+In \cite{Zweig:closeness} it was shown that nodes of high closeness can act as landmarks for navigation.
 
 
 \paragraph{Betweenness\color{Cayenne}{.}}
@@ -475,7 +457,7 @@ The size of the former is its range and the size of the latter is its reachabili
 
 Apparently, the range of a node is of major importance for any epidemiological problem on a network, because it defines an upper bound for the size of any outbreak starting at this very node. 
 Although the range measure is rather simple, it can show an interesting distribution.
-The shape of its distribution is inherently related to percolation properties of the network.
+The shape of its distribution is inherently related to percolation properties of the network (see section xx).
 
 \subsubsection{Macroscopic measures}\label{sec:macro_measures}
 In order to get the big picture about a network, we discuss measures that capture large scale properties of networks.
@@ -551,16 +533,31 @@ It is an important building block of the Watts-Strogatz network model (\cite{Wat
 
 
 \paragraph{Connected components\color{Cayenne}{.}}
-
 A connected component $G_\mathrm{cc}=(V_\mathrm{cc},E_\mathrm{cc})$ is a subgraph of graph $G=(V,E)$, where there is a path between any node pair in $V_\mathrm{cc}$.
-The number of connected components lies between 1 and the number of nodes in the network.
+In directed graphs, connected component in the sense above is called \emph{strongly connected}.
+A component is called \emph{weakly connected}, if it is connected ignoring the direction of edges.
+Many real-world networks contain one largest connected component that is typically much larger than all other components of the system.
+This component is therefore called \emph{giant component}.
 
+In fact, the emergence of a giant component in a network is a 2nd order phase transition and is a graph theoretical percolation process \cite{Newman2003}. 
+Components play an important role for epidemic processes, because the component membership of each node defines the maximum outbreak size of any epidemic started at this very node.
+In the directed case, maximum outbreak sizes are bounded by the underlying strongly connected component (lower bound) and the out component of the starting node (higher bound).
+The general component structure of directed networks is discussed in \cite{Dorogovtsev:2001jd} and we provide further discussion of their epidemiological relevance in section xx.
 
-
-%The concept of giant connected components is the graph theoretical percolation problem.
 
 \paragraph{Accessibility\color{Cayenne}{.}}
-
+If we directly connect each node of a network with all other nodes it is connected to by a path of whatever length, we get the \emph{accessibility} of the network.
+Accessibility measures the ability of each node to reach destinations, which is in particular important for transportation systems \cite{Garrison:1960up}.
+Mathematically, we define the accessibility graph (also \emph{transitive closure}) of a network as follows:
+Let $G=(V,E)$ be a network.
+Than $G^*=(V,E^*)$ is the accessibility graph of $G$ with $(u,v) \in E^*$, if there is a path from $u$ to $v$.
+The accessibility graph is typically dense, because it contains many more edges than the underlying network.
+In mathematical literature accessibility is called \emph{transitive closure} of a network.
+A (weighted) adjacency matrix $\mathbf{C}$ of $G^*$ for a $N$-node network is given by the cumulative matrix
+\begin{equation}\label{eq:cumulative_matrix}
+\mathbf{C}= \sum _{i=1} ^{N-1} \mathbf{A}^i,
+\end{equation}
+where $\mathbf{A}$ is the adjacency matrix of $G$ and the elements of $\mathbf{C}$ contain the actual number of paths between each node pair.
 
 \subsection{Implementation}\label{sec:implementation}
 In order to efficiently implement networks and their analysis on a computer, it is necessary to use data structures adjusted to these problems.
@@ -627,27 +624,73 @@ With every generation in a BFS tree, the distance from the starting node is incr
 Shortest paths in weighted networks can be identified using a the algorithm of Dijkstra \cite{Dijkstra:1959}.
 DFS can be used to identify connected components in directed graphs (see next section).
 
-Implementations of graph structures as discussed above are for example available in the libraries \verb"networks" (Python), \verb"igraph" (C, Python, R), \verb"Lemon" and \verb"Boost" (C++).
+Implementations of graph structures as discussed above are for example available in the libraries \verb"networkx" (Python), \verb"igraph" (C, Python, R), \verb"Lemon" and \verb"Boost" (C++).
 
+\paragraph{Hard problems\color{Cayenne}{.}}
+Although the libraries introduced above provide a huge and efficient toolbox for network analysis, there are still network problems, where no efficient algorithm is known for their exact solution.
+In the language of complexity theory, the time to solve these problems scales with the problem size in non-polynomial time.
+Problems of this kind can typically be solved exactly only for small system sizes.
 
+Probably the most popular example is the \emph{traveling salesman problem}: a salesman has to traverse a set of cities and thereby choose the order of those cities that minimizes the total distance.
+For small problem sizes, it is possible just to try out all possible combinations and find the minimal total distance.
+The number of possible combinations, however, grows factorial with the system size, i.e. finding a solution takes $t\propto n!$ for $n$ cities.
+In other words, if the problem could be solved for 20 cities in 1 second, it would take 21 seconds to solve it for 21 cities, 7 minutes for 22 cities and 3 million years for 30 cities!
+
+A more exhaustive overview about hard problems is in \cite{algorithm_design} and the references therein.
+Generally, heuristic methods have to be used in order to get an approximate solution.
+It should be noted that the \emph{maximum clique} problem (section xx) and the \emph{graph partitioning} (see section xx, \cite{brandes2007}) belong to the class of hard problems.
 
 
 \section{Network models and epidemiology}\label{sec:network_models}
+The analysis of real-world networks in terms of the measures introduced in section \ref{sec:network_theory} has given useful insight into the structural properties of these systems.
+In particular, observations showed that many networks have heavy-tailed degree distributions and show non vanishing clustering coefficients.
+In this section we summarize the results of some widely used network models.
+At the end of the section, we give a comparison between the different models an discuss their relevance in epidemiology.
 
-\subsection{Lattice}
-
-\subsection{Watt-Strogatz model}\label{sec:watts_strogatz_model}
+\subsection{Lattice model}
+Lattice models are inherently related to homogeneously distributed geographical positions of individuals.
+They show a high degree of regularity and their potential for SIS and SIR spreading processes has been studied in \cite{Harris:1974} and \cite{Bak:1990}, respectively.
 
 \subsection{Erd\H{o}s-R\'enyi model}
-A \emph{random network} is generated by generating a set of $N$ nodes and connect node pairs with a certain probability $p$.
+The Erd\H{o}s-R\'enyi model makes use of probabilistic methods to analyze network properties and is therefore a random graph model.
+A \emph{random network} is generated by generating a set of $N$ nodes and connect each of the $N(N-1)$ possible node pairs\footnote{We focus on directed networks here. In the undirected case, there are $\frac{1}{2}N(N-1)$ possible node pairs.} with a certain probability $p$.
+Networks generated this way are often called $G_{N,p}$ networks or $G_{N,p}$ ensembles\footnote{An equivalent approach is to consider a fixed number of edges $m$ instead, yielding a $G_{N,m}$ graph.}.
+
+Random graph theory addresses questions about typical properties of networks with $N\rightarrow \infty $ nodes.
+Consequently, the edge occupation probability $p$ is the key parameter in random graph theory.
+Properties of particular interest are the average shortest path length or the distributions of degrees, component sizes (percolation) and the occurrence of special subgraphs such as triangles.
+Apparently, the expected number of edges in the network is $\mean{E}=pN(N-1)$, if $p$ is the edge occupation probability.
+In addition, the average degree of a random network of $N$ nodes is $\mean{k}=pN$.
+
+An interesting feature of random graphs is that for different edge occupation probabilities they show different phases.
+The behavior for large values of $p$ has first been studied by Erd\H{o}s and R\'enyi \cite{ER:1959}.
+A few years later, Erd\H{o}s and R\'enyi found thresholds for the emergence of subgraphs and a giant connected component \cite{ER:1960,ER:1961}.
+Results for the occurrence of different subgraphs are summarized in \cite{Albert:2002}.
+The largest connected component phase transition is shown in figure \ref{fig:ER_lcc_emergence}.
+\begin{SCfigure}
+\includegraphics{ER_emergence_LCC.pdf}
+\caption{Emergence of the largest connected component for an ensemble of \ER graphs.
+The critical value $p_c = 0.001$ corresponds to an average degree of 1.
+Network size: 1000 nodes.}
+\label{fig:ER_lcc_emergence}
+\end{SCfigure}
+
+
+
 This procedure yields a graph with a Poisson degree distribution (see section xx), 
 \begin{equation}\label{eq:er_distribution}
 P(k) =\frac{(Np)^k e^{-Np}}{k!}
 \end{equation}
 i.e. there is variation in the degrees, but there still remains a \emph{typical degree} in the system.
 
+
+\subsection{Watt-Strogatz model}\label{sec:watts_strogatz_model}
+
+
 \subsection{Barab\'asi-Albert model}
 
+
+\subsection{Comparison}
 
 
 \bibliographystyle{plain}

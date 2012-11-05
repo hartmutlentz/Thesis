@@ -10,6 +10,11 @@ R\'eka Albert and Albert-L\'aszl\'o Barab\'asi.
 \newblock Statistical mechanics of complex networks.
 \newblock {\em Rev. Mod. Phys.}, 74:47--97, Jan 2002.
 
+\bibitem{Albert:2002}
+Reka Albert and Albert-L{\'a}szl{\'o} Barab{\'a}si.
+\newblock {Statistical mechanics of complex networks}.
+\newblock {\em Rev. Mod. Phys.}, 74:47, January 2002.
+
 \bibitem{Albert:2000}
 Reka Albert, Hawoong Jeong, and Albert-L{\'a}szl{\'o} Barab{\'a}si.
 \newblock {Error and attack tolerance of complex networks}.
@@ -35,6 +40,11 @@ R~M Anderson and R~M May.
 N~T~J Bailey.
 \newblock {\em The mathematical theory of infectious diseases}.
 \newblock Charles Griffin \& Company Ltd, 2nd edition, 1957.
+
+\bibitem{Bak:1990}
+P~Bak, K~Chen, and C~Tang.
+\newblock Forest-fire model and some thoughts on turbulence.
+\newblock {\em Phys. Lett. A}, 147:297--300, 1990.
 
 \bibitem{Banerjee2009}
 Anirban Banerjee and J{\"u}rgen Jost.
@@ -73,6 +83,13 @@ Ulrik Brandes.
 \newblock {A faster algorithm for betweenness centrality}.
 \newblock {\em J. Math. Sociol.}, January 2001.
 
+\bibitem{brandes2007}
+Ulrik Brandes, Daniel Delling, Marco Gaertler, Robert G{\"o}rke, Martin Hoefer,
+  Zoran Nikoloski, and Dorothea Wagner.
+\newblock {On Finding Graph Clusterings with Maximum Modularity}.
+\newblock In {\em Graph-Theoretic Concepts in Computer Science}, volume 4769,
+  pages 121--132. Springer Berlin Heidelberg, 2007.
+
 \bibitem{Chasnov:2010}
 J.~R. Chasnov.
 \newblock {\em Mathematical Biology: Lecture Notes}.
@@ -98,6 +115,26 @@ E~Dijkstra.
 \newblock {A note on two problems in connexion with graphs}.
 \newblock {\em Numerische Mathematik}, 1:269--271, January 1959.
 
+\bibitem{Dorogovtsev:2001jd}
+S~Dorogovtsev, J~Mendes, and A~Samukhin.
+\newblock {Giant strongly connected component of directed networks}.
+\newblock {\em Phys. Rev. E}, 64:025101(R), July 2001.
+
+\bibitem{ER:1959}
+P~Erd\H{o}s and A~R\'enyi.
+\newblock On random graphs.
+\newblock {\em Publ. Math., Debrecen}, 6:290--297, 1959.
+
+\bibitem{ER:1960}
+P~Erd\H{o}s and A~R\'enyi.
+\newblock On the evolution of random graphs.
+\newblock {\em Publ. Math. Inst. Hung. Acad. Sci., Ser. A}, 5:17--61, 1960.
+
+\bibitem{ER:1961}
+P~Erd\H{o}s and A~R\'enyi.
+\newblock On the evolution of random graphs ii.
+\newblock {\em Bull. Inst. Int. Stat.}, 38(4):343--347, 1961.
+
 \bibitem{Faloutsos:1999}
 Michalis Faloutsos, Petros Faloutsos, and Christos Faloutsos.
 \newblock On power-law relationships of the internet topology.
@@ -107,6 +144,12 @@ Michalis Faloutsos, Petros Faloutsos, and Christos Faloutsos.
 L~C Freeman.
 \newblock Centrality in social networks.
 \newblock {\em Social networks}, 1:215--239, 1978.
+
+\bibitem{Garrison:1960up}
+W~L Garrison.
+\newblock {Connectivity of the interstate highway system}.
+\newblock {\em Papers and proceedings of the regional science association},
+  6:121--137, 1960.
 
 \bibitem{giehl:2012}
 H~J Giehl.
@@ -137,6 +180,11 @@ Aric~A. Hagberg, Daniel~A. Schult, and Pieter~J. Swart.
 W~H Hamer.
 \newblock Epidemic disease in england.
 \newblock {\em Lancet}, 1:733--739, 1906.
+
+\bibitem{Harris:1974}
+T~E Harris.
+\newblock Contact interactions on a lattice.
+\newblock {\em Ann. Probab.}, 2:969--988, 1974.
 
 \bibitem{Hethcote:2000}
 HW~Hethcote.
@@ -233,6 +281,12 @@ Parongama Sen, Subinay Dasgupta, Arnab Chatterjee, P.~A. Sreeram, G.~Mukherjee,
 Steven~S. Skiena.
 \newblock {\em The algorithm design manual}.
 \newblock Springer, London, 2nd edition, 2008.
+
+\bibitem{Zweig:closeness}
+S.~R. Sudarshan~Iyengar, C.~E. Veni~Madhavan, Katharina~A. Zweig, and Abhiram
+  Natarajan.
+\newblock Understanding human navigation using network analysis.
+\newblock {\em Topics in Cognitive Science}, 4(1):121--134, 2012.
 
 \bibitem{van_mises}
 R.~von Mises and H.~Pollaczek-Geiringer.

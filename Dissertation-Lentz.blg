@@ -10,48 +10,48 @@ A level-1 auxiliary file: chapters/Part3/05-Conceptional_tvg_problems.aux
 The style file: plainnat.bst
 Database file #1: bibliography.bib
 Warning--entry type for "networkx" isn't style-file defined
---line 20 of file bibliography.bib
+--line 480 of file bibliography.bib
 Warning--entry type for "PageRank" isn't style-file defined
---line 90 of file bibliography.bib
-You've used 26 entries,
+--line 547 of file bibliography.bib
+You've used 59 entries,
             2773 wiz_defined-function locations,
-            776 strings with 8929 characters,
-and the built_in function-call counts, 10717 in all, are:
-= -- 960
-> -- 495
-< -- 22
-+ -- 174
-- -- 147
-* -- 794
-:= -- 1656
-add.period$ -- 85
-call.type$ -- 26
-change.case$ -- 119
-chr.to.int$ -- 25
-cite$ -- 52
-duplicate$ -- 534
-empty$ -- 967
-format.name$ -- 189
-if$ -- 2258
+            1027 strings with 14493 characters,
+and the built_in function-call counts, 26291 in all, are:
+= -- 2422
+> -- 1274
+< -- 47
++ -- 441
+- -- 381
+* -- 2097
+:= -- 4056
+add.period$ -- 210
+call.type$ -- 59
+change.case$ -- 296
+chr.to.int$ -- 58
+cite$ -- 118
+duplicate$ -- 1228
+empty$ -- 2275
+format.name$ -- 478
+if$ -- 5528
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 33
-newline$ -- 145
-num.names$ -- 104
-pop$ -- 267
+missing$ -- 67
+newline$ -- 334
+num.names$ -- 236
+pop$ -- 554
 preamble$ -- 1
-purify$ -- 101
+purify$ -- 245
 quote$ -- 0
-skip$ -- 386
+skip$ -- 891
 stack$ -- 0
-substring$ -- 428
-swap$ -- 48
-text.length$ -- 2
+substring$ -- 1190
+swap$ -- 115
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 241
+type$ -- 599
 warning$ -- 0
-while$ -- 104
+while$ -- 251
 width$ -- 0
-write$ -- 351
+write$ -- 832
 (There were 2 warnings)
