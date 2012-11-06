@@ -26,7 +26,7 @@ J~M Aldous and R~J Wilson.
 \newblock Springer, 2000.
 
 \bibitem{Amaral:2000}
-L.~A.~N. Amaral, A.~Scala, M.~Barth{\'e}l{\'e}my, and H.~E. Stanley.
+L.~A.~N. Amaral, A.~Scala, M.~Barth{\'e}lemy, and H.~E. Stanley.
 \newblock Classes of small-world networks.
 \newblock {\em Proceedings of the National Academy of Sciences},
   97(21):11149--11152, 2000.
@@ -55,6 +55,11 @@ Anirban Banerjee and J{\"u}rgen Jost.
 Albert-L{\'a}szl{\'o} Barab{\'a}si and Reka Albert.
 \newblock {Emergence of Scaling in Random Networks}.
 \newblock {\em Science}, 286:509, 1999.
+
+\bibitem{dynamical_processes}
+Alain Barrat, M.~Barth{\'e}lemy, and Alessandro Vespignani.
+\newblock {\em Dynamical processes on complex networks}.
+\newblock Cambridge University Press, 2008.
 
 \bibitem{Bauch:2004}
 Chris~T Bauch and David J~D Earn.
