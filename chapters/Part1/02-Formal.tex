@@ -1,12 +1,13 @@
 \documentclass[openright,twoside,headsepline]{scrbook}
 \usepackage[applemac]{inputenc}
-\usepackage{graphicx,color,scrpage2,natbib}
+\usepackage{graphicx,xcolor,natbib,hyperref} % obsolete in HU-diss
 \input{/Users/lentz/Documents/GitHub_locals/Thesis/adjustment}
-
 
 \begin{document}
 \graphicspath{{/Users/lentz/Documents/GitHub_locals/Thesis/images/}}
 \tableofcontents
+
+
 
 \chapter{Theory}
 This chapter is devoted to the mathematical formalism that is used to model infectious diseases and networks.
@@ -35,7 +36,7 @@ The modeling of infection diseases mostly uses the concept of compartment models
 Major contributions to the modern theoretical framework were provided by \cite{kermack:27}, \cite{bailey:57} and \cite{andersonmay:92}.
 In his review about the mathematics of infectious diseases Hethcote reports a model for smallpox was already formulated in 1760 by D. Bernoulli (\cite{Hethcote:2000} and references therein).
 In the early 20th century, people developed mathematical models for epidemics: a discrete time model in 1906 \cite{Hamer} and a differential equation model in 1911 \cite{Ross}.
-The epidemic threshold (section \ref{sec:sir_model}) was found in the 1920s \cite{kermack:1927_thresh} \cite{kermack:27}.
+The epidemic threshold (section \ref{sec:sir_model}) was found in the 1920s \cite{kermack:27}.
 Starting from Bailey's book \cite{bailey:57} in the 1950s, the modeling of infectious diseases became a major scientific research field.
 Modern models of infectious diseases include vaccination, demographic structure, disease vectors, quarantine and even game theory (\cite{Bauch:2004} and references in \cite{Hethcote:2000}).
 The availability of contact data in recent years led to a strong impact on network analysis on epidemiology.
@@ -516,8 +517,12 @@ Using the adjacency matrix $\mathbf{A}$, the clustering coefficient can be compu
 C=\frac{\operatorname{tr}(\mathbf{A}^3)}{\operatorname{sum} (A^2) -\operatorname{tr}(\mathbf{A}^2)},
 \end{equation}
 where $\operatorname{tr}(\mathbf{A} )$ denotes the trace of $\mathbf{A}$ and $\operatorname{sum} (\mathbf{A})=\sum _{ij} a_{ij}$ is the sum over all elements of $\mathbf{A}$.
+In this work, we focus on the clustering coefficient as a macroscopic property of networks.
+It should be noted that there is also a node clustering coefficient defined by $c_i=\sum _{jl} a_{ij}a_{jl}a_li/(k_i (k_i -1))$ \cite{Watts:1998,dynamical_processes}.
+Thus, a network clustering coefficient can also be defined by the average $\mean{c_i}$, which however gives slightly different values as \eqref{eq:clustering_coefficient} and should not be mixed up with the latter.
 
-The clustering coefficient plays an essential role in the small-world model of networks (\cite{Watts:2006}, section \ref{sec:network_models}) and has been found to be an important property not only in social networks \cite{Holland1971}, but in many real-world networks \cite{Newman2003}.
+
+The clustering coefficient plays an essential role in the small-world model of networks (\cite{Watts:1998}, section \ref{sec:network_models}) and has been found to be an important property not only in social networks \cite{Holland1971}, but in many real-world networks \cite{Newman2003}.
 
 \paragraph{Average shortest path length\color{Cayenne}{.}}
 The distance matrix $d_{ij}$ contains the distance between nodes $i$ and $j$ in the network.
@@ -527,8 +532,9 @@ l=\frac{1}{N(N-1)}\sum _{i, j} d_{ij}
 \end{equation}
 
 It is a common feature of many networks that the average shortest path length is much smaller than the number of nodes in the network, i.e. typically networks contain shortcuts \cite{RevModPhys.74}.
+An early and impressive example was shown by Milgrim, where the average distance between two randomly chosen people in the united states was measured to be 6 \cite{Milgram:1967}. 
 This property is called \emph{small world} phenomenon.
-It is an important building block of the Watts-Strogatz network model (\cite{Watts:2006}, section \ref{sec:watts_strogatz_model}).
+It is an important building block of the Watts-Strogatz network model (\cite{Watts:1998}, section \ref{sec:watts_strogatz_model}).
 
 
 
@@ -734,12 +740,46 @@ Since we are only interested in the rough behavior of the average shortest path 
 The average degree remains constant for different network orders, so that equation \eqref{eq:er_av_shortest} demonstrates that the average shortest path length grows logarithmically with the number of nodes in \ER graphs.
 This relation is found in many complex networks and is an indication for the small-world effect introduced in the next section.
 
+\subsection{Watts-Strogatz model}\label{sec:watts_strogatz_model}
+We have seen that random graphs can reproduce some important properties of real-world networks, particularly the existence of a giant component and small average shortest path length.
+Nevertheless, equation \eqref{eq:er_clustering} demonstrates that the tendency to form connected triangles is absent in large scale \ER networks.
+Observations show, however, that many real-world networks show this feature \cite{WassermanFaust,Newman2003,Milgram:1967}.
+It is characteristic for social networks in particular to have a high degree of clustering and at the same time short-cuts allowing for small average shortest path distances.
+In this sense they can be seen as an intermediate structure between lattices (high local order) and random graphs (small shortest path distances).
+Therefore, Watts and Strogatz introduced the \emph{small-world model} in 1998 \cite{Watts:1998}.
+We briefly summarize some of its main findings.
 
-\subsection{Watt-Strogatz model}\label{sec:watts_strogatz_model}
+A Watts-Strogatz model interpolates between regular and random networks by rewiring edges of a lattice.
+We start with a regular ring lattice of $N$ nodes, where each node is connected to $m$ of its nearest neighbors on the lattice.
+Then, each edge is rewired randomly with probability $p$.
+Keeping $m$ constant from the beginning yields a scalable topology for different values of $p$.
+The clustering coefficient $C$ and the average shortest path length $\mean{l}$ for different values of $p$ are shown in figure \ref{fig:watts_strogatz}.
+Both values are normalized by their corresponding values in the initial lattice, i.e. $C/C_0$ and $\mean{l}/\mean{l}_0$ respectively.
+%
+\begin{SCfigure}
+\includegraphics{Watts_strogatz.pdf}
+\caption{Clustering coefficient and average shortest path length in the Watts-Strogatz model.
+Both quantities are  normalized to the the corresponding value for $p=0$.
+Results for networks with $N=1000$ nodes and $m=10$.}
+\label{fig:watts_strogatz}
+\end{SCfigure}
 
+The degree distribution collapses to a single peak for $p=0$.
+In their paper about properties of small-world networks \cite{Barrat:2000fj}, Barrat and Weigt showed that the distribution converges to a Poisson distribution in the limit $p\rightarrow 1$ and found an analytical approximation for the clustering coefficient for different values of $p$.
+
+There is no sharp criterion for a network to be called small-world network.
+Instead, a network is called small-world network, if it shows a sufficiently large clustering coefficient \emph{and} a sufficiently low average shortest path length.
+This is the intermediate region in figure \ref{fig:watts_strogatz}. 
 
 \subsection{Barab\'asi-Albert model}
 
+
+
+
+\subsection{Other models}
+Exponential, Configuration, Attractiveness.
+
+Das muss aber keine eigene Section haben.
 
 \subsection{Comparison}
 

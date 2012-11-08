@@ -3,7 +3,7 @@
 \bibitem{Albert:2000p}
 R~Albert and A~Barab{\'a}si.
 \newblock Topology of evolving networks: Local events and universality.
-\newblock {\em Phys Rev Lett}, 85(24):5234--5237, 2000.
+\newblock {\em Phys. Rev. Lett.}, 85(24):5234--5237, 2000.
 
 \bibitem{RevModPhys.74}
 R\'eka Albert and Albert-L\'aszl\'o Barab\'asi.
@@ -28,8 +28,7 @@ J~M Aldous and R~J Wilson.
 \bibitem{Amaral:2000}
 L.~A.~N. Amaral, A.~Scala, M.~Barth{\'e}lemy, and H.~E. Stanley.
 \newblock Classes of small-world networks.
-\newblock {\em Proceedings of the National Academy of Sciences},
-  97(21):11149--11152, 2000.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 97(21):11149--11152, 2000.
 
 \bibitem{andersonmay:92}
 R~M Anderson and R~M May.
@@ -55,6 +54,12 @@ Anirban Banerjee and J{\"u}rgen Jost.
 Albert-L{\'a}szl{\'o} Barab{\'a}si and Reka Albert.
 \newblock {Emergence of Scaling in Random Networks}.
 \newblock {\em Science}, 286:509, 1999.
+
+\bibitem{Barrat:2000fj}
+A.~Barrat and M.~Weigt.
+\newblock On the properties of small-world network models.
+\newblock {\em The European Physical Journal B - Condensed Matter and Complex
+  Systems}, 13:547--560, 2000.
 
 \bibitem{dynamical_processes}
 Alain Barrat, M.~Barth{\'e}lemy, and Alessandro Vespignani.
@@ -217,11 +222,6 @@ W~O Kermack and A~G McKendrick.
 \newblock A contribution to the mathematical theory of epidemics.
 \newblock {\em Proc. R. Soc. A}, 115:700--721, 1927.
 
-\bibitem{kermack:1927_thresh}
-W~O Kermack and A~G McKendrick.
-\newblock Contributions to the mathematical theory of epidemics, part 1.
-\newblock {\em Proc. R. Soc. London Ser. A}, 115:700--721, 1927.
-
 \bibitem{Kleinberg:1999}
 Jon~M. Kleinberg.
 \newblock Hubs, authorities, and communities.
@@ -238,6 +238,11 @@ B~Mart{\'\i}nez-L{\'o}pez, A~M Perez, and JM~S{\'a}nchez-Vizca{\'\i}no.
 \newblock {Social Network Analysis. Review of General Concepts and Use in
   Preventive Veterinary Medicine}.
 \newblock {\em Transbound. Emerg. Dis.}, 56:109--120, 2009.
+
+\bibitem{Milgram:1967}
+S~Milgram.
+\newblock {The small world problem}.
+\newblock {\em Psychology today}, 2(1):60--67, 1967.
 
 \bibitem{Newman:2001p}
 Mark E~J Newman.
@@ -303,7 +308,7 @@ S~Wasserman and K~Faust.
 \newblock {\em {Social Network Analysis}}.
 \newblock Cambridge University Press, 1994.
 
-\bibitem{Watts:2006}
+\bibitem{Watts:1998}
 D~Watts and Steven Strogatz.
 \newblock {Collective dynamics of small-world networks}.
 \newblock {\em Nature}, 393:440--442, January 1998.
