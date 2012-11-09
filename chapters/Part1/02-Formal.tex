@@ -469,7 +469,7 @@ Is network=network\textbf{\textsf{\color{Cayenne}{?}}}
 In principle, the distribution of any centrality measure could yield insights into the macroscopic network structure.
 As a matter of fact, the distribution of a networks degrees became a major criterium for the classification into different network types.
 If all nodes of a graph have the same degree, the graph is called \emph{regular}.
-Lattices are regular graphs.
+Lattices are special cases of regular graphs.
 In this case, the degree distribution collapses to a single peak without statistical variation.
 
 Observations of real-world networks have shown that some networks exhibit exponential decaying degree distributions, i.e. there is a a variance of degrees, but the system possesses a \emph{typical degree}.
@@ -749,7 +749,7 @@ In this sense they can be seen as an intermediate structure between lattices (hi
 Therefore, Watts and Strogatz introduced the \emph{small-world model} in 1998 \cite{Watts:1998}.
 We briefly summarize some of its main findings.
 
-A Watts-Strogatz model interpolates between regular and random networks by rewiring edges of a lattice.
+A Watts-Strogatz model interpolates between lattices and random networks by rewiring edges of a lattice.
 We start with a regular ring lattice of $N$ nodes, where each node is connected to $m$ of its nearest neighbors on the lattice.
 Then, each edge is rewired randomly with probability $p$.
 Keeping $m$ constant from the beginning yields a scalable topology for different values of $p$.
@@ -760,7 +760,8 @@ Both values are normalized by their corresponding values in the initial lattice,
 \includegraphics{Watts_strogatz.pdf}
 \caption{Clustering coefficient and average shortest path length in the Watts-Strogatz model.
 Both quantities are  normalized to the the corresponding value for $p=0$.
-Results for networks with $N=1000$ nodes and $m=10$.}
+Results for networks with $N=1000$ nodes and $m=10$.
+Every data point is the average of 1000 realizations.}
 \label{fig:watts_strogatz}
 \end{SCfigure}
 
@@ -772,16 +773,56 @@ Instead, a network is called small-world network, if it shows a sufficiently lar
 This is the intermediate region in figure \ref{fig:watts_strogatz}. 
 
 \subsection{Barab\'asi-Albert model}
+Besides the critical behavior in \ER networks and the small-word effect in Watts-Strogatz networks, observations of real networks showed that they possess heavy-tailed degree distributions.
+A central question is, where such distributions originate from.
+Therefore, Barab\'asi and Albert introduced a network model in order to mimic the evolution of the world wide web \cite{Barabasi99}.
+The system under consideration is a network of websites (nodes) that are connected by hyperlinks (edges) and should not be confused with the physical network of internet routers.
+The evolution of the www-network is reduced to two simple principles.
+(1) new nodes are added to the system over time and (2) the new nodes have a higher probability to link to existing nodes of higher degree.
+The second principle can be summarized as a rich-get-richer phenomenon, i.e. the more links you have the more you will get.
+In network language, this mechanism is called \emph{preferential attachment}.
+It can be seen as the network version of what is also known as Matthew-effect or cumulative advantage \cite{Merton:1968fh,price:1976}.
 
+The preferential attachment model for growing networks is as follows:
+Start with a small number $m_0$ of nodes and add a new node at every time step.
+Connect the new node to $m<m_0$ existing nodes, each with probability $\Pi $.
+The probability for an existing node $i$ to be connected with the new one depends on the degree of $i$, i.e. $\Pi (k_i)=k_i/\sum _j k_j$.
+\begin{SCfigure}
+\includegraphics{BA_graph.pdf}
+\caption{Cumulative degree distribution of a \BA graph with $N=10^5$ nodes and $m_0=m=5$.
+The dashed line shows a power-law $P(k)\propto k^{-2}$.}
+\label{fig:BA_cdf}
+\end{SCfigure}
 
+Figure \ref{fig:BA_cdf} shows the degree distribution of a network generated this way.
+We have to point out that it is generally more appropriate to plot the cumulative distribution of such distributions, because it is more robust against statistical fluctuations, particularly in the tail of the distribution \cite{Clauset:2009}.
+As the figure shows, the distribution is well approximated by a power law of the form
+\[
+P(k)\propto k^{-\gamma }
+\]
+with $\gamma =2$ for the cumulative distribution and $\gamma = 3$ for the probability density function, respectively.
 
+Barab\'asi and Albert could show analytically that the resulting network has a power-law degree distribution of the form
+\begin{equation}\label{eq:BA_law}
+P(k)=2m^2 k^{-3}.
+\end{equation}
+Although the slope $\gamma = 3$ does not match the power-law exponent of the world wide web ($\gamma = 2.1\pm 0.1$ \cite{Barabasi99}) the model explains the existence of a scale-free degree distribution.
 
-\subsection{Other models}
-Exponential, Configuration, Attractiveness.
+As a conceptual model, the \BA model has a huge field of applications for theoretical questions.
+Nevertheless, the power-law degree behavior is also reproduced by fitness models \cite{Bianconi:2001,Fortunato:2006} and copy models \cite{Kleinberg99theweb}.
+Fitness models allow for higher flexibility in terms of the power-law exponent.
+However, the range of possible exponents cannot take values in the interval $0<\gamma < 2$ \cite{all_scale_free_are_sparse}.
 
-Das muss aber keine eigene Section haben.
+Besides the models discussed above, there are other network models, such as the configuration model or exponential network models. 
+The \emph{configuration model} is a more sophisticated random graph model that allows for arbitrary degree distributions \cite{Newman:book,Newman:2001pa}.
+Moreover, the degree sequence of a given network remains constant.
+In the configuration model one can consider higher order statistics, such as degree correlations and the clustering coefficient.
+\emph{Exponential random graphs} are related to the concept of the micro canonical ensemble in statistical mechanics \cite{Strauss:86}.
+In this context, an \ER graph is just one realization of an ensemble of possible random graphs.
+Exponential random graphs are an elegant way of treating networks, but their mathematical treatments appears intractable for many cases of interest \cite{Newman2003}.
 
-\subsection{Comparison}
+\subsection{Robustness and epidemics on different network types}
+
 
 
 \bibliographystyle{plain}

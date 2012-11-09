@@ -72,6 +72,11 @@ Chris~T Bauch and David J~D Earn.
 \newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 101(36):13391--13394, September
   2004.
 
+\bibitem{Bianconi:2001}
+G.~Bianconi and A.~L. Barab{\'a}si.
+\newblock Competition and multiscaling in evolving networks.
+\newblock {\em Europhysics Letters}, 54:436--442, 2001.
+
 \bibitem{Bollobas:1985}
 B~Bollob{\'a}s.
 \newblock {\em Random Graphs}.
@@ -115,6 +120,13 @@ Derek~J. de~Solla~Price.
 \newblock Networks of scientific papers.
 \newblock {\em Science}, 49(3683):510--515, 1965.
 
+\bibitem{price:1976}
+Derek~J. de~Solla~Price.
+\newblock A general theory of bibliometric and other cumulative advantage
+  processes.
+\newblock {\em Journal of the American Society for Information Science},
+  27(5):292--306, 1976.
+
 \bibitem{all_scale_free_are_sparse}
 Charo~I. Del~Genio, Thilo Gross, and Kevin~E. Bassler.
 \newblock All scale-free networks are sparse.
@@ -149,6 +161,11 @@ P~Erd\H{o}s and A~R\'enyi.
 Michalis Faloutsos, Petros Faloutsos, and Christos Faloutsos.
 \newblock On power-law relationships of the internet topology.
 \newblock {\em SIGCOMM Comput. Commun. Rev.}, 29(4):251--262, August 1999.
+
+\bibitem{Fortunato:2006}
+Santo Fortunato, Alessandro Flammini, and Filippo Menczer.
+\newblock Scale-free network growth by ranking.
+\newblock {\em Phys. Rev. Lett.}, 96:218701, May 2006.
 
 \bibitem{Freeman}
 L~C Freeman.
@@ -227,6 +244,11 @@ Jon~M. Kleinberg.
 \newblock Hubs, authorities, and communities.
 \newblock {\em ACM Comput. Surv.}, 31(4es), December 1999.
 
+\bibitem{Kleinberg99theweb}
+Jon~M. Kleinberg, Ravi Kumar, Prabhakar Raghavan, Sridhar Rajagopalan, and
+  Andrew~S. Tomkins.
+\newblock The web as a graph: measurements, models, and methods, 1999.
+
 \bibitem{Lentz:2012pre}
 Hartmut Lentz, Thomas Selhorst, and Igor~M Sokolov.
 \newblock {Spread of infectious diseases in directed and modular metapopulation
@@ -238,6 +260,12 @@ B~Mart{\'\i}nez-L{\'o}pez, A~M Perez, and JM~S{\'a}nchez-Vizca{\'\i}no.
 \newblock {Social Network Analysis. Review of General Concepts and Use in
   Preventive Veterinary Medicine}.
 \newblock {\em Transbound. Emerg. Dis.}, 56:109--120, 2009.
+
+\bibitem{Merton:1968fh}
+R~K Merton.
+\newblock {The Matthew Effect in Science: The reward and communication systems
+  of science are considered.}
+\newblock {\em Science}, 159(3810):56--63, January 1968.
 
 \bibitem{Milgram:1967}
 S~Milgram.
@@ -255,10 +283,21 @@ Mark E~J Newman.
 \newblock {The Structure and Function of Complex Networks}.
 \newblock {\em SIAM Review}, 45(2):167--256, 2003.
 
+\bibitem{Newman:book}
+Mark E~J Newman.
+\newblock {\em {Networks: An Introduction}}.
+\newblock Oxford University Press, Inc., New York, NY, USA, 2010.
+
 \bibitem{Newman:2004}
 Mark E~J Newman and Michelle Girvan.
 \newblock {Finding and evaluating community structure in networks}.
 \newblock {\em Phys. Rev. E}, 69:026113, January 2004.
+
+\bibitem{Newman:2001pa}
+Mark E~J Newman, Steven Strogatz, and D~Watts.
+\newblock {Random graphs with arbitrary degree distributions and their
+  applications}.
+\newblock {\em Phys. Rev. E}, 64:026118, January 2001.
 
 \bibitem{PageRank}
 Lawrence Page.
@@ -291,6 +330,11 @@ Parongama Sen, Subinay Dasgupta, Arnab Chatterjee, P.~A. Sreeram, G.~Mukherjee,
 Steven~S. Skiena.
 \newblock {\em The algorithm design manual}.
 \newblock Springer, London, 2nd edition, 2008.
+
+\bibitem{Strauss:86}
+David Strauss.
+\newblock On a general class of models for interaction.
+\newblock {\em SIAM Review}, 28(4):pp. 513--527, 1986.
 
 \bibitem{Zweig:closeness}
 S.~R. Sudarshan~Iyengar, C.~E. Veni~Madhavan, Katharina~A. Zweig, and Abhiram

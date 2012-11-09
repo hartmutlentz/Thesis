@@ -4,48 +4,48 @@ The top-level auxiliary file: 02-Formal.aux
 The style file: plain.bst
 Database file #1: /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
 Warning--entry type for "networkx" isn't style-file defined
---line 564 of file /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
+--line 678 of file /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
 Warning--entry type for "PageRank" isn't style-file defined
---line 631 of file /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
-You've used 61 entries,
+--line 745 of file /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
+You've used 69 entries,
             2118 wiz_defined-function locations,
-            900 strings with 12063 characters,
-and the built_in function-call counts, 19142 in all, are:
-= -- 1908
-> -- 795
+            949 strings with 13253 characters,
+and the built_in function-call counts, 21598 in all, are:
+= -- 2148
+> -- 900
 < -- 4
-+ -- 319
-- -- 254
-* -- 1362
-:= -- 3227
-add.period$ -- 182
-call.type$ -- 61
-change.case$ -- 301
++ -- 363
+- -- 288
+* -- 1542
+:= -- 3643
+add.period$ -- 205
+call.type$ -- 69
+change.case$ -- 341
 chr.to.int$ -- 0
-cite$ -- 61
-duplicate$ -- 707
-empty$ -- 1569
-format.name$ -- 254
-if$ -- 3955
+cite$ -- 69
+duplicate$ -- 792
+empty$ -- 1772
+format.name$ -- 288
+if$ -- 4457
 int.to.chr$ -- 0
-int.to.str$ -- 61
-missing$ -- 70
-newline$ -- 305
-num.names$ -- 122
-pop$ -- 278
+int.to.str$ -- 69
+missing$ -- 78
+newline$ -- 344
+num.names$ -- 138
+pop$ -- 315
 preamble$ -- 1
-purify$ -- 249
+purify$ -- 282
 quote$ -- 0
-skip$ -- 474
+skip$ -- 531
 stack$ -- 0
-substring$ -- 1385
-swap$ -- 87
+substring$ -- 1565
+swap$ -- 95
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 222
+type$ -- 252
 warning$ -- 0
-while$ -- 199
-width$ -- 63
-write$ -- 663
+while$ -- 224
+width$ -- 71
+write$ -- 748
 (There were 2 warnings)
