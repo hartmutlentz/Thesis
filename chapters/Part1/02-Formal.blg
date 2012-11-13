@@ -1,51 +1,46 @@
 This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: 02-Formal.aux
-The style file: plain.bst
+The style file: apalike.bst
 Database file #1: /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
-Warning--entry type for "networkx" isn't style-file defined
---line 678 of file /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
-Warning--entry type for "PageRank" isn't style-file defined
---line 745 of file /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
-You've used 69 entries,
-            2118 wiz_defined-function locations,
-            949 strings with 13253 characters,
-and the built_in function-call counts, 21598 in all, are:
-= -- 2148
-> -- 900
-< -- 4
-+ -- 363
-- -- 288
-* -- 1542
-:= -- 3643
-add.period$ -- 205
-call.type$ -- 69
-change.case$ -- 341
-chr.to.int$ -- 0
-cite$ -- 69
-duplicate$ -- 792
-empty$ -- 1772
-format.name$ -- 288
-if$ -- 4457
-int.to.chr$ -- 0
-int.to.str$ -- 69
-missing$ -- 78
-newline$ -- 344
-num.names$ -- 138
-pop$ -- 315
+You've used 70 entries,
+            1935 wiz_defined-function locations,
+            925 strings with 13183 characters,
+and the built_in function-call counts, 26527 in all, are:
+= -- 2636
+> -- 923
+< -- 55
++ -- 308
+- -- 296
+* -- 2221
+:= -- 4627
+add.period$ -- 211
+call.type$ -- 70
+change.case$ -- 489
+chr.to.int$ -- 70
+cite$ -- 70
+duplicate$ -- 1003
+empty$ -- 1953
+format.name$ -- 414
+if$ -- 5188
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 79
+newline$ -- 352
+num.names$ -- 210
+pop$ -- 376
 preamble$ -- 1
-purify$ -- 282
+purify$ -- 498
 quote$ -- 0
-skip$ -- 531
+skip$ -- 767
 stack$ -- 0
-substring$ -- 1565
-swap$ -- 95
+substring$ -- 2084
+swap$ -- 93
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 252
+type$ -- 396
 warning$ -- 0
-while$ -- 224
-width$ -- 71
-write$ -- 748
-(There were 2 warnings)
+while$ -- 227
+width$ -- 0
+write$ -- 905

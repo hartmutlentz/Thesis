@@ -1,7 +1,12 @@
 \documentclass[openright,twoside,headsepline]{scrbook}
 \usepackage[applemac]{inputenc}
-\usepackage{graphicx,xcolor,natbib,hyperref} % obsolete in HU-diss
+\usepackage{graphicx,xcolor,hyperref} % obsolete in HU-diss
+\usepackage[round,authoryear]{natbib}
+\setlength\bibhang{2em} 
+
 \input{/Users/lentz/Documents/GitHub_locals/Thesis/adjustment}
+
+
 
 \begin{document}
 \graphicspath{{/Users/lentz/Documents/GitHub_locals/Thesis/images/}}
@@ -16,7 +21,7 @@ In addition, section xx describes an efficient computer implementation of networ
 
 \section{Models of infectious diseases}
 %\subsection{Very briefly:}
-\paragraph{Main observations\color{Cayenne}{.}} Large scale patterns of epidemics have been measured \cite{giehl:2012}.
+\paragraph{Main observations\color{Cayenne}{.}} Large scale patterns of epidemics have been measured \citep{giehl:2012}.
 The spread of infectious diseases is something that everyone is familiar with.
 
 \paragraph{Research field: Epidemiology\color{Cayenne}{.}} One goal of epidemiology is to understand the principles behind the spreading process, i.e. the way how a disease is transmitted through a population.
@@ -30,38 +35,41 @@ Forecast models incorporate as much information as possible and the main focus i
 
 This section summarizes the mathematical framework that roughly reproduces the behavior of infectious diseases and briefly discusses some major insights.
 
-
 \subsection{Development of mathematical epidemiology}
 The modeling of infection diseases mostly uses the concept of compartment models as explained in section xx.
-Major contributions to the modern theoretical framework were provided by \cite{kermack:27}, \cite{bailey:57} and \cite{andersonmay:92}.
-In his review about the mathematics of infectious diseases Hethcote reports a model for smallpox was already formulated in 1760 by D. Bernoulli (\cite{Hethcote:2000} and references therein).
-In the early 20th century, people developed mathematical models for epidemics: a discrete time model in 1906 \cite{Hamer} and a differential equation model in 1911 \cite{Ross}.
-The epidemic threshold (section \ref{sec:sir_model}) was found in the 1920s \cite{kermack:27}.
-Starting from Bailey's book \cite{bailey:57} in the 1950s, the modeling of infectious diseases became a major scientific research field.
-Modern models of infectious diseases include vaccination, demographic structure, disease vectors, quarantine and even game theory (\cite{Bauch:2004} and references in \cite{Hethcote:2000}).
+Major contributions to the modern theoretical framework were provided by \citep{kermack:27}, \citep{bailey:57} and \citep{andersonmay:92}.
+In his review about the mathematics of infectious diseases Hethcote reports a model for smallpox was already formulated in 1760 by D. Bernoulli (\citep{Hethcote:2000} and references therein).
+In the early 20th century, people developed mathematical models for epidemics: a discrete time model in 1906 \citep{Hamer} and a differential equation model in 1911 \citep{Ross}.
+The epidemic threshold (section \ref{sec:sir_model}) was found in the 1920s \citep{kermack:27}.
+Starting from Bailey's book \citep{bailey:57} in the 1950s, the modeling of infectious diseases became a major scientific research field.
+Modern models of infectious diseases include vaccination, demographic structure, disease vectors, quarantine and even game theory (\citep{Bauch:2004} and references in \citep{Hethcote:2000}).
 The availability of contact data in recent years led to a strong impact on network analysis on epidemiology.
-Well known concepts of mathematics (graph theory \cite{Bollobas:1985}) and social sciences (social network analysis \cite{WassermanFaust}) have been adopted to disease modeling, since the connections between individuals are related to their epidemic spreading potential \cite{Keeling:2005}.
+Well known concepts of mathematics (graph theory \citep{Bollobas:1985}) and social sciences (social network analysis \citep{WassermanFaust}) have been adopted to disease modeling, since the connections between individuals are related to their epidemic spreading potential \citep{Keeling:2005}.
 
 \subsection{Infection dynamics}
-
-The spread of infectious diseases can be modeled in terms of compartment models as described in section xx.
+The spread of infectious diseases can be modeled in terms of compartment models as described in sections \ref{sec:si_model} and\ref{sec:sir_model}.
 We differentiate between \emph{conceptional models} and \emph{realistic disease models}.
-While the former class is used to provide conceptual results as for the computation of thresholds or to test theories \cite{Hethcote:2000}, realistic disease models use as many aspects as possible to provide a forecast of the spreading process.
+While the former class is used to provide conceptual results as for the computation of thresholds or to test theories \citep{Hethcote:2000}, realistic disease models use as many aspects as possible to provide a forecast of the spreading process.
 Realistic disease models can be very complex and are beyond the scope of this work, thus we focus on the use of conceptional models.
-The following section is inspired by the Lecture notes of J.~R.~Chasnov \cite{Chasnov:2010}.
+The following section is inspired by the Lecture notes of J.~R.~Chasnov \citep{Chasnov:2010}.
 
 \subsection{SI model}\label{sec:si_model}
 Let us consider a population of $N$ individuals.
 In the simplest case, the infection status of each individual is either susceptible or infected and there are no births and deaths on the population.
 Susceptible individuals become infected, if they are in contact with an infected.
+In epidemiology, the classes susceptible and infected are called \emph{compartments} and every new infection increases the population of the infected compartment following the local reaction scheme
+\[
+S+I \rightarrow 2 I.
+\]
 This mimics the behavior of an infectious disease without immunization, i.e. infected individuals stay permanently infected.
 
-Provided that $\alpha $ is the rate, under which new susceptible become infected, the SI-model is as follows:
+Provided that $\alpha $ is the rate, under which new susceptible become infected, we obtain the differential equation model
 \begin{align}\label{eq:si_model}
 \frac{dS}{dt} &= -\alpha SI \nonumber \\
 \frac{dI}{dt} &= \alpha SI,
 \end{align}
 where $S$ and $I$ are the numbers of susceptible and infected individuals respectively.
+The model \eqref{eq:si_model} is called SI-model.
 The total population is $N=S+I$.
 Thus, \eqref{eq:si_model} can be rewritten as
 \[
@@ -72,9 +80,9 @@ Hence, in the limit $t\rightarrow \infty $ the whole population is infected ($I(
 
 \subsection{SIR model}\label{sec:sir_model}
 In contrast of the infection dynamics introduced in the previous section, many epidemics allow for an immunization of the individuals.
-Examples are measles or whooping cough \cite{grenfell:92} \cite{andersonmay:92}.
-In this case, individuals recover from the disease after being infected for a certain time period.
-The infection scheme has to be extended to susceptible-infected-recovered (SIR) as in the following infection model \cite{kermack:27}:
+Examples are measles or whooping cough \citep{grenfell:92} \citep{andersonmay:92}.
+In this case, individuals recover from the disease after being infected for a certain time period, which is modeled by an additional compartment for the recovered population.
+The infection scheme is extended to susceptible-infected-recovered (SIR) as in the following infection model \citep{kermack:27}:
 \begin{align}\label{eq:sir_model}
 \frac{dS}{dt} &= -\alpha SI \nonumber \\
 \frac{dI}{dt} &= \alpha SI -\gamma I \nonumber \\
@@ -146,7 +154,7 @@ A simple way to obtain the outbreak size $R_\infty $ is to use equations \eqref{
 \[
 \frac{dS}{dR}=-\frac{\alpha }{\gamma } S 
 \]
-and separate the variables \cite{Chasnov:2010}.
+and separate the variables \citep{Chasnov:2010}.
 This yields
 \[
 \int _{S_*} ^{N-R_\infty} \frac{dS}{S}=-\frac{\alpha }{\gamma } \int _{R_*} ^{R_\infty} dR .
@@ -192,7 +200,7 @@ However, it is one of the main objectives in epidemiology to have an understandi
 Infection rates their selves can cause complex infection dynamics.
 
 The term $\alpha I$ used in section \ref{sec:sir_model} is a special, very simple case of an infection rate.
-More generally, we have to replace $\alpha I$ by an abstract infection rate $\lambda $ containing more information about the interaction between susceptible and infected individuals \cite{Keeling:2005}.
+More generally, we have to replace $\alpha I$ by an abstract infection rate $\lambda $ containing more information about the interaction between susceptible and infected individuals \citep{Keeling:2005}.
 Thus, the equation for the infected becomes
 \[
 dI/dt = -\lambda S -\gamma I.
@@ -203,7 +211,7 @@ This information could be given as contact networks, demographic contact structu
 
 In most cases, detailed information about mixing is not available.
 Instead, we assume \emph{random mixing} of the population, i.e. every individual can be in contact with every other individual.
-This yields a transmission rate \cite{Keeling:2005}
+This yields a transmission rate \citep{Keeling:2005}
 \begin{equation}\label{eq:force_of_infection}
 \lambda = \tau n \frac{I}{N}\equiv \beta \frac{I}{N},
 \end{equation}
@@ -309,7 +317,7 @@ At every time-step there is a certain probability to move to another location.
 At every location there is a probability for the drunkard to go left or right.
 The node rightmost node is an absorbing state and could model a park bench.
 Weights at arrowheads mark the transition probability.
-(inspired by \cite{Aldous_book}).}
+(inspired by \citep{Aldous_book}).}
 \label{fig:markov_chain}
 %\end{center}
 \end{SCfigure}
@@ -321,7 +329,7 @@ The equilibrium state $\mathbf{p}_\mathrm{eq}$ follows in the limit $\lim _{n\ri
 
 As a special case of transition matrices, the author would like to name the \emph{Google matrix}.
 It describes a random walk on a network, but allows for shortcuts to any node in the network with a certain probability.
-The eigenvectors of Google matrices are used for the computation of node rankings according to the PageRank-Algorithm \cite{PageRank}.
+The eigenvectors of Google matrices are used for the computation of node rankings according to the PageRank-Algorithm \citep{PageRank:}.
 
 Finally, the \emph{Laplace-matrix} of a network is an appropriate representation to model diffusion processes.
 For undirected networks the Laplace-matrix is defined as
@@ -329,10 +337,10 @@ For undirected networks the Laplace-matrix is defined as
 \mathcal{L}=\mathbf{D}-\mathbf{A},
 \end{equation}
 where $\mathbf{A}$ is the adjacency matrix and $\mathbf{D}$ is a diagonal matrix containing the degree $d_i=\sum _j a_{ij}$ of each node.
-The definition \eqref{eq:laplace_matrix} has strong analogies to the discrete Laplace-Operator \cite{Press:1992}.
+The definition \eqref{eq:laplace_matrix} has strong analogies to the discrete Laplace-Operator \citep{Press:1992}.
 Consequently, they can be used to model diffusion processes on graphs in analogy to Laplace operators in continuous systems (see section xx).
 
-The spectra of adjacency and Laplace matrices contain information about the evolution/history of networks \cite{Banerjee2009}.
+The spectra of adjacency and Laplace matrices contain information about the evolution/history of networks \citep{Banerjee2009}.
 
 
 \subsection{Network measures}
@@ -361,9 +369,9 @@ Finally, $G_0=(V_0,E_0)$ is a \emph{subgraph} of $G=(V,E)$, if $V_0 \subseteq V$
 \subsubsection{Microscopic measures}\label{sec:micro_measures}
 Given a network, an important question is, if some nodes are more important as other nodes.
 Therefore, we summarize measures of the \emph{centrality} of nodes.
-The idea if centrality mainly goes back to social network analysis \cite{WassermanFaust,Freeman}, but has been widely adopted and extended in network science.
+The idea if centrality mainly goes back to social network analysis \citep{WassermanFaust,Freeman}, but has been widely adopted and extended in network science.
 I restrict myself to those measures, that are indispensable when describing networks.
-A more exhaustive overview of centrality measures is found in the review article \cite{MartinezLopez2009} or in online documentations of network analysis software, e.g.~\cite{hagberg2008,networkx}.
+A more exhaustive overview of centrality measures is found in the review article \citep{MartinezLopez2009} or in online documentations of network analysis software, e.g.~\citep{hagberg2008,networkx:}.
 In the following, $N$ denotes the order of the network (the number of nodes) and $m$ the number of edges.
 %
 \begin{figure}[htbp]
@@ -407,7 +415,7 @@ In this case, the corresponding terms $1/\infty $ do not make contributions in e
 The closeness centrality is capable to identify nodes with short average pathways to other parts of the network.
 Identifying high closeness nodes is therefore reasonable for network navigation.
 This holds in particular, if the exact route to the destination is unknown, because nodes with high closeness are probable to reach many destinations quickly.
-In \cite{Zweig:closeness} it was shown that nodes of high closeness can act as landmarks for navigation.
+In \citep{Zweig:closeness} it was shown that nodes of high closeness can act as landmarks for navigation.
 
 
 \paragraph{Betweenness\color{Cayenne}{.}}
@@ -420,17 +428,17 @@ b(i)=\sum _{s\neq i \neq t} \frac{\sigma _{st}(i)}{\sigma _{st}}
 \end{equation}
 where $\sigma _{st}$ is the number of shortest paths between nodes $s$ and $t$ and $\sigma _{st} (i)$ is the number of shortest paths between $s$ and $t$ going through node $i$.
 The computation of betweenness is expensive using equation \eqref{eq:betweenness}.
-Therefore, an efficient algorithm was introduced by Brandes \cite{Brandes:2001p2757}.
+Therefore, an efficient algorithm was introduced by Brandes \citep{Brandes:2001p2757}.
 
 Note that bridge nodes might look inconspicuous in the first place, e.g. they could have only two links.
 Removing node $5$ in figure \ref{fig:example_net}, for instance, would divide the network into two disjoint subgraphs with nodes $V_1=(1,2,3)$ and $V_2=(5,6,7,8,9)$ respectively.
-Therefore, removing nodes of high betweenness from the network has been proven useful in order to divide networks into smaller components \cite{girvan2002,Newman:2004}.
+Therefore, removing nodes of high betweenness from the network has been proven useful in order to divide networks into smaller components \citep{girvan2002,Newman:2004}.
 
 
 \paragraph{Eigenvector centrality\color{Cayenne}{.}}
 The idea of eigenvector centrality can be easily realized by considering Markov chains as in section \ref{sec:network_matrices}.
 Frequent multiplication of the transition matrix $\mathbf{M}$ with a random vector gives the largest eigenvector of $\mathbf{M}$.
-This relation is known as power method or van Mises iteration \cite{van_mises}.
+This relation is known as power method or van Mises iteration \citep{van_mises}.
 The dominant eigenvector of the transition matrix gives the equilibrium state of the system.
 Using this state as a measure of centrality assigns every node with the probability to find a random walker here after a long period.
 The principle behind the dominant eigenvector of an adjacency matrix $\mathbf{A}$ is that important nodes are likely to be connected to other important nodes.
@@ -443,16 +451,16 @@ This equation can be rewritten as
 \begin{equation}
 \mathbf{Ax}=\lambda \mathbf{x}.
 \end{equation}
-It follows from the Perron-Frobenius-Theorem that $\lambda $ must be the largest eigenvalue of $\mathbf{A}$ in order to guarantee all entries of $\mathbf{x}$ to be positive \cite{Bonacich:1972,Bonacich:2007}.
+It follows from the Perron-Frobenius-Theorem that $\lambda $ must be the largest eigenvalue of $\mathbf{A}$ in order to guarantee all entries of $\mathbf{x}$ to be positive \citep{Bonacich:1972,Bonacich:2007}.
 The theorem guaranties unique solutions only to adjacency matrices of connected networks.
 Hence, eigenvector centrality is only defined for connected graphs.
-Nevertheless, the eigenvector centrality can be computed for each component separately, if a graph is not connected \cite{Bonacich:2007}.
+Nevertheless, the eigenvector centrality can be computed for each component separately, if a graph is not connected \citep{Bonacich:2007}.
 
-Some important variants of eigenvector centrality are the PageRank and HITS algorithm \cite{Kleinberg:1999,PageRank}.
+Some important variants of eigenvector centrality are the PageRank and HITS algorithm \citep{Kleinberg:1999,PageRank:}.
 
 \paragraph{Node components and range\color{Cayenne}{.}}
 The component of a node is the set of nodes it is connected to by a path of any finite length.
-We call the size of this set the \emph{range} of a node \cite{Lentz:2012pre}.
+We call the size of this set the \emph{range} of a node \citep{Lentz:2012pre}.
 In directed networks, we distinguish between the out-component and in-component of a node.
 The size of the former is its range and the size of the latter is its reachability.
 
@@ -473,17 +481,17 @@ Lattices are special cases of regular graphs.
 In this case, the degree distribution collapses to a single peak without statistical variation.
 
 Observations of real-world networks have shown that some networks exhibit exponential decaying degree distributions, i.e. there is a a variance of degrees, but the system possesses a \emph{typical degree}.
-Examples are social networks and technological and economic networks, such as electric power-grids and traffic networks \cite{Amaral:2000,indian_railway}.
+Examples are social networks and technological and economic networks, such as electric power-grids and traffic networks \citep{Amaral:2000,indian_railway}.
 
 The nodes of the vast majority of large real-world networks, however, show a degree variation over several orders of magnitude.
-Examples are the network of internet routers \cite{Faloutsos:1999}, www links \cite{Barabasi99} or scientific citations \cite{Price:1965}.
+Examples are the network of internet routers \citep{Faloutsos:1999}, www links \citep{Barabasi99} or scientific citations \citep{Price:1965}.
 Their degree distributions are approximated by \emph{power-laws} of the form
 \begin{equation}\label{eq:scale-free_distr}
 P(k) \propto k^{-\gamma } ,
 \end{equation}
-where $2<\gamma <3$ for most observed networks \cite{all_scale_free_are_sparse,Newman2003}.
+where $2<\gamma <3$ for most observed networks \citep{all_scale_free_are_sparse,Newman2003}.
 The approximation is reasonable for the tails of the distributions, i.e. for large values of $k$.
-The identification of power-law distributions in data is discussed in \cite{Clauset:2009}.
+The identification of power-law distributions in data is discussed in \citep{Clauset:2009}.
 
 Distributions of the form \eqref{eq:scale-free_distr} are called \emph{scale-free}, because they do not show a typical value (mean).
 Instead, the network has nodes with only a few neighbors and hubs with very large degrees.
@@ -499,10 +507,10 @@ Hubs are highlighted in red.}
 \end{center}
 \end{figure}
 
-Scale-free networks have attained remarkable attention in the last years and many real-world networks have been conjectured as scale-free \cite{Newman2003,Barabasi99}.
-Important consequences of this classification were found to be a change in the threshold behavior of epidemic processes \cite{PastorSatorras:2001} and their topological resilience to node failures \cite{Albert:2000}.
-The degree distributions of collaboration networks were well fitted by a scale-free distribution with a sharp cut-off \cite{Newman:2001p,Albert:2000p}, i.e. $P(K)\propto k^{-\gamma }e^{-k/\kappa }$ with fitting constants $\gamma $ and $\tau $.
-In \cite{Amaral:2000}, a possible explanation for the existence of an exponential cut-off was the aging of nodes, indicating that real systems possess a natural upper bound for their number of links.
+Scale-free networks have attained remarkable attention in the last years and many real-world networks have been conjectured as scale-free \citep{Newman2003,Barabasi99}.
+Important consequences of this classification were found to be a change in the threshold behavior of epidemic processes \citep{PastorSatorras:2001} and their topological resilience to node failures \citep{Albert:2000}.
+The degree distributions of collaboration networks were well fitted by a scale-free distribution with a sharp cut-off \citep{Newman:2001p,Albert:2000p}, i.e. $P(K)\propto k^{-\gamma }e^{-k/\kappa }$ with fitting constants $\gamma $ and $\tau $.
+In \citep{Amaral:2000}, a possible explanation for the existence of an exponential cut-off was the aging of nodes, indicating that real systems possess a natural upper bound for their number of links.
 
 
 
@@ -518,11 +526,11 @@ C=\frac{\operatorname{tr}(\mathbf{A}^3)}{\operatorname{sum} (A^2) -\operatorname
 \end{equation}
 where $\operatorname{tr}(\mathbf{A} )$ denotes the trace of $\mathbf{A}$ and $\operatorname{sum} (\mathbf{A})=\sum _{ij} a_{ij}$ is the sum over all elements of $\mathbf{A}$.
 In this work, we focus on the clustering coefficient as a macroscopic property of networks.
-It should be noted that there is also a node clustering coefficient defined by $c_i=\sum _{jl} a_{ij}a_{jl}a_li/(k_i (k_i -1))$ \cite{Watts:1998,dynamical_processes}.
+It should be noted that there is also a node clustering coefficient defined by $c_i=\sum _{jl} a_{ij}a_{jl}a_li/(k_i (k_i -1))$ \citep{Watts:1998,dynamical_processes}.
 Thus, a network clustering coefficient can also be defined by the average $\mean{c_i}$, which however gives slightly different values as \eqref{eq:clustering_coefficient} and should not be mixed up with the latter.
 
 
-The clustering coefficient plays an essential role in the small-world model of networks (\cite{Watts:1998}, section \ref{sec:network_models}) and has been found to be an important property not only in social networks \cite{Holland1971}, but in many real-world networks \cite{Newman2003}.
+The clustering coefficient plays an essential role in the small-world model of networks (\citep{Watts:1998}, section \ref{sec:network_models}) and has been found to be an important property not only in social networks \citep{Holland1971}, but in many real-world networks \citep{Newman2003}.
 
 \paragraph{Average shortest path length\color{Cayenne}{.}}
 The distance matrix $d_{ij}$ contains the distance between nodes $i$ and $j$ in the network.
@@ -531,10 +539,10 @@ Ignoring those node pairs with infinite distance (i.e. setting $d_{ij}=0$) gives
 l=\frac{1}{N(N-1)}\sum _{i, j} d_{ij}
 \end{equation}
 
-It is a common feature of many networks that the average shortest path length is much smaller than the number of nodes in the network, i.e. typically networks contain shortcuts \cite{RevModPhys.74}.
-An early and impressive example was shown by Milgrim, where the average distance between two randomly chosen people in the united states was measured to be 6 \cite{Milgram:1967}. 
+It is a common feature of many networks that the average shortest path length is much smaller than the number of nodes in the network, i.e. typically networks contain shortcuts \citep{RevModPhys.74}.
+An early and impressive example was shown by Milgrim, where the average distance between two randomly chosen people in the united states was measured to be 6 \citep{Milgram:1967}. 
 This property is called \emph{small world} phenomenon.
-It is an important building block of the Watts-Strogatz network model (\cite{Watts:1998}, section \ref{sec:watts_strogatz_model}).
+It is an important building block of the Watts-Strogatz network model (\citep{Watts:1998}, section \ref{sec:watts_strogatz_model}).
 
 
 
@@ -542,18 +550,18 @@ It is an important building block of the Watts-Strogatz network model (\cite{Wat
 A connected component $G_\mathrm{cc}=(V_\mathrm{cc},E_\mathrm{cc})$ is a subgraph of graph $G=(V,E)$, where there is a path between any node pair in $V_\mathrm{cc}$.
 In directed graphs, connected component in the sense above is called \emph{strongly connected}.
 A component is called \emph{weakly connected}, if it is connected ignoring the direction of edges.
-Many real-world networks contain one largest connected component that is typically much larger than all other components of the system.
+Many real-world networks contain one \emph{largest connected component} (LCC) that is typically much larger than all other components of the system.
 This component is therefore called \emph{giant component}.
 
-In fact, the emergence of a giant component in a network is a 2nd order phase transition and is a graph theoretical percolation process \cite{Newman2003}. 
+In fact, the emergence of a giant component in a network is a 2nd order phase transition and is a graph theoretical percolation process \citep{Newman2003}. 
 Components play an important role for epidemic processes, because the component membership of each node defines the maximum outbreak size of any epidemic started at this very node.
 In the directed case, maximum outbreak sizes are bounded by the underlying strongly connected component (lower bound) and the out component of the starting node (higher bound).
-The general component structure of directed networks is discussed in \cite{Dorogovtsev:2001jd} and we provide further discussion of their epidemiological relevance in section xx.
+The general component structure of directed networks is discussed in \citep{Dorogovtsev:2001jd} and we provide further discussion of their epidemiological relevance in section xx.
 
 
 \paragraph{Accessibility\color{Cayenne}{.}}
 If we directly connect each node of a network with all other nodes it is connected to by a path of whatever length, we get the \emph{accessibility} of the network.
-Accessibility measures the ability of each node to reach destinations, which is in particular important for transportation systems \cite{Garrison:1960up}.
+Accessibility measures the ability of each node to reach destinations, which is in particular important for transportation systems \citep{Garrison:1960up}.
 Mathematically, we define the accessibility graph (also \emph{transitive closure}) of a network as follows:
 Let $G=(V,E)$ be a network.
 Than $G^*=(V,E^*)$ is the accessibility graph of $G$ with $(u,v) \in E^*$, if there is a path from $u$ to $v$.
@@ -567,10 +575,10 @@ where $\mathbf{A}$ is the adjacency matrix of $G$ and the elements of $\mathbf{C
 
 \subsection{Implementation}\label{sec:implementation}
 In order to efficiently implement networks and their analysis on a computer, it is necessary to use data structures adjusted to these problems.
-A short and transparent introduction to data structures and algorithms is in the book of Skiena \cite{algorithm_design}.
+A short and transparent introduction to data structures and algorithms is in the book of Skiena \citep{algorithm_design}.
 In this section, we discuss some essential data structures appropriate for network analysis and give a brief description of fundamental algorithms.
 The purpose of this section is not to list different algorithms and source code, but rather to sketch the basic ideas behind the data structures and algorithms.
-For source code of data structures and algorithms, the reader is encouraged to the lecture of \cite{algorithm_design}.
+For source code of data structures and algorithms, the reader is encouraged to the lecture of \citep{algorithm_design}.
 
 \paragraph{Matrix implementation\color{Cayenne}{.}}
 To begin with, we consider the implementation of adjacency matrices as introduced in section \ref{sec:network_matrices}.
@@ -579,7 +587,7 @@ All adjacency matrices are by definition square matrices.
 Their entries are either $0$ or $1$, and can take any floating number value for weighted networks.
 In this work, we neglect negative edge weights.
 The number of nodes in most complex network datasets is relatively large. 
-Starting with small networks (100 nodes, conference contacts \cite{isella2011}), complex networks can be gigantic (0.5 billion nodes, twitter tweeds \cite{Yang:2011}).
+Starting with small networks (100 nodes, conference contacts \citep{isella2011}), complex networks can be gigantic (0.5 billion nodes, twitter tweeds \citep{Yang:2011}).
 Note that the size of the adjacency matrices scales with the square of the networks size, hence large networks intractable for straightforward computer-based matrix analyses.
 
 Nevertheless, there is one feature, that most adjacency matrices of real-world networks have in common:
@@ -627,7 +635,7 @@ It should be noted that in general there exist multiple BFS and DFS trees for ea
 Both search algorithms are used in many applications.
 BFS is efficient to compute shortest paths in unweighted networks.
 With every generation in a BFS tree, the distance from the starting node is incremented by 1, and thus the set of nodes with a certain distance from the starting node can be directly read from the BFS tree (see figure \ref{fig:dfs_bfs}).
-Shortest paths in weighted networks can be identified using a the algorithm of Dijkstra \cite{Dijkstra:1959}.
+Shortest paths in weighted networks can be identified using a the algorithm of Dijkstra \citep{Dijkstra:1959}.
 DFS can be used to identify connected components in directed graphs (see next section).
 
 Implementations of graph structures as discussed above are for example available in the libraries \verb"networkx" (Python), \verb"igraph" (C, Python, R), \verb"Lemon" and \verb"Boost" (C++).
@@ -642,9 +650,9 @@ For small problem sizes, it is possible just to try out all possible combination
 The number of possible combinations, however, grows factorial with the system size, i.e. finding a solution takes $t\propto n!$ for $n$ cities.
 In other words, if the problem could be solved for 20 cities in 1 second, it would take 21 seconds to solve it for 21 cities, 7 minutes for 22 cities and 3 million years for 30 cities!
 
-A more exhaustive overview about hard problems is in \cite{algorithm_design} and the references therein.
+A more exhaustive overview about hard problems is in \citep{algorithm_design} and the references therein.
 Generally, heuristic methods have to be used in order to get an approximate solution.
-It should be noted that the \emph{maximum clique} problem (section xx) and the \emph{graph partitioning} (see section xx, \cite{brandes2007}) belong to the class of hard problems.
+It should be noted that the \emph{maximum clique} problem (section xx) and \emph{graph partitioning} (see section xx, \citep{brandes2007}) belong to the class of hard problems.
 
 
 \section{Network models and epidemiology}\label{sec:network_models}
@@ -655,7 +663,7 @@ At the end of the section, we give a comparison between the different models an 
 
 \subsection{Lattice model}
 Lattice models are inherently related to homogeneously distributed geographical positions of individuals.
-They show a high degree of regularity and their potential for SIS and SIR spreading processes has been studied in \cite{Harris:1974} and \cite{Bak:1990}, respectively.
+They show a high degree of regularity and their potential for SIS and SIR spreading processes has been studied in \citep{Harris:1974} and \citep{Bak:1990}, respectively.
 
 \subsection{Erd\H{o}s-R\'enyi model}
 The Erd\H{o}s-R\'enyi model makes use of probabilistic methods to analyze network properties and is therefore a random graph model.
@@ -688,12 +696,12 @@ i.e. there is variation in the degrees, but there still remains a \emph{typical 
 It is an interesting feature of random graphs that for different edge occupation probabilities they show different phases.
 For low values of $p$, nodes tend to form small connected components, whereas for increasing $p$ suddenly a \emph{giant component} emerges.
 This giant component contains almost all nodes of the network.
-The behavior for large values of $p$ has first been studied by Erd\H{o}s and R\'enyi \cite{ER:1959}.
-A few years later, Erd\H{o}s and R\'enyi found thresholds for the emergence of subgraphs and a giant connected component \cite{ER:1960,ER:1961}.
-Results for the occurrence of different subgraphs are summarized in \cite{Albert:2002}.
+The behavior for large values of $p$ has first been studied by Erd\H{o}s and R\'enyi \citep{ER:1959}.
+A few years later, Erd\H{o}s and R\'enyi found thresholds for the emergence of subgraphs and a giant connected component \citep{ER:1960,ER:1961}.
+Results for the occurrence of different subgraphs are summarized in \citep{Albert:2002}.
 
 The size of the giant component and the mean component size can be computed analytically for random networks.
-Following Newman \cite{Newman2003}, we observe that the probability that a node is in the giant component is equivalent to the probability that none of its neighbors are part of the giant component.
+Following Newman \citep{Newman2003}, we observe that the probability that a node is in the giant component is equivalent to the probability that none of its neighbors are part of the giant component.
 This probability is given by $u^k$, if $u$ is the fraction of nodes that are not in the giant component, i.e. $u$ is the probability that a randomly chosen node is not in the giant component.
 An expression for $u$ can be obtained by averaging $u^k$ over all degrees $k$.
 The degree distribution is given by \eqref{eq:poisson_distribution}.
@@ -705,7 +713,7 @@ The size of the giant component is $S=1-u$ and consequently
 \begin{equation}\label{eq:giant_component}
 S=1-e^{-\mean{k}S}.
 \end{equation}
-One can use similar arguments to obtain an expression for the mean cluster size \cite{Newman2003}
+One can use similar arguments to obtain an expression for the mean cluster size \citep{Newman2003}
 \begin{equation}\label{eq:mean_cluster_size}
 \mean{s}=\frac{1}{1-\mean{k}+\mean{k}S}.
 \end{equation}
@@ -733,7 +741,7 @@ Starting at some node in the network, the average number of nodes at distance 1 
 Hence, the average number of neighbors at distance $d$ is $\mean{k}^d$.
 In order to reach all $N$ nodes in the network, we need $r$ steps, where $r$ is determined by $\mean{k}^r\simeq N$.
 Thus, $r$ approximates the diameter of the network.
-Since we are only interested in the rough behavior of the average shortest path length $\mean{l}$, we approximate it by $r$ \cite{dynamical_processes} and obtain 
+Since we are only interested in the rough behavior of the average shortest path length $\mean{l}$, we approximate it by $r$ \citep{dynamical_processes} and obtain 
 \begin{equation}\label{eq:er_av_shortest}
 \mean{l}\simeq \frac{\log N}{\log \mean{k}}.
 \end{equation}
@@ -743,10 +751,10 @@ This relation is found in many complex networks and is an indication for the sma
 \subsection{Watts-Strogatz model}\label{sec:watts_strogatz_model}
 We have seen that random graphs can reproduce some important properties of real-world networks, particularly the existence of a giant component and small average shortest path length.
 Nevertheless, equation \eqref{eq:er_clustering} demonstrates that the tendency to form connected triangles is absent in large scale \ER networks.
-Observations show, however, that many real-world networks show this feature \cite{WassermanFaust,Newman2003,Milgram:1967}.
+Observations show, however, that many real-world networks show this feature \citep{WassermanFaust,Newman2003,Milgram:1967}.
 It is characteristic for social networks in particular to have a high degree of clustering and at the same time short-cuts allowing for small average shortest path distances.
 In this sense they can be seen as an intermediate structure between lattices (high local order) and random graphs (small shortest path distances).
-Therefore, Watts and Strogatz introduced the \emph{small-world model} in 1998 \cite{Watts:1998}.
+Therefore, Watts and Strogatz introduced the \emph{small-world model} in 1998 \citep{Watts:1998}.
 We briefly summarize some of its main findings.
 
 A Watts-Strogatz model interpolates between lattices and random networks by rewiring edges of a lattice.
@@ -766,7 +774,7 @@ Every data point is the average of 1000 realizations.}
 \end{SCfigure}
 
 The degree distribution collapses to a single peak for $p=0$.
-In their paper about properties of small-world networks \cite{Barrat:2000fj}, Barrat and Weigt showed that the distribution converges to a Poisson distribution in the limit $p\rightarrow 1$ and found an analytical approximation for the clustering coefficient for different values of $p$.
+In their paper about properties of small-world networks \citep{Barrat:2000fj}, Barrat and Weigt showed that the distribution converges to a Poisson distribution in the limit $p\rightarrow 1$ and found an analytical approximation for the clustering coefficient for different values of $p$.
 
 There is no sharp criterion for a network to be called small-world network.
 Instead, a network is called small-world network, if it shows a sufficiently large clustering coefficient \emph{and} a sufficiently low average shortest path length.
@@ -775,13 +783,13 @@ This is the intermediate region in figure \ref{fig:watts_strogatz}.
 \subsection{Barab\'asi-Albert model}
 Besides the critical behavior in \ER networks and the small-word effect in Watts-Strogatz networks, observations of real networks showed that they possess heavy-tailed degree distributions.
 A central question is, where such distributions originate from.
-Therefore, Barab\'asi and Albert introduced a network model in order to mimic the evolution of the world wide web \cite{Barabasi99}.
+Therefore, Barab\'asi and Albert introduced a network model in order to mimic the evolution of the world wide web \citep{Barabasi99}.
 The system under consideration is a network of websites (nodes) that are connected by hyperlinks (edges) and should not be confused with the physical network of internet routers.
 The evolution of the www-network is reduced to two simple principles.
 (1) new nodes are added to the system over time and (2) the new nodes have a higher probability to link to existing nodes of higher degree.
 The second principle can be summarized as a rich-get-richer phenomenon, i.e. the more links you have the more you will get.
 In network language, this mechanism is called \emph{preferential attachment}.
-It can be seen as the network version of what is also known as Matthew-effect or cumulative advantage \cite{Merton:1968fh,price:1976}.
+It can be seen as the network version of what is also known as Matthew-effect or cumulative advantage \citep{Merton:1968fh,price:1976}.
 
 The preferential attachment model for growing networks is as follows:
 Start with a small number $m_0$ of nodes and add a new node at every time step.
@@ -795,7 +803,7 @@ The dashed line shows a power-law $P(k)\propto k^{-2}$.}
 \end{SCfigure}
 
 Figure \ref{fig:BA_cdf} shows the degree distribution of a network generated this way.
-We have to point out that it is generally more appropriate to plot the cumulative distribution of such distributions, because it is more robust against statistical fluctuations, particularly in the tail of the distribution \cite{Clauset:2009}.
+We have to point out that it is generally more appropriate to plot the cumulative distribution of such distributions, because it is more robust against statistical fluctuations, particularly in the tail of the distribution \citep{Clauset:2009}.
 As the figure shows, the distribution is well approximated by a power law of the form
 \[
 P(k)\propto k^{-\gamma }
@@ -806,25 +814,69 @@ Barab\'asi and Albert could show analytically that the resulting network has a p
 \begin{equation}\label{eq:BA_law}
 P(k)=2m^2 k^{-3}.
 \end{equation}
-Although the slope $\gamma = 3$ does not match the power-law exponent of the world wide web ($\gamma = 2.1\pm 0.1$ \cite{Barabasi99}) the model explains the existence of a scale-free degree distribution.
+Although the slope $\gamma = 3$ does not match the power-law exponent of the world wide web ($\gamma = 2.1\pm 0.1$ \citep{Barabasi99}) the model explains the existence of a scale-free degree distribution.
 
 As a conceptual model, the \BA model has a huge field of applications for theoretical questions.
-Nevertheless, the power-law degree behavior is also reproduced by fitness models \cite{Bianconi:2001,Fortunato:2006} and copy models \cite{Kleinberg99theweb}.
+Nevertheless, the power-law degree behavior is also reproduced by fitness models \citep{Bianconi:2001,Fortunato:2006} and copy models \citep{Kleinberg99theweb}.
 Fitness models allow for higher flexibility in terms of the power-law exponent.
-However, the range of possible exponents cannot take values in the interval $0<\gamma < 2$ \cite{all_scale_free_are_sparse}.
+However, the range of possible exponents cannot take values in the interval $0<\gamma < 2$ \citep{all_scale_free_are_sparse}.
 
 Besides the models discussed above, there are other network models, such as the configuration model or exponential network models. 
-The \emph{configuration model} is a more sophisticated random graph model that allows for arbitrary degree distributions \cite{Newman:book,Newman:2001pa}.
+The \emph{configuration model} is a more sophisticated random graph model that allows for arbitrary degree distributions \citep{Newman:book,Newman:2001pa}.
 Moreover, the degree sequence of a given network remains constant.
 In the configuration model one can consider higher order statistics, such as degree correlations and the clustering coefficient.
-\emph{Exponential random graphs} are related to the concept of the micro canonical ensemble in statistical mechanics \cite{Strauss:86}.
+\emph{Exponential random graphs} are related to the concept of the micro canonical ensemble in statistical mechanics \citep{Strauss:86}.
 In this context, an \ER graph is just one realization of an ensemble of possible random graphs.
-Exponential random graphs are an elegant way of treating networks, but their mathematical treatments appears intractable for many cases of interest \cite{Newman2003}.
+Exponential random graphs are an elegant way of treating networks, but their mathematical treatments appears intractable for many cases of interest \citep{Newman2003}.
 
 \subsection{Robustness and epidemics on different network types}
+\paragraph{Network resilience\color{Cayenne}{.}}
+A fundamental difference between complex networks and man made technological systems is their robustness against failure.
+Failure can be modeled by \emph{randomly} removing nodes of the system\footnote{Removing edges instead of nodes gives similar results.}.
+In this sense, network failure can be seen as an inverse percolation problem.
+The degree of failure is then given by the fraction of removed nodes $f$ and the sensitivity of a network to random failure can be measured in terms of the size of its largest connected component, which is inherently related to its functionality.
+As an example, if only a few circuits in a computer would randomly fail, the largest connected component would disintegrate into smaller circuits and the machine is likely to not function any more.
+It is characteristic for complex networks, however, that randomly removing vertices does not drastically change the connectivity of the network.
+The effect of network failure for different network types has been measured in \citep{Albert:2000}.
+The authors found that \ER networks are more prone to random failure than scale-free networks.
+The robustness of scale-free networks against random node removal is explained by the huge number of low-degree nodes in the network, so that it is unlikely to remove a hub at random.
+
+The situation changes dramatically, when nodes are not removed at random, but targeted, i.e. the most central nodes are removed first.
+This procedure models aimed \emph{attacks} on the network.
+\citeauthor{Albert:2000} found that scale-free network are extremely vulnerable to attack of the most central nodes.
+Figure \ref{fig:robustness} shows the size of the largest connected component (LCC) vs. the fraction of removed nodes for an \ER network and a scale-free \BA graph.
+%
+\begin{SCfigure}
+\includegraphics{Robustness.pdf}
+\caption{Robustness of a \BA  (BA) network and an \ER  (ER) graph to random failure (grey dashed line) and targeted attack (red).
+Red lines represent the size of the LCC under targeted removal of the most connected nodes.
+The size of the LCC remains finite for the \BA network under random failure even for a large number of removed nodes.
+}
+\label{fig:robustness}
+\end{SCfigure}
+%
+The figure shows results for a \BA network with $m=2$ and a \ER network with $p=0.0004$ at the beginning.
+Both networks have $10^4$ nodes.
+Note that the \BA network does not show a finite threshold for random node removal as the \ER network.
+Thus, the network shows finite connected components even if a very large number of nodes has been removed from the network.
+The robustness against random removal comes at the price of high vulnerability against removal of the most connected nodes (red lines).
+After removing a relatively small fraction of high-degree nodes, the \BA network disintegrates into small components.
+
+A different measure of integrity of a network is how the diameter changes when nodes are removed at random or after a certain criterion.
+The differences between random and scale-free networks remain similar in this perspective.
+In addition, the definition of a targeted attack can be extended to any centrality measure.
+Although many centrality measures correlate in many network models \citep{dynamical_processes}, different attack strategies may be effective in real networks \citep{holme:2002}.
+
+\paragraph{Epidemics on networks\color{Cayenne}{.}}
+We have seen in sections \ref{sec:si_model} and \ref{sec:sir_model} how epidemics can be modeled under the assumption of homogenous mixing of individuals.
+Nevertheless, data sources are available allowing for a more detailed analysis of an epidemic spreading process.
+We start by considering the network models as introduced in section \ref{sec:network_theory} and report their impact on spreading processes.
+
+To begin with, we consider an SI-model on a network of $N$ individuals, where a fraction $i(t)=I(t)/N$ individuals are infected and the remaining fraction $s(t)=1-i(t)$ is susceptible. 
 
 
 
-\bibliographystyle{plain}
+
+\bibliographystyle{apalike}
 \bibliography{/Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib}
 \end{document}

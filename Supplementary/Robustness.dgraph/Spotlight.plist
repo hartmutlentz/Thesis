@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Labels</key>
+	<string>Fraction
+size of LCC
+ER random vs Fraction
+ER degree vs Fraction
+BA random vs Fraction
+BA Degree vs Fraction
+ER
+BA
+</string>
+	<key>Text</key>
+	<string></string>
+</dict>
+</plist>

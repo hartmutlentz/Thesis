@@ -1,367 +1,373 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{}
 
-\bibitem{Albert:2000p}
-R~Albert and A~Barab{\'a}si.
+\bibitem[Albert and Barab{\'a}si, 2000]{Albert:2000p}
+Albert, R. and Barab{\'a}si, A.-L. (2000).
 \newblock Topology of evolving networks: Local events and universality.
-\newblock {\em Phys. Rev. Lett.}, 85(24):5234--5237, 2000.
+\newblock {\em Phys. Rev. Lett.}, 85(24):5234--5237.
 
-\bibitem{RevModPhys.74}
-R\'eka Albert and Albert-L\'aszl\'o Barab\'asi.
+\bibitem[Albert and Barab\'asi, 2002]{RevModPhys.74}
+Albert, R. and Barab\'asi, A.-L. (2002).
 \newblock Statistical mechanics of complex networks.
-\newblock {\em Rev. Mod. Phys.}, 74:47--97, Jan 2002.
+\newblock {\em Rev. Mod. Phys.}, 74:47--97.
 
-\bibitem{Albert:2002}
-Reka Albert and Albert-L{\'a}szl{\'o} Barab{\'a}si.
+\bibitem[Albert and Barab{\'a}si, 2002]{Albert:2002}
+Albert, R. and Barab{\'a}si, A.-L. (2002).
 \newblock {Statistical mechanics of complex networks}.
-\newblock {\em Rev. Mod. Phys.}, 74:47, January 2002.
+\newblock {\em Rev. Mod. Phys.}, 74:47.
 
-\bibitem{Albert:2000}
-Reka Albert, Hawoong Jeong, and Albert-L{\'a}szl{\'o} Barab{\'a}si.
+\bibitem[Albert et~al., 2000]{Albert:2000}
+Albert, R., Jeong, H., and Barab{\'a}si, A.-L. (2000).
 \newblock {Error and attack tolerance of complex networks}.
-\newblock {\em Nature}, 406(6794):378--382, July 2000.
+\newblock {\em Nature}, 406(6794):378--382.
 
-\bibitem{Aldous_book}
-J~M Aldous and R~J Wilson.
+\bibitem[Aldous and Wilson, 2000]{Aldous_book}
+Aldous, J.~M. and Wilson, R.~J. (2000).
 \newblock {\em {Graphs And Applications: An Introductory Approach}}.
-\newblock Springer, 2000.
+\newblock Springer.
 
-\bibitem{Amaral:2000}
-L.~A.~N. Amaral, A.~Scala, M.~Barth{\'e}lemy, and H.~E. Stanley.
+\bibitem[Amaral et~al., 2000]{Amaral:2000}
+Amaral, L. A.~N., Scala, A., Barth{\'e}lemy, M., and Stanley, H.~E. (2000).
 \newblock Classes of small-world networks.
-\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 97(21):11149--11152, 2000.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 97(21):11149--11152.
 
-\bibitem{andersonmay:92}
-R~M Anderson and R~M May.
+\bibitem[Anderson and May, 1992]{andersonmay:92}
+Anderson, R.~M. and May, R.~M. (1992).
 \newblock {\em Infectious diseases of humans}.
-\newblock Oxford University Press, 1992.
+\newblock Oxford University Press.
 
-\bibitem{bailey:57}
-N~T~J Bailey.
+\bibitem[Bailey, 1957]{bailey:57}
+Bailey, N. T.~J. (1957).
 \newblock {\em The mathematical theory of infectious diseases}.
-\newblock Charles Griffin \& Company Ltd, 2nd edition, 1957.
+\newblock Charles Griffin \& Company Ltd, 2nd edition.
 
-\bibitem{Bak:1990}
-P~Bak, K~Chen, and C~Tang.
+\bibitem[Bak et~al., 1990]{Bak:1990}
+Bak, P., Chen, K., and Tang, C. (1990).
 \newblock Forest-fire model and some thoughts on turbulence.
-\newblock {\em Phys. Lett. A}, 147:297--300, 1990.
+\newblock {\em Phys. Lett. A}, 147:297--300.
 
-\bibitem{Banerjee2009}
-Anirban Banerjee and J{\"u}rgen Jost.
+\bibitem[Banerjee and Jost, 2009]{Banerjee2009}
+Banerjee, A. and Jost, J. (2009).
 \newblock Graph spectra as a systematic tool in computational biology.
-\newblock {\em Discrete Applied Mathematics}, 157(10):2425 -- 2431, 2009.
+\newblock {\em Discrete Applied Mathematics}, 157(10):2425 -- 2431.
 
-\bibitem{Barabasi99}
-Albert-L{\'a}szl{\'o} Barab{\'a}si and Reka Albert.
+\bibitem[Barab{\'a}si and Albert, 1999]{Barabasi99}
+Barab{\'a}si, A.-L. and Albert, R. (1999).
 \newblock {Emergence of Scaling in Random Networks}.
-\newblock {\em Science}, 286:509, 1999.
+\newblock {\em Science}, 286:509.
 
-\bibitem{Barrat:2000fj}
-A.~Barrat and M.~Weigt.
+\bibitem[Barrat et~al., 2008]{dynamical_processes}
+Barrat, A., Barth{\'e}lemy, M., and Vespignani, A. (2008).
+\newblock {\em Dynamical processes on complex networks}.
+\newblock Cambridge University Press.
+
+\bibitem[Barrat and Weigt, 2000]{Barrat:2000fj}
+Barrat, A. and Weigt, M. (2000).
 \newblock On the properties of small-world network models.
 \newblock {\em The European Physical Journal B - Condensed Matter and Complex
-  Systems}, 13:547--560, 2000.
+  Systems}, 13:547--560.
 
-\bibitem{dynamical_processes}
-Alain Barrat, M.~Barth{\'e}lemy, and Alessandro Vespignani.
-\newblock {\em Dynamical processes on complex networks}.
-\newblock Cambridge University Press, 2008.
-
-\bibitem{Bauch:2004}
-Chris~T Bauch and David J~D Earn.
+\bibitem[Bauch and Earn, 2004]{Bauch:2004}
+Bauch, C.~T. and Earn, D. J.~D. (2004).
 \newblock {Vaccination and the theory of games.}
-\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 101(36):13391--13394, September
-  2004.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 101(36):13391--13394.
 
-\bibitem{Bianconi:2001}
-G.~Bianconi and A.~L. Barab{\'a}si.
+\bibitem[Bianconi and Barab{\'a}si, 2001]{Bianconi:2001}
+Bianconi, G. and Barab{\'a}si, A.-L. (2001).
 \newblock Competition and multiscaling in evolving networks.
-\newblock {\em Europhysics Letters}, 54:436--442, 2001.
+\newblock {\em Europhysics Letters}, 54:436--442.
 
-\bibitem{Bollobas:1985}
-B~Bollob{\'a}s.
+\bibitem[Bollob{\'a}s, 1985]{Bollobas:1985}
+Bollob{\'a}s, B. (1985).
 \newblock {\em Random Graphs}.
-\newblock London: Academic Press, 1985.
+\newblock London: Academic Press.
 
-\bibitem{Bonacich:1972}
-Phillip Bonacich.
+\bibitem[Bonacich, 1972]{Bonacich:1972}
+Bonacich, P. (1972).
 \newblock Factoring and weighting approaches to status scores and clique
   identification.
-\newblock {\em The Journal of Mathematical Sociology}, 2(1):113--120, 1972.
+\newblock {\em The Journal of Mathematical Sociology}, 2(1):113--120.
 
-\bibitem{Bonacich:2007}
-Phillip Bonacich.
+\bibitem[Bonacich, 2007]{Bonacich:2007}
+Bonacich, P. (2007).
 \newblock Some unique properties of eigenvector centrality.
-\newblock {\em Social Networks}, 29(4):555 -- 564, 2007.
+\newblock {\em Social Networks}, 29(4):555 -- 564.
 
-\bibitem{Brandes:2001p2757}
-Ulrik Brandes.
+\bibitem[Brandes, 2001]{Brandes:2001p2757}
+Brandes, U. (2001).
 \newblock {A faster algorithm for betweenness centrality}.
-\newblock {\em J. Math. Sociol.}, January 2001.
+\newblock {\em J. Math. Sociol.}
 
-\bibitem{brandes2007}
-Ulrik Brandes, Daniel Delling, Marco Gaertler, Robert G{\"o}rke, Martin Hoefer,
-  Zoran Nikoloski, and Dorothea Wagner.
+\bibitem[Brandes et~al., 2007]{brandes2007}
+Brandes, U., Delling, D., Gaertler, M., G{\"o}rke, R., Hoefer, M., Nikoloski,
+  Z., and Wagner, D. (2007).
 \newblock {On Finding Graph Clusterings with Maximum Modularity}.
 \newblock In {\em Graph-Theoretic Concepts in Computer Science}, volume 4769,
-  pages 121--132. Springer Berlin Heidelberg, 2007.
+  pages 121--132. Springer Berlin Heidelberg.
 
-\bibitem{Chasnov:2010}
-J.~R. Chasnov.
+\bibitem[Chasnov, 2010]{Chasnov:2010}
+Chasnov, J.~R. (2010).
 \newblock {\em Mathematical Biology: Lecture Notes}.
-\newblock The Hong Kong University of Science and Technology, 2010.
+\newblock The Hong Kong University of Science and Technology.
 
-\bibitem{Clauset:2009}
-Aaron Clauset and Mark E~J Newman.
+\bibitem[Clauset and Newman, 2009]{Clauset:2009}
+Clauset, A. and Newman, M. E.~J. (2009).
 \newblock {Power-Law Distributions in Empirical Data}.
-\newblock {\em SIAM Rev.}, 51(4):661, 2009.
+\newblock {\em SIAM Rev.}, 51(4):661.
 
-\bibitem{Price:1965}
-Derek~J. de~Solla~Price.
+\bibitem[de~Solla~Price, 1965]{Price:1965}
+de~Solla~Price, D.~J. (1965).
 \newblock Networks of scientific papers.
-\newblock {\em Science}, 49(3683):510--515, 1965.
+\newblock {\em Science}, 49(3683):510--515.
 
-\bibitem{price:1976}
-Derek~J. de~Solla~Price.
+\bibitem[de~Solla~Price, 1976]{price:1976}
+de~Solla~Price, D.~J. (1976).
 \newblock A general theory of bibliometric and other cumulative advantage
   processes.
 \newblock {\em Journal of the American Society for Information Science},
-  27(5):292--306, 1976.
+  27(5):292--306.
 
-\bibitem{all_scale_free_are_sparse}
-Charo~I. Del~Genio, Thilo Gross, and Kevin~E. Bassler.
+\bibitem[Del~Genio et~al., 2011]{all_scale_free_are_sparse}
+Del~Genio, C.~I., Gross, T., and Bassler, K.~E. (2011).
 \newblock All scale-free networks are sparse.
-\newblock {\em Phys. Rev. Lett.}, 107:178701, Oct 2011.
+\newblock {\em Phys. Rev. Lett.}, 107:178701.
 
-\bibitem{Dijkstra:1959}
-E~Dijkstra.
+\bibitem[Dijkstra, 1959]{Dijkstra:1959}
+Dijkstra, E. (1959).
 \newblock {A note on two problems in connexion with graphs}.
-\newblock {\em Numerische Mathematik}, 1:269--271, January 1959.
+\newblock {\em Numerische Mathematik}, 1:269--271.
 
-\bibitem{Dorogovtsev:2001jd}
-S~Dorogovtsev, J~Mendes, and A~Samukhin.
+\bibitem[Dorogovtsev et~al., 2001]{Dorogovtsev:2001jd}
+Dorogovtsev, S., Mendes, J., and Samukhin, A. (2001).
 \newblock {Giant strongly connected component of directed networks}.
-\newblock {\em Phys. Rev. E}, 64:025101(R), July 2001.
+\newblock {\em Phys. Rev. E}, 64:025101(R).
 
-\bibitem{ER:1959}
-P~Erd\H{o}s and A~R\'enyi.
+\bibitem[Erd\H{o}s and R\'enyi, 1959]{ER:1959}
+Erd\H{o}s, P. and R\'enyi, A. (1959).
 \newblock On random graphs.
-\newblock {\em Publ. Math., Debrecen}, 6:290--297, 1959.
+\newblock {\em Publ. Math., Debrecen}, 6:290--297.
 
-\bibitem{ER:1960}
-P~Erd\H{o}s and A~R\'enyi.
+\bibitem[Erd\H{o}s and R\'enyi, 1960]{ER:1960}
+Erd\H{o}s, P. and R\'enyi, A. (1960).
 \newblock On the evolution of random graphs.
-\newblock {\em Publ. Math. Inst. Hung. Acad. Sci., Ser. A}, 5:17--61, 1960.
+\newblock {\em Publ. Math. Inst. Hung. Acad. Sci., Ser. A}, 5:17--61.
 
-\bibitem{ER:1961}
-P~Erd\H{o}s and A~R\'enyi.
+\bibitem[Erd\H{o}s and R\'enyi, 1961]{ER:1961}
+Erd\H{o}s, P. and R\'enyi, A. (1961).
 \newblock On the evolution of random graphs ii.
-\newblock {\em Bull. Inst. Int. Stat.}, 38(4):343--347, 1961.
+\newblock {\em Bull. Inst. Int. Stat.}, 38(4):343--347.
 
-\bibitem{Faloutsos:1999}
-Michalis Faloutsos, Petros Faloutsos, and Christos Faloutsos.
+\bibitem[Faloutsos et~al., 1999]{Faloutsos:1999}
+Faloutsos, M., Faloutsos, P., and Faloutsos, C. (1999).
 \newblock On power-law relationships of the internet topology.
-\newblock {\em SIGCOMM Comput. Commun. Rev.}, 29(4):251--262, August 1999.
+\newblock {\em SIGCOMM Comput. Commun. Rev.}, 29(4):251--262.
 
-\bibitem{Fortunato:2006}
-Santo Fortunato, Alessandro Flammini, and Filippo Menczer.
+\bibitem[Fortunato et~al., 2006]{Fortunato:2006}
+Fortunato, S., Flammini, A., and Menczer, F. (2006).
 \newblock Scale-free network growth by ranking.
-\newblock {\em Phys. Rev. Lett.}, 96:218701, May 2006.
+\newblock {\em Phys. Rev. Lett.}, 96:218701.
 
-\bibitem{Freeman}
-L~C Freeman.
+\bibitem[Freeman, 1978]{Freeman}
+Freeman, L.~C. (1978).
 \newblock Centrality in social networks.
-\newblock {\em Social networks}, 1:215--239, 1978.
+\newblock {\em Social networks}, 1:215--239.
 
-\bibitem{Garrison:1960up}
-W~L Garrison.
+\bibitem[Garrison, 1960]{Garrison:1960up}
+Garrison, W.~L. (1960).
 \newblock {Connectivity of the interstate highway system}.
 \newblock {\em Papers and proceedings of the regional science association},
-  6:121--137, 1960.
+  6:121--137.
 
-\bibitem{giehl:2012}
-H~J Giehl.
+\bibitem[Giehl, 2010]{giehl:2012}
+Giehl, H.~J. (2010).
 \newblock {\em Naturkatastrophen, Epidemien und Krieg. Gei{\ss}eln der
   Menschheit.}
-\newblock Engelsdorfer, Leipzig, 2010.
+\newblock Engelsdorfer, Leipzig.
 
-\bibitem{girvan2002}
-Michelle Girvan and Mark E~J Newman.
+\bibitem[Girvan and Newman, 2002]{girvan2002}
+Girvan, M. and Newman, M. E.~J. (2002).
 \newblock {Community structure in social and biological networks}.
-\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 99(12):7821--7826, 2002.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 99(12):7821--7826.
 
-\bibitem{grenfell:92}
-B~T Grenfell.
+\bibitem[Grenfell, 1992]{grenfell:92}
+Grenfell, B.~T. (1992).
 \newblock Chance and chaos in measles dynamics.
-\newblock {\em J. R. Stat. Soc. B}, 54:383--398, 1992.
+\newblock {\em J. R. Stat. Soc. B}, 54:383--398.
 
-\bibitem{networkx}
-Aric~A Hagberg, 2012.
+\bibitem[Hagberg, 2012]{networkx:}
+Hagberg, A.~A. (2012).
+\newblock Networkx: High productivity software for complex networks.
+\newblock \verb"http://networkx.lanl.gov".
 
-\bibitem{hagberg2008}
-Aric~A. Hagberg, Daniel~A. Schult, and Pieter~J. Swart.
+\bibitem[Hagberg et~al., 2008]{hagberg2008}
+Hagberg, A.~A., Schult, D.~A., and Swart, P.~J. (2008).
 \newblock Exploring network structure, dynamics, and function using {NetworkX}.
 \newblock In {\em Proceedings of the 7th Python in Science Conference
-  (SciPy2008)}, pages 11--15, Pasadena, CA USA, August 2008.
+  (SciPy2008)}, pages 11--15, Pasadena, CA USA.
 
-\bibitem{Hamer}
-W~H Hamer.
+\bibitem[Hamer, 1906]{Hamer}
+Hamer, W.~H. (1906).
 \newblock Epidemic disease in england.
-\newblock {\em Lancet}, 1:733--739, 1906.
+\newblock {\em Lancet}, 1:733--739.
 
-\bibitem{Harris:1974}
-T~E Harris.
+\bibitem[Harris, 1974]{Harris:1974}
+Harris, T.~E. (1974).
 \newblock Contact interactions on a lattice.
-\newblock {\em Ann. Probab.}, 2:969--988, 1974.
+\newblock {\em Ann. Probab.}, 2:969--988.
 
-\bibitem{Hethcote:2000}
-HW~Hethcote.
+\bibitem[Hethcote, 2000]{Hethcote:2000}
+Hethcote, H. (2000).
 \newblock {The mathematics of infectious diseases}.
-\newblock {\em SIAM Rev.}, 42(4):599--653, 2000.
+\newblock {\em SIAM Rev.}, 42(4):599--653.
 
-\bibitem{Holland1971}
-Paul~W. Holland and Samuel Leinhardt.
+\bibitem[Holland and Leinhardt, 1971]{Holland1971}
+Holland, P.~W. and Leinhardt, S. (1971).
 \newblock Transitivity in structural models of small groups.
-\newblock {\em Small Group Research}, 2(2):107--124, 1971.
+\newblock {\em Small Group Research}, 2(2):107--124.
 
-\bibitem{isella2011}
-Lorenzo Isella, Juliette Stehl{\'e}, Alain Barrat, Ciro Cattuto, Jean-Fran{\c
-  c}ois Pinton, and Wouter Van~den Broeck.
+\bibitem[Holme et~al., 2002]{holme:2002}
+Holme, P., Kim, B.~J., Yoon, C.~N., and Han, S.~K. (2002).
+\newblock Attack vulnerability of complex networks.
+\newblock {\em Phys. Rev. E}, 65:056109.
+
+\bibitem[Isella et~al., 2011]{isella2011}
+Isella, L., Stehl{\'e}, J., Barrat, A., Cattuto, C., Pinton, J.-F., and Van~den
+  Broeck, W. (2011).
 \newblock {What's in a crowd? Analysis of face-to-face behavioral networks}.
-\newblock {\em J. Theor. Biol.}, 271(1):166--180, February 2011.
+\newblock {\em J. Theor. Biol.}, 271(1):166--180.
 
-\bibitem{Keeling:2005}
-Matt~J Keeling and K~Eames.
+\bibitem[Keeling and Eames, 2005]{Keeling:2005}
+Keeling, M.~J. and Eames, K. (2005).
 \newblock {Networks and epidemic models}.
-\newblock {\em J. R. Soc. Interface B}, 2:295--307, January 2005.
+\newblock {\em J. R. Soc. Interface B}, 2:295--307.
 
-\bibitem{kermack:27}
-W~O Kermack and A~G McKendrick.
+\bibitem[Kermack and McKendrick, 1927]{kermack:27}
+Kermack, W.~O. and McKendrick, A.~G. (1927).
 \newblock A contribution to the mathematical theory of epidemics.
-\newblock {\em Proc. R. Soc. A}, 115:700--721, 1927.
+\newblock {\em Proc. R. Soc. A}, 115:700--721.
 
-\bibitem{Kleinberg:1999}
-Jon~M. Kleinberg.
+\bibitem[Kleinberg, 1999]{Kleinberg:1999}
+Kleinberg, J.~M. (1999).
 \newblock Hubs, authorities, and communities.
-\newblock {\em ACM Comput. Surv.}, 31(4es), December 1999.
+\newblock {\em ACM Comput. Surv.}, 31(4es).
 
-\bibitem{Kleinberg99theweb}
-Jon~M. Kleinberg, Ravi Kumar, Prabhakar Raghavan, Sridhar Rajagopalan, and
-  Andrew~S. Tomkins.
-\newblock The web as a graph: measurements, models, and methods, 1999.
+\bibitem[Kleinberg et~al., 1999]{Kleinberg99theweb}
+Kleinberg, J.~M., Kumar, R., Raghavan, P., Rajagopalan, S., and Tomkins, A.~S.
+  (1999).
+\newblock The web as a graph: measurements, models, and methods.
 
-\bibitem{Lentz:2012pre}
-Hartmut Lentz, Thomas Selhorst, and Igor~M Sokolov.
+\bibitem[Lentz et~al., 2012]{Lentz:2012pre}
+Lentz, H., Selhorst, T., and Sokolov, I.~M. (2012).
 \newblock {Spread of infectious diseases in directed and modular metapopulation
   networks}.
-\newblock {\em Phys. Rev. E}, 85:066111, June 2012.
+\newblock {\em Phys. Rev. E}, 85:066111.
 
-\bibitem{MartinezLopez2009}
-B~Mart{\'\i}nez-L{\'o}pez, A~M Perez, and JM~S{\'a}nchez-Vizca{\'\i}no.
+\bibitem[Mart{\'\i}nez-L{\'o}pez et~al., 2009]{MartinezLopez2009}
+Mart{\'\i}nez-L{\'o}pez, B., Perez, A.~M., and S{\'a}nchez-Vizca{\'\i}no, J.
+  (2009).
 \newblock {Social Network Analysis. Review of General Concepts and Use in
   Preventive Veterinary Medicine}.
-\newblock {\em Transbound. Emerg. Dis.}, 56:109--120, 2009.
+\newblock {\em Transbound. Emerg. Dis.}, 56:109--120.
 
-\bibitem{Merton:1968fh}
-R~K Merton.
+\bibitem[Merton, 1968]{Merton:1968fh}
+Merton, R.~K. (1968).
 \newblock {The Matthew Effect in Science: The reward and communication systems
   of science are considered.}
-\newblock {\em Science}, 159(3810):56--63, January 1968.
+\newblock {\em Science}, 159(3810):56--63.
 
-\bibitem{Milgram:1967}
-S~Milgram.
+\bibitem[Milgram, 1967]{Milgram:1967}
+Milgram, S. (1967).
 \newblock {The small world problem}.
-\newblock {\em Psychology today}, 2(1):60--67, 1967.
+\newblock {\em Psychology today}, 2(1):60--67.
 
-\bibitem{Newman:2001p}
-Mark E~J Newman.
+\bibitem[Newman, 2001]{Newman:2001p}
+Newman, M. E.~J. (2001).
 \newblock {Scientific collaboration networks. I. Network construction and
   fundamental results}.
-\newblock {\em Phys. Rev. E}, 64:016131, January 2001.
+\newblock {\em Phys. Rev. E}, 64:016131.
 
-\bibitem{Newman2003}
-Mark E~J Newman.
+\bibitem[Newman, 2003]{Newman2003}
+Newman, M. E.~J. (2003).
 \newblock {The Structure and Function of Complex Networks}.
-\newblock {\em SIAM Review}, 45(2):167--256, 2003.
+\newblock {\em SIAM Review}, 45(2):167--256.
 
-\bibitem{Newman:book}
-Mark E~J Newman.
+\bibitem[Newman, 2010]{Newman:book}
+Newman, M. E.~J. (2010).
 \newblock {\em {Networks: An Introduction}}.
-\newblock Oxford University Press, Inc., New York, NY, USA, 2010.
+\newblock Oxford University Press, Inc., New York, NY, USA.
 
-\bibitem{Newman:2004}
-Mark E~J Newman and Michelle Girvan.
+\bibitem[Newman and Girvan, 2004]{Newman:2004}
+Newman, M. E.~J. and Girvan, M. (2004).
 \newblock {Finding and evaluating community structure in networks}.
-\newblock {\em Phys. Rev. E}, 69:026113, January 2004.
+\newblock {\em Phys. Rev. E}, 69:026113.
 
-\bibitem{Newman:2001pa}
-Mark E~J Newman, Steven Strogatz, and D~Watts.
+\bibitem[Newman et~al., 2001]{Newman:2001pa}
+Newman, M. E.~J., Strogatz, S., and Watts, D. (2001).
 \newblock {Random graphs with arbitrary degree distributions and their
   applications}.
-\newblock {\em Phys. Rev. E}, 64:026118, January 2001.
+\newblock {\em Phys. Rev. E}, 64:026118.
 
-\bibitem{PageRank}
-Lawrence Page.
-\newblock Method for node ranking in a linked database, 01 1997.
+\bibitem[Page, 1997]{PageRank:}
+Page, L. (1997).
+\newblock Method for node ranking in a linked database.
+\newblock \emph{Patent} US 6285999.
 
-\bibitem{PastorSatorras:2001}
-Romualdo Pastor-Satorras and Alessandro Vespignani.
+\bibitem[Pastor-Satorras and Vespignani, 2001]{PastorSatorras:2001}
+Pastor-Satorras, R. and Vespignani, A. (2001).
 \newblock {Epidemic dynamics and endemic states in complex networks}.
-\newblock {\em Phys. Rev. E}, 63:066117, January 2001.
+\newblock {\em Phys. Rev. E}, 63:066117.
 
-\bibitem{Press:1992}
-William~H. Press, Saul~A. Teukolsky, William~T. Vetterling, and Brian~P.
-  Flannery.
+\bibitem[Press et~al., 1992]{Press:1992}
+Press, W.~H., Teukolsky, S.~A., Vetterling, W.~T., and Flannery, B.~P. (1992).
 \newblock {\em Numerical recipes in C (2nd ed.): the art of scientific
   computing}.
-\newblock Cambridge University Press, New York, NY, USA, 1992.
+\newblock Cambridge University Press, New York, NY, USA.
 
-\bibitem{Ross}
-R~Ross.
+\bibitem[Ross, 1911]{Ross}
+Ross, R. (1911).
 \newblock {\em The Prevention of Malaria}.
-\newblock Murray, London, 2nd edition, 1911.
+\newblock Murray, London, 2nd edition.
 
-\bibitem{indian_railway}
-Parongama Sen, Subinay Dasgupta, Arnab Chatterjee, P.~A. Sreeram, G.~Mukherjee,
-  and S.~S. Manna.
+\bibitem[Sen et~al., 2003]{indian_railway}
+Sen, P., Dasgupta, S., Chatterjee, A., Sreeram, P.~A., Mukherjee, G., and
+  Manna, S.~S. (2003).
 \newblock Small-world properties of the indian railway network.
-\newblock {\em Phys. Rev. E}, 67:036106, Mar 2003.
+\newblock {\em Phys. Rev. E}, 67:036106.
 
-\bibitem{algorithm_design}
-Steven~S. Skiena.
+\bibitem[Skiena, 2008]{algorithm_design}
+Skiena, S.~S. (2008).
 \newblock {\em The algorithm design manual}.
-\newblock Springer, London, 2nd edition, 2008.
+\newblock Springer, London, 2nd edition.
 
-\bibitem{Strauss:86}
-David Strauss.
+\bibitem[Strauss, 1986]{Strauss:86}
+Strauss, D. (1986).
 \newblock On a general class of models for interaction.
-\newblock {\em SIAM Review}, 28(4):pp. 513--527, 1986.
+\newblock {\em SIAM Review}, 28(4):pp. 513--527.
 
-\bibitem{Zweig:closeness}
-S.~R. Sudarshan~Iyengar, C.~E. Veni~Madhavan, Katharina~A. Zweig, and Abhiram
-  Natarajan.
+\bibitem[Sudarshan~Iyengar et~al., 2012]{Zweig:closeness}
+Sudarshan~Iyengar, S.~R., Veni~Madhavan, C.~E., Zweig, K.~A., and Natarajan, A.
+  (2012).
 \newblock Understanding human navigation using network analysis.
-\newblock {\em Topics in Cognitive Science}, 4(1):121--134, 2012.
+\newblock {\em Topics in Cognitive Science}, 4(1):121--134.
 
-\bibitem{van_mises}
-R.~von Mises and H.~Pollaczek-Geiringer.
+\bibitem[von Mises and Pollaczek-Geiringer, 1929]{van_mises}
+von Mises, R. and Pollaczek-Geiringer, H. (1929).
 \newblock Praktische verfahren der gleichungsaufl{\"o}sung.
-\newblock {\em ZAMM}, 9:152--164, 1929.
+\newblock {\em ZAMM}, 9:152--164.
 
-\bibitem{WassermanFaust}
-S~Wasserman and K~Faust.
+\bibitem[Wasserman and Faust, 1994]{WassermanFaust}
+Wasserman, S. and Faust, K. (1994).
 \newblock {\em {Social Network Analysis}}.
-\newblock Cambridge University Press, 1994.
+\newblock Cambridge University Press.
 
-\bibitem{Watts:1998}
-D~Watts and Steven Strogatz.
+\bibitem[Watts and Strogatz, 1998]{Watts:1998}
+Watts, D. and Strogatz, S. (1998).
 \newblock {Collective dynamics of small-world networks}.
-\newblock {\em Nature}, 393:440--442, January 1998.
+\newblock {\em Nature}, 393:440--442.
 
-\bibitem{Yang:2011}
-Jaewon Yang and Jure Leskovec.
+\bibitem[Yang and Leskovec, 2011]{Yang:2011}
+Yang, J. and Leskovec, J. (2011).
 \newblock Patterns of temporal variation in online media.
 \newblock In {\em Proceedings of the fourth ACM international conference on Web
-  search and data mining}, WSDM '11, pages 177--186, New York, NY, USA, 2011.
-  ACM.
+  search and data mining}, WSDM '11, pages 177--186, New York, NY, USA. ACM.
 
 \end{thebibliography}

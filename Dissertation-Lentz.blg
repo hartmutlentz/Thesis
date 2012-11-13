@@ -7,51 +7,51 @@ A level-1 auxiliary file: chapters/Part1/03-Outlook.aux
 A level-1 auxiliary file: chapters/Part2/01-Introduction.aux
 A level-1 auxiliary file: chapters/Part3/01-Introduction.aux
 A level-1 auxiliary file: chapters/Part3/05-Conceptional_tvg_problems.aux
-The style file: plainnat.bst
+The style file: apalike.bst
 Database file #1: bibliography.bib
 Warning--entry type for "networkx" isn't style-file defined
---line 480 of file bibliography.bib
+--line 732 of file bibliography.bib
 Warning--entry type for "PageRank" isn't style-file defined
---line 547 of file bibliography.bib
-You've used 59 entries,
-            2773 wiz_defined-function locations,
-            1027 strings with 14493 characters,
-and the built_in function-call counts, 26291 in all, are:
-= -- 2422
-> -- 1274
-< -- 47
-+ -- 441
-- -- 381
-* -- 2097
-:= -- 4056
-add.period$ -- 210
-call.type$ -- 59
-change.case$ -- 296
-chr.to.int$ -- 58
-cite$ -- 118
-duplicate$ -- 1228
-empty$ -- 2275
-format.name$ -- 478
-if$ -- 5528
+--line 799 of file bibliography.bib
+You've used 77 entries,
+            1935 wiz_defined-function locations,
+            972 strings with 14424 characters,
+and the built_in function-call counts, 29511 in all, are:
+= -- 2926
+> -- 1048
+< -- 58
++ -- 351
+- -- 338
+* -- 2487
+:= -- 5138
+add.period$ -- 230
+call.type$ -- 77
+change.case$ -- 544
+chr.to.int$ -- 76
+cite$ -- 77
+duplicate$ -- 1109
+empty$ -- 2162
+format.name$ -- 465
+if$ -- 5777
 int.to.chr$ -- 2
-int.to.str$ -- 1
-missing$ -- 67
-newline$ -- 334
-num.names$ -- 236
-pop$ -- 554
+int.to.str$ -- 0
+missing$ -- 86
+newline$ -- 385
+num.names$ -- 231
+pop$ -- 424
 preamble$ -- 1
-purify$ -- 245
+purify$ -- 554
 quote$ -- 0
-skip$ -- 891
+skip$ -- 848
 stack$ -- 0
-substring$ -- 1190
-swap$ -- 115
+substring$ -- 2324
+swap$ -- 109
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 599
+type$ -- 438
 warning$ -- 0
-while$ -- 251
+while$ -- 250
 width$ -- 0
-write$ -- 832
+write$ -- 991
 (There were 2 warnings)
