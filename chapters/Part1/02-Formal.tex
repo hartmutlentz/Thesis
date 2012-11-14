@@ -194,7 +194,11 @@ I(t)=I(0)e^{-\gamma t}.
 \]
 Hence, the infection decays exponentially for large $t$ and the inverse recovery rate $1/\gamma $ defines the characteristic time of the epidemic.
 
-\subsection{Force of infection}
+A similar concept to the SIR model is the SIS model, where infected individuals return to the susceptible state after a certain period.
+Being a single-event model, the SIS model has many similarities to the SIR model.
+The most crucial difference is that SIS models show an endemic state for $t\rightarrow \infty $, i.e. both $S$ and $I$ take finite values in the long term.
+
+\subsection{Force of infection}\label{sec:force_of_infection}
 The model presented in section \ref{sec:sir_model} describes only the very basic behavior of epidemic dynamics, and is therefore a conceptual model.
 However, it is one of the main objectives in epidemiology to have an understanding of the exact infection rates in the process.
 Infection rates their selves can cause complex infection dynamics.
@@ -222,7 +226,7 @@ Nevertheless, the results presented in section \ref{sec:sir_model} remain qualit
 Although the force of infection gives a more reasonable description of the infection process, the assumption of random mixing remains inappropriate for many real world systems.
 Due to the availability of contact data, the random mixing assumption can be improved in terms of contact networks.
 Even if the exact data of an epidemic system is not available, research on complex networks allows us to give more realistic models about mixing.
-In the next section, we briefly report important results in complex network research and focus on the interplay between networks and epidemics in section xx.
+In the next section, we briefly report important results in complex network research and focus on the interplay between networks and epidemics in section \ref{sec:epi_networks}.
 
 
 \section{Network theory}\label{sec:network_theory}
@@ -578,7 +582,7 @@ In order to efficiently implement networks and their analysis on a computer, it 
 A short and transparent introduction to data structures and algorithms is in the book of Skiena \citep{algorithm_design}.
 In this section, we discuss some essential data structures appropriate for network analysis and give a brief description of fundamental algorithms.
 The purpose of this section is not to list different algorithms and source code, but rather to sketch the basic ideas behind the data structures and algorithms.
-For source code of data structures and algorithms, the reader is encouraged to the lecture of \citep{algorithm_design}.
+For source code of data structures and algorithms, the reader is encouraged to the lecture of \citep{algorithm_design} and \citep{Merali:2010ih}.
 
 \paragraph{Matrix implementation\color{Cayenne}{.}}
 To begin with, we consider the implementation of adjacency matrices as introduced in section \ref{sec:network_matrices}.
@@ -829,8 +833,7 @@ In the configuration model one can consider higher order statistics, such as deg
 In this context, an \ER graph is just one realization of an ensemble of possible random graphs.
 Exponential random graphs are an elegant way of treating networks, but their mathematical treatments appears intractable for many cases of interest \citep{Newman2003}.
 
-\subsection{Robustness and epidemics on different network types}
-\paragraph{Network resilience\color{Cayenne}{.}}
+\subsection{Resilience of different network types}
 A fundamental difference between complex networks and man made technological systems is their robustness against failure.
 Failure can be modeled by \emph{randomly} removing nodes of the system\footnote{Removing edges instead of nodes gives similar results.}.
 In this sense, network failure can be seen as an inverse percolation problem.
@@ -851,6 +854,7 @@ Figure \ref{fig:robustness} shows the size of the largest connected component (L
 \caption{Robustness of a \BA  (BA) network and an \ER  (ER) graph to random failure (grey dashed line) and targeted attack (red).
 Red lines represent the size of the LCC under targeted removal of the most connected nodes.
 The size of the LCC remains finite for the \BA network under random failure even for a large number of removed nodes.
+From \citet{Albert:2000}.
 }
 \label{fig:robustness}
 \end{SCfigure}
@@ -867,12 +871,88 @@ The differences between random and scale-free networks remain similar in this pe
 In addition, the definition of a targeted attack can be extended to any centrality measure.
 Although many centrality measures correlate in many network models \citep{dynamical_processes}, different attack strategies may be effective in real networks \citep{holme:2002}.
 
-\paragraph{Epidemics on networks\color{Cayenne}{.}}
+\subsection{Epidemics on networks}\label{sec:epi_networks}
+The spread of infectious diseases on networks is substantially related to network resilience.
+As we have seen in section \ref{sec:sir_model}, individuals are removed from the population in an SIR-type disease.
+This corresponds to the failure of nodes as discussed previously.
+Moreover, results from attacking networks can be carried over to vaccination strategies.
+The central subjects of interest remain the same as in section \ref{sec:sir_model}, namely the epidemic threshold $R_0$ and the outbreak size $R_\infty $.
+
 We have seen in sections \ref{sec:si_model} and \ref{sec:sir_model} how epidemics can be modeled under the assumption of homogenous mixing of individuals.
 Nevertheless, data sources are available allowing for a more detailed analysis of an epidemic spreading process.
-We start by considering the network models as introduced in section \ref{sec:network_theory} and report their impact on spreading processes.
+We start by considering the network models as introduced in section \ref{sec:network_theory} and summarize results about the impact of different topologies on spreading processes.
 
-To begin with, we consider an SI-model on a network of $N$ individuals, where a fraction $i(t)=I(t)/N$ individuals are infected and the remaining fraction $s(t)=1-i(t)$ is susceptible. 
+\paragraph{Epidemic models on homogenous contact networks\color{Cayenne}{.}}
+To begin with, we consider a 2-compartment SI-model on a network of $N$ individuals, where a fraction $i(t)=I(t)/N$ individuals are infected and the remaining fraction $s(t)=1-i(t)$ is susceptible.
+The force of infection (\eqref{eq:force_of_infection} in section \ref{sec:force_of_infection}) models the effective interaction between susceptible and infected individuals in terms of passing on the infection.
+In a homogenous network, e.g. an \ER or Watts-Strogatz network, the force of infection is $\lambda = \beta ki$, where $ki$ is the number of infectious contacts for a node of degree $k$ and $\beta $ is the probability of infection per time unit \citep{dynamical_processes}.
+Consequently, $1/\beta $ is the spreading time scale of the process.
+
+In order to obtain a rate-equation for the total number of infected in a homogenous network, we replace the local degree $k$ by the mean degree $\mean{k}$ and get
+\begin{equation}\label{eq:si_network}
+\frac{di(t)}{dt}=\beta \mean{k} i(t) [1-i(t)],
+\end{equation}
+where $1-i(t)$ is the fraction of susceptible nodes.
+This model can easily be extended to a SIS model by adding a loss term $-\gamma i(t)$ to equation \eqref{eq:si_network}.
+Setting $\gamma =1 $ without loss of generality, we obtain 
+\begin{equation}\label{eq:sis_network}
+\frac{di(t)}{dt}=-i(t)+ \beta \mean{k} i(t) [1-i(t)] .
+\end{equation}
+The behavior of the SIS-model has been studied for Watts-Strogatz and \BA networks in \citep{Pastor-Satorras_vespi:2001}.
+Following \citeauthor{Pastor-Satorras_vespi:2001}, we compute the steady state of \eqref{eq:sis_network} in order to find the epidemic threshold (see section \ref{sec:sir_model}), that is
+\[
+i[-1+\beta \mean{k} (1-i)]=0.
+\]
+$\beta $ being fixed as a local reaction constant, the average degree $\mean{k}$ remains the only parameter in this equation.
+We define the critical connectivity $\beta _c=\mean{k}^{-1}$ and obtain distinct regimes for different values of $\beta $.
+Thus, the density of infected in the endemic state is
+\begin{align}\label{eq:endemic_ws}
+i&=0   &\text{if} \quad \beta < \beta _c \nonumber \\
+i &=1-\frac{\beta _c}{\beta }  &\text{if} \quad \beta > \beta _c .
+\end{align}
+
+\paragraph{Impact of heterogenous connectivity\color{Cayenne}{.}}
+In order to consider networks with heavy-tailed degree distributions, we modify the SIS model above and include the heterogeneity of node degrees explicitly \citep{Pastor-Satorras_vespi:2001}.
+\citeauthor{Pastor-Satorras_vespi:2001} replaced the infected compartment $i(t)$ by the fraction of infected with a given degree, that is $i(t)\rightarrow i_k(t)$.
+The average degree in \eqref{eq:sis_network} is replaced by the actual degree and the force of infection is extended by the probability $\Theta (i(t))$ that a given link points to an infected node.
+The latter depends on the total density of infected and it depends only on $\beta $ in the steady state.
+This gives the following SIS model for heterogenous networks:
+\begin{equation}\label{eq:sis_het_network}
+\frac{di_k(t)}{dt}=-i_k(t)+\beta k [1-i_k(t)] \Theta (i(t)).
+\end{equation}
+%
+\begin{SCfigure}
+\includegraphics{Pastor-Satorras.pdf}
+\caption{Fraction of infected in the endemic state for an SIS model.
+The figure reveals the disappearance of the epidemic threshold for in \BA networks (red).
+The epidemic threshold remains finite (here: $\beta _c=1/6$) for homogenous networks and $\beta _c \rightarrow 0$ for \BA networks.
+From \citet{Pastor-Satorras_vespi:2001}.
+}
+\label{fig:pastor-sat}
+\end{SCfigure}
+
+%
+\citeauthor{Pastor-Satorras_vespi:2001} found an analytic expression for the steady state by using statistical arguments to obtain an expression for $\Theta (\beta )$.
+After some calculations, the density of infected in the endemic state for a \BA network with average degree $m=k/2$ reads
+\begin{equation}\label{eq:endemic_ba}
+i \sim e^{\frac{-2}{\mean{k}\beta }} .
+\end{equation}
+A graphical comparison between \eqref{eq:endemic_ws} and \eqref{eq:endemic_ba} is given in figure \ref{fig:pastor-sat}.
+It is an important result that the epidemic threshold vanishes in \BA networks.
+As a consequence, random vaccination in \BA networks does not suppress a disease outbreak \citep{Keeling:2005}.
+Nevertheless, figure \ref{fig:pastor-sat} shows that for the outbreak size remains small for $\beta \rightarrow 0$.
+Finally, the absence of the epidemic threshold is generally found in scale-free networks with degree distributions $P(k)\sim k^{-\gamma }$ for $2\leqslant \gamma \leqslant 3$.
+
+
+
+
+
+
+
+
+\paragraph{Vaccination strategies\color{Cayenne}{.}}
+
+\paragraph{Meta-populations\color{Cayenne}{.}}
 
 
 

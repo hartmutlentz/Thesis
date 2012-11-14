@@ -268,6 +268,12 @@ Mart{\'\i}nez-L{\'o}pez, B., Perez, A.~M., and S{\'a}nchez-Vizca{\'\i}no, J.
   Preventive Veterinary Medicine}.
 \newblock {\em Transbound. Emerg. Dis.}, 56:109--120.
 
+\bibitem[Merali, 2010]{Merali:2010ih}
+Merali, Z. (2010).
+\newblock {Computational science: Error. Why scientific computing does not
+  compute}.
+\newblock {\em Nature}, 467:775--777.
+
 \bibitem[Merton, 1968]{Merton:1968fh}
 Merton, R.~K. (1968).
 \newblock {The Matthew Effect in Science: The reward and communication systems
@@ -311,9 +317,14 @@ Page, L. (1997).
 \newblock Method for node ranking in a linked database.
 \newblock \emph{Patent} US 6285999.
 
-\bibitem[Pastor-Satorras and Vespignani, 2001]{PastorSatorras:2001}
-Pastor-Satorras, R. and Vespignani, A. (2001).
+\bibitem[Pastor-Satorras and Vespignani, 2001a]{PastorSatorras:2001}
+Pastor-Satorras, R. and Vespignani, A. (2001a).
 \newblock {Epidemic dynamics and endemic states in complex networks}.
+\newblock {\em Phys. Rev. E}, 63:066117.
+
+\bibitem[Pastor-Satorras and Vespignani, 2001b]{Pastor-Satorras_vespi:2001}
+Pastor-Satorras, R. and Vespignani, A. (2001b).
+\newblock Epidemic dynamics and endemic states in complex networks.
 \newblock {\em Phys. Rev. E}, 63:066117.
 
 \bibitem[Press et~al., 1992]{Press:1992}
