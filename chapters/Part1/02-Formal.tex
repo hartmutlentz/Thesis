@@ -833,7 +833,7 @@ In the configuration model one can consider higher order statistics, such as deg
 In this context, an \ER graph is just one realization of an ensemble of possible random graphs.
 Exponential random graphs are an elegant way of treating networks, but their mathematical treatments appears intractable for many cases of interest \citep{Newman2003}.
 
-\subsection{Resilience of different network types}
+\subsection{Resilience of different network types}\label{sec:resilience}
 A fundamental difference between complex networks and man made technological systems is their robustness against failure.
 Failure can be modeled by \emph{randomly} removing nodes of the system\footnote{Removing edges instead of nodes gives similar results.}.
 In this sense, network failure can be seen as an inverse percolation problem.
@@ -935,7 +935,11 @@ From \citet{Pastor-Satorras_vespi:2001}.
 \citeauthor{Pastor-Satorras_vespi:2001} found an analytic expression for the steady state by using statistical arguments to obtain an expression for $\Theta (\beta )$.
 After some calculations, the density of infected in the endemic state for a \BA network with average degree $m=k/2$ reads
 \begin{equation}\label{eq:endemic_ba}
-i \sim e^{\frac{-2}{\mean{k}\beta }} .
+i \sim e^{\frac{-2}{\mean{k}\beta }}
+\end{equation}
+and the condition for the epidemic threshold is \citep{pastor-sat_2}
+\begin{equation}\label{eq:degree_threshold}
+\beta _c=\frac{\mean{k}}{\mean{k^2}} .
 \end{equation}
 A graphical comparison between \eqref{eq:endemic_ws} and \eqref{eq:endemic_ba} is given in figure \ref{fig:pastor-sat}.
 It is an important result that the epidemic threshold vanishes in \BA networks.
@@ -943,14 +947,18 @@ As a consequence, random vaccination in \BA networks does not suppress a disease
 Nevertheless, figure \ref{fig:pastor-sat} shows that for the outbreak size remains small for $\beta \rightarrow 0$.
 Finally, the absence of the epidemic threshold is generally found in scale-free networks with degree distributions $P(k)\sim k^{-\gamma }$ for $2\leqslant \gamma \leqslant 3$.
 
-
-
-
-
-
-
-
 \paragraph{Vaccination strategies\color{Cayenne}{.}}
+As we have seen in the previous section, random immunization fails in scale-free networks, because it gives the same priority to low degree nodes and large hubs, while large hubs are unlikely to be chosen by chance.
+Random immunization effectively reduces the infection rate $\beta \rightarrow \beta (1-g)$, where $g$ is the fraction of vaccinated nodes.
+Therefore, the epidemic threshold condition \eqref{eq:degree_threshold} reads $\beta (1-g_c)=\mean{k}/\mean{k^2}$ with the critical immunization density $g_c$.
+It follows
+\begin{equation}\label{eq:critical_vacc}
+g_c=1- \frac{1}{\beta } \frac{\mean{k}}{\mean{k^2}}.
+\end{equation}
+Given a scale-free network with diverging $\mean{k^2}$, the total population has to be vaccinated in order to drop the infection rate below the epidemic threshold.
+
+Nevertheless, scale-free networks are vulnerable to targeted removal of highly connected nodes (see section \ref{sec:resilience}).
+Immunization of the mostly connected nodes is therefore an effective vaccination strategy on these networks.
 
 \paragraph{Meta-populations\color{Cayenne}{.}}
 

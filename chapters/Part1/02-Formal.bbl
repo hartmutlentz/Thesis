@@ -327,6 +327,11 @@ Pastor-Satorras, R. and Vespignani, A. (2001b).
 \newblock Epidemic dynamics and endemic states in complex networks.
 \newblock {\em Phys. Rev. E}, 63:066117.
 
+\bibitem[Pastor-Satorras and Vespignani, 2002]{pastor-sat_2}
+Pastor-Satorras, R. and Vespignani, A. (2002).
+\newblock Epidemic dynamics in finite size scale-free networks.
+\newblock {\em Phys. Rev. E}, 65:035108.
+
 \bibitem[Press et~al., 1992]{Press:1992}
 Press, W.~H., Teukolsky, S.~A., Vetterling, W.~T., and Flannery, B.~P. (1992).
 \newblock {\em Numerical recipes in C (2nd ed.): the art of scientific
