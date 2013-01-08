@@ -114,6 +114,12 @@ Clauset, A. and Newman, M. E.~J. (2009).
 \newblock {Power-Law Distributions in Empirical Data}.
 \newblock {\em SIAM Rev.}, 51(4):661.
 
+\bibitem[Cohen et~al., 2003]{Cohen:PRL}
+Cohen, R., Havlin, S., and ben Avraham, D. (2003).
+\newblock Efficient immunization strategies for computer networks and
+  populations.
+\newblock {\em Phys. Rev. Lett.}, 91:247901.
+
 \bibitem[de~Solla~Price, 1965]{Price:1965}
 de~Solla~Price, D.~J. (1965).
 \newblock Networks of scientific papers.
@@ -209,6 +215,11 @@ Hamer, W.~H. (1906).
 \newblock Epidemic disease in england.
 \newblock {\em Lancet}, 1:733--739.
 
+\bibitem[Hanski, 1998]{Hanski:1998}
+Hanski, I. (1998).
+\newblock {Metapopulation dynamics}.
+\newblock {\em Nature}, 396(6706):41--49.
+
 \bibitem[Harris, 1974]{Harris:1974}
 Harris, T.~E. (1974).
 \newblock Contact interactions on a lattice.
@@ -256,7 +267,7 @@ Kleinberg, J.~M., Kumar, R., Raghavan, P., Rajagopalan, S., and Tomkins, A.~S.
 \newblock The web as a graph: measurements, models, and methods.
 
 \bibitem[Lentz et~al., 2012]{Lentz:2012pre}
-Lentz, H., Selhorst, T., and Sokolov, I.~M. (2012).
+Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012).
 \newblock {Spread of infectious diseases in directed and modular metapopulation
   networks}.
 \newblock {\em Phys. Rev. E}, 85:066111.
@@ -317,20 +328,20 @@ Page, L. (1997).
 \newblock Method for node ranking in a linked database.
 \newblock \emph{Patent} US 6285999.
 
-\bibitem[Pastor-Satorras and Vespignani, 2001a]{PastorSatorras:2001}
-Pastor-Satorras, R. and Vespignani, A. (2001a).
-\newblock {Epidemic dynamics and endemic states in complex networks}.
-\newblock {\em Phys. Rev. E}, 63:066117.
-
-\bibitem[Pastor-Satorras and Vespignani, 2001b]{Pastor-Satorras_vespi:2001}
-Pastor-Satorras, R. and Vespignani, A. (2001b).
+\bibitem[Pastor-Satorras and Vespignani, 2001]{Pastor-Satorras_vespi:2001}
+Pastor-Satorras, R. and Vespignani, A. (2001).
 \newblock Epidemic dynamics and endemic states in complex networks.
 \newblock {\em Phys. Rev. E}, 63:066117.
 
-\bibitem[Pastor-Satorras and Vespignani, 2002]{pastor-sat_2}
-Pastor-Satorras, R. and Vespignani, A. (2002).
+\bibitem[Pastor-Satorras and Vespignani, 2002a]{pastor-sat_2}
+Pastor-Satorras, R. and Vespignani, A. (2002a).
 \newblock Epidemic dynamics in finite size scale-free networks.
 \newblock {\em Phys. Rev. E}, 65:035108.
+
+\bibitem[Pastor-Satorras and Vespignani, 2002b]{PastorSat:immunization}
+Pastor-Satorras, R. and Vespignani, A. (2002b).
+\newblock Immunization of complex networks.
+\newblock {\em Phys. Rev. E}, 65:036104.
 
 \bibitem[Press et~al., 1992]{Press:1992}
 Press, W.~H., Teukolsky, S.~A., Vetterling, W.~T., and Flannery, B.~P. (1992).

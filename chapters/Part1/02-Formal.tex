@@ -3,6 +3,10 @@
 \usepackage{graphicx,xcolor,hyperref} % obsolete in HU-diss
 \usepackage[round,authoryear]{natbib}
 \setlength\bibhang{2em} 
+%add S to counter
+%\makeatletter 
+%\renewcommand{\thefigure}{S\@arabic\c@figure}
+%\renewcommand{\thesection}{S\@arabic\c@section}
 
 \input{/Users/lentz/Documents/GitHub_locals/Thesis/adjustment}
 
@@ -512,7 +516,7 @@ Hubs are highlighted in red.}
 \end{figure}
 
 Scale-free networks have attained remarkable attention in the last years and many real-world networks have been conjectured as scale-free \citep{Newman2003,Barabasi99}.
-Important consequences of this classification were found to be a change in the threshold behavior of epidemic processes \citep{PastorSatorras:2001} and their topological resilience to node failures \citep{Albert:2000}.
+Important consequences of this classification were found to be a change in the threshold behavior of epidemic processes \citep{Pastor-Satorras_vespi:2001} and their topological resilience to node failures \citep{Albert:2000}.
 The degree distributions of collaboration networks were well fitted by a scale-free distribution with a sharp cut-off \citep{Newman:2001p,Albert:2000p}, i.e. $P(K)\propto k^{-\gamma }e^{-k/\kappa }$ with fitting constants $\gamma $ and $\tau $.
 In \citep{Amaral:2000}, a possible explanation for the existence of an exponential cut-off was the aging of nodes, indicating that real systems possess a natural upper bound for their number of links.
 
@@ -959,9 +963,49 @@ Given a scale-free network with diverging $\mean{k^2}$, the total population has
 
 Nevertheless, scale-free networks are vulnerable to targeted removal of highly connected nodes (see section \ref{sec:resilience}).
 Immunization of the mostly connected nodes is therefore an effective vaccination strategy on these networks.
+Numerical results for different vaccination strategies applied to a SIS-disease in a \BA network are shown in figure \ref{fig:targeted_immunization}.
+%
+\begin{SCfigure}
+\includegraphics{SIS-Vacc.pdf}
+\caption{Targeted and random vaccination for an SIS disease in a \BA network with $10^5$ nodes and $m=4$.
+Infection parameters $\beta / \mu =2$.}
+\label{fig:targeted_immunization}
+\end{SCfigure}
+%
+
+In analogy to \eqref{eq:critical_vacc}, an analytic expression for the critical immunization density can be computed also for heterogenous networks \citep{PastorSat:immunization}.
+In this case, the fraction $g$ of nodes with the highest degrees in the network is vaccinated.
+This introduces a cut-off degree $k_c(g)$ so that all nodes with degree $k>k_c$ do not contribute to the spread of the disease.
+For the case of a \BA network \citeauthor{PastorSat:immunization} found an expression for the critical vaccination density to be
+\begin{equation}\label{eq:crit_vacc_BA}
+g_c \sim \exp (-2\mu / m\beta ),
+\end{equation}
+where $m$ is the minimum degree of the network and $\mu $ and $\alpha $ are infection parameters, respectively.
+The exact value of $g_c$ can be found by extrapolation of the curves in figure \ref{fig:targeted_immunization}.
+The striking feature of equation \eqref{eq:crit_vacc_BA} is, however, that the fraction nodes that have to be vaccinated decreases exponentially with the spreading rate.
+
+It should be noted that global knowledge about the network structure is needed in order to apply vaccination strategies as degree targeted vaccination.
+However, the detailed contact structure of many real systems -- especially human contacts -- is not known.
+Targeted immunization as described above can therefore be considered as an ideal vaccination strategy.
+This ideal strategy can be approximated using \emph{nearest neighbor vaccination} \citep{Cohen:PRL}.
+The basic idea is to use local information by just asking for the neighbors of an individual, which gives some edges of the network.
+It is generally more probable that a randomly chosen edge is connected to a node of large degree, simply because these node class is connected to relatively many edges.
 
 \paragraph{Meta-populations\color{Cayenne}{.}}
-
+The models and results discussed so far considered every node in the network as one individual.
+In many systems, however, the detailed internal contact structure is unknown, but information about contacts between whole subpopulations is available.
+Every subpopulation could be a city or a habitat in ecology. 
+A \emph{meta-population} is a set of subpopulations which are connected by migration processes \citep{dynamical_processes,Hanski:1998}.
+Meta-population approaches have been used to model large scale disease outbreaks, such as influenza, SARS .
+In the context of epidemics every subpopulation has a different infection status, i.e. a distribution of $S$, $I$ and $R$.
+Additionally to the local infection model, we add a migration term so that the general form of a meta-population SIR-infection-model for a subpopulation $\mu $ is
+\begin{equation}\label{eq:general_metapop_sir}
+\frac{dI_\mu }{dt} = R(S_\mu, I_\mu , R_\mu) + M (S_\mu, I_\mu , R_\mu, S_\nu ,I_\nu ,R_\nu, \tau ).
+\end{equation}
+The first term $R$ in equation \eqref{eq:general_metapop_sir} is a local reaction term, while the migration to other subpopulations could depend on the local distribution and the infection status of other subpopulations connected to $\mu $.
+Furthermore, the migration between subpopulations could occur on a time-scale $\tau $ different from the time-scale of the local infection.
+We investigate the interplay between network properties and disease outbreaks in section xx. 
+ 
 
 
 
