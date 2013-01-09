@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: 02-Formal.aux
 The style file: apalike.bst
 Database file #1: /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
-You've used 75 entries,
+You've used 84 entries,
             1935 wiz_defined-function locations,
-            951 strings with 13694 characters,
-and the built_in function-call counts, 28386 in all, are:
-= -- 2822
-> -- 981
-< -- 59
-+ -- 327
-- -- 314
-* -- 2378
-:= -- 4953
-add.period$ -- 226
-call.type$ -- 75
-change.case$ -- 523
-chr.to.int$ -- 74
-cite$ -- 75
-duplicate$ -- 1073
-empty$ -- 2094
-format.name$ -- 441
-if$ -- 5550
+            1003 strings with 15508 characters,
+and the built_in function-call counts, 32361 in all, are:
+= -- 3210
+> -- 1173
+< -- 60
++ -- 393
+- -- 380
+* -- 2758
+:= -- 5647
+add.period$ -- 253
+call.type$ -- 84
+change.case$ -- 601
+chr.to.int$ -- 83
+cite$ -- 84
+duplicate$ -- 1197
+empty$ -- 2356
+format.name$ -- 518
+if$ -- 6304
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 84
-newline$ -- 377
-num.names$ -- 225
-pop$ -- 396
+missing$ -- 93
+newline$ -- 422
+num.names$ -- 252
+pop$ -- 457
 preamble$ -- 1
-purify$ -- 532
+purify$ -- 610
 quote$ -- 0
-skip$ -- 820
+skip$ -- 912
 stack$ -- 0
-substring$ -- 2242
-swap$ -- 98
+substring$ -- 2558
+swap$ -- 107
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 426
+type$ -- 480
 warning$ -- 0
-while$ -- 244
+while$ -- 276
 width$ -- 0
-write$ -- 970
+write$ -- 1086

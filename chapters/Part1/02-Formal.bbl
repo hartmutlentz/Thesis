@@ -1,19 +1,9 @@
 \begin{thebibliography}{}
 
-\bibitem[Albert and Barab{\'a}si, 2000]{Albert:2000p}
-Albert, R. and Barab{\'a}si, A.-L. (2000).
-\newblock Topology of evolving networks: Local events and universality.
-\newblock {\em Phys. Rev. Lett.}, 85(24):5234--5237.
-
 \bibitem[Albert and Barab\'asi, 2002]{RevModPhys.74}
 Albert, R. and Barab\'asi, A.-L. (2002).
 \newblock Statistical mechanics of complex networks.
 \newblock {\em Rev. Mod. Phys.}, 74:47--97.
-
-\bibitem[Albert and Barab{\'a}si, 2002]{Albert:2002}
-Albert, R. and Barab{\'a}si, A.-L. (2002).
-\newblock {Statistical mechanics of complex networks}.
-\newblock {\em Rev. Mod. Phys.}, 74:47.
 
 \bibitem[Albert et~al., 2000]{Albert:2000}
 Albert, R., Jeong, H., and Barab{\'a}si, A.-L. (2000).
@@ -45,6 +35,19 @@ Bak, P., Chen, K., and Tang, C. (1990).
 \newblock Forest-fire model and some thoughts on turbulence.
 \newblock {\em Phys. Lett. A}, 147:297--300.
 
+\bibitem[Balcan et~al., 2009]{DuyguBalcan12222009}
+Balcan, D., Colizza, V., Gon{\c c}alves, B., Hu, H., Ramasco, J.~J., and
+  Vespignani, A. (2009).
+\newblock {Multiscale mobility networks and the spatial spreading of infectious
+  diseases}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 106(51):21484--21489.
+
+\bibitem[Balcan and Vespignani, 2011]{Balcan:2011gv}
+Balcan, D. and Vespignani, A. (2011).
+\newblock {Phase transitions in contagion processes mediated by recurrent
+  mobility patterns}.
+\newblock {\em Nat. Phys.}, 7(7):581--586.
+
 \bibitem[Banerjee and Jost, 2009]{Banerjee2009}
 Banerjee, A. and Jost, J. (2009).
 \newblock Graph spectra as a systematic tool in computational biology.
@@ -70,6 +73,12 @@ Barrat, A. and Weigt, M. (2000).
 Bauch, C.~T. and Earn, D. J.~D. (2004).
 \newblock {Vaccination and the theory of games.}
 \newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 101(36):13391--13394.
+
+\bibitem[Belik et~al., 2011]{Belik:2011ke}
+Belik, V., Geisel, T., and Brockmann, D. (2011).
+\newblock {Natural Human Mobility Patterns and Spatial Spread of Infectious
+  Diseases}.
+\newblock {\em Phys. Rev. X}, 1(1).
 
 \bibitem[Bianconi and Barab{\'a}si, 2001]{Bianconi:2001}
 Bianconi, G. and Barab{\'a}si, A.-L. (2001).
@@ -119,6 +128,29 @@ Cohen, R., Havlin, S., and ben Avraham, D. (2003).
 \newblock Efficient immunization strategies for computer networks and
   populations.
 \newblock {\em Phys. Rev. Lett.}, 91:247901.
+
+\bibitem[Colizza et~al., 2006]{VittoriaColizza02142006}
+Colizza, V., Barrat, A., Barth{\'e}lemy, M., and Vespignani, A. (2006).
+\newblock {The role of the airline transportation network in the prediction and
+  predictability of global epidemics}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 103(7):2015--2020.
+
+\bibitem[Colizza et~al., 2007]{Colizza:2007p5906}
+Colizza, V., Pastor-Satorras, R., and Vespignani, A. (2007).
+\newblock {Reaction-diffusion processes and metapopulation models in
+  heterogeneous networks}.
+\newblock {\em Nat. Phys.}, 3(4):276--282.
+
+\bibitem[Colizza and Vespignani, 2007]{Colizza:2007p6276}
+Colizza, V. and Vespignani, A. (2007).
+\newblock {Invasion threshold in heterogeneous metapopulation networks}.
+\newblock {\em Phys. Rev. Lett.}
+
+\bibitem[Cross et~al., 2005]{cross2005}
+Cross, P.~C., Lloyd-Smith, J.~O., Johnson, P. L.~F., and Getz, W.~M. (2005).
+\newblock {Duelling timescales of host movement and disease recovery determine
+  invasion of disease in structured populations}.
+\newblock {\em Ecol. Lett.}, 8:587--595.
 
 \bibitem[de~Solla~Price, 1965]{Price:1965}
 de~Solla~Price, D.~J. (1965).
@@ -194,10 +226,21 @@ Girvan, M. and Newman, M. E.~J. (2002).
 \newblock {Community structure in social and biological networks}.
 \newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 99(12):7821--7826.
 
+\bibitem[Grenfell and Harwood, 1997]{Grenfell:1997ts}
+Grenfell, B. and Harwood, J. (1997).
+\newblock {(Meta)population dynamics of infectious diseases}.
+\newblock {\em Trends Ecol Evol}, 12(10):395--399.
+
 \bibitem[Grenfell, 1992]{grenfell:92}
 Grenfell, B.~T. (1992).
 \newblock Chance and chaos in measles dynamics.
 \newblock {\em J. R. Stat. Soc. B}, 54:383--398.
+
+\bibitem[Guimer{\`a} et~al., 2005]{Guimera:2005p5232}
+Guimer{\`a}, R., Mossa, S., Turtschi, A., and Amaral, L. A.~N. (2005).
+\newblock {The worldwide air transportation network: Anomalous centrality,
+  community structure, and cities' global roles}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 102(22):7794--7799.
 
 \bibitem[Hagberg, 2012]{networkx:}
 Hagberg, A.~A. (2012).
@@ -240,11 +283,22 @@ Holme, P., Kim, B.~J., Yoon, C.~N., and Han, S.~K. (2002).
 \newblock Attack vulnerability of complex networks.
 \newblock {\em Phys. Rev. E}, 65:056109.
 
+\bibitem[Hufnagel et~al., 2004]{Hufnagel:2004p27}
+Hufnagel, L., Brockmann, D., and Geisel, T. (2004).
+\newblock {Forecast and control of epidemics in a globalized world}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 101(42):15124.
+
 \bibitem[Isella et~al., 2011]{isella2011}
 Isella, L., Stehl{\'e}, J., Barrat, A., Cattuto, C., Pinton, J.-F., and Van~den
   Broeck, W. (2011).
 \newblock {What's in a crowd? Analysis of face-to-face behavioral networks}.
 \newblock {\em J. Theor. Biol.}, 271(1):166--180.
+
+\bibitem[Keeling et~al., 2010]{Keeling11052010}
+Keeling, M.~J., Danon, L., Vernon, M.~C., and House, T.~A. (2010).
+\newblock {Individual identity and movement networks for disease
+  metapopulations}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 107(19):8866--8870.
 
 \bibitem[Keeling and Eames, 2005]{Keeling:2005}
 Keeling, M.~J. and Eames, K. (2005).
