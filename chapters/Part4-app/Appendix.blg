@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Appendix.aux
+The style file: apalike.bst
+Database file #1: /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
+You've used 8 entries,
+            1935 wiz_defined-function locations,
+            530 strings with 5189 characters,
+and the built_in function-call counts, 3640 in all, are:
+= -- 362
+> -- 146
+< -- 7
++ -- 54
+- -- 50
+* -- 308
+:= -- 614
+add.period$ -- 26
+call.type$ -- 8
+change.case$ -- 65
+chr.to.int$ -- 8
+cite$ -- 8
+duplicate$ -- 138
+empty$ -- 257
+format.name$ -- 60
+if$ -- 728
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 9
+newline$ -- 43
+num.names$ -- 24
+pop$ -- 55
+preamble$ -- 1
+purify$ -- 65
+quote$ -- 0
+skip$ -- 108
+stack$ -- 0
+substring$ -- 278
+swap$ -- 27
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 46
+warning$ -- 0
+while$ -- 30
+width$ -- 0
+write$ -- 111

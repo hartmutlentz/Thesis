@@ -1,0 +1,49 @@
+\begin{thebibliography}{}
+
+\bibitem[Brandes et~al., 2007]{brandes2007}
+Brandes, U., Delling, D., Gaertler, M., G{\"o}rke, R., Hoefer, M., Nikoloski,
+  Z., and Wagner, D. (2007).
+\newblock {On Finding Graph Clusterings with Maximum Modularity}.
+\newblock In {\em Graph-Theoretic Concepts in Computer Science}, volume 4769,
+  pages 121--132. Springer Berlin Heidelberg.
+
+\bibitem[Dijkstra, 1959]{Dijkstra:1959}
+Dijkstra, E. (1959).
+\newblock {A note on two problems in connexion with graphs}.
+\newblock {\em Numerische Mathematik}, 1:269--271.
+
+\bibitem[Good et~al., 2010]{Good2010}
+Good, B.~H., de~Montjoye, Y., and Clauset, A. (2010).
+\newblock The performance of modularity maximization in practical contexts.
+\newblock {\em Phys. Rev. E}, 81(4):046106.
+
+\bibitem[Isella et~al., 2011]{isella2011}
+Isella, L., Stehl{\'e}, J., Barrat, A., Cattuto, C., Pinton, J.-F., and Van~den
+  Broeck, W. (2011).
+\newblock {What's in a crowd? Analysis of face-to-face behavioral networks}.
+\newblock {\em J. Theor. Biol.}, 271(1):166--180.
+
+\bibitem[Kao et~al., 2007]{Kao:2007}
+Kao, R.~R., Green, D.~M., Johnson, J., and Kiss, I.~Z. (2007).
+\newblock {Disease dynamics over very different time-scales: foot-and-mouth
+  disease and scrapie on the network of livestock movements in the UK}.
+\newblock {\em Journal of the Royal Society Interface}, 4(16):907--916.
+
+\bibitem[Merali, 2010]{Merali:2010ih}
+Merali, Z. (2010).
+\newblock {Computational science: Error. Why scientific computing does not
+  compute}.
+\newblock {\em Nature}, 467:775--777.
+
+\bibitem[Skiena, 2008]{algorithm_design}
+Skiena, S.~S. (2008).
+\newblock {\em The algorithm design manual}.
+\newblock Springer, London, 2nd edition.
+
+\bibitem[Yang and Leskovec, 2011]{Yang:2011}
+Yang, J. and Leskovec, J. (2011).
+\newblock Patterns of temporal variation in online media.
+\newblock In {\em Proceedings of the fourth ACM international conference on Web
+  search and data mining}, WSDM '11, pages 177--186, New York, NY, USA. ACM.
+
+\end{thebibliography}

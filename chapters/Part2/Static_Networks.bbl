@@ -1,0 +1,63 @@
+\begin{thebibliography}{}
+
+\bibitem[Buchholz et~al., 2011]{Wilking}
+Buchholz, U., Bernard, H., Werber, D., B{\"o}hmer, M.~M., Remschmidt, C.,
+  Wilking, H., Deler{\'e}, Y., an~der Heiden, M., Adlhoch, C., Dreesman, J.,
+  Ehlers, J., Ethelberg, S., Faber, M., Frank, C., Fricke, G., Greiner, M.,
+  H{\"o}hle, M., Ivarsson, S., Jark, U., Kirchner, M., Koch, J., Krause, G.,
+  Luber, P., Rosner, B., Stark, K., and K{\"u}hne, M. (2011).
+\newblock German outbreak of escherichia coli o104:h4 associated with sprouts.
+\newblock {\em New England Journal of Medicine}, 365(19):1763--1770.
+
+\bibitem[EUR-Lex, 2000]{Euro-Lex}
+EUR-Lex (2000).
+\newblock Directive 2000/15/ec of the european parliament and the council of 10
+  april 2000 amending council directive 64/432/eec on health problems affecting
+  intra-community trade in bovine animals and swine.
+\newblock EUR-Lex.
+
+\bibitem[Haydon et~al., 2003]{Haydon22012003}
+Haydon, D.~T., Chase-Topping, M., Shaw, D.~J., Matthews, L., Friar, J.~K.,
+  Wilesmith, J., and Woolhouse, M. E.~J. (2003).
+\newblock The construction and analysis of epidemic trees with reference to the
+  2001 uk foot--and--mouth outbreak.
+\newblock {\em Proceedings of the Royal Society of London. Series B: Biological
+  Sciences}, 270(1511):121--127.
+
+\bibitem[Keeling and Eames, 2005]{Keeling:2005}
+Keeling, M.~J. and Eames, K. (2005).
+\newblock {Networks and epidemic models}.
+\newblock {\em J. R. Soc. Interface B}, 2:295--307.
+
+\bibitem[Mart{\'\i}nez-L{\'o}pez et~al., 2011]{MartinezLopez:2011db}
+Mart{\'\i}nez-L{\'o}pez, B., Ivorra, B., Ramos, A.~M., and
+  S{\'a}nchez-Vizca{\'\i}no, J.~M. (2011).
+\newblock {A novel spatial and stochastic model to evaluate the within- and
+  between-farm transmission of classical swine fever virus. I. General concepts
+  and description of the model}.
+\newblock {\em Vet. Microbiol.}, 147(3-4):300--309.
+
+\bibitem[Rocha et~al., 2010]{Rocha_pnas}
+Rocha, L. E.~C., Liljeros, F., and Holme, P. (2010).
+\newblock {Information dynamics shape the sexual networks of Internet-mediated
+  prostitution}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 107(13):5706--5711.
+
+\bibitem[Rocha et~al., 2011]{Rocha_plosbc}
+Rocha, L. E.~C., Liljeros, F., and Holme, P. (2011).
+\newblock {Simulated Epidemics in an Empirical Spatiotemporal Network of 50,185
+  Sexual Contacts}.
+\newblock {\em PLoS Comput. Biol.}, 7(3):e1001109.
+
+\bibitem[StMELF, 2012]{HI-Tier}
+StMELF, B. (2012).
+\newblock Herkunftssicherungs und informationssystem f{\"u}r tiere.
+\newblock \verb"http://www.hi-tier.de".
+
+\bibitem[Visser et~al., 2003]{Visser:2003p784}
+Visser, R., Smith, A., Rissel, C., and Richters, J. (2003).
+\newblock {Sex in Australia: Heterosexual experience and recent heterosexual
+  encounters among a representative {\ldots}}.
+\newblock {\em Aust. N Z. J. Public Health}, 27(2):146--154.
+
+\end{thebibliography}

@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Static_Networks.aux
+The style file: apalike.bst
+Database file #1: /Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib.bib
+You've used 9 entries,
+            1935 wiz_defined-function locations,
+            538 strings with 6149 characters,
+and the built_in function-call counts, 4395 in all, are:
+= -- 405
+> -- 280
+< -- 3
++ -- 104
+- -- 102
+* -- 428
+:= -- 793
+add.period$ -- 27
+call.type$ -- 9
+change.case$ -- 96
+chr.to.int$ -- 9
+cite$ -- 9
+duplicate$ -- 118
+empty$ -- 245
+format.name$ -- 113
+if$ -- 814
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 7
+newline$ -- 48
+num.names$ -- 27
+pop$ -- 75
+preamble$ -- 1
+purify$ -- 96
+quote$ -- 0
+skip$ -- 90
+stack$ -- 0
+substring$ -- 288
+swap$ -- 7
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 54
+warning$ -- 0
+while$ -- 29
+width$ -- 0
+write$ -- 117

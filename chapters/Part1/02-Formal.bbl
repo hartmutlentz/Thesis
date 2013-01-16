@@ -226,6 +226,12 @@ Girvan, M. and Newman, M. E.~J. (2002).
 \newblock {Community structure in social and biological networks}.
 \newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 99(12):7821--7826.
 
+\bibitem[Grassberger, 1983]{Grassberger1983157}
+Grassberger, P. (1983).
+\newblock On the critical behavior of the general epidemic process and
+  dynamical percolation.
+\newblock {\em Mathematical Biosciences}, 63(2):157 -- 172.
+
 \bibitem[Grenfell and Harwood, 1997]{Grenfell:1997ts}
 Grenfell, B. and Harwood, J. (1997).
 \newblock {(Meta)population dynamics of infectious diseases}.
@@ -326,6 +332,11 @@ Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012).
   networks}.
 \newblock {\em Phys. Rev. E}, 85:066111.
 
+\bibitem[Liljeros et~al., 2001]{Liljeros:2001p841}
+Liljeros, F., Edling, C., Amaral, L. A.~N., and Stanley, H.~E. (2001).
+\newblock {The web of human sexual contacts}.
+\newblock {\em Nature}, 411:907.
+
 \bibitem[Mart{\'\i}nez-L{\'o}pez et~al., 2009]{MartinezLopez2009}
 Mart{\'\i}nez-L{\'o}pez, B., Perez, A.~M., and S{\'a}nchez-Vizca{\'\i}no, J.
   (2009).
@@ -407,6 +418,19 @@ Press, W.~H., Teukolsky, S.~A., Vetterling, W.~T., and Flannery, B.~P. (1992).
 Ross, R. (1911).
 \newblock {\em The Prevention of Malaria}.
 \newblock Murray, London, 2nd edition.
+
+\bibitem[Sander et~al., 2003]{Sander20031}
+Sander, L., Warren, C., and Sokolov, I. (2003).
+\newblock Epidemics, disorder, and percolation.
+\newblock {\em Physica A: Statistical Mechanics and its Applications},
+  325(1{\^a}€``2):1 -- 8.
+\newblock <ce:title>Stochastic Systems: From Randomness to
+  Complexity</ce:title>.
+
+\bibitem[Sander et~al., 2002]{Sander2002293}
+Sander, L., Warren, C., Sokolov, I., Simon, C., and Koopman, J. (2002).
+\newblock Percolation on heterogeneous networks as a model for epidemics.
+\newblock {\em Mathematical Biosciences}, 180(1{\^a}€``2):293 -- 305.
 
 \bibitem[Sen et~al., 2003]{indian_railway}
 Sen, P., Dasgupta, S., Chatterjee, A., Sreeram, P.~A., Mukherjee, G., and

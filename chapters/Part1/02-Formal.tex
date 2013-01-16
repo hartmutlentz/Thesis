@@ -581,97 +581,21 @@ A (weighted) adjacency matrix $\mathbf{C}$ of $G^*$ for a $N$-node network is gi
 \end{equation}
 where $\mathbf{A}$ is the adjacency matrix of $G$ and the elements of $\mathbf{C}$ contain the actual number of paths between each node pair.
 
-\subsection{Implementation}\label{sec:implementation}
-In order to efficiently implement networks and their analysis on a computer, it is necessary to use data structures adjusted to these problems.
-A short and transparent introduction to data structures and algorithms is in the book of Skiena \citep{algorithm_design}.
-In this section, we discuss some essential data structures appropriate for network analysis and give a brief description of fundamental algorithms.
-The purpose of this section is not to list different algorithms and source code, but rather to sketch the basic ideas behind the data structures and algorithms.
-For source code of data structures and algorithms, the reader is encouraged to the lecture of \citep{algorithm_design} and \citep{Merali:2010ih}.
-
-\paragraph{Matrix implementation\color{Cayenne}{.}}
-To begin with, we consider the implementation of adjacency matrices as introduced in section \ref{sec:network_matrices}.
-Matrix implementations work also for the other matrices introduced in section \ref{sec:network_matrices}.
-All adjacency matrices are by definition square matrices.
-Their entries are either $0$ or $1$, and can take any floating number value for weighted networks.
-In this work, we neglect negative edge weights.
-The number of nodes in most complex network datasets is relatively large. 
-Starting with small networks (100 nodes, conference contacts \citep{isella2011}), complex networks can be gigantic (0.5 billion nodes, twitter tweeds \citep{Yang:2011}).
-Note that the size of the adjacency matrices scales with the square of the networks size, hence large networks intractable for straightforward computer-based matrix analyses.
-
-Nevertheless, there is one feature, that most adjacency matrices of real-world networks have in common:
-they are \emph{sparse}, i.e. the vast majority of their entries are zeros\footnote{Typically, the number of edges in the network is of the same order as the number of nodes.}.
-Since zeros do not contribute to matrix operations as products or additions, it is reasonable to use data structures ignoring zeros.
-These data structures are called \verb"sparse matrices".
-Their advantages is (1) they save much memory and (2) computations are faster, because operations with zeros involved are not executed.
-Sparse matrix data structures are available in most modern computer languages (e.g. Matlab, Python: \verb"scipy" library, C/C++: \verb"boost" library).
-They perform well for all problems based on adjacency matrices, e.g. degree or eigenvector centrality.
-However, matrix methods are not suitable for the computation of many other network measures, such as betweenness, closeness or network navigation.
-
-\paragraph{Graph implementation\color{Cayenne}{.}}
-The weakness of matrix representations of networks is that it is rather complicated to \emph{traverse} a network using matrices.
-A traversal is a procedure like: start at a node, visit all of its neighbors, from each neighbor visit its neighbor and so forth, until there are no more new nodes to traverse.
-This is a searching process.
-These processes are used in many implementations of graph theoretic methods.
-
-An alternative implementation to the adjacency matrix is an \emph{adjacency list}.
-It stores the neighbors of every node and is implemented in terms of a linked list.
-Using the example network of \ref{fig:simple_digraph}, we get the following adjacency list:
-\begin{align*}
-1 &\rightarrow 2,3 \\
-2 &\rightarrow 4 \\
-3 &\rightarrow 2 \\
-4 &\rightarrow 2,3 .
-\end{align*}
-In order to traverse the graph starting at node $1$, we can choose any of the neighbors of $1$ and repeat the process until we have traversed all nodes.
-One possible traversal starting at $1$ would be $1\rightarrow 3 \rightarrow 2 \rightarrow 4$.
-
-During a traversal process, one can decide to either exploit the whole neighborhood of a node first and then traverse the next generation or choose a neighbor of every traversed node at every step.
-These two essential searching processes are called breadth-first-search (BFS) and depth-first-search (DFS), respectively.
-The difference between the two lies in the order of traversed nodes.
-Figure \ref{fig:dfs_bfs} shows resulting search trees of the two methods.
-Starting at node $1$, the traversal $1\rightarrow 3 \rightarrow 2 \rightarrow 4$ would be found using a DFS-search, while a BFS-search would yield $1\rightarrow 2 \rightarrow 3 \rightarrow 4$.
-It should be noted that in general there exist multiple BFS and DFS trees for each starting node. 
-%
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics{DFS-BFS.pdf}
-\caption{Breadth-first-search and depth-first-search trees in the directed network of fig.~\ref{fig:simple_digraph}. Searches are started at node $1$.}
-\label{fig:dfs_bfs}
-\end{center}
-\end{figure}
-
-Both search algorithms are used in many applications.
-BFS is efficient to compute shortest paths in unweighted networks.
-With every generation in a BFS tree, the distance from the starting node is incremented by 1, and thus the set of nodes with a certain distance from the starting node can be directly read from the BFS tree (see figure \ref{fig:dfs_bfs}).
-Shortest paths in weighted networks can be identified using a the algorithm of Dijkstra \citep{Dijkstra:1959}.
-DFS can be used to identify connected components in directed graphs (see next section).
-
-Implementations of graph structures as discussed above are for example available in the libraries \verb"networkx" (Python), \verb"igraph" (C, Python, R), \verb"Lemon" and \verb"Boost" (C++).
-
-\paragraph{Hard problems\color{Cayenne}{.}}
-Although the libraries introduced above provide a huge and efficient toolbox for network analysis, there are still network problems, where no efficient algorithm is known for their exact solution.
-In the language of complexity theory, the time to solve these problems scales with the problem size in non-polynomial time.
-Problems of this kind can typically be solved exactly only for small system sizes.
-
-Probably the most popular example is the \emph{traveling salesman problem}: a salesman has to traverse a set of cities and thereby choose the order of those cities that minimizes the total distance.
-For small problem sizes, it is possible just to try out all possible combinations and find the minimal total distance.
-The number of possible combinations, however, grows factorial with the system size, i.e. finding a solution takes $t\propto n!$ for $n$ cities.
-In other words, if the problem could be solved for 20 cities in 1 second, it would take 21 seconds to solve it for 21 cities, 7 minutes for 22 cities and 3 million years for 30 cities!
-
-A more exhaustive overview about hard problems is in \citep{algorithm_design} and the references therein.
-Generally, heuristic methods have to be used in order to get an approximate solution.
-It should be noted that the \emph{maximum clique} problem (section xx) and \emph{graph partitioning} (see section xx, \citep{brandes2007}) belong to the class of hard problems.
-
 
 \section{Network models and epidemiology}\label{sec:network_models}
 The analysis of real-world networks in terms of the measures introduced in section \ref{sec:network_theory} has given useful insight into the structural properties of these systems.
 In particular, observations showed that many networks have heavy-tailed degree distributions and show non vanishing clustering coefficients.
 In this section we summarize the results of some widely used network models.
+Being very essential models, the network models in this section are entirely defined by their degree distributions.
+They are therefore generic realizations of ensembles with fixed $P(k)$.
 At the end of the section, we give a comparison between the different models an discuss their relevance in epidemiology.
 
 \subsection{Lattice model}
 Lattice models are inherently related to homogeneously distributed geographical positions of individuals.
 They show a high degree of regularity and their potential for SIS and SIR spreading processes has been studied in \citep{Harris:1974} and \citep{Bak:1990}, respectively.
+The impact of the heterogenous susceptibilities has been studied in \citep{Sander2002293}.
+It was found that this heterogeneity introduces a broadening of the critical region and the outbreak threshold can be increased in the case of heterogenous susceptibilities.
+
 
 \subsection{Erd\H{o}s-R\'enyi model}
 The Erd\H{o}s-R\'enyi model makes use of probabilistic methods to analyze network properties and is therefore a random graph model.
@@ -783,13 +707,14 @@ Every data point is the average of 1000 realizations.}
 
 The degree distribution collapses to a single peak for $p=0$.
 In their paper about properties of small-world networks \citep{Barrat:2000fj}, Barrat and Weigt showed that the distribution converges to a Poisson distribution in the limit $p\rightarrow 1$ and found an analytical approximation for the clustering coefficient for different values of $p$.
+The percolation threshold of small-world networks was investigated in \citep{Sander2002293}, where the authors found the threshold to be reduced for increasing values of $p$.
 
 There is no sharp criterion for a network to be called small-world network.
 Instead, a network is called small-world network, if it shows a sufficiently large clustering coefficient \emph{and} a sufficiently low average shortest path length.
 This is the intermediate region in figure \ref{fig:watts_strogatz}. 
 
 \subsection{Barab\'asi-Albert model}
-Besides the critical behavior in \ER networks and the small-word effect in Watts-Strogatz networks, observations of real networks showed that they possess heavy-tailed degree distributions.
+Besides the critical behavior in \ER networks and the small-word effect in Watts-Strogatz networks, observations of real networks showed that they possess heavy-tailed degree distributions \citep{Barabasi99,Liljeros:2001p841}.
 A central question is, where such distributions originate from.
 Therefore, Barab\'asi and Albert introduced a network model in order to mimic the evolution of the world wide web \citep{Barabasi99}.
 The system under consideration is a network of websites (nodes) that are connected by hyperlinks (edges) and should not be confused with the physical network of internet routers.
@@ -915,6 +840,9 @@ i&=0   &\text{if} \quad \beta < \beta _c \nonumber \\
 i &=1-\frac{\beta _c}{\beta }  &\text{if} \quad \beta > \beta _c .
 \end{align}
 
+This shows that the threshold behavior (see section \ref{sec:sir_model}) found for homogeneously mixed populations remains unchanged for homogenous networks.
+In fact, is has been shown that homogeneously mixed epidemic models can always be mapped onto a percolation process on a regular lattice   \citep{Grassberger1983157,Sander2002293}.
+
 \paragraph{Impact of heterogenous connectivity\color{Cayenne}{.}}
 In order to consider networks with heavy-tailed degree distributions, we modify the SIS model above and include the heterogeneity of node degrees explicitly \citep{Pastor-Satorras_vespi:2001}.
 \citeauthor{Pastor-Satorras_vespi:2001} replaced the infected compartment $i(t)$ by the fraction of infected with a given degree, that is $i(t)\rightarrow i_k(t)$.
@@ -949,7 +877,8 @@ A graphical comparison between \eqref{eq:endemic_ws} and \eqref{eq:endemic_ba} i
 It is an important result that the epidemic threshold vanishes in \BA networks.
 As a consequence, random vaccination in \BA networks does not suppress a disease outbreak \citep{Keeling:2005}.
 Nevertheless, figure \ref{fig:pastor-sat} shows that for the outbreak size remains small for $\beta \rightarrow 0$.
-Finally, the absence of the epidemic threshold is generally found in scale-free networks with degree distributions $P(k)\sim k^{-\gamma }$ for $2\leqslant \gamma \leqslant 3$.
+Finally, the absence of the epidemic threshold is generally found in infinite scale-free networks with degree distributions $P(k)\sim k^{-\gamma }$ for $2\leqslant \gamma \leqslant 3$.
+It should be noted that a geographically embedded network with the same degree distribution can still show a finite outbreak threshold \citep{Sander20031}.
 
 \paragraph{Vaccination strategies\color{Cayenne}{.}}
 As we have seen in the previous section, random immunization fails in scale-free networks, because it gives the same priority to low degree nodes and large hubs, while large hubs are unlikely to be chosen by chance.

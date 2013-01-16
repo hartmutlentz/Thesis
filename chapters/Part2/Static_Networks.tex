@@ -1,0 +1,63 @@
+\documentclass[openright,twoside,headsepline]{scrbook}
+\usepackage[applemac]{inputenc}
+\usepackage{graphicx,xcolor,hyperref} % obsolete in HU-diss
+\usepackage[round,authoryear]{natbib}
+\setlength\bibhang{2em} 
+
+
+\input{/Users/lentz/Documents/GitHub_locals/Thesis/adjustment}
+
+
+
+\begin{document}
+\graphicspath{{/Users/lentz/Documents/GitHub_locals/Thesis/images/}}
+\tableofcontents
+
+
+
+\chapter{Static Networks}
+In this chapter, we address the analysis of static networks, where the focus lies on epidemic spread on networks.
+Large amounts of data about different contact structures between a huge amount of subjects became available in the last years.
+In the context of epidemics, different types of networks can be obtained.
+Concerning infectious diseases of humans, it is unlikely to have the exact contact data of a (sub)-population.
+Different methods to extract the contacts structure can be used \citep{Keeling:2005}:
+\emph{Contact tracing} is used to determine infection paths under the assumption that every contact has a high probability to cause an infection.
+This assumption is justified for highly contagious diseases, such as influenza or sexually transmitted diseases \citep{Rocha_pnas,Rocha_plosbc}.
+If more data is available, one can obtain an \emph{infection tracing} network, where every contact definitely caused an infection.
+Infection tracing plays an important role for the analysis of HIV spread or food safety \citep{Wilking,Haydon22012003}.
+\emph{Diary-based} methods make use of questionnaires to extract contact structures.
+The drawback of this method is that the subjects themselves are responsible for the information given and a considerable bias can be present in the data \citep{Visser:2003p784}.
+Other diary-based methods make use of legislation in order to guarantee for a sufficient data quality.
+An example is the HI-Tier database, which records trade movements of livestock animals and is used for food safety and is a central subject of study in this work \citep{Euro-Lex}.
+
+Based on the amount of available data as quoted above, it is reasonable to model epidemics using a purely topological analysis.
+Detailed epidemiology is by far more complex as solving differential equations.
+Fine-grained models including large sets of parameters and couplings are needed to model infectious diseases.
+A complex example for the transmission of classical swine fever is found in \citep{MartinezLopez:2011db}.
+In general, a detailed knowledge about infection probability, contact probability and sensitivity to initial conditions is required to obtain a realistic epidemic model.
+Even if this information was available, results could not necessarily be generalized to other systems.
+
+For this reason we restrict the epidemiological aspect of this work to a purely topological analysis of the underlying networks, where detailed data about contact structures is available.
+In particular, we focus on a network of pig trade in Germany in the years 2009--2010.
+Each node in this network represents an agricultural holding and trade contacts between holdings are represented by directed edges.
+This chapter is devoted to a static network analysis of this system and a general topological classification.
+In section XX we highlight the effects of a time-resolved treatment of these systems.
+
+\paragraph{Livestock trade dataset\color{Cayenne}{.}}
+After the BSE crisis in Europe in 2001, the EU member states established livestock trade movement databases to track potential pathways of pathogen spread.
+Since 2001, every holding in Germany is obliged to report every trade movement of live animals (pig, cattle, sheep and goat) to a federal database (\foreignlanguage{ngerman}{Herkunftssicherungs und Informationssystem für Tiere} (HIT), \citep{HI-Tier}).
+We focus on the trade contacts for pigs.
+Trade is recorded in a temporal resolution of 1 day, where the receiving holding and the pre-owner are reported in the database.
+In this section we aggregate the trade contacts yielding a static network, where a trade edge is present, if there was at leaf one trading contact during the observation period.
+Our data extract spans the trade within Germany between january 2009 and march 2010.
+
+
+
+\section{Network analysis}
+
+
+
+\bibliographystyle{apalike}
+\bibliography{/Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib}
+\end{document}
+
