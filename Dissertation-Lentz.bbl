@@ -10,18 +10,8 @@ Albert, R. and Barab\'asi, A.-L. (2002).
 \newblock Statistical mechanics of complex networks.
 \newblock {\em Rev. Mod. Phys.}, 74:47--97.
 
-\bibitem[Albert and Barab{\'a}si, 2002]{Albert:2002}
-Albert, R. and Barab{\'a}si, A.-L. (2002).
-\newblock {Statistical mechanics of complex networks}.
-\newblock {\em Rev. Mod. Phys.}, 74:47.
-
-\bibitem[Albert et~al., 2000a]{Albert:2000}
-Albert, R., Jeong, H., and Barab{\'a}si, A.-L. (2000a).
-\newblock {Error and attack tolerance of complex networks}.
-\newblock {\em Nature}, 406(6794):378--382.
-
-\bibitem[Albert et~al., 2000b]{Albert:2000p4805}
-Albert, R., Jeong, H., and Barab{\'a}si, A.-L. (2000b).
+\bibitem[Albert et~al., 2000]{Albert:2000}
+Albert, R., Jeong, H., and Barab{\'a}si, A.-L. (2000).
 \newblock {Error and attack tolerance of complex networks}.
 \newblock {\em Nature}, 406(6794):378--382.
 
@@ -56,6 +46,19 @@ Bak, P., Chen, K., and Tang, C. (1990).
 \newblock Forest-fire model and some thoughts on turbulence.
 \newblock {\em Phys. Lett. A}, 147:297--300.
 
+\bibitem[Balcan et~al., 2009]{DuyguBalcan12222009}
+Balcan, D., Colizza, V., Gon{\c c}alves, B., Hu, H., Ramasco, J.~J., and
+  Vespignani, A. (2009).
+\newblock {Multiscale mobility networks and the spatial spreading of infectious
+  diseases}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 106(51):21484--21489.
+
+\bibitem[Balcan and Vespignani, 2011]{Balcan:2011gv}
+Balcan, D. and Vespignani, A. (2011).
+\newblock {Phase transitions in contagion processes mediated by recurrent
+  mobility patterns}.
+\newblock {\em Nat. Phys.}, 7(7):581--586.
+
 \bibitem[Banerjee and Jost, 2009]{Banerjee2009}
 Banerjee, A. and Jost, J. (2009).
 \newblock Graph spectra as a systematic tool in computational biology.
@@ -81,6 +84,12 @@ Barrat, A. and Weigt, M. (2000).
 Bauch, C.~T. and Earn, D. J.~D. (2004).
 \newblock {Vaccination and the theory of games.}
 \newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 101(36):13391--13394.
+
+\bibitem[Belik et~al., 2011]{Belik:2011ke}
+Belik, V., Geisel, T., and Brockmann, D. (2011).
+\newblock {Natural Human Mobility Patterns and Spatial Spread of Infectious
+  Diseases}.
+\newblock {\em Phys. Rev. X}, 1(1).
 
 \bibitem[Bianconi and Barab{\'a}si, 2001]{Bianconi:2001}
 Bianconi, G. and Barab{\'a}si, A.-L. (2001).
@@ -121,6 +130,15 @@ Brandes, U., Delling, D., Gaertler, M., G{\"o}rke, R., Hoefer, M., Nikoloski,
 \newblock In {\em Graph-Theoretic Concepts in Computer Science}, volume 4769,
   pages 121--132. Springer Berlin Heidelberg.
 
+\bibitem[Buchholz et~al., 2011]{Wilking}
+Buchholz, U., Bernard, H., Werber, D., B{\"o}hmer, M.~M., Remschmidt, C.,
+  Wilking, H., Deler{\'e}, Y., an~der Heiden, M., Adlhoch, C., Dreesman, J.,
+  Ehlers, J., Ethelberg, S., Faber, M., Frank, C., Fricke, G., Greiner, M.,
+  H{\"o}hle, M., Ivarsson, S., Jark, U., Kirchner, M., Koch, J., Krause, G.,
+  Luber, P., Rosner, B., Stark, K., and K{\"u}hne, M. (2011).
+\newblock German outbreak of escherichia coli o104:h4 associated with sprouts.
+\newblock {\em New England Journal of Medicine}, 365(19):1763--1770.
+
 \bibitem[Casteigts et~al., 2012]{Casteights_review}
 Casteigts, A., Flocchini, P., Quattrociocchi, W., and Santoro, N. (2012).
 \newblock Time-varying graphs and dynamic networks.
@@ -141,6 +159,35 @@ Christley, R. (2005).
 Clauset, A. and Newman, M. E.~J. (2009).
 \newblock {Power-Law Distributions in Empirical Data}.
 \newblock {\em SIAM Rev.}, 51(4):661.
+
+\bibitem[Cohen et~al., 2003]{Cohen:PRL}
+Cohen, R., Havlin, S., and ben Avraham, D. (2003).
+\newblock Efficient immunization strategies for computer networks and
+  populations.
+\newblock {\em Phys. Rev. Lett.}, 91:247901.
+
+\bibitem[Colizza et~al., 2006]{VittoriaColizza02142006}
+Colizza, V., Barrat, A., Barth{\'e}lemy, M., and Vespignani, A. (2006).
+\newblock {The role of the airline transportation network in the prediction and
+  predictability of global epidemics}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 103(7):2015--2020.
+
+\bibitem[Colizza et~al., 2007]{Colizza:2007p5906}
+Colizza, V., Pastor-Satorras, R., and Vespignani, A. (2007).
+\newblock {Reaction-diffusion processes and metapopulation models in
+  heterogeneous networks}.
+\newblock {\em Nat. Phys.}, 3(4):276--282.
+
+\bibitem[Colizza and Vespignani, 2007]{Colizza:2007p6276}
+Colizza, V. and Vespignani, A. (2007).
+\newblock {Invasion threshold in heterogeneous metapopulation networks}.
+\newblock {\em Phys. Rev. Lett.}
+
+\bibitem[Cross et~al., 2005]{cross2005}
+Cross, P.~C., Lloyd-Smith, J.~O., Johnson, P. L.~F., and Getz, W.~M. (2005).
+\newblock {Duelling timescales of host movement and disease recovery determine
+  invasion of disease in structured populations}.
+\newblock {\em Ecol. Lett.}, 8:587--595.
 
 \bibitem[de~Solla~Price, 1965]{Price:1965}
 de~Solla~Price, D.~J. (1965).
@@ -184,6 +231,13 @@ Erd\H{o}s, P. and R\'enyi, A. (1961).
 \newblock On the evolution of random graphs ii.
 \newblock {\em Bull. Inst. Int. Stat.}, 38(4):343--347.
 
+\bibitem[EUR-Lex, 2000]{Euro-Lex}
+EUR-Lex (2000).
+\newblock Directive 2000/15/ec of the european parliament and the council of 10
+  april 2000 amending council directive 64/432/eec on health problems affecting
+  intra-community trade in bovine animals and swine.
+\newblock EUR-Lex.
+
 \bibitem[Faloutsos et~al., 1999]{Faloutsos:1999}
 Faloutsos, M., Faloutsos, P., and Faloutsos, C. (1999).
 \newblock On power-law relationships of the internet topology.
@@ -216,19 +270,43 @@ Girvan, M. and Newman, M. E.~J. (2002).
 \newblock {Community structure in social and biological networks}.
 \newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 99(12):7821--7826.
 
+\bibitem[Good et~al., 2010]{Good2010}
+Good, B.~H., de~Montjoye, Y., and Clauset, A. (2010).
+\newblock The performance of modularity maximization in practical contexts.
+\newblock {\em Phys. Rev. E}, 81(4):046106.
+
+\bibitem[Grassberger, 1983]{Grassberger1983157}
+Grassberger, P. (1983).
+\newblock On the critical behavior of the general epidemic process and
+  dynamical percolation.
+\newblock {\em Mathematical Biosciences}, 63(2):157 -- 172.
+
 \bibitem[Green et~al., 2006]{Green:2006}
 Green, D., Kiss, I., and Kao, R. (2006).
 \newblock Modelling the initial spread of foot-and-mouth disease through animal
   movements.
 \newblock {\em Proc.~R. Soc.~B}, 273(1602):2729--2735.
 
+\bibitem[Grenfell and Harwood, 1997]{Grenfell:1997ts}
+Grenfell, B. and Harwood, J. (1997).
+\newblock {(Meta)population dynamics of infectious diseases}.
+\newblock {\em Trends Ecol Evol}, 12(10):395--399.
+
 \bibitem[Grenfell, 1992]{grenfell:92}
 Grenfell, B.~T. (1992).
 \newblock Chance and chaos in measles dynamics.
 \newblock {\em J. R. Stat. Soc. B}, 54:383--398.
 
-\bibitem[Hagberg, 2012]{networkx}
+\bibitem[Guimer{\`a} et~al., 2005]{Guimera:2005p5232}
+Guimer{\`a}, R., Mossa, S., Turtschi, A., and Amaral, L. A.~N. (2005).
+\newblock {The worldwide air transportation network: Anomalous centrality,
+  community structure, and cities' global roles}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 102(22):7794--7799.
+
+\bibitem[Hagberg, 2012]{networkx:}
 Hagberg, A.~A. (2012).
+\newblock Networkx: High productivity software for complex networks.
+\newblock \verb"http://networkx.lanl.gov".
 
 \bibitem[Hagberg et~al., 2008]{hagberg2008}
 Hagberg, A.~A., Schult, D.~A., and Swart, P.~J. (2008).
@@ -241,10 +319,23 @@ Hamer, W.~H. (1906).
 \newblock Epidemic disease in england.
 \newblock {\em Lancet}, 1:733--739.
 
+\bibitem[Hanski, 1998]{Hanski:1998}
+Hanski, I. (1998).
+\newblock {Metapopulation dynamics}.
+\newblock {\em Nature}, 396(6706):41--49.
+
 \bibitem[Harris, 1974]{Harris:1974}
 Harris, T.~E. (1974).
 \newblock Contact interactions on a lattice.
 \newblock {\em Ann. Probab.}, 2:969--988.
+
+\bibitem[Haydon et~al., 2003]{Haydon22012003}
+Haydon, D.~T., Chase-Topping, M., Shaw, D.~J., Matthews, L., Friar, J.~K.,
+  Wilesmith, J., and Woolhouse, M. E.~J. (2003).
+\newblock The construction and analysis of epidemic trees with reference to the
+  2001 uk foot--and--mouth outbreak.
+\newblock {\em Proceedings of the Royal Society of London. Series B: Biological
+  Sciences}, 270(1511):121--127.
 
 \bibitem[Hethcote, 2000]{Hethcote:2000}
 Hethcote, H. (2000).
@@ -266,11 +357,28 @@ Holme, P. and Saram{\"a}ki, J. (2012).
 \newblock Temporal networks.
 \newblock {\em Physics Reports}, 519(3):97 -- 125.
 
+\bibitem[Hufnagel et~al., 2004]{Hufnagel:2004p27}
+Hufnagel, L., Brockmann, D., and Geisel, T. (2004).
+\newblock {Forecast and control of epidemics in a globalized world}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 101(42):15124.
+
 \bibitem[Isella et~al., 2011]{isella2011}
 Isella, L., Stehl{\'e}, J., Barrat, A., Cattuto, C., Pinton, J.-F., and Van~den
   Broeck, W. (2011).
 \newblock {What's in a crowd? Analysis of face-to-face behavioral networks}.
 \newblock {\em J. Theor. Biol.}, 271(1):166--180.
+
+\bibitem[Kao et~al., 2007]{Kao:2007}
+Kao, R.~R., Green, D.~M., Johnson, J., and Kiss, I.~Z. (2007).
+\newblock {Disease dynamics over very different time-scales: foot-and-mouth
+  disease and scrapie on the network of livestock movements in the UK}.
+\newblock {\em Journal of the Royal Society Interface}, 4(16):907--916.
+
+\bibitem[Keeling et~al., 2010]{Keeling11052010}
+Keeling, M.~J., Danon, L., Vernon, M.~C., and House, T.~A. (2010).
+\newblock {Individual identity and movement networks for disease
+  metapopulations}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 107(19):8866--8870.
 
 \bibitem[Keeling and Eames, 2005]{Keeling:2005}
 Keeling, M.~J. and Eames, K. (2005).
@@ -293,10 +401,23 @@ Kleinberg, J.~M., Kumar, R., Raghavan, P., Rajagopalan, S., and Tomkins, A.~S.
 \newblock The web as a graph: measurements, models, and methods.
 
 \bibitem[Lentz et~al., 2012]{Lentz:2012pre}
-Lentz, H., Selhorst, T., and Sokolov, I.~M. (2012).
+Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012).
 \newblock {Spread of infectious diseases in directed and modular metapopulation
   networks}.
 \newblock {\em Phys. Rev. E}, 85:066111.
+
+\bibitem[Liljeros et~al., 2001]{Liljeros:2001p841}
+Liljeros, F., Edling, C., Amaral, L. A.~N., and Stanley, H.~E. (2001).
+\newblock {The web of human sexual contacts}.
+\newblock {\em Nature}, 411:907.
+
+\bibitem[Mart{\'\i}nez-L{\'o}pez et~al., 2011]{MartinezLopez:2011db}
+Mart{\'\i}nez-L{\'o}pez, B., Ivorra, B., Ramos, A.~M., and
+  S{\'a}nchez-Vizca{\'\i}no, J.~M. (2011).
+\newblock {A novel spatial and stochastic model to evaluate the within- and
+  between-farm transmission of classical swine fever virus. I. General concepts
+  and description of the model}.
+\newblock {\em Vet. Microbiol.}, 147(3-4):300--309.
 
 \bibitem[Mart{\'\i}nez-L{\'o}pez et~al., 2009]{MartinezLopez2009}
 Mart{\'\i}nez-L{\'o}pez, B., Perez, A.~M., and S{\'a}nchez-Vizca{\'\i}no, J.
@@ -304,6 +425,12 @@ Mart{\'\i}nez-L{\'o}pez, B., Perez, A.~M., and S{\'a}nchez-Vizca{\'\i}no, J.
 \newblock {Social Network Analysis. Review of General Concepts and Use in
   Preventive Veterinary Medicine}.
 \newblock {\em Transbound. Emerg. Dis.}, 56:109--120.
+
+\bibitem[Merali, 2010]{Merali:2010ih}
+Merali, Z. (2010).
+\newblock {Computational science: Error. Why scientific computing does not
+  compute}.
+\newblock {\em Nature}, 467:775--777.
 
 \bibitem[Merton, 1968]{Merton:1968fh}
 Merton, R.~K. (1968).
@@ -343,15 +470,25 @@ Newman, M. E.~J., Strogatz, S., and Watts, D. (2001).
   applications}.
 \newblock {\em Phys. Rev. E}, 64:026118.
 
-\bibitem[Page, 1997]{PageRank}
+\bibitem[Page, 1997]{PageRank:}
 Page, L. (1997).
 \newblock Method for node ranking in a linked database.
-\newblock Patent.
+\newblock \emph{Patent} US 6285999.
 
-\bibitem[Pastor-Satorras and Vespignani, 2001]{PastorSatorras:2001}
+\bibitem[Pastor-Satorras and Vespignani, 2001]{Pastor-Satorras_vespi:2001}
 Pastor-Satorras, R. and Vespignani, A. (2001).
-\newblock {Epidemic dynamics and endemic states in complex networks}.
+\newblock Epidemic dynamics and endemic states in complex networks.
 \newblock {\em Phys. Rev. E}, 63:066117.
+
+\bibitem[Pastor-Satorras and Vespignani, 2002a]{pastor-sat_2}
+Pastor-Satorras, R. and Vespignani, A. (2002a).
+\newblock Epidemic dynamics in finite size scale-free networks.
+\newblock {\em Phys. Rev. E}, 65:035108.
+
+\bibitem[Pastor-Satorras and Vespignani, 2002b]{PastorSat:immunization}
+Pastor-Satorras, R. and Vespignani, A. (2002b).
+\newblock Immunization of complex networks.
+\newblock {\em Phys. Rev. E}, 65:036104.
 
 \bibitem[Press et~al., 1992]{Press:1992}
 Press, W.~H., Teukolsky, S.~A., Vetterling, W.~T., and Flannery, B.~P. (1992).
@@ -359,10 +496,41 @@ Press, W.~H., Teukolsky, S.~A., Vetterling, W.~T., and Flannery, B.~P. (1992).
   computing}.
 \newblock Cambridge University Press, New York, NY, USA.
 
+\bibitem[Rocha et~al., 2010]{Rocha_pnas}
+Rocha, L. E.~C., Liljeros, F., and Holme, P. (2010).
+\newblock {Information dynamics shape the sexual networks of Internet-mediated
+  prostitution}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 107(13):5706--5711.
+
+\bibitem[Rocha et~al., 2011]{Rocha_plosbc}
+Rocha, L. E.~C., Liljeros, F., and Holme, P. (2011).
+\newblock {Simulated Epidemics in an Empirical Spatiotemporal Network of 50,185
+  Sexual Contacts}.
+\newblock {\em PLoS Comput. Biol.}, 7(3):e1001109.
+
 \bibitem[Ross, 1911]{Ross}
 Ross, R. (1911).
 \newblock {\em The Prevention of Malaria}.
 \newblock Murray, London, 2nd edition.
+
+\bibitem[Salath{\'e} and Jones, 2010]{Salathe:2010p6333}
+Salath{\'e}, M. and Jones, J.~H. (2010).
+\newblock {Dynamics and Control of Diseases in Networks with Community
+  Structure}.
+\newblock {\em PLoS Comput. Biol.}, 6(4):e1000736.
+
+\bibitem[Sander et~al., 2003]{Sander20031}
+Sander, L., Warren, C., and Sokolov, I. (2003).
+\newblock Epidemics, disorder, and percolation.
+\newblock {\em Physica A: Statistical Mechanics and its Applications},
+  325(1{\^a}€``2):1 -- 8.
+\newblock <ce:title>Stochastic Systems: From Randomness to
+  Complexity</ce:title>.
+
+\bibitem[Sander et~al., 2002]{Sander2002293}
+Sander, L., Warren, C., Sokolov, I., Simon, C., and Koopman, J. (2002).
+\newblock Percolation on heterogeneous networks as a model for epidemics.
+\newblock {\em Mathematical Biosciences}, 180(1{\^a}€``2):293 -- 305.
 
 \bibitem[Sen et~al., 2003]{indian_railway}
 Sen, P., Dasgupta, S., Chatterjee, A., Sreeram, P.~A., Mukherjee, G., and
@@ -375,6 +543,11 @@ Skiena, S.~S. (2008).
 \newblock {\em The algorithm design manual}.
 \newblock Springer, London, 2nd edition.
 
+\bibitem[StMELF, 2012]{HI-Tier}
+StMELF, B. (2012).
+\newblock Herkunftssicherungs und informationssystem f{\"u}r tiere.
+\newblock \verb"http://www.hi-tier.de".
+
 \bibitem[Strauss, 1986]{Strauss:86}
 Strauss, D. (1986).
 \newblock On a general class of models for interaction.
@@ -385,6 +558,12 @@ Sudarshan~Iyengar, S.~R., Veni~Madhavan, C.~E., Zweig, K.~A., and Natarajan, A.
   (2012).
 \newblock Understanding human navigation using network analysis.
 \newblock {\em Topics in Cognitive Science}, 4(1):121--134.
+
+\bibitem[Visser et~al., 2003]{Visser:2003p784}
+Visser, R., Smith, A., Rissel, C., and Richters, J. (2003).
+\newblock {Sex in Australia: Heterosexual experience and recent heterosexual
+  encounters among a representative {\ldots}}.
+\newblock {\em Aust. N Z. J. Public Health}, 27(2):146--154.
 
 \bibitem[von Mises and Pollaczek-Geiringer, 1929]{van_mises}
 von Mises, R. and Pollaczek-Geiringer, H. (1929).
