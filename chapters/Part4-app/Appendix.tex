@@ -193,11 +193,11 @@ In order to find the relevant maximum of \eqref{eq:Qndim}, its slope has to vani
 \end{equation}
 %
 Since $c$ is constant, the relevant part of \eqref{eq:Qndim} for the maximum is
-\begin{align*}
+\begin{align}
 Q_{\text{relevant}}\equiv Q_\text{r}= -\sum _{i=1}^n x_i^2&=-\sum _{i=1}^{n-1} x_i^2- \underbrace{ \left( 
-c-\sum _{i=1}^{n-1} x_i \right) ^2 }_{x_n^2} \\
-&= -\sum _{i=1}^{n-1} x_i^2 - c^2 + 2c\sum _{i=1}^{n-1} x_i -\left( \sum _{i=1}^{n-1} x_i \right) ^2.
-\end{align*}
+c-\sum _{i=1}^{n-1} x_i \right) ^2 }_{x_n^2} \label{eq:relevant_Q}\\
+&= -\sum _{i=1}^{n-1} x_i^2 - c^2 + 2c\sum _{i=1}^{n-1} x_i -\left( \sum _{i=1}^{n-1} x_i \right) ^2. \nonumber
+\end{align}
 Note that the sum on the r.h.s. runs to $n-1$.
 This effectively eliminates the last variable.
 The derivative of $Q$ is
@@ -248,12 +248,12 @@ x_1 & \frac{1}{n}(1-c)&  & \hdots &  & 0 \\
 \end{array}
 \right) .
 \end{equation}
-It follows immediately that $\sum _j e_{ij}=x_i+\frac{1-c}{n}$, which is exactly \eqref{eq:sumeij}.
-Inserting this into equation \eqref{eq:modumatrix} gives the same expression for modularity \eqref{eq:Qndim} as for the general case:
+It follows immediately that $\sum _j e_{ij}=x_i+\frac{2(1-c)}{n}$, which is equivalent to \eqref{eq:sumeij} up to a factor 2.
+Inserting this into equation \eqref{eq:modumatrix} gives a similar expression for modularity \eqref{eq:Qndim} as for the general case:
 \begin{equation*}
-Q=c-\sum _i x_i^2 - \frac{1-c^2}{n} = \sum _i x_i -\sum _i x_i^2 - \frac{1-(\sum _i x_i)^2}{n}.
+Q=c-\sum _i x_i^2 - \frac{4(1-c)}{n} .
 \end{equation*}
-Thus, the results remain unchanged for modules along a chain.
+Since the relevant part for maximum finding is the quadratic term as in \eqref{eq:relevant_Q}, the results remain unchanged for modules along a chain.
 
 \paragraph{Directed networks\color{Cayenne}{.}}
 In analog to equation \eqref{eq:mod_undir} the modularity of directed networks can be written as \citep{Kao:2007}
