@@ -54,7 +54,39 @@ Our data extract spans the trade within Germany between january 2009 and march 2
 
 
 \section{Network analysis}
-To begin with, we analyze the livestock trade data according to the measures introduced in section \ref{sec:intro}.
+To begin with, we analyze the livestock trade data according to the measures introduced in section \ref{sec:network_measures}.
+\paragraph{Centrality and distances\color{Cayenne}{.}}
+Figure \ref{fig:hit_deg_cdf} shows the heavy-tailed degree distribution of the network.
+%
+\begin{SCfigure}
+\includegraphics{HIT_Degree_CDF.pdf}
+\caption{Degree distribution of the livestock trade network. The out-degree distribution (red) is well approximated by a power-law of the form $x^{-1.6}$ (red dashed line).
+The in-degree distribution shows a bimodal behavior indicating large slaughterhouses.
+}
+\label{fig:hit_deg_cdf}
+\end{SCfigure}
+%
+
+\paragraph{Components and ranges\color{Cayenne}{.}}
+Ignoring the edge direction, the network has a giant component containing more than 98~\% of the nodes. The second largest weakly connected component contains only 11 nodes.
+The size of the largest and second largest strongly connected components are 21,8~\% and  0.05~\% (47 nodes), respectively.
+Sizes of the next smaller components decrease rapidly.
+All in all the network percolates ignoring the direction of links.
+Taking into account link directions, the giant component contains a considerable fraction of the network, but is far from the percolation threshold.
+
+The giant strongly connected component has an interesting impact on the distribution of node ranges (and reachabilities) in the network.
+Node that the range of a node defines the upper bound for any disease outbreak starting from this very node.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics{RangeGap-principle.pdf}
+\caption{Schematic structure of a directed network.
+In the core region there is the giant strongly connected component (GSCC, red). All nodes reachable from the GSCC form the in-component of the network (IC, yellow) and the nodes with access to the GSCC define the network out-component (OC, blue).
+The two nodes on the right are not (weakly) connected to the giant component.
+}
+\label{fig:rangegap_principle}
+\end{center}
+\end{figure}
+
 
 
 %
