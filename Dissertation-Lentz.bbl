@@ -160,6 +160,11 @@ Clauset, A. and Newman, M. E.~J. (2009).
 \newblock {Power-Law Distributions in Empirical Data}.
 \newblock {\em SIAM Rev.}, 51(4):661.
 
+\bibitem[Clauset et~al., 2004]{Clauset_greedy}
+Clauset, A., Newman, M. E.~J., and Moore, C. (2004).
+\newblock Finding community structure in very large networks.
+\newblock {\em Phys. Rev. E}, 70:066111.
+
 \bibitem[Cohen et~al., 2003]{Cohen:PRL}
 Cohen, R., Havlin, S., and ben Avraham, D. (2003).
 \newblock Efficient immunization strategies for computer networks and
@@ -243,6 +248,11 @@ Faloutsos, M., Faloutsos, P., and Faloutsos, C. (1999).
 \newblock On power-law relationships of the internet topology.
 \newblock {\em SIGCOMM Comput. Commun. Rev.}, 29(4):251--262.
 
+\bibitem[Fortunato, 2010]{Fortunanto2010}
+Fortunato, S. (2010).
+\newblock {Community detection in graphs}.
+\newblock {\em Phys. Rep.}, 486:75--174.
+
 \bibitem[Fortunato et~al., 2006]{Fortunato:2006}
 Fortunato, S., Flammini, A., and Menczer, F. (2006).
 \newblock Scale-free network growth by ranking.
@@ -302,6 +312,11 @@ Guimer{\`a}, R., Mossa, S., Turtschi, A., and Amaral, L. A.~N. (2005).
 \newblock {The worldwide air transportation network: Anomalous centrality,
   community structure, and cities' global roles}.
 \newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 102(22):7794--7799.
+
+\bibitem[Guimer\`a et~al., 2004]{guimera_mod_SA}
+Guimer\`a, R., Sales-Pardo, M., and Amaral, L. A.~N. (2004).
+\newblock Modularity from fluctuations in random graphs and complex networks.
+\newblock {\em Phys. Rev. E}, 70:025101.
 
 \bibitem[Hagberg, 2012]{networkx:}
 Hagberg, A.~A. (2012).
@@ -400,6 +415,19 @@ Kleinberg, J.~M., Kumar, R., Raghavan, P., Rajagopalan, S., and Tomkins, A.~S.
   (1999).
 \newblock The web as a graph: measurements, models, and methods.
 
+\bibitem[Lentz et~al., 2009]{Lentz2009}
+Lentz, H., Kasper, M., and Selhorst, T. (2009).
+\newblock {Network analysis of the German cattle trade net - Preliminary
+  results}.
+\newblock {\em Berl. M{\"u}nch. Tier{\"a}ztl. Wschr.}, 122(5-6):193--198.
+
+\bibitem[Lentz et~al., 2011]{Lentz:2011}
+Lentz, H., Konschake, M., Teske, K., Kasper, M., Rother, B., Carmanns, R.,
+  Petersen, B., Conraths, F.~J., and Selhorst, T. (2011).
+\newblock {Trade communities and their spatial patterns in the German pork
+  production network}.
+\newblock {\em Prev. Vet. Med.}, 98(2-3):176--181.
+
 \bibitem[Lentz et~al., 2012]{Lentz:2012pre}
 Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012).
 \newblock {Spread of infectious diseases in directed and modular metapopulation
@@ -453,6 +481,17 @@ Newman, M. E.~J. (2001).
 Newman, M. E.~J. (2003).
 \newblock {The Structure and Function of Complex Networks}.
 \newblock {\em SIAM Review}, 45(2):167--256.
+
+\bibitem[Newman, 2004]{Newman:fast_algo}
+Newman, M. E.~J. (2004).
+\newblock Fast algorithm for detecting community structure in networks.
+\newblock {\em Phys. Rev. E}, 69:066133.
+
+\bibitem[Newman, 2006]{Newman06062006}
+Newman, M. E.~J. (2006).
+\newblock Modularity and community structure in networks.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  103(23):8577--8582.
 
 \bibitem[Newman, 2010]{Newman:book}
 Newman, M. E.~J. (2010).

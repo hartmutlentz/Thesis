@@ -40,6 +40,7 @@ Even if this information was available, results could not necessarily be general
 For this reason we restrict the epidemiological aspect of this work to a purely topological analysis of the underlying networks, where detailed data about contact structures is available.
 In particular, we focus on a network of pig trade in Germany in the years 2009--2010.
 Each node in this network represents an agricultural holding and trade contacts between holdings are represented by directed edges.
+(An analogue analysis of a cattle network dataset was published in \citep{Lentz2009}).
 This chapter is devoted to a static network analysis of this system and a general topological classification.
 In section XX we highlight the effects of a time-resolved treatment of these systems.
 
@@ -48,12 +49,12 @@ After the BSE crisis in Europe in 2001, the EU member states established livesto
 Since 2001, every holding in Germany is obliged to report every trade movement of live animals (pig, cattle, sheep and goat) to a federal database (\foreignlanguage{ngerman}{Herkunftssicherungs und Informationssystem für Tiere} (HIT), \citep{HI-Tier}).
 We focus on the trade contacts for pigs.
 Trade is recorded in a temporal resolution of 1 day, where the receiving holding and the pre-owner are reported in the database.
-In this section we aggregate the trade contacts yielding a static network, where a trade edge is present, if there was at leaf one trading contact during the observation period.
+In this section we aggregate the trade contacts yielding a static network, where a trade edge is present, if there was at least one trading contact during the observation period.
 Our data extract spans the trade within Germany between january 2009 and march 2010.
+This yields a static network with 89,745 nodes and 210,696 edges.
 
 
-
-\section{Network analysis}
+\section{Network analysis}\label{sec:network_analysis}
 To begin with, we analyze the livestock trade data according to the measures introduced in section \ref{sec:network_measures}.
 \paragraph{Centrality and distances\color{Cayenne}{.}}
 Figure \ref{fig:hit_deg_cdf} shows the heavy-tailed degree distribution of the network.
@@ -75,17 +76,98 @@ All in all the network percolates ignoring the direction of links.
 Taking into account link directions, the giant component contains a considerable fraction of the network, but is far from the percolation threshold.
 
 The giant strongly connected component has an interesting impact on the distribution of node ranges (and reachabilities) in the network.
-Node that the range of a node defines the upper bound for any disease outbreak starting from this very node.
+Note that the range of a node defines the upper bound for any disease outbreak starting from this very node.
+Following equation \eqref{eq:range_def}, we compute the ranges of all nodes and focus for the moment on the \emph{sequence} of these ranges. 
+For most sequences of centralities in a network, we would find rather noisy signals.
+These signals result in distributions such as the degree distribution in figure \ref{fig:hit_deg_cdf}.
+In contrast to most other centrality measures, the range shows a strikingly different behavior.
+The sequence of ranges for all nodes in the network is shown in figure \ref{fig:node_range}. 
+%
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics{Node_Range.pdf}
+\caption{Range sequence for all nodes in the livestock trade network.
+The sequence shows a clear gap in the possible range values and a smaller second gap for the top ranged nodes.
+Nodes with range smaller than 10 are not shown.
+}
+\label{fig:node_range}
+\end{center}
+\end{figure}
+%
+The striking feature here is the \emph{gap} in the distribution: no range in between $7\cdot 10^{-4}$ (66 nodes) and $0.32$ (28630 nodes) is present in the system.
+There is another, smaller gap for values between $0.33$ (29325 nodes) and $0.35$ (31033 nodes).
+Consequently, a randomly chosen node can only belong to one of two classes, namely long ranged nodes and short ranged nodes.
+A node of the latter class is barely suitable to cause a considerable disease outbreak at all.
+Only a node of long range can act as a node for large scale disease outbreaks.
+The sizes of the classes in figure \ref{fig:node_range} are as follows: 41792 nodes belong to the short range and 47953 nodes to the long range class, respectively.
+91 nodes of the latter are above the second range gap.
+
+For a general network we define the range gap $\Gamma $ as the size of the largest interval, where the range distribution is identically zero \citep{Lentz:2012pre}.
+The balance of the distribution around the gap is measured in terms of the variable
+\[
+b=\frac{N_\mathrm{l}-N_\mathrm{s}}{N},
+\]
+where $N$ is the number of nodes and $N_\mathrm{l}$ and $N_\mathrm{s}$ are the numbers of long and short ranged nodes, respectively.
+Apparently $b=1$, if all nodes are long ranged and $b=-1$ for only short ranged nodes in the network.
+Figure \ref{fig:ER_range_gaps} shows the range gap and balance for directed \ER networks of varying density.
+The figure demonstrates, that the size of the range gap and the balance are inherently related to the percolation properties of the system (see section \ref{sec:er_model}).
+A significant range gap in combination with equally sized range classes indicates that the system is in a critical state.
+For the dataset of figure \ref{fig:node_range} we get $\Gamma = 0.318$ and $b=0.069$ indicating that the system is only slightly above the critical point.
+%
+\begin{SCfigure}
+\includegraphics{ER_Range_gap.pdf}
+\caption{Range gap $\Gamma $ and balance $b$ vs. mean degree for directed \ER graphs.
+Each datapoint is a mean value of 1000 networks. Network size: 1000 nodes.
+}
+\label{fig:ER_range_gaps}
+\end{SCfigure}
+
+
+The explanation for the strong bi-modality of the range distribution is the existence of a giant strongly connected component (GSCC).
+Figure \ref{fig:rangegap_principle} shows a schematic picture of a directed network.
+Due to the giant component in the system, all nodes that belong to the GSCC can reach all other nodes in the component plus all nodes that the component is connected to.
+%
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics{RangeGap-principle.pdf}
 \caption{Schematic structure of a directed network.
-In the core region there is the giant strongly connected component (GSCC, red). All nodes reachable from the GSCC form the in-component of the network (IC, yellow) and the nodes with access to the GSCC define the network out-component (OC, blue).
-The two nodes on the right are not (weakly) connected to the giant component.
+In the core region there is the giant strongly connected component (GSCC, red). All nodes reachable from the GSCC form the giant out-component (GOC, yellow) and the nodes with access to the GSCC define the giant in-component (GIC, blue).
+The union of GSCC, GIC, GOC and all tendrils is the giant weakly connected component (GWCC) of the network.
+Nodes that are not part of the GWCC belong to another component of the network (nodes on the upper right).
 }
 \label{fig:rangegap_principle}
 \end{center}
 \end{figure}
+%
+If there is a path from a node to the GSCC, but the node itself is not on this component, it belongs to the giant in-component (GIC) of the network. 
+In analogy, nodes reachable from the GSCC that are themselves not part of the latter, belong to the giant out-component (GOC).
+All remaining nodes not belonging to one of the components mentioned above are called tendrils, if they are weakly connected to the GSCC.
+The nodes on the upper right (figure \ref{fig:rangegap_principle}) are not even weakly connected to the GSCC and thus belong to another component of the network.
+
+\paragraph{Modules\color{Cayenne}{.}}
+The network components analyzed above make a strict requirement to the connectivity between components.
+A weaker requirement would be to allow for the existence of only a few edges between components.
+Clusters of this type are called \emph{modules} or \emph{communities}.
+The idea of finding modules in networks has been proposed in \citep{Newman06062006}.
+In order to detect these structures, a cost function mapping every partition of the network onto a value between 0 and 1 has to be optimized.
+\citeauthor{Newman06062006} proposed the modularity $Q$ as an appropriate cost function defined as
+\[
+Q=\text{(number of edges between communities)}-\text{(expected number of those edges)}
+\]
+or more formally \citep{Fortunanto2010,Newman06062006}
+\begin{equation}\label{eq:modularity}
+Q=\frac{1}{2m} \sum _{ij}\left( \mat{A}_{ij}-\frac{k_i k_j}{2m} \right) \delta (c_i,c_j).
+\end{equation}
+This equation gives the modularity for a network with adjacency matrix $\mat{A}$ and $m$ edges and $k_i$ denotes the degree of the $i$-th node.
+The partition of the network is given in the Kronecker delta $\delta (c_i,c_j)$, which is 1, if nodes $i$ and $j$ are in the same community and otherwise 0.
+Hence, modularity measures the goodness of a particular partition of the network.
+$Q\sim 0$ implies that a given partition of a network does not give a significant modular structure.
+Its maximum value is $Q=1$ provided that a network has a strong modular partition \emph{and} the latter is known for the computation of $Q$.
+Finding best possible partition that maximizes modularity has been shown to be NP-complete \citep{brandes2007}.
+However, several approximate methods -- such as simulated annealing \citep{guimera_mod_SA} and greedy algorithms \citep{Clauset_greedy,Newman:fast_algo} -- to maximize modularity have been proposed.
+In order to detect community structure in the pig trade network, we analyze the system using the method of \citeauthor{Newman:fast_algo}.
+The results presented in this section are published for a similar dataset in \citep{Lentz:2011}.
+
 
 
 
