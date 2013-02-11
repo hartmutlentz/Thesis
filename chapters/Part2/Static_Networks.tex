@@ -105,14 +105,16 @@ The sizes of the classes in figure \ref{fig:node_range} are as follows: 41792 no
 For a general network we define the range gap $\Gamma $ as the size of the largest interval, where the range distribution is identically zero \citep{Lentz:2012pre}.
 The balance of the distribution around the gap is measured in terms of the variable
 \[
-b=\frac{N_\mathrm{l}-N_\mathrm{s}}{N},
+b=\frac{N_l-N_s}{N},
 \]
-where $N$ is the number of nodes and $N_\mathrm{l}$ and $N_\mathrm{s}$ are the numbers of long and short ranged nodes, respectively.
+where $N$ is the number of nodes and $N_l$ and $N_s$ are the numbers of long and short ranged nodes, respectively.
 Apparently $b=1$, if all nodes are long ranged and $b=-1$ for only short ranged nodes in the network.
 Figure \ref{fig:ER_range_gaps} shows the range gap and balance for directed \ER networks of varying density.
 The figure demonstrates, that the size of the range gap and the balance are inherently related to the percolation properties of the system (see section \ref{sec:er_model}).
 A significant range gap in combination with equally sized range classes indicates that the system is in a critical state.
 For the dataset of figure \ref{fig:node_range} we get $\Gamma = 0.318$ and $b=0.069$ indicating that the system is only slightly above the critical point.
+Note that for the undirected case, the range of every node is equivalent to the size of the component it belongs to.
+Thus, ranges show a rather trivial behavior in the undirected case.
 %
 \begin{SCfigure}
 \includegraphics{ER_Range_gap.pdf}
@@ -166,9 +168,180 @@ Its maximum value is $Q=1$ provided that a network has a strong modular partitio
 Finding best possible partition that maximizes modularity has been shown to be NP-complete \citep{brandes2007}.
 However, several approximate methods -- such as simulated annealing \citep{guimera_mod_SA} and greedy algorithms \citep{Clauset_greedy,Newman:fast_algo} -- to maximize modularity have been proposed.
 In order to detect community structure in the pig trade network, we analyze the system using the method of \citeauthor{Newman:fast_algo}.
-The results presented in this section are published for a similar dataset in \citep{Lentz:2011}.
+The results presented in this section are published in \citep{Lentz:2011}\footnote{We show results computed for the pig trade data set within observation period 01 june 2006 and 31 december 2008, as in \citep{Lentz:2011}. Results remain qualitatively the same for the dataset 01 january 2009 -- march 2010.}.
+
+Note that we focus on the partition of only the undirected network.
+Although the concept of modularity can be generalized to the directed case in a straightforward manner \citep{Leicht:2008p5144}, there is still ongoing discussion about a systematic bias in this approach \citep{kim2010}.
+\citeauthor{kim2010} point out that a straightforward generalization of modularity can not resolve nodes of different in and out degree. 
+Hence, nodes of high total degree tend to form communities with their neighborhood regardless of how the links in the neighborhood are directed.
+
+In order to find a partitioning maximizing the modularity function \eqref{eq:modularity}, we use the greedy method proposed in \citep{Clauset_greedy}.
+The algorithm finds a partition where 96~\% of all nodes and 98~\% of all edges are assigned to 9 major clusters.
+The modularity value for this partition is $Q=0.717$.
+After we computation of a suitable network partition, we add the geographical positions of the nodes as further meta information.
+The resulting map is shown in figure \ref{fig:D9}.
+It should be noted that the community partition was done without spatial information in the first place.
+Thus, the figure demonstrates that in this case two nodes of the same community are likely to be geographic neighbors as well.
+An explanation for this correlation could be cultural affinity or simply economic reasons, since transport costs scale with geographical distance.
+%
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics{D9.pdf}
+\caption{Geographical embedding of the communities found for the pig trade network (left).
+The nine largest (by number of nodes) communities are shown.
+The number of edges between the communities and within the communities is shown on the right.
+From \citet{Lentz:2011}.
+}
+\label{fig:D9}
+\end{center}
+\end{figure}
+
+The right panel of figure \ref{fig:D9} shows the nine largest communities condensed into single nodes, where the size of each node represents the number of edges in the community.
+Node numbers are arbitrary IDs given by the used algorithm.
+Links between communities are weighted ranging from 6 (dashed lines) to 7251 (massive edge between 24 and 9).
+The positions of the nodes approximate the center of mass of the corresponding community on the left panel.
+
+Module detection is a reasonable tool for capturing the large scale structure of networks.
+In fact, is has been shown that there is a resolution limit for community detection and the minimum size of the communities depends on the size of the network \citep{SantoFortunato01022007}.
+In general, meta information such as the geographical embedding of the network, is needed to gain knowledge about the function of a network out of its structure.
+
+A particular partitioning of a network, however, is not guaranteed to give unambiguous information about the network.
+On the contrary, equation \eqref{eq:modularity} is a mapping from a high dimensional partition space to a scalar.
+The number of elements in the partition space is given by the \emph{bell number}.
+This implies that the number of partitions of a network with 10 nodes is $\sim 10^5$ and it is already $\sim 10^{47}$ for 50 nodes!
+Adjacent partitions in the partition space can have huge differences in $Q$ and it is not guaranteed that approximative algorithms are capable to find the global optimum.
+Furthermore, a huge number of different partitions can possess the same modularity $Q$.
+
+Although a particular partition should in general be interpreted with caution, we can state that \emph{at least one} partition of a certain value of $Q$ is intrinsic in the system.
+I.e. the system is somehow modular, even if the best possible partition might be unknown.
+We consider this line of thought in the next section, where we analyze artificial networks with distinctive structural features in order to gain insight into their impact on epidemic processes.
+
+\section{Structural network properties \& epidemics}\label{sec:PRE}
+In this section, we investigate the impact of directionality and modularity of networks on epidemic processes.
+Therefore, we use random network models that mimic the desired properties.
+To begin with, we derive a system of equations that models an epidemic process as it would take place on the pig trade network of section \ref{sec:network_analysis}.
+For this reason, we consider the agricultural holdings as meta-populations and the time scales between trade and infection are separated using a pacing of trade.
+All results presented in this section are published in \citep{Lentz:2012pre}.
+
+\subsection{Epidemic model}
+In this section, we derive an infection model for agricultural holdings that are considered as meta populations, each holding containing a certain number of animals. 
+The coupling between the holdings is given by trade, which appears as transportation of livestock animals (see figure \ref{fig:metapop_scheme}).
+The union of all trade couplings is given by a trade network with adjacency matrix $\mat{A}$. 
+Since transportation/trade in this sense is a non symmetric process, we focus on \emph{directed networks} in particular.
+
+In each node of the network, a susceptible-infected-recovered (SIR) reaction takes place.
+Following section \ref{sec:sir_model}, the infection model for each node $\mu $ in such a system reads
+\begin{align}\label{eq:local_sir_only}
+\partial _t s_\mu &= -\alpha s_\mu \frac{i_\mu}{n_\mu} \notag \\
+\partial _t i_\mu &=  \alpha s_\mu \frac{i_\mu}{n_\mu} - \gamma i_\mu \notag \\
+\partial _t r_\mu &= \gamma i_\mu ,
+\end{align}
+where $n_\mu =s_\mu + i_\mu + r_\mu $ is the total population of node $\mu $ and we use the force of infection $i_\mu / n_\mu $ as suggested in equation \eqref{eq:force_of_infection}.
+The \emph{infection status} of node $\mu $ is given by the triple $(s_\mu , i_\mu , r_\mu )$.
+Now we add the interactions between the meta populations by introducing a network with adjacency matrix elements $a_{\mu \nu }$.
+
+The total \emph{outflow} from node $\mu $ is given by its degree $\sum _\nu a_{\mu \nu }$ and divides into
+\[
+f_\mu ^- =  \frac{s_\mu }{n_\mu} \sum _\nu a_{\mu \nu } + \frac{i_\mu }{n_\mu} \sum _\nu a_{\mu \nu }+ \frac{r_\mu }{n_\mu} \sum _\nu a_{\mu \nu }
+\]
+according to the infection status of the node.
+The \emph{inflow} of each node depends on the infection status of its predecessors in the network, i.e.
+\[
+f_\mu ^+ =\sum _\nu a^T _{\mu \nu }\frac{s_\nu }{n_\nu } + \sum _\nu a^T _{\mu \nu }\frac{i_\nu }{n_\nu } + \sum _\nu a^T _{\mu \nu }\frac{r_\nu }{n_\nu },
+\]
+where $\sum _\nu a^T _{\mu \nu }=\sum _\nu a _{\nu \mu }$ is the in degree of node $\mu $.
+We add the respective contributions of inflow and outflow to equations \eqref{eq:local_sir_only} and get
+%
+\begin{align}
+\partial _t s_\mu &= -\alpha s_\mu \frac{i_\mu}{n_\mu} + \sum _\nu a^T _{\mu \nu} \frac{s_\nu }{n_\nu } - \frac{s_\mu }{n_\mu }  \sum _\nu a_{\mu \nu} \notag \\
+\partial _t i_\mu &=  \alpha s_\mu \frac{i_\mu}{n_\mu} + \sum _\nu a^T _{\mu \nu} \frac{i_\nu }{n_\nu  } - \frac{i_\mu }{n_\mu  }  \sum _\nu a_{\mu \nu} -\gamma i_\mu \notag \\
+\partial _t r_\mu &= \sum _\nu a^T _{\mu \nu} \frac{r_\nu }{n_\nu } - \frac{r_\mu }{n_\mu }  \sum _\nu a_{\mu \nu} +\gamma i_\mu .
+\label{eq:sir_indices_pre} 
+\end{align}
+%
+Regarding this equation system, we have to address the impact of directionality, i.e. the non-symmetry of the adjacency matrix.
+Considering the coupling term in equations \eqref{eq:sir_indices_pre}, we have to make sure that the population of each node remains constant, i.e. $f_\mu ^- = f_\mu ^+$.
+Using that $\frac{s_\nu}{n_\nu} +\frac{i_\nu}{n_\nu} +\frac{r_\nu}{n_\nu} =1$ this is equivalent to the condition
+\[
+\sum _\nu (a_{\nu \mu }-a_{\mu \nu})=0.
+\]
+In undirected networks, this condition is always satisfied.
+In directed networks, however, the condition implies that each node in the network has the same in and out degree, respectively.
+This does not hold in the general case, so that the total flow of node $\mu $ is
+\[
+\sum _\nu (a_{\nu \mu }-a_{\mu \nu})= f_\mu ^+ -f_\mu ^- \equiv f_\mu \neq 0 ,
+\]
+i.e. the difference between in-degree and out-degree.
+This difference is distributed over the infection status of the respective node so that
+\[
+f_\mu =\frac{s_\mu }{n_\mu }f_\mu ^s +\frac{i_\mu }{n_\mu }f_\mu ^i +\frac{r_\mu }{n_\mu }f_\mu ^r .
+\]
+It follows that in the case of a directed network, we have to add a birth/death process in each node to keep the total population constant.
+Hence, the infection model becomes
+%
+\begin{align}
+\partial _t s_\mu &= -\alpha s_\mu \frac{i_\mu}{n_\mu} + \sum _\nu a^T _{\mu \nu} \frac{s_\nu }{n_\nu } - \frac{s_\mu }{n_\mu }  \sum _\nu a_{\mu \nu} -\frac{s_\mu }{n_\mu } f^s _\mu \notag \\
+\partial _t i_\mu &=  \alpha s_\mu \frac{i_\mu}{n_\mu} + \sum _\nu a^T _{\mu \nu} \frac{i_\nu }{n_\nu  } - \frac{i_\mu }{n_\mu  }  \sum _\nu a_{\mu \nu} -\gamma i_\mu -\frac{i_\mu }{n_\mu } f^i _\mu \notag \\
+\partial _t r_\mu &= \sum _\nu a^T _{\mu \nu} \frac{r_\nu }{n_\nu } - \frac{r_\mu }{n_\mu }  \sum _\nu a_{\mu \nu} +\gamma i_\mu -\frac{r_\mu }{n_\mu } f^r _\mu .
+\label{eq:sir_indices_with_flow_correction} 
+\end{align}
+%
+In analogy to section \ref{sec:network_matrices}, we define the Laplace Matrix $\mat{L}$ with elements
+\begin{equation}\label{eq:sir_laplace}
+l_{\mu \nu} = a^T _{\mu \nu } - \delta _{\mu \nu }\sum _\sigma a_{\mu \sigma } .
+\end{equation}
+Using vector notation, the status of the whole network is given by the respective vectors $\mat{S}$, $\mat{I}$ and $\mat{R}$.
+Lowercase letters refer to normalized variables, i. e. the elements of $\mat{s}$ are $s_\mu / n_\mu $.
+the system \eqref{eq:sir_indices_with_flow_correction} now reads
+\begin{align}\label{eq:sir_no_pacing}
+\partial _t \mat{S} &=\mat{L}\mat{s}- \mathrm{diag} (\mat{s}\mat{F}_s)-\alpha \; \mathrm{diag}(\mat{S}\mat{i}) \nonumber \\
+\partial _t \mat{I} &=\mat{L}\mat{i}- \mathrm{diag} (\mat{s}\mat{F}_i)-\alpha \; \mathrm{diag}(\mat{S}\mat{i}) -\gamma \mat{I} \nonumber \\
+\partial _t \mat{S} &=\mat{L}\mat{r}- \mathrm{diag} (\mat{r}\mat{F}_r) +\gamma \mat{I} .
+\end{align}
+This system models an SIR-type epidemic on a meta population which is connected by a network structure given by the Laplacian $\mat{L}$.
+In \eqref{eq:sir_no_pacing}, $\mathrm{diag} (\mat{x} \mat{y})$ denotes the main diagonal of the outer product of vectors $\mat{x}$ and $\mat{y}$.
+
+Still, the infection time scale is the same as the trade time scale in \eqref{eq:sir_no_pacing}.
+In order to separate these time scales, we modify the Laplacian \eqref{eq:sir_laplace} and define a \emph{paced Laplacian}
+\begin{equation}\label{eq:new_laplacian}
+\mathcal{L}(\tau )=\mat{L} \sum _{n=0} ^\infty  \delta (t-n\tau )
+\end{equation}
+with pacing frequency $\tau $.
+Thus, we obtain the requested model replacing the Laplacian in \eqref{eq:sir_no_pacing} by its paced counterpart.
+Finally , we use the following outbreak model:
+%
+\begin{align}\label{eq:sir_with_pacing}
+\partial _t \mat{S} &=\mathcal{L}(\tau )\mat{s}- \mathrm{diag} (\mat{s}\mat{F}_s)-\alpha \; \mathrm{diag}(\mat{S}\mat{i}) \nonumber \\
+\partial _t \mat{I} &=\mathcal{L}(\tau )\mat{i}- \mathrm{diag} (\mat{s}\mat{F}_i)-\alpha \; \mathrm{diag}(\mat{S}\mat{i}) -\gamma \mat{I} \nonumber \\
+\partial _t \mat{S} &=\mathcal{L}(\tau )\mat{r}- \mathrm{diag} (\mat{r}\mat{F}_r) +\gamma \mat{I} .
+\end{align}
+%
+In order to analyze the impact of characteristic topological features -- in particular modularity and directionality -- on disease dynamics, we solve equations \eqref{eq:sir_with_pacing} numerically for different computer-generated networks with the desired properties.
+
+\subsection{Computer-generated networks}
+In this section we describe how networks with varying directionality and modularity can be generated on a computer.
+Although generating a sequence of graphs with a certain directionality is straightforward, we have to discuss how to quantify this property.
+Before we generate networks of a desired modularity, we address restrictions in the maximum value of $Q$.
+
+\paragraph{Networks of desired directionality\color{Cayenne}{.}}
+The directionality of a given network is related to its fraction of bidirectional links.
+In principle, the strength of direction could be measured this way.
+It has been shown, however, that this measure would yield finite values even for purely random networks \citep{Garlaschelli2004}.
+Therefore, \citeauthor{Garlaschelli2004} introduced the measure of \emph{link reciprocity} $\rho $ of a given network with $N$ nodes and adjacency matrix $\mat{A}$ as
+\begin{equation}\label{eq:link_reciprocity}
+\rho =\frac{\sum _{i\neq j} (a_{ij}-\bar{a})(a^T _{ij}-\bar{a})}{\sum _{i\neq j} (a_{ij}-\bar{a})^2}.
+\end{equation}
+The edge density is denoted as $\bar{a}=\sum _{ij} a_{ij}/(N(N-1))$.
+In fact, equation \eqref{eq:link_reciprocity} is the correlation between an adjacency matrix and its transposed.
+Reciprocity $\rho =1$ for undirected networks, whereas $\rho \approx 0 $ for directed random graphs.
+In the latter case the fraction of bidirectional links would take finite values, since some bidirectional links are taken by chance.
+We generate random networks with different values and solve the system \eqref{eq:sir_with_pacing} on these topologies.
+Pseudocode for the generation of networks with varying reciprocity is provided in Appendix \ref{sec:algorithms}.
+Infection parameters are $\alpha =3$, $\gamma = 1$, $\tau =21$ and $(s_\mu (0),i_\mu (0),r_\mu (0))=(300,0,0)$ in each node.
+As initial conditions, we choose the node with longest range to avoid trivial solutions and its initial state is $(299,1,0)$.
 
 
+\subsection{Impact of directionality}
 
 
 %

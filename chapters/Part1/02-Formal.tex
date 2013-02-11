@@ -343,7 +343,7 @@ For undirected networks the Laplace-matrix is defined as
 \end{equation}
 where $\mathbf{A}$ is the adjacency matrix and $\mathbf{D}$ is a diagonal matrix containing the degree $d_i=\sum _j a_{ij}$ of each node.
 The definition \eqref{eq:laplace_matrix} has strong analogies to the discrete Laplace-Operator \citep{Press:1992}.
-Consequently, they can be used to model diffusion processes on graphs in analogy to Laplace operators in continuous systems (see section xx).
+Consequently, they can be used to model diffusion processes on graphs in analogy to Laplace operators in continuous systems (see section \ref{sec:PRE}).
 
 The spectra of adjacency and Laplace matrices contain information about the evolution/history of networks \citep{Banerjee2009}.
 
@@ -364,7 +364,7 @@ A directed network is strongly connected, if there is a directed path between al
 
 The \emph{distance} between two nodes is the length of the shortest path between them and the longest distance is the \emph{diameter} of the network.
 Every closed path is called a \emph{cycle}.
-Graphs that do not contain cycles are called \emph{trees}.
+Graphs that do not contain cycles are called acyclic graphs or \emph{trees}.
 The neighborhood of a node $u$ is the set of all nodes adjacent to it and the size of the neighborhood is the \emph{degree} of the node.
 Hence, a node $v$ is in the neighborhood of $u$, if $(u,v) \in E$.
 We distinguish between in-degree and out-degree in directed networks.
@@ -732,6 +732,7 @@ It can be seen as the network version of what is also known as Matthew-effect or
 The preferential attachment model for growing networks is as follows:
 Start with a small number $m_0$ of nodes and add a new node at every time step.
 Connect the new node to $m<m_0$ existing nodes, each with probability $\Pi $.
+Thus, $m=1$ yields a tree and $m>1$ gives a graph with cycles.
 The probability for an existing node $i$ to be connected with the new one depends on the degree of $i$, i.e. $\Pi (k_i)=k_i/\sum _j k_j$.
 \begin{SCfigure}
 \includegraphics{BA_graph.pdf}
@@ -938,9 +939,16 @@ A \emph{meta-population} is a set of subpopulations which are connected by migra
 Recent works made use of meta-population approaches to model large scale disease outbreaks \citep{VittoriaColizza02142006}, such as influenza \citep{DuyguBalcan12222009} and SARS \citep{Hufnagel:2004p27}.
 
 The computation of outbreak thresholds in meta-populations was addressed in \citep{Colizza:2007p6276,Colizza:2007p5906} and the spreading velocity was additionally analyzed in \citep{Belik:2011ke}.
-The impact of network topology on disease spread in meta-populations was addressed in (\citet{Lentz:2012pre}, section xx).
+The impact of network topology on disease spread in meta-populations was addressed in (\citet{Lentz:2012pre}, section \ref{sec:PRE}).
 Although meta-population approaches provide a useful tool for the modeling of epidemics, they systematically overestimate the outbreak size when compared to individual resolved approaches \citep{Keeling11052010}.
 
+\begin{SCfigure}
+\includegraphics{Metapop_scheme.pdf}
+\caption{Three meta-populations $\mu $,$\nu $ and $\sigma $ of different size and infection status.
+The infection status is represented by the local color distribution.
+The edge $(\mu, \nu )$ indicates migration from $\mu $ to $\nu $.}
+\label{fig:metapop_scheme}
+\end{SCfigure}
 
 In the context of epidemics every subpopulation has a different infection status, i.e. a distribution of $S$, $I$ and $R$.
 Additionally to the local infection model, we add a migration term so that the general form of a meta-population SIR-infection-model for a subpopulation $\mu $ is
@@ -952,14 +960,6 @@ Furthermore, the migration between subpopulations could occur on a time-scale $\
 The impact of these time-scales on disease spread was analyzed in  \citep{cross2005,Balcan:2011gv,Lentz:2012pre}.
 We investigate the interplay between network properties and disease outbreaks in section xx. 
 %
-\begin{SCfigure}
-\includegraphics{Metapop_scheme.pdf}
-\caption{Three meta-populations $\mu $,$\nu $ and $\sigma $ of different size and infection status.
-The infection status is represented by the local color distribution.
-The edge $(\mu, \nu )$ indicates migration from $\mu $ to $\nu $.}
-\label{fig:metapop_scheme}
-\end{SCfigure}
-
 
 
 %\bibliographystyle{apalike}

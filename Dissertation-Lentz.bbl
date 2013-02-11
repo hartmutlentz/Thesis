@@ -253,6 +253,11 @@ Fortunato, S. (2010).
 \newblock {Community detection in graphs}.
 \newblock {\em Phys. Rep.}, 486:75--174.
 
+\bibitem[Fortunato and Barth{\'e}lemy, 2007]{SantoFortunato01022007}
+Fortunato, S. and Barth{\'e}lemy, M. (2007).
+\newblock {Resolution limit in community detection}.
+\newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 104(1):36--41.
+
 \bibitem[Fortunato et~al., 2006]{Fortunato:2006}
 Fortunato, S., Flammini, A., and Menczer, F. (2006).
 \newblock Scale-free network growth by ranking.
@@ -262,6 +267,11 @@ Fortunato, S., Flammini, A., and Menczer, F. (2006).
 Freeman, L.~C. (1978).
 \newblock Centrality in social networks.
 \newblock {\em Social networks}, 1:215--239.
+
+\bibitem[Garlaschelli and Loffredo, 2004]{Garlaschelli2004}
+Garlaschelli, D. and Loffredo, M. (2004).
+\newblock {Patterns of link reciprocity in directed networks}.
+\newblock {\em Phys. Rev. Lett.}, 93:268701.
 
 \bibitem[Garrison, 1960]{Garrison:1960up}
 Garrison, W.~L. (1960).
@@ -405,6 +415,11 @@ Kermack, W.~O. and McKendrick, A.~G. (1927).
 \newblock A contribution to the mathematical theory of epidemics.
 \newblock {\em Proc. R. Soc. A}, 115:700--721.
 
+\bibitem[Kim et~al., 2010]{kim2010}
+Kim, Y., Son, S.-W., and Jeong, H. (2010).
+\newblock {Finding communities in directed networks}.
+\newblock {\em Phys. Rev. E}, 81:016103.
+
 \bibitem[Kleinberg, 1999]{Kleinberg:1999}
 Kleinberg, J.~M. (1999).
 \newblock Hubs, authorities, and communities.
@@ -414,6 +429,11 @@ Kleinberg, J.~M. (1999).
 Kleinberg, J.~M., Kumar, R., Raghavan, P., Rajagopalan, S., and Tomkins, A.~S.
   (1999).
 \newblock The web as a graph: measurements, models, and methods.
+
+\bibitem[Leicht and Newman, 2008]{Leicht:2008p5144}
+Leicht, E. and Newman, M. E.~J. (2008).
+\newblock {Community Structure in Directed Networks}.
+\newblock {\em Phys. Rev. Lett.}, 100:118703.
 
 \bibitem[Lentz et~al., 2009]{Lentz2009}
 Lentz, H., Kasper, M., and Selhorst, T. (2009).

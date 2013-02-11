@@ -9,44 +9,44 @@ A level-1 auxiliary file: chapters/Part3/05-Conceptional_tvg_problems.aux
 A level-1 auxiliary file: chapters/Part4-app/Appendix.aux
 The style file: apalike.bst
 Database file #1: bibliography.bib
-You've used 113 entries,
+You've used 117 entries,
             1935 wiz_defined-function locations,
-            1192 strings with 21552 characters,
-and the built_in function-call counts, 45197 in all, are:
-= -- 4431
-> -- 1813
-< -- 71
-+ -- 621
-- -- 604
-* -- 3957
-:= -- 7906
-add.period$ -- 341
-call.type$ -- 113
-change.case$ -- 858
-chr.to.int$ -- 112
-cite$ -- 113
-duplicate$ -- 1603
-empty$ -- 3193
-format.name$ -- 777
-if$ -- 8761
+            1214 strings with 22015 characters,
+and the built_in function-call counts, 46739 in all, are:
+= -- 4583
+> -- 1870
+< -- 74
++ -- 639
+- -- 622
+* -- 4092
+:= -- 8176
+add.period$ -- 353
+call.type$ -- 117
+change.case$ -- 887
+chr.to.int$ -- 116
+cite$ -- 117
+duplicate$ -- 1659
+empty$ -- 3305
+format.name$ -- 805
+if$ -- 9061
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 120
-newline$ -- 568
-num.names$ -- 339
-pop$ -- 649
+missing$ -- 124
+newline$ -- 588
+num.names$ -- 351
+pop$ -- 667
 preamble$ -- 1
-purify$ -- 867
+purify$ -- 896
 quote$ -- 0
-skip$ -- 1220
+skip$ -- 1263
 stack$ -- 0
-substring$ -- 3523
-swap$ -- 143
+substring$ -- 3644
+swap$ -- 147
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 654
+type$ -- 678
 warning$ -- 0
-while$ -- 370
+while$ -- 383
 width$ -- 0
-write$ -- 1462
+write$ -- 1514
