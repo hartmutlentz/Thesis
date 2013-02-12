@@ -96,7 +96,7 @@ A more exhaustive overview about hard problems is in \citep{algorithm_design} an
 Generally, heuristic methods have to be used in order to get an approximate solution.
 It should be noted that the \emph{maximum clique} problem (section xx) and \emph{graph partitioning} (see section xx, \citep{brandes2007}) belong to the class of hard problems.
 
-\section{Subgraphs and maximum modularity}
+\section{Subgraphs and maximum modularity}\label{sec:maximum_modularity_subgraphs}
 We derive an estimation of the maximum modularity value depending on the number of modules in the network.
 The results are derived for a clique of modules, but remain the same for a ring of modules as it is reasonable in finite systems (see below).
 In addition, the estimation is also valid for directed networks (see below).
@@ -266,39 +266,7 @@ a_j ^\text{in}= \sum _i e_{ij} \hspace{1cm} \text{and} \hspace{1cm} a_i ^\text{o
 \]
 The structure of the inter-module edges takes the form of the matrix \eqref{eq:ring_module_matrix} and thus results do not differ either for the directed case.
 
-\section{Algorithms}\label{sec:algorithms}
-We generated networks with varying reciprocity using algorithm \ref{alg:reciprocity}.
-It uses the following external functions:
-Function \verb"random" returns a random number in the interval $[0,1]$ and \verb"choice" returns one input object randomly.
-%
-\begin{algorithm}[htbp]
-\SetKwFunction{random}{random}
-\SetKwFunction{DirectedGraph}{DirectedGraph}
-\SetKwFunction{choice}{choice}%\SetAlgoLined  \KwData{$N$, $p$, $p_\mathrm{rev}$}  \KwResult{$G$, $\rho $}
-\BlankLine
-\tcp{Generate undirected \ER graph}
-initialize empty graph $H$ with $N$ nodes\;
-  \For{all node pairs $(u,v)$ in $H$}{    r = \random{}\;    \If{$p<r$}{      add edge $(u,v)$ to $H$\;      }
-}
-\BlankLine
-\tcp{Replace all undirected edges by two bidirectional directed edges}
-initialize empty directed graph $G$ with $N$ nodes\;
-\For{edge $(u,v)$ in $H$}{add edges $(u,v)$ and $(v,u)$ to $G$\;}
-\BlankLine
-\tcp{Replace bidirectional edges with probability $p_\mathrm{rev}$}
-\For{edge $(u,v)$ in $H$}{
-r = \random{} \;
-\If{$p_\mathrm{rev}<r$}{
-remove edge \choice{$(u,v),(v,u)$} from $G$\;
-}
-}
-\BlankLine
-Compute reciprocity $\rho$ of $G$ according equation \eqref{eq:link_reciprocity}\;
-%
-%\caption{Generate networks of fixed reciprocity}
-\label{alg:reciprocity}\end{algorithm}
 
-Networks of varying modularity were computed as follows:
 
 
 

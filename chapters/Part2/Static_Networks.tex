@@ -171,7 +171,11 @@ In order to detect community structure in the pig trade network, we analyze the 
 The results presented in this section are published in \citep{Lentz:2011}\footnote{We show results computed for the pig trade data set within observation period 01 june 2006 and 31 december 2008, as in \citep{Lentz:2011}. Results remain qualitatively the same for the dataset 01 january 2009 -- march 2010.}.
 
 Note that we focus on the partition of only the undirected network.
-Although the concept of modularity can be generalized to the directed case in a straightforward manner \citep{Leicht:2008p5144}, there is still ongoing discussion about a systematic bias in this approach \citep{kim2010}.
+Although the concept of modularity can be generalized to the directed case in a straightforward manner using the definition \citep{Leicht:2008p5144}
+\begin{equation}\label{eq:directed_modularity}
+Q=\frac{1}{m} \sum _{ij}\left( \mat{A}_{ij}-\frac{k_i ^- k_j ^+}{m} \right) \delta (c_i,c_j),
+\end{equation}
+there is still ongoing discussion about a systematic bias in this approach \citep{kim2010}.
 \citeauthor{kim2010} point out that a straightforward generalization of modularity can not resolve nodes of different in and out degree. 
 Hence, nodes of high total degree tend to form communities with their neighborhood regardless of how the links in the neighborhood are directed.
 
@@ -183,8 +187,8 @@ The resulting map is shown in figure \ref{fig:D9}.
 It should be noted that the community partition was done without spatial information in the first place.
 Thus, the figure demonstrates that in this case two nodes of the same community are likely to be geographic neighbors as well.
 An explanation for this correlation could be cultural affinity or simply economic reasons, since transport costs scale with geographical distance.
-%
-\begin{figure}[htbp]
+
+\begin{figure}[htb]
 \begin{center}
 \includegraphics{D9.pdf}
 \caption{Geographical embedding of the communities found for the pig trade network (left).
@@ -318,12 +322,12 @@ Finally , we use the following outbreak model:
 %
 In order to analyze the impact of characteristic topological features -- in particular modularity and directionality -- on disease dynamics, we solve equations \eqref{eq:sir_with_pacing} numerically for different computer-generated networks with the desired properties.
 
-\subsection{Computer-generated networks}
+\subsection{Computer-generated networks}\label{sec:computer-gen-networks}
 In this section we describe how networks with varying directionality and modularity can be generated on a computer.
 Although generating a sequence of graphs with a certain directionality is straightforward, we have to discuss how to quantify this property.
 Before we generate networks of a desired modularity, we address restrictions in the maximum value of $Q$.
 
-\paragraph{Networks of desired directionality\color{Cayenne}{.}}
+\paragraph{Networks of varying directionality\color{Cayenne}{.}}
 The directionality of a given network is related to its fraction of bidirectional links.
 In principle, the strength of direction could be measured this way.
 It has been shown, however, that this measure would yield finite values even for purely random networks \citep{Garlaschelli2004}.
@@ -335,13 +339,105 @@ The edge density is denoted as $\bar{a}=\sum _{ij} a_{ij}/(N(N-1))$.
 In fact, equation \eqref{eq:link_reciprocity} is the correlation between an adjacency matrix and its transposed.
 Reciprocity $\rho =1$ for undirected networks, whereas $\rho \approx 0 $ for directed random graphs.
 In the latter case the fraction of bidirectional links would take finite values, since some bidirectional links are taken by chance.
-We generate random networks with different values and solve the system \eqref{eq:sir_with_pacing} on these topologies.
-Pseudocode for the generation of networks with varying reciprocity is provided in Appendix \ref{sec:algorithms}.
-Infection parameters are $\alpha =3$, $\gamma = 1$, $\tau =21$ and $(s_\mu (0),i_\mu (0),r_\mu (0))=(300,0,0)$ in each node.
-As initial conditions, we choose the node with longest range to avoid trivial solutions and its initial state is $(299,1,0)$.
 
+To investigate the impact of directionality on disease dynamics, we generate random networks with different values of $\rho $ and solve the system \eqref{eq:sir_with_pacing} on these topologies.
+The networks are generated as follows:
+1. generate an undirected \ER network, 2. replace all edges by bidirectional directed edge pairs and 3. remove one edge of the bidirectional edge pair with probability $q$.
+Consequently, the probability that an edge pair is connected by an undirected (bidirectional) edge is $p_\mathrm{rev} = 1-q$.
+The link reciprocity of the generated network can directly be computed using equation \eqref{eq:link_reciprocity}.
+We have to point out that this analysis focuses on \ER networks.
+Other network types are possible as well, but would add more complexity to the analysis.  
+
+\paragraph{Modular networks\color{Cayenne}{.}}
+Following \citeauthor{Newman:2004}, a modular network can be realized as a union of independent subgraphs, that are afterwards sparsely connected \citep{Newman:2004}.
+In this work, we use random networks with fixed node number $N$ and edge probability $p$ as subgraphs.
+The connection of subgraphs is achieved by by placing edges between them with probability $p_\mathrm{out}$.
+Varying $p_\mathrm{out}$ allows for an adjustment of the modularity $Q$, which is computed using equation \eqref{eq:directed_modularity}.
+
+It should be noted that a sufficient number of subgraphs is necessary to obtain large values of $Q$.
+We found an analytic approximation for the maximum possible modularity by maximizing equation \eqref{eq:modularity} (or \eqref{eq:directed_modularity}, respectively) for different module numbers. 
+For a network of $n$ modules the maximum modularity is
+\begin{equation}\label{eq:Q_max}
+Q_\mathrm{max}=1-\frac{1}{n}.
+\end{equation}
+Derivation sketch: given a modular network with adjacency matrix $\mat{A}$, there is always a relabeling of indices $\mat{P}$ so that $\mat{A}'=\mat{P}\mat{A}\mat{P}^{-1}$ is block diagonal.
+The maximum modularity can be derived from the blocks of $\mat{A}'$, since the graphs of $\mat{A}'$ and $\mat{A}$ are isomorphic.
+A full derivation of \eqref{eq:Q_max} is given in Appendix \ref{sec:maximum_modularity_subgraphs}.
 
 \subsection{Impact of directionality}
+We solve the system \eqref{eq:sir_with_pacing} on a sequence of networks as generated according to the previous section.
+For the rest of this work, we keep the following parameters constant:
+The infection parameters are $\alpha =3$, $\gamma = 1$, $\tau =21$.
+The initial infection status of all nodes are $(s_\mu (0),i_\mu (0),r_\mu (0))=(300,0,0)$.
+As initial conditions, we choose the node with longest range to avoid trivial solutions and its initial state is $(299,1,0)$.
+Figure \ref{fig:typical_trajectory} shows a typical solution of the system on a random network.
+
+\begin{SCfigure}
+\includegraphics{Typical_Trajectory.pdf}
+\caption{Typical infection curve $\sum _\nu i_\nu (t)$ of a solution of equation \eqref{eq:sir_with_pacing}.
+The ratio of $1/\tau $ and $\gamma $ results in a comb shape of the infection curve.
+Inset shows the more noisy infection curve of a critical network.
+Networks: \ER network with 2000 nodes, $p=0.05$, $p_\mathrm{rev}=0.5$ (inset: $p=0.001$, $p_\mathrm{rev}=0.01$).
+From \citep{Lentz:2012pre}.
+}
+\label{fig:typical_trajectory}
+\end{SCfigure}
+
+Although the choice of parameters seems a bit arbitrary in the first place, the qualitative behavior of the system depends only weakly on the exact parameter values \citep{Lentz:2012pre}.
+We have seen in section \ref{sec:sir_model} that the outbreak condition \eqref{eq:r0} determines whether an outbreak occurs at all.
+Above threshold, SIR-type outbreaks show quasi similar behavior.
+That is why the fraction $\alpha / \gamma $ in equations \eqref{eq:sir_with_pacing} is of minor importance as long as $\alpha / \gamma >1$.
+In addition to that, the characteristic time scale of an SIR infection is given by $1/\gamma $ (see equation \eqref{eq:sir_characteristic_time_scale_gamma}).
+If the pacing of the network coupling $\tau $ is too slow, a local infection dies out before it can be moved to the next node.
+Therefore, we choose $\tau $ and $\gamma $ so that an infection can spread along the network.
+An analysis of the outbreak dynamics in the $(\tau \gamma)$ parameter space is given in \citep{Lentz:2012pre}.
+
+After integrating the system \eqref{eq:sir_with_pacing} on computer generated networks, we compute the final size of epidemic (see section \ref{sec:sir_model})
+\[
+R_\infty = \lim _{t\rightarrow \infty } \sum _\nu r_\nu (t),
+\]
+which is normalized by the population size $P$ to yield the outbreak size
+\[
+r_\infty =\frac{R_\infty}{P}.
+\]
+Figure \ref{fig:outbreaksize_vs_rec_ER} shows the outbreak size for \ER networks with different values of link reciprocity.
+The plot shows networks of different densities determined by the edge occupation probability $p$.
+Note that $p$ corresponds to the edge density before edge removal as described in section \ref{sec:computer-gen-networks}.
+Hence, the edge density is further reduced for smaller values of $\rho $.
+%
+\begin{figure}[htb]
+\begin{center}
+\includegraphics{Outbreaksize_vs_rec_ER.pdf}
+\caption{Effect of directionality for an SIR outbreak on a random network.
+Each point corresponds to one outbreak simulation on one network.
+All networks have 2000 nodes.
+Initial network densities: grey: $p=0.003$, red: $p=0.001$, blue: $p = 0.000625$.
+From \citep{Lentz:2012pre}.
+}
+\label{fig:outbreaksize_vs_rec_ER}
+\end{center}
+\end{figure}
+
+Grey points in figure \ref{fig:outbreaksize_vs_rec_ER} represent outbreaks in rather dense ($p=0.003$) networks.
+This density is significantly larger than the percolation threshold of the network, which is $p_c=0.0005$.
+Thus, the networks are clearly supercritical.
+The figure demonstrates that the outbreak size is almost constant for all values of $\rho $, indicating that the high link density of the network is not affected by a removal of some bidirectional links.
+The red points also represent outbreaks on supercritical networks, but the densities of the networks are only slightly above the critical point.
+As a consequence, the outbreak size is more sensitive to changes of reciprocity.
+The outbreak size range from $0.1$ to $0.8$ in this case.
+The density of the blue outbreaks correspond to networks with initial density $p=0.000625$.
+Consequently, the density is approximately $0.0005=p_c$ for $\rho =0.5 $.
+This implies, that the network undergoes a phase transition for $\rho =0.5$.
+As shown in the figure, the outbreak size depends on the link reciprocity only in the supercritical regime.
+
+The findings of figure \ref{fig:outbreaksize_vs_rec_ER} demonstrate, that the structure of the underlying network affects the outbreak size. In particular, critical networks show a strong sensitivity to changes in directionality.
+Nevertheless, it can be shown that the effect seen in figure \ref{fig:outbreaksize_vs_rec_ER} are not mixing effects of the SIR epidemic, but can in fact be explained by purely topological arguments \citep{Lentz:2012pre}.
+This is shown by comparing the range of the initially infected node with the actual size of the disease outbreak.
+A deviation between the two would indicate that back-mixing of recovered into the population is responsible for a decrease in outbreak size, since recovered do not contribute to the infection process, but can act as infection firewalls.
+
+
+\subsection{Impact of modularity}
+We define the time of outbreak peak as follows.
 
 
 %

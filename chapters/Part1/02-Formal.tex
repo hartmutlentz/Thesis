@@ -190,9 +190,9 @@ In the late phase of an SIR-type epidemic, the fraction of infected is small.
 Given sufficiently large values of $R_0$, the fraction of recovered is also small in this phase (see figure \ref{fig:transcendental}).
 Thus, we neglect the quadratic term in \eqref{eq:sir_model_only_i}.
 This gives $\frac{dI}{dt} = -\gamma I $, which has the solution
-\[
+\begin{equation}\label{eq:sir_characteristic_time_scale_gamma}
 I(t)=I(0)e^{-\gamma t}.
-\]
+\end{equation}
 Hence, the infection decays exponentially for large $t$ and the inverse recovery rate $1/\gamma $ defines the characteristic time of the epidemic.
 
 A similar concept to the SIR model is the SIS model, where infected individuals return to the susceptible state after a certain period.
@@ -379,7 +379,7 @@ I restrict myself to those measures, that are indispensable when describing netw
 A more exhaustive overview of centrality measures is found in the review article \citep{MartinezLopez2009} or in online documentations of network analysis software, e.g.~\citep{hagberg2008,networkx:}.
 In the following, $N$ denotes the order of the network (the number of nodes) and $m$ the number of edges.
 %
-\begin{figure}[htbp]
+\begin{figure}[htb]
 \begin{center}
 \includegraphics{DiGraph-Centrality}
 \caption{A directed network for the demonstration of different centrality measures.}
@@ -402,8 +402,7 @@ In weighted networks, the degree is computed in the same way and is called in-we
 The degree centrality is used in a huge variety of applications.
 One of its most important applications is to measure the heterogeneity of network connections, i.e. the existence of hubs in the network.
 Hubs are nodes with a degree much larger than the rest of the system.
-The heterogeneity of networks can be measured in terms of degree distributions (see section xx).
-
+The heterogeneity of networks can be measured in terms of degree distributions (see section \ref{sec:macro_measures}).
 
 \paragraph{Closeness\color{Cayenne}{.}} 
 The closeness of a node is the reciprocal average distance to all other nodes in the network.
