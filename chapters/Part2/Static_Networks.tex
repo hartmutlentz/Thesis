@@ -397,9 +397,9 @@ After integrating the system \eqref{eq:sir_with_pacing} on computer generated ne
 R_\infty = \lim _{t\rightarrow \infty } \sum _\nu r_\nu (t),
 \]
 which is normalized by the population size $P$ to yield the outbreak size
-\[
+\begin{equation}\label{eq:pre_outbreak_size}
 r_\infty =\frac{R_\infty}{P}.
-\]
+\end{equation}
 Figure \ref{fig:outbreaksize_vs_rec_ER} shows the outbreak size for \ER networks with different values of link reciprocity.
 The plot shows networks of different densities determined by the edge occupation probability $p$.
 Note that $p$ corresponds to the edge density before edge removal as described in section \ref{sec:computer-gen-networks}.
@@ -431,15 +431,40 @@ This implies, that the network undergoes a phase transition for $\rho =0.5$.
 As shown in the figure, the outbreak size depends on the link reciprocity only in the supercritical regime.
 
 The findings of figure \ref{fig:outbreaksize_vs_rec_ER} demonstrate, that the structure of the underlying network affects the outbreak size. In particular, critical networks show a strong sensitivity to changes in directionality.
-Nevertheless, it can be shown that the effect seen in figure \ref{fig:outbreaksize_vs_rec_ER} are not mixing effects of the SIR epidemic, but can in fact be explained by purely topological arguments \citep{Lentz:2012pre}.
+Nevertheless, it can be shown that the effect behind the results in figure \ref{fig:outbreaksize_vs_rec_ER} is not due to mixing of the population, but can in fact be explained by purely topological arguments \citep{Lentz:2012pre}.
 This is shown by comparing the range of the initially infected node with the actual size of the disease outbreak.
 A deviation between the two would indicate that back-mixing of recovered into the population is responsible for a decrease in outbreak size, since recovered do not contribute to the infection process, but can act as infection firewalls.
 
-
 \subsection{Impact of modularity}
-We define the time of outbreak peak as follows.
+Before we study the impact of modularity, we define the \emph{time of outbreak peak} in order to quantify the time period of the main epidemic.
+The peak time of the epidemic is defined as the time, that divides the infection curve into two equal areas, i.e. the ``median'' of the infection curve.
+Since this corresponds to the time, where half of the final infection size is reached.
+It follows from the SIR model \eqref{eq:sir_model} that the time of infection peak can also be computed using
+\begin{equation}\label{eq:pre_time_of_infection_peak}
+t: i(t)= R_\infty /2 .
+\end{equation}
+Using the term ``median'', the number of recovered is -- up to a constant -- the ``cumulative distribution'' of the infection curve, i.e $dR/dt=\gamma I$.
+
+As in the previous section, we compute the outbreak sizes and the infection peak times for networks of different modularity generated according to section \ref{sec:computer-gen-networks}.
+For each outbreak, we compute the outbreak size $r_\infty $ following \eqref{eq:pre_outbreak_size} and the time of infection peak as defined in \eqref{eq:pre_time_of_infection_peak}.
+The result is shown in figure \ref{fig:time_rinfty_vs_mod}.
+%
+\begin{figure}[htb]
+\begin{center}
+\includegraphics{Outbreaksieandtime_vs_Q}
+\caption{Impact of modularity $Q$ on the outbreak size $r_\infty $. The outbreak size (red circles) is affected by an increase of modularity, although the effect is rather weak.
+The inset shows the disintegration of the network resulting in a drop of the outbreak size for very large values of $Q$.
+Grey triangles demonstrate that increasing modularity can cause significant delays of the infection peak.}
+\label{fig:time_rinfty_vs_mod}
+\end{center}
+\end{figure}
+
+As the figure demonstrates, the size of infection increases with modularity.
 
 
+
+
+\subsection{Impact of reciprocity in modular networks}
 %
 %\bibliographystyle{apalike}
 %\bibliography{/Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib}
