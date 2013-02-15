@@ -15,7 +15,7 @@
 %
 
 
-\chapter{Static livestock trade network}
+\chapter{Livestock trade network: Static network analysis}
 In this chapter, we address the analysis of static networks, where the focus lies on epidemic spread on networks.
 Large amounts of data about different contact structures between a huge amount of subjects became available in the last years.
 In the context of epidemics, different types of networks can be obtained.
@@ -62,13 +62,13 @@ Figure \ref{fig:hit_deg_cdf} shows the heavy-tailed degree distribution of the n
 \begin{SCfigure}
 \includegraphics{HIT_Degree_CDF.pdf}
 \caption{Degree distribution of the livestock trade network. The out-degree distribution (red) is well approximated by a power-law of the form $x^{-1.6}$ (red dashed line).
-The in-degree distribution shows a bimodal behavior indicating large slaughterhouses.
+The in-degree distribution shows a bimodal behavior indicating the presence of large slaughterhouses.
 }
 \label{fig:hit_deg_cdf}
 \end{SCfigure}
 %
 
-\paragraph{Components and ranges\color{Cayenne}{.}}
+\subsection{Components and ranges}
 Ignoring the edge direction, the network has a giant component containing more than 98~\% of the nodes. The second largest weakly connected component contains only 11 nodes.
 The size of the largest and second largest strongly connected components are 21,8~\% and  0.05~\% (47 nodes), respectively.
 Sizes of the next smaller components decrease rapidly.
@@ -146,7 +146,7 @@ In analogy, nodes reachable from the GSCC that are themselves not part of the la
 All remaining nodes not belonging to one of the components mentioned above are called tendrils, if they are weakly connected to the GSCC.
 The nodes on the upper right (figure \ref{fig:rangegap_principle}) are not even weakly connected to the GSCC and thus belong to another component of the network.
 
-\paragraph{Modules\color{Cayenne}{.}}
+\subsection{Modules}
 The network components analyzed above make a strict requirement to the connectivity between components.
 A weaker requirement would be to allow for the existence of only a few edges between components.
 Clusters of this type are called \emph{modules} or \emph{communities}.
@@ -220,7 +220,7 @@ Although a particular partition should in general be interpreted with caution, w
 I.e. the system is somehow modular, even if the best possible partition might be unknown.
 We consider this line of thought in the next section, where we analyze artificial networks with distinctive structural features in order to gain insight into their impact on epidemic processes.
 
-\section{Structural network properties \& epidemics}\label{sec:PRE}
+\section{Range \& modules: Spreading potential}\label{sec:PRE}
 In this section, we investigate the impact of directionality and modularity of networks on epidemic processes.
 Therefore, we use random network models that mimic the desired properties.
 To begin with, we derive a system of equations that models an epidemic process as it would take place on the pig trade network of section \ref{sec:network_analysis}.
@@ -364,7 +364,7 @@ Derivation sketch: given a modular network with adjacency matrix $\mat{A}$, ther
 The maximum modularity can be derived from the blocks of $\mat{A}'$, since the graphs of $\mat{A}'$ and $\mat{A}$ are isomorphic.
 A full derivation of \eqref{eq:Q_max} is given in Appendix \ref{sec:maximum_modularity_subgraphs}.
 
-\subsection{Impact of directionality}
+\subsection{Impact of directionality}\label{sec:impact_directionality}
 We solve the system \eqref{eq:sir_with_pacing} on a sequence of networks as generated according to the previous section.
 For the rest of this work, we keep the following parameters constant:
 The infection parameters are $\alpha =3$, $\gamma = 1$, $\tau =21$.
@@ -435,7 +435,7 @@ Nevertheless, it can be shown that the effect behind the results in figure \ref{
 This is shown by comparing the range of the initially infected node with the actual size of the disease outbreak.
 A deviation between the two would indicate that back-mixing of recovered into the population is responsible for a decrease in outbreak size, since recovered do not contribute to the infection process, but can act as infection firewalls.
 
-\subsection{Impact of modularity}
+\subsection{Impact of modularity}\label{sec:impact_of_modularity}
 Before we study the impact of modularity, we define the \emph{time of outbreak peak} in order to quantify the time period of the main epidemic.
 The peak time of the epidemic is defined as the time, that divides the infection curve into two equal areas, i.e. the ``median'' of the infection curve.
 Since this corresponds to the time, where half of the final infection size is reached.
@@ -447,7 +447,7 @@ Using the term ``median'', the number of recovered is -- up to a constant -- the
 
 As in the previous section, we compute the outbreak sizes and the infection peak times for networks of different modularity generated according to section \ref{sec:computer-gen-networks}.
 For each outbreak, we compute the outbreak size $r_\infty $ following \eqref{eq:pre_outbreak_size} and the time of infection peak as defined in \eqref{eq:pre_time_of_infection_peak}.
-The result is shown in figure \ref{fig:time_rinfty_vs_mod}.
+The results are shown in figure \ref{fig:time_rinfty_vs_mod}.
 %
 \begin{figure}[htb]
 \begin{center}
@@ -459,12 +459,78 @@ Grey triangles demonstrate that increasing modularity can cause significant dela
 \end{center}
 \end{figure}
 
-As the figure demonstrates, the size of infection increases with modularity.
+As the figure demonstrates, the size of infection increases with modularity (red circles).
+This can be explained by the distribution of recovered and infected:
+In the early phase the epidemic is localized in the initial module, while it is unlikely that other modules become infected in the first place.
+Modules have a high link density by definition so that an infection is likely to infect large parts of the initial module in the early phase.
+In the moment when a path is accessible to another module, the new module is likely to comprise of a large number of susceptible population.
+Therefore, the recovered subpopulation cannot act as a firewall against infection spread.
 
+It should be noted that the effect is marginal over a wide range of modularity.
+The inset shows that a very high modularity causes a significant drop of the outbreak size, since the network disintegrates into disconnected components in this limit.
+In contrast to the effect discussed above, the drop of outbreak size in the limit $Q\rightarrow 1$ is a purely topological one \citep{Lentz:2012pre}.
+This can be shown with the same arguments as in section \ref{sec:impact_directionality}.
 
+In addition to that, figure \ref{fig:time_rinfty_vs_mod} shows the time of infection peak for different modularities (grey triangles).
+For small and intermediate values of $Q$, we observe a slight delay of the outbreak peak.
+The quantified behavior of the plot stems from the pacing $\tau $ of the network.
+The main finding of the figure is that large values of modularity cause a significant delay of the outbreak peak.
+This knowledge could be useful for the implementation of counter measures, such as vaccination strategies.
+Consequently, there is more time to react in high modular networks.
 
 
 \subsection{Impact of reciprocity in modular networks}
+In this section, we focus on modular networks with varying link reciprocity, i.e. we combine the properties studied in sections \ref{sec:impact_directionality} and \ref{sec:impact_of_modularity}.
+We generate a number of modular networks and change their link reciprocity afterwards.
+Solving the infection model \eqref{eq:sir_model} on these topologies gives outbreak sizes for different reciprocities.
+The results are shown in figure \ref{fig:outbreak_vs_rec_modular}.
+%
+\begin{figure}[htb]
+\begin{center}
+\includegraphics{Outbreaksize_vs_rec_modular.pdf}
+\caption{Outbreak size vs. link reciprocity for modular networks.
+Changing reciprocity in intermediate modular networks (blue squares) does not affect the outbreak size significantly.
+Highly modular networks (red circles) act as isolated modules and show a behavior similar to that of figure \ref{fig:outbreaksize_vs_rec_ER}.
+The correlation between outbreak size and reciprocity is reversed for very low modular networks (grey triangles)}
+\label{fig:outbreak_vs_rec_modular}
+\end{center}
+\end{figure}
+
+The red circles in figure \ref{fig:outbreak_vs_rec_modular} represent networks with $Q=0.87$, i.e. highly modular networks.
+The outbreak size shows a behavior comparable to that of the supercritical \ER graphs in figure \ref{fig:outbreaksize_vs_rec_ER}.
+This provides evidence for the hypothesis that the modules of highly modular networks act as isolated subgraphs.
+For networks of intermediate modularity ($Q=0.59$, blue squares), there is almost no correlation between outbreak size and link reciprocity.
+
+Interestingly, the correlation between outbreak size and link reciprocity becomes even negative for networks of very low modularity ($Q\sim 0$, grey triangles).
+Grey triangles should not be confused with random networks.
+In fact, they are generated as modular networks, but with very high inter-module edge probabilities $p_\mathrm{out}$, i.e. they possess an internal structure, but this structure is not resolved by the modularity any more.
+This can can be seen as a limit $Q\searrow 0$.
+A possible explanation for the counter-intuitive behavior of low modular networks is that there is a high probability that an infected subpopulation $M$ is highly connected to the module $M_0$ where the infection originated from.
+As a matter of fact, the module $M_0$ is in an ``older'' infection state, i.e. it is dominated by recovered population.
+Consequently, the effective number of susceptible population is decreased for this infection path and the spreading range is reduced.
+
+\paragraph{Conclusion of the section\color{Cayenne}{.}}
+The German pig trade network was analyzed in terms of static network measures.
+Our main observations are the following:
+First off, the system possesses a heavy-tailed degree distribution (figure \ref{fig:hit_deg_cdf}) indicating that the system is heterogenous and be vulnerable to epidemics (see section \ref{sec:epi_networks}).
+Second, the network components and the distribution of ranges result in a node classification into either long range or short range nodes.
+Any ranking of nodes according to their potential of disease spread is reduced to the class membership of the nodes in this context.
+In addition to that, the balance $b$ of the range distribution provides evidence that the system considered here is in a critical state ($b=0.069$, see also figure \ref{fig:ER_range_gaps}).
+The directionality of the network is inherently related to the gap seen in the range distribution.
+An undirected network would not show a two class distribution.
+Third, the network under consideration can be partitioned into modules, i.e. relatively densely connected subgraphs.
+By adding meta-information (in this case geographical information) to the network partition, we found a reasonable partition into compact geographical regions (see figure \ref{fig:D9}).
+The large scale trade structure of the system can be revealed this way.
+
+Finally, the observations above raise two questions for the context of epidemics on networks:
+1. how do link directions affect an epidemic outbreak? and
+2. given a network is somehow modular, does this have any impact on disease dynamics?
+In order to answer these questions, we generated random networks that allow for  a variation of the desired properties -- directionality and modularity -- and solved an infection model tailor made for a livestock trade network on these topologies.
+
+Our main findings are: 1. Modularity can cause a significant delay of an outbreak, 2. stronger link directionality generally reduces the outbreak size, but in special topologies the effect can also be reversed.
+
+
+
 %
 %\bibliographystyle{apalike}
 %\bibliography{/Users/lentz/Documents/GitHub_locals/Thesis/bibliography.bib}
