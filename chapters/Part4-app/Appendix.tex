@@ -227,11 +227,24 @@ In order to find the maximum value of $Q$, we insert the module size $x_i=c/n$ i
 Q=c-\sum _{i=1} ^n \left( \frac{c}{n} \right) ^2 - \frac{1-c^2}{n}=c-\frac{c^2}{n}-\frac{1}{n}+\frac{c^2}{n}.
 \]
 Thus, it follows for dense modules
-\begin{equation}
-\lim _{c\rightarrow 1}Q=1-\frac{1}{n}.
+\begin{equation}\label{eq:q_max}
+Q_\mathrm{max}= \lim _{c\rightarrow 1}Q=1-\frac{1}{n}.
 \end{equation}
-Consequently, the maximum value of $Q$ is determined by the number of modules.
+Consequently, the maximum value of $Q_\mathrm{max}$ is determined by the number of modules.
 The same result was found using probabilistic arguments in \citep{Good2010}.
+Figure \ref{fig:q_max} shows a comparison between equation \eqref{eq:q_max} and a computer simulation of a ring of modules where new modules are added to the system successively and the maximum modularity is computed. 
+The edge density of each module is given by the edge occupation probability $p_\mathrm{in}=0.5$.
+The figure demonstrates that equation \eqref{eq:q_max} gives a good approximation of the maximum value $Q_\mathrm{max}$ even for small systems.
+%
+\begin{SCfigure}
+\includegraphics{Q_max.pdf}
+\caption{Equation \eqref{eq:q_max} (grey dashed line) is in good agreement with numerical simulations (red circles).
+In the simulations, modules are dense, directed subgraphs ($p_\mathrm{in}=0.5$) with $32$ nodes each.
+Modules are connected on a ring so that the resulting graph is connected.
+}
+\label{fig:q_max}
+\end{SCfigure}
+
 
 \paragraph{Finite systems\color{Cayenne}{.}}
 In finite systems, we get a minimum fraction of inter-module edges, when modules are connected to each other on a ring, each module having two nearest neighbors.
