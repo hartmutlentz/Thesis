@@ -430,6 +430,12 @@ Kleinberg, J.~M., Kumar, R., Raghavan, P., Rajagopalan, S., and Tomkins, A.~S.
   (1999).
 \newblock The web as a graph: measurements, models, and methods.
 
+\bibitem[Konschake et~al., 2013]{Konschake:2013js}
+Konschake, M., Lentz, H., Conraths, F.~J., H{\"o}vel, P., and Selhorst, T.
+  (2013).
+\newblock {On the Robustness of In- and Out-Components in a Temporal Network}.
+\newblock {\em PLoS ONE}, 8(2):e55223.
+
 \bibitem[Leicht and Newman, 2008]{Leicht:2008p5144}
 Leicht, E. and Newman, M. E.~J. (2008).
 \newblock {Community Structure in Directed Networks}.
@@ -448,8 +454,14 @@ Lentz, H., Konschake, M., Teske, K., Kasper, M., Rother, B., Carmanns, R.,
   production network}.
 \newblock {\em Prev. Vet. Med.}, 98(2-3):176--181.
 
-\bibitem[Lentz et~al., 2012]{Lentz:2012pre}
-Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012).
+\bibitem[Lentz et~al., 2012a]{Lentz:2013PRL}
+Lentz, H., Selhorst, T., and Sokolov, I.~M. (2012a).
+\newblock {Unfolding accessibility provides a macroscopic approach to temporal
+  networks}.
+\newblock {\em arXiv}, physics.soc-ph.
+
+\bibitem[Lentz et~al., 2012b]{Lentz:2012pre}
+Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012b).
 \newblock {Spread of infectious diseases in directed and modular metapopulation
   networks}.
 \newblock {\em Phys. Rev. E}, 85:066111.

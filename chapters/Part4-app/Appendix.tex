@@ -80,6 +80,19 @@ With every generation in a BFS tree, the distance from the starting node is incr
 Shortest paths in weighted networks can be identified using a the algorithm of Dijkstra \citep{Dijkstra:1959}.
 DFS can be used to identify connected components in directed graphs (see next section).
 
+Due to the sparsity of typical adjacency matrices, networks can be efficiently stored as \emph{edge lists}.
+An edge list is a list of tuples, where each tuple $(u,v)$ is an edge connecting nodes $u$ and $v$.
+The edge list of example \ref{fig:simple_digraph} would be
+\begin{align*}
+&(1,2)\\
+&(1,3)\\
+&(2,4)\\
+&(3,2)\\
+&(4,2)\\
+&(4,3) .
+\end{align*}
+Due to their human readable structure, edge lists are a very convenient format to store networks as text files.
+
 Implementations of graph structures as discussed above are for example available in the libraries \verb"networkx" (Python), \verb"igraph" (C, Python, R), \verb"Lemon" and \verb"Boost" (C++).
 
 \paragraph{Hard problems\color{Cayenne}{.}}
