@@ -17,15 +17,15 @@
 
 \section{Network implementation}\label{sec:implementation}
 In order to efficiently implement networks and their analysis on a computer, it is necessary to use data structures adjusted to these problems.
-A short and transparent introduction to data structures and algorithms is in the book of Skiena \citep{algorithm_design}.
+A short and transparent introduction to data structures and algorithms is in the book of \citeauthor{algorithm_design} \citep{algorithm_design}.
 In this section, we discuss some essential data structures appropriate for network analysis and give a brief description of fundamental algorithms.
 The purpose of this section is not to list different algorithms and source code, but rather to sketch the basic ideas behind the data structures and algorithms.
 For source code of data structures and algorithms, the reader is encouraged to the lecture of \citep{algorithm_design} and \citep{Merali:2010ih}.
 
 \paragraph{Matrix implementation\color{Cayenne}{.}}
 To begin with, we consider the implementation of adjacency matrices as introduced in section \ref{sec:network_matrices}.
-Matrix implementations work also for the other matrices introduced in section \ref{sec:network_matrices}.
-All adjacency matrices are by definition square matrices.
+Matrices can be seen as a \emph{graph centric view} on the network, since they map the whole network topology onto a single object.
+Adjacency matrices are by definition square matrices.
 Their entries are either $0$ or $1$, and can take any floating number value for weighted networks.
 In this work, we neglect negative edge weights.
 The number of nodes in most complex network datasets is relatively large. 
@@ -47,8 +47,9 @@ A traversal is a procedure like: start at a node, visit all of its neighbors, fr
 This is a searching process.
 These processes are used in many implementations of graph theoretic methods.
 
-An alternative implementation to the adjacency matrix is an \emph{adjacency list}.
+An alternative implementation to the adjacency matrix is the \verb"adjacency list".
 It stores the neighbors of every node and is implemented in terms of a linked list.
+Adjacency lists can be considered as a \emph{node centric view} on the network, since they capture the horizon/neighborhood of each node.
 Using the example network of \ref{fig:simple_digraph}, we get the following adjacency list:
 \begin{align*}
 1 &\rightarrow 2,3 \\
@@ -80,7 +81,7 @@ With every generation in a BFS tree, the distance from the starting node is incr
 Shortest paths in weighted networks can be identified using a the algorithm of Dijkstra \citep{Dijkstra:1959}.
 DFS can be used to identify connected components in directed graphs (see next section).
 
-Due to the sparsity of typical adjacency matrices, networks can be efficiently stored as \emph{edge lists}.
+Due to the sparsity of typical adjacency matrices, networks can be efficiently stored as \verb"edge lists".
 An edge list is a list of tuples, where each tuple $(u,v)$ is an edge connecting nodes $u$ and $v$.
 The edge list of example \ref{fig:simple_digraph} would be
 \begin{align*}
@@ -91,7 +92,9 @@ The edge list of example \ref{fig:simple_digraph} would be
 &(4,2)\\
 &(4,3) .
 \end{align*}
-Due to their human readable structure, edge lists are a very convenient format to store networks as text files.
+Due to their human readable structure, edge lists are a very convenient format to store networks as column wise text files.
+Edge lists correspond to an \emph{edge centric view} on a network.
+They can be efficiently used for edge randomization and random graph generation.
 
 Implementations of graph structures as discussed above are for example available in the libraries \verb"networkx" (Python), \verb"igraph" (C, Python, R), \verb"Lemon" and \verb"Boost" (C++).
 

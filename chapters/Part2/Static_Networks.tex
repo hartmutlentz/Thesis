@@ -111,11 +111,13 @@ The balance of the distribution around the gap is measured in terms of the varia
 \[
 b=\frac{N_l-N_s}{N},
 \]
-where $N$ is the number of nodes and $N_l$ and $N_s$ are the numbers of long and short ranged nodes, respectively.
+where $N=N_l+N_s$ is the number of nodes and $N_l$ and $N_s$ are the numbers of long and short ranged nodes, respectively.
 Apparently $b=1$, if all nodes are long ranged and $b=-1$ for only short ranged nodes in the network.
 Figure \ref{fig:ER_range_gaps} shows the range gap and balance for directed \ER networks of varying density.
 The figure demonstrates, that the size of the range gap and the balance are inherently related to the percolation properties of the system (see section \ref{sec:er_model}).
 A significant range gap in combination with equally sized range classes indicates that the system is in a critical state.
+The author would like to stress the fact that the combination of range gap and balance is a more general indicator for the critical state than the average degree (see figure \ref{fig:ER_lcc_emergence}, section \ref{sec:er_model}).
+This is because the range gap is not subject to any random model assumption.
 For the dataset of figure \ref{fig:node_range} we get $\Gamma = 0.45$ and $b=0.095$ indicating that the system is only slightly above the critical point.
 Note that for the undirected case, the range of every node is equivalent to the size of the component it belongs to.
 Thus, ranges show a rather trivial behavior in the undirected case.

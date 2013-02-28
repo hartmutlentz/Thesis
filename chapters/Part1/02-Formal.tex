@@ -354,6 +354,8 @@ On the micro scale, this can be done in terms of \emph{node centrality} measures
 These measures are very important to assess the importance of single nodes in the network.
 On the macroscopic side, we are interested in the large-scale properties of networks, i.e. percolation, distributions of centralities, connected components or other large scale structures.
 
+Implementations of appropriate data structures for the computation of network measures are briefly summarized in Appendix \ref{sec:implementation}.
+
 \subsubsection{Network terminology}
 Let $G=(V,E)$ be a graph consisting of a set of nodes $V$ and a set of edges $E$.
 Every route across a graph along its edges without repeating nodes is called a \emph{path}.
@@ -957,7 +959,7 @@ Additionally to the local infection model, we add a migration term so that the g
 The first term $R$ in equation \eqref{eq:general_metapop_sir} is a \emph{local reaction} term, while the \emph{migration} $M$ to other subpopulations could depend on the local distribution and the infection status of other subpopulations connected to $\mu $.
 Furthermore, the migration between subpopulations could occur on a time-scale $\tau $ different from the time-scale of the local infection.
 The impact of these time-scales on disease spread was analyzed in  \citep{cross2005,Balcan:2011gv,Lentz:2012pre}.
-We investigate the interplay between network properties and disease outbreaks in section xx. 
+We investigate the interplay between network properties and disease outbreaks in section \ref{sec:PRE}. 
 %
 
 
