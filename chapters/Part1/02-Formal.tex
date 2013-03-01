@@ -356,10 +356,12 @@ On the macroscopic side, we are interested in the large-scale properties of netw
 
 Implementations of appropriate data structures for the computation of network measures are briefly summarized in Appendix \ref{sec:implementation}.
 
-\subsubsection{Network terminology}
+\subsubsection{Network terminology}\label{sec:network_terminology}
 Let $G=(V,E)$ be a graph consisting of a set of nodes $V$ and a set of edges $E$.
 Every route across a graph along its edges without repeating nodes is called a \emph{path}.
-Each path is given by an ordered set of the nodes traversed, i.e. $(v_1,v_2,\dots ,v_l)$, with $v_i \in V$ and all edges are in $E$, $v_i,v_{i+1} \subseteq E$.
+Each path is given by an ordered set of the nodes traversed, i.e. $(v_1,v_2,\dots ,v_l)$, with $v_i \in V$ and all edges are in $E$, $v_i,v_{i+1} \subseteq E$ for all $i$.
+A \emph{shortest path} between a node pair is given by the smallest set of nodes connecting it.
+In general, there exist multiple shortest paths between nodes.
 If there is a path from every node in the network to any other node, the network is called \emph{connected}.
 In directed networks, we have to consider two types of connectedness.
 A directed network is strongly connected, if there is a directed path between all node pairs and weakly connected, if the node pairs would be connected ignoring the direction of edges.

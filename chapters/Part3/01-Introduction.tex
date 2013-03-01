@@ -1,4 +1,3 @@
-%\part{Temporal networks}
 \chapter{Temporal network analysis}
 The previous chapter has demonstrated that network analysis provides a deep insight into the processes behind epidemic spreading.
 Given a sufficient amount of data, a contact network is capable to capture all possible infection pathways in the system.
@@ -19,7 +18,7 @@ Figure \ref{fig:temporal_network_principle} shows a temporal network and its agg
 \begin{center}
 \includegraphics{Temporal_Network_Principle.pdf}
 \caption{%
-Role of causality in a temporal network with $5$ nodes and $T=4$.
+Role of causality in a temporal network with $5$ nodes and $4$ snapshots.
 The left panel shows snapshots of the system at different times and the right panel shows the corresponding aggregated network.
 Although there is a path from node $3$ to $4$ (and vice versa) in the aggregated network (right panel), there is no causal path between $3$ and $4$ in the temporal network (left panel).
 }
@@ -57,9 +56,8 @@ This is, however, beyond the scope of this thesis.
 }
 The aggregated graph $G=(V,E)$ of a temporal network simply ignores the occurrence times of the edges in $\mathcal{E}$ and the set of nodes $V$ is the same in both representations.
 
-
 \paragraph{Viewpoints and implementation\color{Cayenne}{.}}
-As in the case of static networks, temporal networks can be implemented in different ways.
+As in the case of static networks, temporal networks can be interpreted and implemented in different ways \citep{Casteights_review}.
 A brief report of different implementations of static networks is given in Appendix \ref{sec:implementation}.
 Besides the adjacency matrix, edge lists and adjacency lists are appropriate network representations.
 Considering a temporal network as a sequence of static networks (called snapshots or graphlets) can be seen as a \emph{graph centric} view on the system.
@@ -87,15 +85,48 @@ The temporal degree of each node immediately follows from $d(v,t)=\abs{\mathcal{
 
 We focus on the \emph{graph centric view} \eqref{eq:AdMatrixSequence} of temporal networks in the rest of this thesis and make use of edge and node centric views implicitly in computer implementations.
 
+\paragraph{Paths in temporal networks\color{Cayenne}{.}}
+A causal sequence of edges between two nodes $u$ and $v$ in a temporal network is called (causal) path.
+It is given by a sequence of edges, i.e.
+\[
+\mathrm{path}(u,v,t)= \{ (u,x,t_1),(x,y,t_2),\dots ,(z,v,t_n) \}, 
+\]
+where $ t_1<t_2<\dots <t_n$ and $x$, $y$ and $z$ are nodes on the path.
+\begin{SCfigure}
+\includegraphics{Shortest_foremost_fastest.pdf}
+\caption{Topological shortest distance and temporal shortest durations for a path between nodes $u$ and $v$.
+The shortest path (panel A) counts the number of edges between the nodes.
+Panel~B demonstrates that although the fastest path could take $t_3-t_2 < t_1-t_0$, the foremost path arrives already at $t_1<t_2$.
+}
+\label{fig:shortest_foremost_fastest}
+\end{SCfigure}
 
+Note that possible paths between nodes depend on time in general.
+This has crucial implications on the \emph{shortest path distance} known from static networks (see section  \ref{sec:network_terminology}).
+As a matter of fact, there are three different shortest path types in temporal networks.
+Just like in the static case, the shortest path distance between two nodes measures the topological distance between the nodes.
+It counts the number of edges used do traverse the shortest path.
+In addition, the \emph{duration} of a path can be measured in temporal networks.
+This duration can be measured in two different time frames \citep{Casteights_review}:
+First, the \emph{fastest} path between two nodes is the path of shortest duration, no matter when the path starts in time.
+Second, the \emph{foremost} path between two nodes is the path that arrives earliest in a global time frame.
 
+Figure \ref{fig:shortest_foremost_fastest} demonstrates the difference between the foremost, fastest and shortest path concept, respectively.
+Edge labels are edge occurrence times, which are ordered so that $t_1<t_2<t_3<t_4<t_5$.
+The dashed edge $(x,y)$ indicates that these nodes are not connected directly, but by other nodes of the network.
+Panel A shows that the shortest topological path between nodes $u$ and $v$ is $(u,x,v)$ and the distance is $3$.
+It can be seen from panel B that the first (foremost) path start at node $u$ at time $t_0$ and arrives at node $v$ at time $t_1$.
+Although the fastest path takes less time to traverse ($t_3-t_2<t_1-t_0$), it arrives later ($t_3>t_1$) than the foremost path.
+Note that shortest path and temporal shortest path do not coincide in this example, since the shortest path connection can be at times $t_4$ and $t_5$ which are greater than $t_1$ and $t_3$.
 
+Throughout the rest of this work, we use a global time scale, which is defined by the first time in the dataset under consideration.
+Consequently, we measure shortest path durations in terms of \emph{foremost} path durations, if not explicitly stated.
 
 \section{Data driven network analysis}\label{sec:Plos}
 In order to be congruent with the datasets used in the publications, we use the pig trade dataset of \citep{Konschake:2013js} in this chapter.
-This dataset differs slightly from the dataset in section \ref{sec:network_analysis}.
+This dataset differs slightly from the dataset used in section \ref{sec:network_analysis}.
 It covers the period from 01 January 2008 to 31 December 2009.
-The results do not change qualitatively and results of \citep{Konschake:2013js} and \citep{Lentz:2013PRL} are comparable.
+The results do not change qualitatively and hereby the results of \citep{Konschake:2013js} and \citep{Lentz:2013PRL} are comparable.
 
 
 \subsection{Representative sample}
