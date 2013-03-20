@@ -6,9 +6,12 @@ In the static case, the matrix $\mathbf{A}+\mathbf{1}$ is always primitive, i.e.
 What follows from this statement is, that $\mathbf{P}_n$ should yield a proper eigenvector centrality.
 
 \section{Conceptional problems with components in temporal networks}
-Die Accessibility erlaubt eine Ansicht auf ein temporal network als Ganzes.
-
-
+Accessibility allows for a macroscopic network view.
+A hyper graph $H$ containing time labelled node triples, i.e. $(x,y,z,t_1,t_2)$ could allow for the detection of components.
+The hyper edges correspond to the transitive edges of $\mathcal{G}$.
+The time stamp $t_1$ marks the occurrence time of edge $(x,y)$, while $t_2$ is the occurrence time of $(y,z)$.
+Therefore, the time of $(y,z)$ is always equivalent to $t_2$ and $t_1<t_2$.
+%
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics{images/transitivity_scheme}
@@ -16,4 +19,12 @@ Die Accessibility erlaubt eine Ansicht auf ein temporal network als Ganzes.
 \label{fig:overlapping_hyperedges}
 \end{center}
 \end{figure}
+
+The idea of detecting components is now to traverse the transitive part of $\mathcal{P}$.
+Considering two overlapping hyper edges $e_1=(i,j,k,t_1,t_2)$ and $e_2=(j,k,l,t_3,t_4)$, a path $(e_1,e_2)$ is causal, if $t_3\geq t_2$ and $t_4>t_2$.
+As a matter of fact, this is again a transitivity condition on $\mathcal{H}$.
+
+The approach could be simplified, if we consider a temporal ordered sequence of the hyper graphs $\mathcal{H}$.
+Every causal path then follows adjacent edges of successive snapshots.
+
 
