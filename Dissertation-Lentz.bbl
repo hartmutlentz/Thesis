@@ -454,7 +454,7 @@ Lentz, H., Konschake, M., Teske, K., Kasper, M., Rother, B., Carmanns, R.,
   production network}.
 \newblock {\em Prev. Vet. Med.}, 98(2-3):176--181.
 
-\bibitem[Lentz et~al., 2012a]{Lentz:2013PRL}
+\bibitem[Lentz et~al., 2012a]{Lentz:2013PRL_arxiv}
 Lentz, H., Selhorst, T., and Sokolov, I.~M. (2012a).
 \newblock {Unfolding accessibility provides a macroscopic approach to temporal
   networks}.
@@ -465,6 +465,12 @@ Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012b).
 \newblock {Spread of infectious diseases in directed and modular metapopulation
   networks}.
 \newblock {\em Phys. Rev. E}, 85:066111.
+
+\bibitem[Lentz et~al., 2013]{Lentz:2013PRL}
+Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2013).
+\newblock Unfolding accessibility provides a macroscopic approach to temporal
+  networks.
+\newblock {\em Phys. Rev. Lett.}, 110:118701.
 
 \bibitem[Liljeros et~al., 2001]{Liljeros:2001p841}
 Liljeros, F., Edling, C., Amaral, L. A.~N., and Stanley, H.~E. (2001).
@@ -540,6 +546,12 @@ Newman, M. E.~J., Strogatz, S., and Watts, D. (2001).
 \newblock {Random graphs with arbitrary degree distributions and their
   applications}.
 \newblock {\em Phys. Rev. E}, 64:026118.
+
+\bibitem[Nicosia et~al., 2012]{Nicosia:2012hz}
+Nicosia, V., Tang, J., Musolesi, M., Russo, G., Mascolo, C., and Latora, V.
+  (2012).
+\newblock {Components in time-varying graphs}.
+\newblock {\em Chaos}, 22(2):023101.
 
 \bibitem[Page, 1997]{PageRank:}
 Page, L. (1997).

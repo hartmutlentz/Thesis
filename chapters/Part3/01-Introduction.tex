@@ -82,8 +82,10 @@ This point of view is particularly convenient for the time randomization of temp
 Finally, a \emph{node centric} view of a temporal network considers the neighborhood $\mathcal{N}$ of a node $v$ over time, i.e. $\mathcal{N}(v,t)$.
 This view corresponds to the adjacency list of a static network (see Appendix \ref{sec:implementation}).
 The temporal degree of each node immediately follows from $d(v,t)=\abs{\mathcal{N}(v,t)}$.
+The edge centric and node centric network view is considered as a microscopic perspective, while the graph centric view provides a macroscopic perspective.
 
-We focus on the \emph{graph centric view} \eqref{eq:AdMatrixSequence} of temporal networks in the rest of this thesis and make use of edge and node centric views implicitly in computer implementations.
+We make use of microscopic perspective implicitly in computer implementations as in section \ref{sec:Plos}.
+Furthermore, we focus on the graph centric view \eqref{eq:AdMatrixSequence} in section \ref{sec:PRL} to analyze macroscopic path structures in temporal networks.
 
 \paragraph{Paths in temporal networks\color{Cayenne}{.}}
 A causal sequence of edges between two nodes $u$ and $v$ in a temporal network is called (causal) path.
@@ -92,6 +94,7 @@ It is given by a sequence of edges, i.e.
 \mathrm{path}(u,v,t)= \{ (u,x,t_1),(x,y,t_2),\dots ,(z,v,t_n) \}, 
 \]
 where $ t_1<t_2<\dots <t_n$ and $x$, $y$ and $z$ are nodes on the path.
+%
 \begin{SCfigure}
 \includegraphics{Shortest_foremost_fastest.pdf}
 \caption{Topological shortest distance and temporal shortest durations for a path between nodes $u$ and $v$.
@@ -123,21 +126,85 @@ Throughout the rest of this work, we use a global time scale, which is defined b
 Consequently, we measure shortest path durations in terms of \emph{foremost} path durations, if not explicitly stated.
 
 \section{Data driven network analysis}\label{sec:Plos}
+In this section we analyze the pig trade data set as introduced in section \ref{sec:network_analysis}, but we explicitly take into account temporal information%
+\footnote{%
 In order to be congruent with the datasets used in the publications, we use the pig trade dataset of \citep{Konschake:2013js} in this chapter.
 This dataset differs slightly from the dataset used in section \ref{sec:network_analysis}.
 It covers the period from 01 January 2008 to 31 December 2009.
-The results do not change qualitatively and hereby the results of \citep{Konschake:2013js} and \citep{Lentz:2013PRL} are comparable.
+The results do not change qualitatively and hereby the results of \citep{Konschake:2013js} and \citep{Lentz:2013PRL} are comparable.}. %
+Each edge in the system is only present at certain days.
+Long waiting times between edge occurrences can be present in the system.
 
+As in the case of static networks, the concept of centrality plays an important role for risk assessment and the implementation of vaccination and surveillance strategies also in time-varying topologies.
+The maximum spreading potential of each node is given by its range as discussed for static networks in section \ref{sec:network_analysis}.
+In this section we analyze the out-component of the network nodes according to their constance over time.
 
 \subsection{Representative sample}
+Before we analyze the ranges of the nodes in the network, we estimate the time span needed to cover the temporal properties of the system.
+Figure \ref{fig:Plos_S1} A shows the activity of the nodes and edges in the network over the observation period.
+The red line shows the number of active nodes on a daily resolution.
+We observe that 25~\% of all nodes and 10~\% edges are active every day on average.
+The plot shows decreased activity during the summer month and on public holidays such as easter and christmas.
+In addition, there is a slight trend to a decrease of the number of nodes, which reflects a centralizing process in the system.
+%
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics{Plos_S2AB.pdf}
+\caption{\textbf{Panel A:} Daily activity of the network over two years.
+Original data is shown as points and solid lines are local regressions of the original data.\\
+\textbf{Panel B:} Time aggregation of the network for different aggregation windows.
+Dashed lines show the fractions of nodes/edges in the aggregated network.
+Solid lines are local regressions of the aggregation rates.
+}
+\label{fig:Plos_S1}
+\end{center}
+\end{figure}
+
+Figure \ref{fig:Plos_S1} B gives a picture of the convergence of the network during the aggregation process, i.e. summing up the snapshots of the temporal system to obtain the static network representation.
+The network is successively aggregated over more and more snapshots.
+Dashed lines show the fractions of nodes and edges in the aggregated network, respectively.
+The solid lines show the respective aggregation rates.
+Since the latter are derivatives of the aggregation fractions, we do show a local regression of the aggregation rate to reduce noise in the signal.
+
+The figure demonstrates that the aggregation rates for both nodes and edges becomes negligible after 1 year.
+Therefore, we can assess a period of 1 year sufficient to provide stationarity of the system, i.e. the time span, after which the system evolves periodically.
 
 \subsection{Node rankings}
+A ranking of nodes is of major importance for epidemiology.
+We try to answer the question, if a constant ranking of node makes sense on a temporal network.
+As a generic measure for the spreading potential of a node, we consider the range.
+In analogy to section \ref{sec:network_analysis}, we define the range of a node in a temporal network as the size of its temporal out-component.
+It is important to note that the out-component of each node depends on the time $t_0$, when it is measured.
+Additionally, an epidemic taking place on the network can have a finite infectious period $k$, i.e. a time period, after the infection dies out if it is not carried over to another agent.
+This mimics an SIR-type process, where the infectious period is given by the reciprocal recovery rate (see section \ref{sec:sir_model}).
+More generally, $k$ corresponds to the memory of a process taking place on the network.
+This process could be a chemical reaction or rumor spread.
+
+For clarity reasons we do not solve differential equations for epidemics in this section and reduce the infection dynamics to assigning a discrete infection state -- susceptible, infected or recovered -- to each node in the network (see section \ref{sec:epi_networks}).
+An infected node remains infected over the infectious period $k$.
+We define the \emph{temporal range} of a node $v$ by explicitly taking into account the time of (primary) infection and infectious period, i.e.
+$r_v (k,t_0)$.
+%
+\begin{SCfigure}
+\includegraphics{exemplary_range.pdf}
+\caption{Temporal variation in the range $r_u(k,t_0)$ of an exemplary node $u$ in the network over one year.
+Although the range remains rather constant for most infection times, it vanishes for certain periods.
+Infectious period is fixed, $k=24$ days.
+}
+\label{fig:range_exemplary}
+\end{SCfigure}
+
+Figure \ref{fig:range_exemplary} shows the range of an exemplary node in the network for different times of infection.
+The infectious period is $k=24$ days.
+For most infection times the example node can infect about $6~\%$ of the network.
+
+
 
 \paragraph{Correlations vs. Intersections\color{Cayenne}{.}}
 
 \subsection{Temporal vs. static representation}
 
-\section{Formalism driven network analysis}\label{sec:PRL}
+\section{Graph centric temporal network analysis}\label{sec:PRL}
 
 \subsection{Matrices for temporal networks}
 

@@ -1,6 +1,7 @@
 This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Dissertation-Lentz.aux
+A level-1 auxiliary file: chapters/list_of_abbreviations.aux
 A level-1 auxiliary file: chapters/Part1/01-Introtext.aux
 A level-1 auxiliary file: chapters/Part1/02-Formal.aux
 A level-1 auxiliary file: chapters/Part2/Static_Networks.aux
@@ -9,44 +10,44 @@ A level-1 auxiliary file: chapters/Part3/05-Conceptional_tvg_problems.aux
 A level-1 auxiliary file: chapters/Part4-app/Appendix.aux
 The style file: apalike.bst
 Database file #1: bibliography.bib
-You've used 119 entries,
+You've used 121 entries,
             1935 wiz_defined-function locations,
-            1227 strings with 22411 characters,
-and the built_in function-call counts, 47548 in all, are:
-= -- 4657
-> -- 1916
+            1240 strings with 22814 characters,
+and the built_in function-call counts, 48450 in all, are:
+= -- 4739
+> -- 1967
 < -- 74
-+ -- 656
-- -- 638
-* -- 4167
-:= -- 8325
-add.period$ -- 359
-call.type$ -- 119
-change.case$ -- 905
-chr.to.int$ -- 117
-cite$ -- 119
-duplicate$ -- 1686
-empty$ -- 3354
-format.name$ -- 823
-if$ -- 9212
++ -- 674
+- -- 656
+* -- 4254
+:= -- 8487
+add.period$ -- 365
+call.type$ -- 121
+change.case$ -- 924
+chr.to.int$ -- 119
+cite$ -- 121
+duplicate$ -- 1714
+empty$ -- 3411
+format.name$ -- 843
+if$ -- 9382
 int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 126
-newline$ -- 598
-num.names$ -- 357
-pop$ -- 681
+missing$ -- 128
+newline$ -- 608
+num.names$ -- 363
+pop$ -- 696
 preamble$ -- 1
-purify$ -- 914
+purify$ -- 933
 quote$ -- 0
-skip$ -- 1283
+skip$ -- 1303
 stack$ -- 0
-substring$ -- 3686
-swap$ -- 149
+substring$ -- 3746
+swap$ -- 151
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 690
+type$ -- 702
 warning$ -- 0
-while$ -- 388
+while$ -- 394
 width$ -- 0
-write$ -- 1540
+write$ -- 1566
