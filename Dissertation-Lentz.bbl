@@ -323,8 +323,8 @@ Guimer{\`a}, R., Mossa, S., Turtschi, A., and Amaral, L. A.~N. (2005).
   community structure, and cities' global roles}.
 \newblock {\em Proc. Natl. Acad. Sci. U.S.A.}, 102(22):7794--7799.
 
-\bibitem[Guimer\`a et~al., 2004]{guimera_mod_SA}
-Guimer\`a, R., Sales-Pardo, M., and Amaral, L. A.~N. (2004).
+\bibitem[Guimer{\`a} et~al., 2004]{guimera_mod_SA}
+Guimer{\`a}, R., Sales-Pardo, M., and Amaral, L. A.~N. (2004).
 \newblock Modularity from fluctuations in random graphs and complex networks.
 \newblock {\em Phys. Rev. E}, 70:025101.
 
@@ -381,6 +381,12 @@ Holme, P., Kim, B.~J., Yoon, C.~N., and Han, S.~K. (2002).
 Holme, P. and Saram{\"a}ki, J. (2012).
 \newblock Temporal networks.
 \newblock {\em Physics Reports}, 519(3):97 -- 125.
+
+\bibitem[Horst, 1998]{Horst:1998wu}
+Horst, H.~S. (1998).
+\newblock {\em {Risk and economic consequences of contagious animal disease
+  introduction}}.
+\newblock PhD thesis, WAU, Wageningen.
 
 \bibitem[Hufnagel et~al., 2004]{Hufnagel:2004p27}
 Hufnagel, L., Brockmann, D., and Geisel, T. (2004).
@@ -442,29 +448,29 @@ Leicht, E. and Newman, M. E.~J. (2008).
 \newblock {\em Phys. Rev. Lett.}, 100:118703.
 
 \bibitem[Lentz et~al., 2009]{Lentz2009}
-Lentz, H., Kasper, M., and Selhorst, T. (2009).
+Lentz, H. H.~K., Kasper, M., and Selhorst, T. (2009).
 \newblock {Network analysis of the German cattle trade net - Preliminary
   results}.
 \newblock {\em Berl. M{\"u}nch. Tier{\"a}ztl. Wschr.}, 122(5-6):193--198.
 
 \bibitem[Lentz et~al., 2011]{Lentz:2011}
-Lentz, H., Konschake, M., Teske, K., Kasper, M., Rother, B., Carmanns, R.,
-  Petersen, B., Conraths, F.~J., and Selhorst, T. (2011).
+Lentz, H. H.~K., Konschake, M., Teske, K., Kasper, M., Rother, B., Carmanns,
+  R., Petersen, B., Conraths, F.~J., and Selhorst, T. (2011).
 \newblock {Trade communities and their spatial patterns in the German pork
   production network}.
 \newblock {\em Prev. Vet. Med.}, 98(2-3):176--181.
 
-\bibitem[Lentz et~al., 2012a]{Lentz:2013PRL_arxiv}
-Lentz, H., Selhorst, T., and Sokolov, I.~M. (2012a).
-\newblock {Unfolding accessibility provides a macroscopic approach to temporal
-  networks}.
-\newblock {\em arXiv}, physics.soc-ph.
-
-\bibitem[Lentz et~al., 2012b]{Lentz:2012pre}
-Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012b).
+\bibitem[Lentz et~al., 2012a]{Lentz:2012pre}
+Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012a).
 \newblock {Spread of infectious diseases in directed and modular metapopulation
   networks}.
 \newblock {\em Phys. Rev. E}, 85:066111.
+
+\bibitem[Lentz et~al., 2012b]{Lentz:2013PRL_arxiv}
+Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012b).
+\newblock {Unfolding accessibility provides a macroscopic approach to temporal
+  networks}.
+\newblock {\em arXiv}, physics.soc-ph.
 
 \bibitem[Lentz et~al., 2013]{Lentz:2013PRL}
 Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2013).
