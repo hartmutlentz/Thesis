@@ -358,6 +358,7 @@ Implementations of appropriate data structures for the computation of network me
 
 \subsubsection{Network terminology}\label{sec:network_terminology}
 Let $G=(V,E)$ be a graph consisting of a set of nodes $V$ and a set of edges $E$.
+We denote the number of nodes in the network by $\abs{V}=N$ and $m=\abs{E}$ is the number of edges.
 Every route across a graph along its edges without repeating nodes is called a \emph{path}.
 Each path is given by an ordered set of the nodes traversed, i.e. $(v_1,v_2,\dots ,v_l)$, with $v_i \in V$ and all edges are in $E$, $v_i,v_{i+1} \subseteq E$ for all $i$.
 A \emph{shortest path} between a node pair is given by the smallest set of nodes connecting it.
@@ -403,7 +404,7 @@ is the in- and out-degree of node $i$, respectively.
 As an example, node $8$ in figure \ref{fig:example_net} has $k ^+(8)=4$ and $k ^- (8)=1$.
 In weighted networks, the degree is computed in the same way and is called in-weight and out-weight of a node.
 
-The degree centrality is used in a huge variety of applications.
+The degree centrality (sometimes normalized by its maximum value $N-1$) is used in a huge variety of applications.
 One of its most important applications is to measure the heterogeneity of network connections, i.e. the existence of hubs in the network.
 Hubs are nodes with a degree much larger than the rest of the system.
 The heterogeneity of networks can be measured in terms of degree distributions (see section \ref{sec:macro_measures}).

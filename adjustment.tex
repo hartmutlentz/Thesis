@@ -29,7 +29,10 @@
 \addtokomafont{pagehead}{\color{Steel}}
 \renewcommand{\pnumfont}{\color{Steel}} 
 \addtokomafont{headsepline}{\color{Steel}} 
-\pagestyle{scrheadings} 
+\pagestyle{scrheadings}
+
+%  labels in description environments
+\renewcommand{\descriptionlabel}{\hspace\labelsep{}\sffamily\small\bfseries{}\color{Steel}{}}
 
 %\makeatletter % dot after sections and all below
 %\let\std@sect\@sect
