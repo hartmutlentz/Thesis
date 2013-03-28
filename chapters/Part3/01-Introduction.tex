@@ -1,4 +1,4 @@
-\chapter{Temporal network analysis}
+\chapter{Temporal network analysis}\label{sec:temporal_networks}
 The previous chapter has demonstrated that network analysis provides a deep insight into the processes behind epidemic spreading.
 Given a sufficient amount of data, a contact network is capable to capture all possible infection pathways in the system.
 The potential of static network analysis lies in the huge toolbox of methods that has been developed in the last decades.
@@ -371,7 +371,7 @@ That is, we replace the top $\tau $ nodes by the top fraction of nodes $n$:
 \begin{equation}\label{eq:rank_robustness}
 \tilde{s}_n (\Delta k)=\mean{s_n (k_1,k_2)}_{\abs{k_1-k_2}\leq \Delta k} .
 \end{equation}
-The same is implicitely done for rank intersection $s_n(k_1,k_2)$ \eqref{eq:robustness_k} and the node ranking $R_n(k)$.
+The same is implicitly done for rank intersection $s_n(k_1,k_2)$ \eqref{eq:robustness_k} and the node ranking $R_n(k)$.
 
 We show the rank robustness for the fraction of the $0.1$~\%, $1$~\% and $10$~\% upper nodes in figure \ref{fig:plos_fig4a}.
 These fractions correspond to approximately 100, 1000 and 10,000 nodes, respectively.
@@ -416,8 +416,9 @@ Intersection between outbreak size and static measures become significant for sa
 Although this fraction is rather large, the coincidence of centrality and outbreak size is still relatively small (lower panels, compare to dotted line).
 The different centrality measures show similar intersections with the outbreak size.
 An exception is closeness centrality, which performs significantly better than the other measures.
-This could be explained by FIXME!
-It should be noted that these features are almost identical for both infectious periods.
+An explanation for this special role is that nodes with high closeness per definition are likely to infect other nodes within only few steps.
+This way long static paths are avoided, i.e. the chance that one of these static paths is disrupted by causality is relatively low.
+It should be noted that all features discussed above are almost identical for both infectious periods.
 
 \paragraph{Summary of data aggregation methods\color{Cayenne}{.}}
 We simulated an SIR-type disease on the livestock trade dataset and explicitly took into account the temporal dynamics of edges.

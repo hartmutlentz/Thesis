@@ -42,7 +42,7 @@ In particular, we focus on a network of pig trade in Germany in the years 2006--
 Each node in this network represents an agricultural holding and trade contacts between holdings are represented by directed edges.
 (An analogue analysis of a cattle network dataset was published in \citep{Lentz2009}).
 This chapter is devoted to a static network analysis of this system and a general topological classification.
-In section XX we highlight the effects of a time-resolved treatment of these systems.
+In section \ref{sec:temporal_networks} we highlight the effects of a time-resolved treatment of these systems.
 
 \paragraph{Livestock trade dataset\color{Cayenne}{.}}
 After the BSE crisis in Europe in 2001, the EU member states established livestock trade movement databases to track potential pathways of pathogen spread.
@@ -150,8 +150,8 @@ In analogy, nodes reachable from the GSCC that are themselves not part of the la
 All remaining nodes not belonging to one of the components mentioned above are called tendrils, if they are weakly connected to the GSCC.
 The nodes on the upper right (figure \ref{fig:rangegap_principle}) are not even weakly connected to the GSCC and thus belong to another component of the network.
 
-As an explanation for figure \ref{fig:node_range}, the lower bound of the long range node class is formed by the nodes of the LSCC.
-Every node that belongs to the long range node class is either on the LSCC or on the GIC.
+As an explanation for figure \ref{fig:node_range}, the lower bound of the long range node class is formed by the nodes of the GSCC.
+Every node that belongs to the long range node class is either on the GSCC or on the GIC.
 The low range class is populated by nodes of the GOC, tendrils and nodes of other WCCs.
 
 \subsection{Modules}
