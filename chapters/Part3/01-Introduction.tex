@@ -128,6 +128,15 @@ Consequently, we measure shortest path durations in terms of \emph{foremost} pat
 \subsection{Conceptual problems in temporal networks}\label{sec:conceptual_problems}
 Before we focus on different methods to analyze temporal networks, we have to point out that many static network measures, such as centrality or components, are in general time-dependent and can not be summarized to single numbers.
 In addition, time-scales of node dynamics and network dynamics can be of the same order and cause significant interactions between the dynamics.
+We consider the relation between node dynamics and edge dynamics in section \ref{sec:Plos}.
+
+The most essential difference between static and temporal networks lies in the importance of causality of paths in temporal networks.
+Although it is possible to analyze paths in temporal networks systematically (see section \ref{sec:PRL}) we have to stress that generalizing the concept of connected components is far more complex in temporal networks.
+\citeauthor{Nicosia:2012hz} point out that finding connected components in temporal networks is NP-complete in general \citep{Nicosia:2012hz}.
+In addition to that, the authors demonstrate that components in temporal networks can be \emph{degenerated}, i.e. there are multiple possible partitions of connected components and nodes can belong two multiple components at the same time.
+
+We take up this point at the end of section \ref{sec:PRL}.
+In order to get an impression about paths in temporal networks, we start with a pure data-analysis of a temporal network dataset. 
 
 
 
@@ -178,50 +187,59 @@ Therefore, we can assess a period of 1 year sufficient to provide stationarity o
 \subsection{Simulated disease outbreaks}
 Node rankings are of major importance for epidemiology.
 We try to answer the question, if a constant ranking of node makes sense on a temporal network.
-As a generic measure for the spreading potential of a node, we consider the range.
+As a generic measure for the spreading potential of a node, we consider its range.
 In analogy to section \ref{sec:network_analysis}, we define the range of a node in a temporal network as the size of its temporal out-component.
 It is important to note that the out-component of each node depends on the time $t_0$, when it is measured.
-Additionally, an epidemic taking place on the network can have a finite infectious period $k$, i.e. a time period, after the infection dies out if it is not carried over to another agent.
-This mimics an SIR-type process, where the infectious period is given by the reciprocal recovery rate (see section \ref{sec:sir_model}).
-More generally, $k$ corresponds to the memory of a process taking place on the network.
-This process could be a chemical reaction or rumor spread.
-
+In addition to that, the range of a node can depend on the particular spreading process, e.g. an epidemic, a chemical reaction or rumor spread.
+More specifically, a spreading process can have a finite memory $d$ that shortens the ability of a node to maintain in a certain state over time.
+In our context, this memory corresponds to the \emph{infectious period} $d$ of a disease, i.e. the time period, after the infection dies out if it is not carried over to another agent.
+Computing the range combined with a finite infectious period mimics an SIR-type process, where the infectious period is related to the reciprocal recovery rate (see section \ref{sec:sir_model}).
 For clarity reasons we do not solve differential equations for epidemics in this section and reduce the infection dynamics to assigning a discrete infection state -- susceptible, infected or recovered -- to each node in the network (see section \ref{sec:epi_networks}).
-An infected node remains infected over the infectious period $k$.
-We define the \emph{temporal range} of a node $v$ by explicitly taking into account the time of (primary) infection and infectious period, i.e. $r_v (k,t_0)$.
-Since there are no mixing states of nodes as in meta populations and we assume an infection probability $p=1$, the range of a node is identical to the outbreak size. 
+An infected node remains infected over the infectious period $d$.
+Thus, the infection state of the whole network is given by the number of susceptible $S(t)$, infected $I(t)$ and recovered $R(t)$ nodes, respectively.
+
+We define the \emph{temporal range} of a node $v$ by explicitly taking into account the time of (primary) infection and infectious period, i.e. $r_v (d,t_0)$.
+Since there are no mixing states of nodes as in meta populations and we assume an infection probability $p=1$ for every contact edge, the range of a node is identical to the outbreak size $R(t=\infty )$. 
+
+In summary, range and infectious period are intrinsically entangled on temporal networks
+\begin{equation}\label{eq:range_and_inf_period}
+\text{static network: } \; r_v \;\;\; \rightarrow   \;\;\; \text{temporal network: } \; r_v(d) .
+\end{equation}
+For the rest of this work, we therefore use the notion \emph{range} and \emph{outbreak size} synonymously.
+Although the temporal range should approach the static range for infinite memory, i.e. $r_v (d=\infty ) \rightarrow r_v$, the static range of a node is in general not reached even in this case.
+This is caused by causality of paths in temporal networks as explained in figure \ref{fig:temporal_network_principle}.
 
 \subsubsection{Single outbreaks}
 We discuss the outbreak pattern caused by single outbreaks in this section, while we discuss the properties of the set of all possible outbreak scenarios in the next section.
 In order to analyze node ranges in the pig trade network, we use a modified breadth-first-search algorithm (see Appendix \ref{sec:implementation} for a brief summary of search algorithms for static networks).
 Given a fixed infectious period, we mark a particular node $v$ to be infected at time $t_0$.
-For every time step in the interval $[t_0,t_0+k]$, we identify the neighborhood $\mathcal{N}(v,t)$ and mark all susceptible nodes in $\mathcal{N}(v,t)$ as infected.
+For every time step in the interval $[t_0,t_0+d]$, we identify the neighborhood $\mathcal{N}(v,t)$ and mark all susceptible nodes in $\mathcal{N}(v,t)$ as infected.
 Infected nodes are marked as removed after the infectious period $k$ and do not contribute to further infections.
 This procedure is repeated for all infected nodes as long as there are still infected nodes in the system.
 
 \begin{SCfigure}
 \includegraphics{exemplary_range.pdf}
-\caption{Temporal variation in the range $r_v(k,t_0)$ of an exemplary node $v$ in the network over one year.
+\caption{Temporal variation in the range $r_v(d,t_0)$ of an exemplary node $v$ in the network over one year.
 Although the range remains rather constant for most infection times, it vanishes for certain periods.
-The grey interval corresponds to the fixed infectious period $k=24$~days.
+The grey interval corresponds to the fixed infectious period $d=24$~days.
 }
 \label{fig:range_exemplary}
 \end{SCfigure}
 %
 Figure \ref{fig:range_exemplary} shows the range of an exemplary node in the network for different infection times $t_0$.
-The infectious period is $k=24$ days.
+The infectious period is $d=24$ days.
 For most infection times the example node can infect about $6~\%$ of the network.
-The range distribution shows a similar bimodal pattern as already seen for the static network in figure \ref{fig:node_range}.
+The range distribution over time shows a similar bimodal pattern similar to the distribution over nodes for the static network in figure \ref{fig:node_range}.
 This provides evidence that there is an infection path from the exemplary node to a connected component in the network.
 It is important to stress that the concept of connected components does not translate to temporal networks in a straightforward manner (see section \ref{sec:conceptual_problems}).
 Besides the bimodality itself, it remarkable that the majority of adjacent primary infection times cause outbreaks of similar size.
 
 This feature is can be explained, if we underline the temporal sparsity of edges, i.e. nodes are likely to have only few contacts within one infectious period.
 If the primarily infected node $v$ has no trade contact within the infectious period, the disease dies out.
-Even if the disease is transferred to a successor node $w$ at a time $t_1$ within the interval $[t_0,t_0+k]$, the disease dies out, if there is not further trade contact within the period $[t_1+k]$ and so forth.
+Even if the disease is transferred to a successor node $w$ at a time $t_1$ within the interval $[t_0,t_0+d]$, the disease dies out, if there is not further trade contact within the period $[t_1+d]$ and so forth.
 The regions of small/vanishing range in figure \ref{fig:range_exemplary} correspond to these scenarios.
-On the other hand, if all successors of node $v$ have 1 or more trading contacts within their respective infectious periods, the disease can be transferred to a larger number of nodes.
-The majority of small variations in $t_0$ implies stable ranges in the order of $k$ (the infectious period is shown by the grey line in figure \ref{fig:range_exemplary}).
+On the other hand, if all successors of node $v$ have one or more trading contacts within their respective infectious periods, the disease can be transferred to a larger number of nodes.
+The majority of small variations in $t_0$ implies stable ranges in the order of $d$ (the infectious period is shown by the grey line in figure \ref{fig:range_exemplary}).
 If the degree of $v$ or a successor node in the infection chain is even larger than 1, even more secondary outbreaks are triggered and manifest themselves in smaller range fluctuations as for the long range values in \ref{fig:range_exemplary}.
 
 We have seen in this section that a temporal degree of freedom adds a significant amount of complexity even to the outbreak pattern of a single node.
@@ -231,13 +249,13 @@ Now we focus on the set of all outbreak scenarios, i.e. the set of all initial c
 We apply the method discussed in the previous section to all nodes in the network.
 As primary infection times, we consider all times within the first year in the dataset.
 This ensures that even if a particular outbreak penetrates the second year, it will have died out within the observation period.
-We restrict ourselves to infectious periods $k<56$~days, since this interval covers the infectious periods of the major livestock diseases \citep{Horst:1998wu,Konschake:2013js}.
+We restrict ourselves to infectious periods $d<56$~days, since this interval covers the infectious periods of the major livestock diseases \citep{Horst:1998wu,Konschake:2013js}.
 Considering all nodes in the network as potential starting points for infections and all days in the first year of the dataset as possible starting times yields $10^9$ different initial conditions.
 We denote the \emph{set of all outbreak scenarios} by $\mathcal{S}$.
 More formally, let $\mathcal{G}=(V,\mathcal{E},T)$ be the temporal network of our dataset.
 Then the set of all outbreaks is given by all possible initial conditions and parameters and the corresponding outbreak size, where the latter is identical to the range for our model:
 \begin{equation}\label{eq:outbreak_set}
-\mathcal{S}=\left\{ (v,t_0,k,r_v(k,t_0)): v \in V,t_0 \in T/2, k \leq 56  \right\}.
+\mathcal{S}=\left\{ (v,t_0,d,r_v(d,t_0)): v \in V,t_0 \in T/2, d \leq 56  \right\}.
 \end{equation}
 %
 In what follows, we will average over this set in different ways to immediately obtain information about the impact of infectious period, primary infection time or the starting node on disease spread.
@@ -254,7 +272,7 @@ We analyze 103,490 starting nodes for 365 times of primary infections and 56 dif
 ~& initial conditions \& parameter  & ~ & result\\
 \hline
 Starting node & time of primary infection &infectious period & outbreak size \\
-ID & $t_0$  &$k$ &$r_v(k,t_0)$  \\
+ID & $t_0$  &$d$ &$r_v(d,t_0)$  \\
 \hline
 1 & 1 & 1 & 58  \\
 1 & 2 & 1 & 276  \\
@@ -269,21 +287,21 @@ ID & $t_0$  &$k$ &$r_v(k,t_0)$  \\
 Considering static networks, every node can cause an epidemic, if it is connected to other nodes in the network.
 We have seen in the previous section that the time of primary infection has to be in an appropriate interval in temporal networks.
 In addition, this constraint depends on the infectious period, since a disease with high infectious period is more likely to spread over the network than a disease with low infectious period.
-We define the \emph{outbreak probability} $p_s(k)$ as the fraction of elements in $\mathcal{S}$ that causes a secondary outbreak at all, that is
+We define the \emph{outbreak probability} $p_s(d)$ as the fraction of elements in $\mathcal{S}$ that causes a secondary outbreak at all, that is
 \begin{equation}\label{eq:outbreak_prob}
-p_s(k)=\frac{\abs{\left\{ x \subset \mathcal{S}: r_v(k,t_0) \in x >0, k=\mathrm{const.} \right\}}}{\abs{\mathcal{S}}} .
+p_s(k)=\frac{\abs{\left\{ x \subset \mathcal{S}: r_v(d,t_0) \in x >0, d=\mathrm{const.} \right\}}}{\abs{\mathcal{S}}} .
 \end{equation}
 Note that we compute the outbreak probability for each infectious period separately.
 
 Figure \ref{fig:plosfig1} A shows the outbreak probability for different infectious periods.
 For comparison, the outbreak probability in the static network is shown as dashed.
 This is just the fraction of nodes with finite out degree and apparently the outbreak probability shows no dependence on the infectious period in the static case.
-The outbreak probability saturates for sufficiently large infectious periods, but it is still only half as much as in the static case even for $k=56$.
+The outbreak probability saturates for sufficiently large infectious periods, but it is still only half as much as in the static case even for $d=56$.
 %
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics{Plos_fig1}
-\caption{Outbreak probability (A) and mean range (B) for different infectious periods $k$ as solid lines.
+\caption{Outbreak probability (A) and mean range (B) for different infectious periods $d$ as solid lines.
 Dashed lines correspond outbreak probability and mean outbreak size of the static network, respectively.
 The grey shaded area in panel B shows the 50~\% confidence interval.}
 \label{fig:plosfig1}
@@ -293,68 +311,68 @@ The grey shaded area in panel B shows the 50~\% confidence interval.}
 In addition to the probability of an outbreak, we compute the expected size of the outbreaks.
 The \emph{mean outbreak size} is an average over all starting nodes and all starting times in $\mathcal{S}$, i.e. $\mean{r_v}_{v,t_0}$.
 Figure \ref{fig:plosfig1} B shows the mean outbreak size and the 50~\% confidence interval (solid line and grey shaded area) and the mean outbreak size in the static network (dashed line).
-As for the outbreak probability, we observe significant outbreak sizes only for $k>14$~days and the outbreak size is 6 times smaller than in the static case even for $k=56$~days.
+As for the outbreak probability, we observe significant outbreak sizes only for $d>14$~days and the outbreak size is 6 times smaller than in the static case even for $d=56$~days.
 In summary, the infectious period must be larger than 14~days to cause a severe outbreak and the static network approximation overestimates the size of outbreaks significantly.
 
 \subsection{Node rankings}
 This section is devoted to the analysis of the node ranking according to their respective ranges.
 Rankings are very important for the implementation of vaccination and surveillance strategies, where the exact value of a certain measure for each node is not important.
-In fact, the \emph{ordering}
-For every infectious period $k$, we average over all times of primary infection in \eqref{eq:outbreak_set}.
-Thus, $b(v,k)=\mean{r_v(k,t_0)}_{t_0}$ is a function of the node and infectious period.
-Ordering $b(v,k)$ for every $k$ in descending order gives a ranking $R(k)$ of the nodes according to their outbreak sizes, where $R(k)$ is an ordered set of nodes for every infectious period.
+%In fact, the \emph{ordering}
+For every infectious period $d$, we average over all times of primary infection in \eqref{eq:outbreak_set}.
+Thus, $b(v,d)=\mean{r_v(d,t_0)}_{t_0}$ is a function of the node and infectious period.
+Ordering $b(v,d)$ for every $d$ in descending order gives a ranking $R(d)$ of the nodes according to their outbreak sizes, where $R(d)$ is an ordered set of nodes for every infectious period.
 The question here is, whether these rankings remain stable, if the infectious period is changed.
 %
 \begin{SCfigure}
 \includegraphics{vir_ranking.pdf}
 \caption{Node ranking of the top 100 nodes over different infectious periods.
 Rankings are computed by averaging \eqref{eq:outbreak_set} over the time of primary infection.
-Top 100 nodes are the nodes with the largest outbreak sizes averaged over $k$ and $t_0$.
+Top 100 nodes are the nodes with the largest outbreak sizes averaged over $d$ and $t_0$.
 The rankings of an arbitrary node are shown in red for illustration purposes.}
 \label{fig:ranking}
 \end{SCfigure}
 
 Figure \ref{fig:ranking} shows the ranking trajectories over different infectious periods of the top 100 nodes in the network. 
-We define the top 100 nodes as the nodes with the largest outbreak size in $\mathcal{S}$ averaged over both $t_0$ and $k$, i.e. $\mean{r_v(k,t_0)}_{k,t_0}$.
+We define the top 100 nodes as the nodes with the largest outbreak size in $\mathcal{S}$ averaged over both $t_0$ and $d$, i.e. $\mean{r_v(d,t_0)}_{d,t_0}$.
 An arbitrarily chosen node is shown in red for illustration purposes.
 It should be noted that the rank of each node in the top 100 set can take any value in the figure, since the top 100 nodes are determined by averaging out the infectious period.
 
-As the figure suggests, the ranking of nodes is unstable for small infectious periods ($k<21$~days).
+As the figure suggests, the ranking of nodes is unstable for small infectious periods ($d<21$~days).
 This region is dominated by temporal fluctuations of the infection paths in the network.
-Interestingly, the ranking approaches a stable region for $k>21$~days.
-For $k>28$~days most nodes in the top 100 sample do not undergo significant rank changes any more.
+Interestingly, the ranking approaches a stable region for $d>21$~days.
+For $d>28$~days most nodes in the top 100 sample do not undergo significant rank changes any more.
 This means that a ranking of nodes is reasonable for sufficiently large infectious periods.
 
 \subsection{Inaccurate infectious periods and the robustness of node rankings}
 Finding exact values of the infectious periods of a certain disease is often unachievable in real world scenarios.
 Therefore, we look into the impact of variations in the infectious period on the ranking of nodes.
-We consider pairs of rankings as defined in the previous section with different infectious periods, i.e. $R(k_1)$ and $R(k_2)$.
+We consider pairs of rankings as defined in the previous section with different infectious periods, i.e. $R(d_1)$ and $R(d_2)$.
 
 In order to compare two rankings, we could use measures of rank correlation, such as Spearman or Kendall rank correlation coefficients.
 These turn out, however, to very sensitive to even small differences between two rankings.
-Figure \ref{fig:ranking} suggests that even in the stable region where $k>28$~days node ranks remain similar, but not equal.
-Computing Spearman or Kendall rank correlation coefficients for different infectious periods $(k_1,k_2)$ in our dataset would give vanishing values for almost all pairs $(k_1,k_2)$.
+Figure \ref{fig:ranking} suggests that even in the stable region where $d>28$~days node ranks remain similar, but not equal.
+Computing Spearman or Kendall rank correlation coefficients for different infectious periods $(k_1,k_2)$ in our dataset would give vanishing values for almost all pairs $(d_1,d_2)$.
 For that reason, we relax the requirements for similarity between to rankings.
 Thus, we consider the \emph{intersection} between the sets of the respective upper samples of each ranking.
-In other words, we examine whether the same nodes appear in the upper ranks of both the $R_{k_1}$ and the $R_{k_2}$ rankings.
+In other words, we examine whether the same nodes appear in the upper ranks of both the $R_{d_1}$ and the $R_{d_2}$ rankings.
 
-We denote the subset of the upper $\tau $ ranks of $R(k)$ by $R_\tau (k)$.
-As a similarity measure, we define the \emph{rank intersection} between two rankings $R_\tau (k_1)$ and $R_\tau (k_2)$ as
+We denote the subset of the upper $\tau $ ranks of $R(d)$ by $R_\tau (d)$.
+As a similarity measure, we define the \emph{rank intersection} between two rankings $R_\tau (d_1)$ and $R_\tau (d_2)$ as
 \begin{equation}\label{eq:rank_intersection}
-s_\tau (k_1,k_2)=\frac{R_\tau (k_1) \cap R_\tau (k_2)}{\abs{R_\tau (k_1)}},
+s_\tau (d_1,d_2)=\frac{R_\tau (d_1) \cap R_\tau (d_2)}{\abs{R_\tau (d_1)}},
 \end{equation}
 that is the intersection between the sets of nodes normalized by the size of the top $n$ sample.
-We get $s_\tau (k_1,k_2) =1$, if the upper $\tau $ nodes in the rankings $R(k_1)$ and $R(k_2)$ are identical.
-On the other hand, $s_\tau (k_1,k_2) =0$ implies that ranks for $k_2$ and $k_2$ are completely different.
+We get $s_\tau (d_1,d_2) =1$, if the upper $\tau $ nodes in the rankings $R(d_1)$ and $R(d_2)$ are identical.
+On the other hand, $s_\tau (d_1,d_2) =0$ implies that ranks for $d_2$ and $d_2$ are completely different.
 
 Using equation \eqref{eq:rank_intersection} yields a similarity matrix with $1540$ different combinations of infectious periods for our outbreak scenarios \eqref{eq:outbreak_set}.
 Since particular combinations of infectious periods are nor relevant, we analyze the \emph{uncertainty} of the infectious period
 \begin{equation}\label{eq:uncertainty_k}
-\Delta k= \abs{k_1-k_2} .
+\Delta d= \abs{d_1-d_2} .
 \end{equation}
 Now we average the entries of the similarity matrix over uncertainties and get the rank intersection
 \begin{equation}\label{eq:robustness_k}
-\tilde{s}_\tau (\Delta k)=\mean{s_\tau (k_1,k_2)}_{\abs{k_1-k_2}\leq \Delta k} .
+\tilde{s}_\tau (\Delta d)=\mean{s_\tau (d_1,d_2)}_{\abs{d_1-d_2}\leq \Delta d} .
 \end{equation}
 This rank intersection measures the robustness of a certain ranking against changes in the infectious period.
 Therefore, we call this measure the \emph{rank robustness} a given uncertainty in the infectious period.
@@ -369,16 +387,16 @@ Shaded areas correspond to the $50$~\% confidence intervals.}
 For convenience, we express \eqref{eq:robustness_k} in terms of the upper \emph{fraction} of nodes instead of the upper nodes themselves.
 That is, we replace the top $\tau $ nodes by the top fraction of nodes $n$:
 \begin{equation}\label{eq:rank_robustness}
-\tilde{s}_n (\Delta k)=\mean{s_n (k_1,k_2)}_{\abs{k_1-k_2}\leq \Delta k} .
+\tilde{s}_n (\Delta d)=\mean{s_n (d_1,d_2)}_{\abs{d_1-d_2}\leq \Delta d} .
 \end{equation}
-The same is implicitly done for rank intersection $s_n(k_1,k_2)$ \eqref{eq:robustness_k} and the node ranking $R_n(k)$.
+The same is implicitly done for rank intersection $s_n(d_1,d_2)$ \eqref{eq:robustness_k} and the node ranking $R_n(d)$.
 
 We show the rank robustness for the fraction of the $0.1$~\%, $1$~\% and $10$~\% upper nodes in figure \ref{fig:plos_fig4a}.
 These fractions correspond to approximately 100, 1000 and 10,000 nodes, respectively.
 The $50$~\% confidence intervals of each curve are shown as shaded areas.
 As expected, larger uncertainty in the infectious period generally leads to a decrease of rank robustness.
 The decrease is small for the largest sample (blue), since the number of nodes in this sample is relatively large.
-This guarantees that the same nodes are likely to be in all rankings $R_{10\%}(k)$ for all $k$.  
+This guarantees that the same nodes are likely to be in all rankings $R_{10\%}(d)$ for all $d$.  
 Consequently, the variation in rank robustness is relatively small (blue shaded area).
 Considering the 0.1~\% sample (grey), it is remarkable that even for an uncertainty of 14~days, the robustness is still 50~\%.
 As a smaller sample is more prone to fluctuations, variations of rank robustness are relatively large (grey shaded area).
@@ -389,18 +407,18 @@ Since the analysis of a network using a data driven approach is computationally 
 We denote the upper $\tau $ nodes according to a static centrality measure as $C_\tau $.
 Note that $C_\tau $ does not depend on the infectious period, since the latter plays no role in static networks.
 In this work, we consider betweenness, closeness, degree centrality and range as centrality measures.
-Following equation \eqref{eq:rank_intersection}, we define the \emph{centrality intersection} between the outbreak size ranking $R_\tau (k)$ and $C_\tau $ as
+Following equation \eqref{eq:rank_intersection}, we define the \emph{centrality intersection} between the outbreak size ranking $R_\tau (d)$ and $C_\tau $ as
 \begin{equation}\label{eq:centrality_intersection}
-I_\tau (k)=\frac{R_\tau (k) \cap C_\tau}{\abs{C_\tau}},
+I_\tau (k)=\frac{R_\tau (d) \cap C_\tau}{\abs{C_\tau}},
 \end{equation}
 where $C_\tau $ is a substitute for the upper $\tau $ nodes of one particular centrality measure listed above.
 %
-\begin{figure}[htbp]
+\begin{figure}[htb]
 \begin{center}
 \includegraphics{Plos_fig5.pdf}
 \caption{Intersection between outbreak size and different static centrality measures.
-\textbf{Left~panel:}~infectious period $k=7$~days.
-\textbf{Right~panel:}~infectious period $k=42$~days.
+\textbf{Left~panel:}~infectious period $d=7$~days.
+\textbf{Right~panel:}~infectious period $d=42$~days.
 Top panels show $x$-log versions of the bottom panels. 
 Dotted lines show data accordance $y=x$ for comparison.
 The top panels demonstrate that finite intersections appear only for sample sizes of more than 1000 nodes.}
@@ -422,23 +440,23 @@ It should be noted that all features discussed above are almost identical for bo
 
 \paragraph{Summary of data aggregation methods\color{Cayenne}{.}}
 We simulated an SIR-type disease on the livestock trade dataset and explicitly took into account the temporal dynamics of edges.
-This yields a set of outbreak scenarios, which can be thought of as a scalar-field $r_v(k,t_0)$, where each triple $(v,k,t_0)$ is assigned an outbreak size $r$, if $r>0$.
+This yields a set of outbreak scenarios, which can be thought of as a scalar-field $r_v(d,t_0)$, where each triple $(v,d,t_0)$ is assigned an outbreak size $r$, if $r>0$.
 A schematic sketch of this scalar-field is given in figure \ref{fig:Plos_parameter-space}.
 %
 \begin{SCfigure}
 \includegraphics{Plos_parameter-space.pdf}
 \caption{Scalar field representing the set of outbreak scenarios as defined in \eqref{eq:outbreak_set}.
-Each combination of starting node $v$, starting time $t_0$ and infectious period $k$ yields an outbreak size $r_v(k,t_0)$.
+Each combination of starting node $v$, starting time $t_0$ and infectious period $d$ yields an outbreak size $r_v(d,t_0)$.
 The domain is bounded as defined in \eqref{eq:outbreak_set}.}
 \label{fig:Plos_parameter-space}
 \end{SCfigure}
 %
 Using the state space of figure \ref{fig:Plos_parameter-space}, we can summarize the different aggregation techniques used in this section as follows:
 \begin{description}
-\item [Exemplary outbreak:] Sum over all outbreak sizes for a cut through $r$ for constant $k$ and $v$ (see figure~\ref{fig:range_exemplary}).
-\item [Outbreak probability:] State density of $r$ for every $k$-slice of the state space (see figure~\ref{fig:plosfig1}~A).
-\item [Mean outbreak size:] The mean value of the field in every $k$-slice (see figure~\ref{fig:plosfig1}~B).
-\item [Node ranking:] First, average over the $t_0$-axis. Afterwards ordering of nodes by largest outbreak size for every $k$-slice. See figure \ref{fig:ranking}.
+\item [Exemplary outbreak:] Sum over all outbreak sizes for a cut through $r$ for constant $d$ and $v$ (see figure~\ref{fig:range_exemplary}).
+\item [Outbreak probability:] State density of $r$ for every $d$-slice of the state space (see figure~\ref{fig:plosfig1}~A).
+\item [Mean outbreak size:] The mean value of the field in every $d$-slice (see figure~\ref{fig:plosfig1}~B).
+\item [Node ranking:] First, average over the $t_0$-axis. Afterwards ordering of nodes by largest outbreak size for every $d$-slice. See figure \ref{fig:ranking}.
 \item [Infectious period uncertainty:] Comparison between pairs of node rankings. See figure~\ref{fig:plos_fig4a}.
 \end{description}
 %
@@ -449,11 +467,11 @@ This ranking could not be reproduced using classical static centrality measures.
 In addition to that, a static network view systematically overestimates disease outbreaks in the network.
 Even for large infectious periods, we found the mean outbreak sizes to be six times smaller as for the static case.
 
-
-
-
-
 \section{Graph centric temporal network analysis}\label{sec:PRL}
+The previous section has shown that even the analysis of simple measures as node ranges is a complex endeavor.
+While the previous section implicitly used a node centric approach to the system, we now introduce a \emph{graph centric} approach to temporal networks.
+More specifically, make use of the concept of adjacency matrix sequences (as defined by equation \eqref{eq:AdMatrixSequence}) and derive a method for the computation of causal paths.
+
 
 \subsection{Matrices for temporal networks}
 
