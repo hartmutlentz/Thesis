@@ -1,6 +1,7 @@
 This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Dissertation-Lentz.aux
+A level-1 auxiliary file: chapters/list_of_abbreviations.aux
 A level-1 auxiliary file: chapters/Part1/01-Introtext.aux
 A level-1 auxiliary file: chapters/Part1/02-Formal.aux
 A level-1 auxiliary file: chapters/Part2/Static_Networks.aux
@@ -8,44 +9,49 @@ A level-1 auxiliary file: chapters/Part3/01-Introduction.aux
 A level-1 auxiliary file: chapters/Part4-app/Appendix.aux
 The style file: apalike.bst
 Database file #1: bibliography.bib
-You've used 122 entries,
+Warning--empty institution in Euro-Lex
+Warning--empty journal in networkx:
+Warning--empty institution in PageRank:
+Warning--empty institution in HI-Tier
+You've used 123 entries,
             1935 wiz_defined-function locations,
-            1243 strings with 22809 characters,
-and the built_in function-call counts, 48717 in all, are:
-= -- 4767
-> -- 1974
-< -- 75
-+ -- 676
-- -- 658
-* -- 4273
-:= -- 8541
-add.period$ -- 368
-call.type$ -- 122
-change.case$ -- 929
-chr.to.int$ -- 120
-cite$ -- 122
-duplicate$ -- 1726
-empty$ -- 3428
-format.name$ -- 846
-if$ -- 9431
+            1233 strings with 22379 characters,
+and the built_in function-call counts, 49550 in all, are:
+= -- 4880
+> -- 1998
+< -- 76
++ -- 667
+- -- 665
+* -- 4366
+:= -- 8664
+add.period$ -- 372
+call.type$ -- 123
+change.case$ -- 938
+chr.to.int$ -- 121
+cite$ -- 127
+duplicate$ -- 1759
+empty$ -- 3495
+format.name$ -- 854
+if$ -- 9573
 int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 128
-newline$ -- 613
-num.names$ -- 366
-pop$ -- 699
+missing$ -- 131
+newline$ -- 617
+num.names$ -- 371
+pop$ -- 718
 preamble$ -- 1
-purify$ -- 939
+purify$ -- 945
 quote$ -- 0
-skip$ -- 1313
+skip$ -- 1331
 stack$ -- 0
-substring$ -- 3758
-swap$ -- 152
+substring$ -- 3857
+swap$ -- 158
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 708
-warning$ -- 0
-while$ -- 396
+type$ -- 714
+warning$ -- 4
+while$ -- 424
 width$ -- 0
-write$ -- 1580
+write$ -- 1593
+(There were 4 warnings)
