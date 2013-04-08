@@ -356,7 +356,7 @@ On the macroscopic side, we are interested in the large-scale properties of netw
 Implementations of appropriate data structures for the computation of network measures are briefly summarized in Appendix \ref{sec:implementation}.
 
 \subsubsection{Network terminology}\label{sec:network_terminology}
-Let $G=(V,E)$ be a graph consisting of a set of nodes $V$ and a set of edges $E$.
+Let $G=(V,E)$ be a graph consisting of a set of nodes (sometimes called vertices) $V$ and a set of edges $E$.
 We denote the number of nodes in the network by $\abs{V}=N$ and $m=\abs{E}$ is the number of edges.
 Every route across a graph along its edges without repeating nodes is called a \emph{path}.
 Each path is given by an ordered set of the nodes traversed, i.e. $(v_1,v_2,\dots ,v_l)$, with $v_i \in V$ and all edges are in $E$, $v_i,v_{i+1} \subseteq E$ for all $i$.
@@ -366,7 +366,7 @@ If there is a path from every node in the network to any other node, the network
 In directed networks, we have to consider two types of connectedness.
 A directed network is strongly connected, if there is a directed path between all node pairs and weakly connected, if the node pairs would be connected ignoring the direction of edges.
 
-The \emph{distance} between two nodes is the length of the shortest path between them and the longest distance is the \emph{diameter} of the network.
+The \emph{distance} between two nodes is the length of the shortest path between them and the longest distance is the \emph{diameter} $D$ of the network.
 Every closed path is called a \emph{cycle}.
 Graphs that do not contain cycles are called acyclic graphs or \emph{trees}.
 The neighborhood of a node $u$ is the set of all nodes adjacent to it and the size of the neighborhood is the \emph{degree} of the node.
@@ -474,9 +474,9 @@ The size of the former is its range and the size of the latter is its reachabili
 Reachability measures the vulnerability of nodes against disease outbreaks in the network.
 Given a network $G=(V,E)$ of $N$ nodes, the range of a node $v \in V$ is defined as
 \begin{equation}\label{eq:range_def}
-\mathrm{range}(v)=\frac{\left| \mathcal{N} \right| }{N}, \; \text{ where } \; \mathcal{N}=\{u \in V:\exists ( v\rightarrow u )\},
+\mathrm{range}(v)=\frac{\left| H \right| }{N}, \; \text{ where } \; H=\{u \in V: v\rightarrow u \},
 \end{equation}
-where $ v\rightarrow u $ is a path from $v$ to $u$.
+where $ v\rightarrow u $ means that there exists a path from $v$ to $u$.
 The reachability of a node is its range in the inverse graph $G^{-1}=(V,E^{-1})$, in which the directions of all edges are reversed. 
 
 Apparently, the range of a node is of major importance for any epidemiological problem on a network, because it defines an upper bound for the size of any outbreak starting at this very node. 
@@ -572,7 +572,7 @@ This component is therefore called \emph{giant component}.
 In fact, the emergence of a giant component in a network is a 2nd order phase transition and is a graph theoretical percolation process \citep{Newman2003}. 
 Components play an important role for epidemic processes, because the component membership of each node defines the maximum outbreak size of any epidemic started at this very node.
 In the directed case, maximum outbreak sizes are bounded by the underlying strongly connected component (lower bound) and the out component of the starting node (higher bound).
-The general component structure of directed networks is discussed in \citep{Dorogovtsev:2001jd} and we provide further discussion of their epidemiological relevance in section xx.
+The general component structure of directed networks is discussed in \citep{Dorogovtsev:2001jd} and we provide further discussion of their epidemiological relevance in section \ref{sec:components_ranges}.
 
 
 \paragraph{Accessibility\color{Cayenne}{.}}
@@ -588,6 +588,15 @@ A (weighted) adjacency matrix $\mathbf{C}$ of $G^*$ for a $N$-node network is gi
 \mathbf{C}= \sum _{i=1} ^{N-1} \mathbf{A}^i,
 \end{equation}
 where $\mathbf{A}$ is the adjacency matrix of $G$ and the elements of $\mathbf{C}$ contain the actual number of paths between each node pair.
+Consequently, we obtain the adjacency matrix $\tilde{\mathbf{C}}$ of the accessibility graph, when we normalize the elements $c_{ij}$ of the matrix defined in \eqref{eq:cumulative_matrix}, i.e.
+\begin{equation}\label{eq:normalize_cumu_matrix}
+\tilde{c}_{ij}=%
+\begin{cases} 
+1 & \text{ if }\; c_{ij}\neq 0 \\
+0 &  \text{ if } \; c_{ij}=0 .
+\end{cases}
+\end{equation}
+
 
 
 \section{Network models and epidemiology}\label{sec:network_models}
@@ -614,7 +623,7 @@ Random graph theory addresses questions about typical properties of networks wit
 Consequently, the edge occupation probability $p$ is the key parameter in random graph theory.
 Properties of particular interest are the average shortest path length or the distributions of degrees, component sizes (percolation) and the occurrence of special subgraphs such as triangles.
 Apparently, the expected number of edges in the network is $\mean{E}=\frac{1}{2}pN(N-1)$, if $p$ is the edge occupation probability.
-In addition, every edge increases the degree of two vertices, so that the \emph{average degree} of a random network of $N$ nodes is
+In addition, every edge increases the degree of two nodes, so that the \emph{average degree} of a random network of $N$ nodes is
 \begin{equation}\label{eq:mean_er_degree}
 \mean{k}=\frac{2\mean{E}}{N}=(N-1)p\simeq pN .
 \end{equation}
@@ -685,8 +694,21 @@ Since we are only interested in the rough behavior of the average shortest path 
 \begin{equation}\label{eq:er_av_shortest}
 \mean{l}\simeq \frac{\log N}{\log \mean{k}}.
 \end{equation}
+%
+\begin{SCfigure}
+\includegraphics{ER_shortest_path_histogram.pdf}
+\caption{Shortest path length distribution for a realization of a directed \ER network of the ensemble $G_{N,p}$ for $N=1000$ and $p=0.002$.
+Equation \eqref{eq:er_av_shortest} gives a mean value of $9.97$, while the computed value is $9.08$.
+The discrepancy vanishes in the limit of infinite graphs $N\rightarrow \infty$.
+The maximum shortest path length is $20$ in this example.
+It defines the diameter of the network.}
+\label{fig:ER_shortest_path_histogram}
+\end{SCfigure}
+%
 The average degree remains constant for different network orders, so that equation \eqref{eq:er_av_shortest} demonstrates that the average shortest path length grows logarithmically with the number of nodes in \ER graphs.
-This relation is found in many complex networks and is an indication for the small-world effect introduced in the next section.
+Figure \ref{fig:ER_shortest_path_histogram} shows the shortest path length distribution for one realization in the $G_{N,p}$ ensemble.
+Note that the mean value $\sim 10$ is relatively small compared with the number of nodes in the network (1000).
+This relation is found in many complex networks and is an indication for the small-world effect (see section \ref{sec:watts_strogatz_model}).
 
 \subsection{Watts-Strogatz model}\label{sec:watts_strogatz_model}
 We have seen that random graphs can reproduce some important properties of real-world networks, particularly the existence of a giant component and small average shortest path length.
@@ -758,13 +780,14 @@ P(k)=2m^2 k^{-3}.
 \end{equation}
 Although the slope $\gamma = 3$ does not match the power-law exponent of the world wide web ($\gamma = 2.1\pm 0.1$ \citep{Barabasi99}) the model explains the existence of a scale-free degree distribution.
 
-As a conceptual model, the \BA model has a huge field of applications for theoretical questions.
+Being a conceptual model, the \BA model has a huge field of applications for theoretical questions.
 Nevertheless, the power-law degree behavior is also reproduced by fitness models \citep{Bianconi:2001,Fortunato:2006} and copy models \citep{Kleinberg99theweb}.
 Fitness models allow for higher flexibility in terms of the power-law exponent.
 However, the range of possible exponents cannot take values in the interval $0<\gamma < 2$ \citep{all_scale_free_are_sparse}.
 
-Besides the models discussed above, there are other network models, such as the configuration model or exponential network models. 
-The \emph{configuration model} is a more sophisticated random graph model that allows for arbitrary degree distributions \citep{Newman:book,Newman:2001pa}.
+Besides the models discussed above, there are other network models, such as the configuration model or exponential network models.
+The \BA model can be extended a redirection algorithm in order to obtain other scaling exponents \citep{Krapivsky:2001bg}.
+A model which is focused on real world data is the \emph{configuration model}, a more sophisticated random graph model that allows for arbitrary degree distributions \citep{Newman:book,Newman:2001pa}.
 Moreover, the degree sequence of a given network remains constant.
 In the configuration model one can consider higher order statistics, such as degree correlations and the clustering coefficient.
 \emph{Exponential random graphs} are related to the concept of the micro canonical ensemble in statistical mechanics \citep{Strauss:86}.
@@ -777,7 +800,7 @@ Failure can be modeled by \emph{randomly} removing nodes of the system\footnote{
 In this sense, network failure can be seen as an inverse percolation problem.
 The degree of failure is then given by the fraction of removed nodes $f$ and the sensitivity of a network to random failure can be measured in terms of the size of its largest connected component, which is inherently related to its functionality.
 As an example, if only a few circuits in a computer would randomly fail, the largest connected component would disintegrate into smaller circuits and the machine is likely to not function any more.
-It is characteristic for complex networks, however, that randomly removing vertices does not drastically change the connectivity of the network.
+It is characteristic for complex networks, however, that randomly removing nodes does not drastically change the connectivity of the network.
 The effect of network failure for different network types has been measured in \citep{Albert:2000}.
 The authors found that \ER networks are more prone to random failure than scale-free networks.
 The robustness of scale-free networks against random node removal is explained by the huge number of low-degree nodes in the network, so that it is unlikely to remove a hub at random.

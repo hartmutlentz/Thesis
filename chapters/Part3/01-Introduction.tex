@@ -46,7 +46,7 @@ Correlations between two snapshots of the system (if any) could be over arbitrar
 We prefer the term temporal network, since \emph{temporal} is not so easily confused with dynamic systems.
 Furthermore, the systems under consideration are not mathematical graphs; therefore, we use the more general term \emph{network}.
 
-\paragraph{Formal definition\color{Cayenne}{.}}
+\subsection{Formal definition}
 A temporal network $\mathcal{G}=(V,\mathcal{E},T)$ consists of a set of nodes $V$ and a set of edges $\mathcal{E}$, where each edge in $\mathcal{E}$ is given by a triple $(u,v,t)$ and connects nodes $u$ and $v$ at time $t\in T$.
 $T$ is the observation period of $\mathcal{G}$, where $T\subset \mathbb{N}^+$ for time discrete systems and $T\subset \mathbb{R}^+$ for continuous systems.
 \footnote{
@@ -55,8 +55,16 @@ Furthermore, edge weights and a latency functions for edge traversal could be ad
 This is, however, beyond the scope of this thesis.
 }
 The aggregated graph $G=(V,E)$ of a temporal network simply ignores the occurrence times of the edges in $\mathcal{E}$ and the set of nodes $V$ is the same in both representations.
+%
+In analogy to static networks, we denote the \emph{transitive closure} of $\mathcal{G}=(V,\mathcal{E},T)$ by $\mathcal{G}^*=(V,\mathcal{E}^*,T)$, where $\mathcal{E}^*$ contains an edge $(u,v,t)$, wherever there is a causal path from node $u$ to $v$ arriving at time $t$ and having started at some time $t_0<t$.
+%
+Following \citep{Casteights_review}, the \emph{horizon} $\mathcal{H}$ of node $u$ is defined by the set
+\begin{equation}\label{eq:temporal_horizon}
+\mathcal{H}_u = \left\{ v: \exists \; u\rightsquigarrow v  \right\},
+\end{equation}
+where $ u\rightsquigarrow v $ means that there is a causal path from node $u$ to $v$.
 
-\paragraph{Viewpoints and implementation\color{Cayenne}{.}}
+\subsection{Viewpoints and implementation}
 As in the case of static networks, temporal networks can be interpreted and implemented in different ways \citep{Casteights_review}.
 A brief report of different implementations of static networks is given in Appendix \ref{sec:implementation}.
 Besides the adjacency matrix, edge lists and adjacency lists are appropriate network representations.
@@ -87,14 +95,28 @@ The edge centric and node centric network view is considered as a microscopic pe
 We make use of microscopic perspective implicitly in computer implementations as in section \ref{sec:Plos}.
 Furthermore, we focus on the graph centric view \eqref{eq:AdMatrixSequence} in section \ref{sec:PRL} to analyze macroscopic path structures in temporal networks.
 
-\paragraph{Paths in temporal networks\color{Cayenne}{.}}
+\subsection{Paths in temporal networks}\label{sec:paths_in_temporal_networks}
 A causal sequence of edges between two nodes $u$ and $v$ in a temporal network is called (causal) path.
 It is given by a sequence of edges, i.e.
 \[
 \mathrm{path}(u,v,t)= \{ (u,x,t_1),(x,y,t_2),\dots ,(z,v,t_n) \}, 
 \]
 where $ t_1<t_2<\dots <t_n$ and $x$, $y$ and $z$ are nodes on the path.
-%
+It is interesting to note that paths in a temporal network are in general \emph{not transitive}.
+Transitive means that the existence of a path from node $u$ to $v$ and a path from $v$ to $w$ implies that there is a path from $u$ to $w$, i.e.
+\begin{equation}\label{eq:def_transitive}
+(u\rightarrow v) \wedge (v\rightarrow w) \; \Longrightarrow \; (u\rightarrow w).
+\end{equation}
+This property is obviously satisfied for all static networks.
+In temporal networks, however, paths are in general not transitive, since a path from $u$ to $v$ could simply exist only at a later time than the path from $v$ to $w$, so that
+\begin{equation}\label{eq:def_not_transitive}
+(u\rightsquigarrow v) \wedge (v\rightsquigarrow w) \;\centernot \Longrightarrow \; (u\rightsquigarrow w)
+\end{equation}
+in general.
+The reasons why paths in temporal networks can not be easily represented by paths in static networks originate from property \eqref{eq:def_not_transitive}.
+In section \ref{sec:conceptual_problems} we briefly discuss some conceptual problems that arise from this circumstance.
+
+
 \begin{SCfigure}
 \includegraphics{Shortest_foremost_fastest.pdf}
 \caption{Topological shortest distance and temporal shortest durations for a path between nodes $u$ and $v$.
@@ -103,7 +125,7 @@ Panel~B demonstrates that although the fastest path could take $t_3-t_2 < t_1-t_
 }
 \label{fig:shortest_foremost_fastest}
 \end{SCfigure}
-
+%
 Note that possible paths between nodes depend on time in general.
 This has crucial implications on the \emph{shortest path distance} known from static networks (see section  \ref{sec:network_terminology}).
 As a matter of fact, there are three different shortest path types in temporal networks.
@@ -198,15 +220,15 @@ For clarity reasons we do not solve differential equations for epidemics in this
 An infected node remains infected over the infectious period $d$.
 Thus, the infection state of the whole network is given by the number of susceptible $S(t)$, infected $I(t)$ and recovered $R(t)$ nodes, respectively.
 
-We define the \emph{temporal range} of a node $v$ by explicitly taking into account the time of (primary) infection and infectious period, i.e. $r_v (d,t_0)$.
+We define the \emph{temporal range} of a node $v$ by explicitly taking into account the time of (primary) infection and infectious period, i.e. $r(v,d,t_0)$.
 Since there are no mixing states of nodes as in meta populations and we assume an infection probability $p=1$ for every contact edge, the range of a node is identical to the outbreak size $R(t=\infty )$. 
 
 In summary, range and infectious period are intrinsically entangled on temporal networks
 \begin{equation}\label{eq:range_and_inf_period}
-\text{static network: } \; r_v \;\;\; \rightarrow   \;\;\; \text{temporal network: } \; r_v(d) .
+\text{static network: } \; r(v) \;\;\; \rightarrow   \;\;\; \text{temporal network: } \; r(v,d) .
 \end{equation}
 For the rest of this work, we therefore use the notion \emph{range} and \emph{outbreak size} synonymously.
-Although the temporal range should approach the static range for infinite memory, i.e. $r_v (d=\infty ) \rightarrow r_v$, the static range of a node is in general not reached even in this case.
+Although the temporal range should approach the static range for infinite memory, i.e. $r(v,d=\infty ) \rightarrow r(v)$, the static range of a node is in general not reached even in this case.
 This is caused by causality of paths in temporal networks as explained in figure \ref{fig:temporal_network_principle}.
 
 \subsubsection{Single outbreaks}
@@ -219,7 +241,7 @@ This procedure is repeated for all infected nodes as long as there are still inf
 
 \begin{SCfigure}
 \includegraphics{exemplary_range.pdf}
-\caption{Temporal variation in the range $r_v(d,t_0)$ of an exemplary node $v$ in the network over one year.
+\caption{Temporal variation in the range $r(v,d,t_0)$ of an exemplary node $v$ in the network over one year.
 Although the range remains rather constant for most infection times, it vanishes for certain periods.
 The grey interval corresponds to the fixed infectious period $d=24$~days.
 }
@@ -255,7 +277,7 @@ We denote the \emph{set of all outbreak scenarios} by $\mathcal{S}$.
 More formally, let $\mathcal{G}=(V,\mathcal{E},T)$ be the temporal network of our dataset.
 Then the set of all outbreaks is given by all possible initial conditions and parameters and the corresponding outbreak size, where the latter is identical to the range for our model:
 \begin{equation}\label{eq:outbreak_set}
-\mathcal{S}=\left\{ (v,t_0,d,r_v(d,t_0)): v \in V,t_0 \in T/2, d \leq 56  \right\}.
+\mathcal{S}=\left\{ (v,t_0,d,r(v,d,t_0)): v \in V,t_0 \in T/2, d \leq 56  \right\}.
 \end{equation}
 %
 In what follows, we will average over this set in different ways to immediately obtain information about the impact of infectious period, primary infection time or the starting node on disease spread.
@@ -272,7 +294,7 @@ We analyze 103,490 starting nodes for 365 times of primary infections and 56 dif
 ~& initial conditions \& parameter  & ~ & result\\
 \hline
 Starting node & time of primary infection &infectious period & outbreak size \\
-ID & $t_0$  &$d$ &$r_v(d,t_0)$  \\
+ID & $t_0$  &$d$ &$r(v,d,t_0)$  \\
 \hline
 1 & 1 & 1 & 58  \\
 1 & 2 & 1 & 276  \\
@@ -289,7 +311,7 @@ We have seen in the previous section that the time of primary infection has to b
 In addition, this constraint depends on the infectious period, since a disease with high infectious period is more likely to spread over the network than a disease with low infectious period.
 We define the \emph{outbreak probability} $p_s(d)$ as the fraction of elements in $\mathcal{S}$ that causes a secondary outbreak at all, that is
 \begin{equation}\label{eq:outbreak_prob}
-p_s(k)=\frac{\abs{\left\{ x \subset \mathcal{S}: r_v(d,t_0) \in x >0, d=\mathrm{const.} \right\}}}{\abs{\mathcal{S}}} .
+p_s(k)=\frac{\abs{\left\{ x \subset \mathcal{S}: r(v,d,t_0) \in x >0, d=\mathrm{const.} \right\}}}{\abs{\mathcal{S}}} .
 \end{equation}
 Note that we compute the outbreak probability for each infectious period separately.
 
@@ -309,7 +331,7 @@ The grey shaded area in panel B shows the 50~\% confidence interval.}
 \end{figure}
 
 In addition to the probability of an outbreak, we compute the expected size of the outbreaks.
-The \emph{mean outbreak size} is an average over all starting nodes and all starting times in $\mathcal{S}$, i.e. $\mean{r_v}_{v,t_0}$.
+The \emph{mean outbreak size} is an average over all starting nodes and all starting times in $\mathcal{S}$, i.e. $\mean{r(v,d,t_0)}_{v,t_0}$.
 Figure \ref{fig:plosfig1} B shows the mean outbreak size and the 50~\% confidence interval (solid line and grey shaded area) and the mean outbreak size in the static network (dashed line).
 As for the outbreak probability, we observe significant outbreak sizes only for $d>14$~days and the outbreak size is 6 times smaller than in the static case even for $d=56$~days.
 In summary, the infectious period must be larger than 14~days to cause a severe outbreak and the static network approximation overestimates the size of outbreaks significantly.
@@ -319,7 +341,7 @@ This section is devoted to the analysis of the node ranking according to their r
 Rankings are very important for the implementation of vaccination and surveillance strategies, where the exact value of a certain measure for each node is not important.
 %In fact, the \emph{ordering}
 For every infectious period $d$, we average over all times of primary infection in \eqref{eq:outbreak_set}.
-Thus, $b(v,d)=\mean{r_v(d,t_0)}_{t_0}$ is a function of the node and infectious period.
+Thus, $b(v,d)=\mean{r(v,d,t_0)}_{t_0}$ is a function of the node and infectious period.
 Ordering $b(v,d)$ for every $d$ in descending order gives a ranking $R(d)$ of the nodes according to their outbreak sizes, where $R(d)$ is an ordered set of nodes for every infectious period.
 The question here is, whether these rankings remain stable, if the infectious period is changed.
 %
@@ -333,7 +355,7 @@ The rankings of an arbitrary node are shown in red for illustration purposes.}
 \end{SCfigure}
 
 Figure \ref{fig:ranking} shows the ranking trajectories over different infectious periods of the top 100 nodes in the network. 
-We define the top 100 nodes as the nodes with the largest outbreak size in $\mathcal{S}$ averaged over both $t_0$ and $d$, i.e. $\mean{r_v(d,t_0)}_{d,t_0}$.
+We define the top 100 nodes as the nodes with the largest outbreak size in $\mathcal{S}$ averaged over both $t_0$ and $d$, i.e. $\mean{r(v,d,t_0)}_{d,t_0}$.
 An arbitrarily chosen node is shown in red for illustration purposes.
 It should be noted that the rank of each node in the top 100 set can take any value in the figure, since the top 100 nodes are determined by averaging out the infectious period.
 
@@ -440,13 +462,13 @@ It should be noted that all features discussed above are almost identical for bo
 
 \paragraph{Summary of data aggregation methods\color{Cayenne}{.}}
 We simulated an SIR-type disease on the livestock trade dataset and explicitly took into account the temporal dynamics of edges.
-This yields a set of outbreak scenarios, which can be thought of as a scalar-field $r_v(d,t_0)$, where each triple $(v,d,t_0)$ is assigned an outbreak size $r$, if $r>0$.
+This yields a set of outbreak scenarios, which can be thought of as a scalar-field $r(v,d,t_0)$, where each triple $(v,d,t_0)$ is assigned an outbreak size $r$, if $r>0$.
 A schematic sketch of this scalar-field is given in figure \ref{fig:Plos_parameter-space}.
 %
 \begin{SCfigure}
 \includegraphics{Plos_parameter-space.pdf}
 \caption{Scalar field representing the set of outbreak scenarios as defined in \eqref{eq:outbreak_set}.
-Each combination of starting node $v$, starting time $t_0$ and infectious period $d$ yields an outbreak size $r_v(d,t_0)$.
+Each combination of starting node $v$, starting time $t_0$ and infectious period $d$ yields an outbreak size $r(v,d,t_0)$.
 The domain is bounded as defined in \eqref{eq:outbreak_set}.}
 \label{fig:Plos_parameter-space}
 \end{SCfigure}
@@ -470,10 +492,107 @@ Even for large infectious periods, we found the mean outbreak sizes to be six ti
 \section{Graph centric temporal network analysis}\label{sec:PRL}
 The previous section has shown that even the analysis of simple measures as node ranges is a complex endeavor.
 While the previous section implicitly used a node centric approach to the system, we now introduce a \emph{graph centric} approach to temporal networks.
-More specifically, make use of the concept of adjacency matrix sequences (as defined by equation \eqref{eq:AdMatrixSequence}) and derive a method for the computation of causal paths.
+It is important to emphasize that the capability of static network analysis originates from the fact that the adjacency matrix provides a graph centric (``big picture'') of the system.
+Therefore, a graph centric view on temporal networks contributes a key element for a theoretical framework for temporal systems.
 
+As we have seen in section \ref{sec:paths_in_temporal_networks}, the static approximation of a temporal network falsely shows transitivity and therefore lacks a differentiation between causal and non causal paths.
+We make use of adjacency matrix sequences (as defined by equation \eqref{eq:AdMatrixSequence}) and derive a method for the computation of causal paths.
 
-\subsection{Unfolding Accessibility Method}
+This yields first the ranges of all nodes in the network (see sections \ref{sec:micro_measures} and \ref{sec:Plos}) and second information about the \emph{accessibility} between nodes.
+In analogy to the static range defined in equation \eqref{eq:range_def}, the range of a node $v$ in a temporal network $\mathcal{G}=(V,\mathcal{E},T)$ can formally be defined as
+\begin{equation}\label{eq:temporal_range_def}
+r(v)=\frac{\left| \mathcal{H}(v) \right| }{N}, \; \text{ where } \; \mathcal{H}(v)=\{u \in V: v\rightsquigarrow u \},
+\end{equation}
+where $\mathcal{H}(v)$ is the horizon of node $v$ and $N$ the number of nodes in the network.
+
+The set of all horizons in a network defines its \emph{accessibility graph}.
+For static networks, the concept of accessibility was defined at the end of section \ref{sec:macro_measures}.
+We extend the static accessibility approach to the explicit step by step derivation of accessibility in section \ref{sec:unfolding_static}.
+This novel procedure is called \emph{unfolding} of accessibility.
+Finally, we generalize the unfolding accessibility approach to temporal networks in section \ref{sec:unfolding_temporal}.
+
+\subsection{Accessibility of static networks}\label{sec:unfolding_static}
+We consider a static network $G=(V,E)$ with $N$ nodes and adjacency matrix $\mathbf{A}$.
+The accessibility graph (or transitive closure) of $G$ is denoted by $G^*=(V,E^*)$, where $E^*$ contains an edge $(u,v)$, whenever $u\rightarrow v$.
+The accessibility matrix -- i.e. the adjacency matrix of the accessibility graph -- can be computed using the cumulative matrix defined
+\begin{equation*}%\label{eq:}
+\mat{P}_n=\mat{A}+\mat{A}^2+\cdots + \mat{A}^n = \sum _{i=1} ^n \mat{A}^i .
+\end{equation*}
+This equation was already introduced in section \ref{sec:macro_measures}, equation \eqref{eq:cumulative_matrix}.
+Every term $\mat{A}^i$ corresponds to a network where nodes are connected that have shortest path distance $i$ in G.
+Figure \ref{fig:power_graphs} illustrates this observation.
+%
+\begin{SCfigure}
+\includegraphics{Power-graphs.pdf}
+\caption{Graph representations of different powers of an adjacency matrix.
+The left panel shows the original graph $G$ with adjacency matrix $\mat{A}$.
+Node pairs with distance 2 in $G$ are connected by an edge in the graph of $\mat{A}^2$ (middle).
+The analogue for distance 3 is shown on the right panel.}
+\label{fig:power_graphs}
+\end{SCfigure}
+
+Since we are not interested in the actual \emph{number} of paths between node pairs, we can treat the adjacency matrix as Boolean and use Boolean arithmetic and normal algebra.
+Thus, the normalized cumulative matrix can be computed using
+\begin{equation}\label{eq:static_boolean_acc}
+\mathbf{P}_{n}=\bigvee _{i=1} ^{n} \mathbf{A}^i ,
+\end{equation}
+where the $i$-th power of the adjacency matrix is computed using the matrix product of two Boolean matrices $\mathbf{A}$ and $\mathbf{B}$ defined by 
+\begin{align}\label{eq:boolean_product}
+(\mat{A}\mat{B})_{ij}&=(a_{i1}\wedge b_{1j})\vee \dots \vee(a_{iN}\wedge b_{Nj}) \nonumber \\
+&= \bigvee _{k=1}^N a_{ik} \wedge b_{kj} .
+\end{align}
+The adjacency matrix of the accessibility graph is given by $\mathbf{P}_{n=N-1}$.
+We call $\mathbf{P}_{N-1}$ the \emph{accessibility matrix} of $G$.
+Note that the index $N-1$ corresponds to the maximum path length in the network.
+The graph $G^*$ given by $\mathbf{P}_{N-1}$ is the fully exploited accessibility graph.
+We focus on accessibility for values other than $N-1$ below.
+
+\paragraph{Properties of accessibility graphs\color{Cayenne}{.}}
+In a \emph{connected} network $G$, the graph $G^*$ contains links between all node pairs, since all nodes are connected by a path.
+Thus, $G^*$ is fully connected and the matrix $\mathbf{P}_{N-1}$ has only nonzero entries.
+It follows from the transitivity of paths that all entries $(\mathbf{P})_{ii}$ are unity, since there is always a path from node $i$ to some other node $j$ and vice versa.
+Consequently, $\mathbf{P}_{N-1}$ has $N^2$ nonzero entries in this case.
+If the network $G$ is \emph{not connected}, the accessibility matrix can be transformed into a block diagonal form, where each block has only nonzero entries.
+The total number of nonzero elements in this case is smaller than $N^2$.
+
+%
+\begin{figure}[htb]
+\begin{center}
+\includegraphics{Accessibility_principle_static.pdf}
+\caption{A static network $G$ and its accessibility graph $G^*$.
+The nodes 2, 3 and 4 are strongly connected in $G$ and form a clique in $G^*$.}
+\label{fig:access_static}
+\end{center}
+\end{figure}
+%
+Figure \ref{fig:access_static} shows the accessibility graph of a static network.
+The corresponding accessibility matrix is
+\begin{equation*}
+\mathbf{P}_N=\left(%
+\begin{array}{c|ccc}%
+0 & 1 & 1 & 1 \\
+\hline 0 & 1 & 1 & 1 \\
+0 & 1 & 1 & 1 \\
+0 & 1 & 1 & 1
+\end{array}\right) .
+\end{equation*}
+The nodes of the connected components in the adjacency matrix $\mathbf{A}$ form blocks in $\mathbf{P}_N$.
+
+If the network $G$ is \emph{undirected}, every $\mathbf{P}_n$ has a non vanishing main diagonal for $n\geq 2$, if there are no isolated nodes.
+This corresponds to the fact that there is always a path of length 2 from a node back to itself.
+For the more general directed case, the main diagonal of $\mathbf{P}_{N-1}$ can contain 0 or 1 entries.
+
+\paragraph{Shortest paths and unfolding accessibility\color{Cayenne}{.}}
+Now we focus on the properties of the accessibility for the steps $\mathbf{P}_{n\leq N}$.
+We explicitly take into account different values of $n$, i.e. we \emph{unfold} the accessibility graph.
+The graph of $\mat{P}_1$ gives a graph containing paths of length 1, i.e. the adjacency matrix itself.
+Analogues to figure \ref{fig:power_graphs}, the matrix $\mat{P}_2$ gives a graph containing paths of length 1 \emph{and} paths of length 2.
+In principle, the procedure $\mat{P}_n \rightarrow \mat{P}_{n+1}$ corresponds to traversing the graph by paths of one more edge.
+This is nothing other than a breadth-first-search (BFS) algorithm in the network (see appendix \ref{sec:implementation} for more details).
+A similar method was used in early algorithms for computing shortest path lengths in networks \citep{Floyd:1962vo,Warshall:1962wr}.
+
+\subsection{Unfolding Accessibility of temporal networks}\label{sec:unfolding_temporal}
+
 
 \subsection{Representative sample / characteristic time scale}
 

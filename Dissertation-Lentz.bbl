@@ -251,6 +251,11 @@ Faloutsos, M., Faloutsos, P., and Faloutsos, C. (1999).
 \newblock {On power-law relationships of the Internet topology}.
 \newblock {\em SIGCOMM Comput. Commun. Rev.}, 29(4):251--262.
 
+\bibitem[Floyd, 1962]{Floyd:1962vo}
+Floyd, R.~W. (1962).
+\newblock {Algorithm-97 - Shortest Path}.
+\newblock {\em Commun. ACM}, 5(6):345--345.
+
 \bibitem[Fortunato, 2010]{Fortunanto2010}
 Fortunato, S. (2010).
 \newblock {Community detection in graphs}.
@@ -446,6 +451,11 @@ Konschake, M., Lentz, H. H.~K., Conraths, F.~J., H{\"o}vel, P., and Selhorst,
 \newblock {On the Robustness of In- and Out-Components in a Temporal Network}.
 \newblock {\em PLoS ONE}, 8(2):e55223.
 
+\bibitem[Krapivsky and Redner, 2001]{Krapivsky:2001bg}
+Krapivsky, P. and Redner, S. (2001).
+\newblock {Organization of growing random networks}.
+\newblock {\em Phys. Rev. E}, 63(6):066123.
+
 \bibitem[Leicht and Newman, 2008]{Leicht:2008p5144}
 Leicht, E. and Newman, M. E.~J. (2008).
 \newblock {Community Structure in Directed Networks}.
@@ -464,17 +474,11 @@ Lentz, H. H.~K., Konschake, M., Teske, K., Kasper, M., Rother, B., Carmanns,
   production network}.
 \newblock {\em Prev. Vet. Med.}, 98(2-3):176--181.
 
-\bibitem[Lentz et~al., 2012a]{Lentz:2012pre}
-Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012a).
+\bibitem[Lentz et~al., 2012]{Lentz:2012pre}
+Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012).
 \newblock {Spread of infectious diseases in directed and modular metapopulation
   networks}.
 \newblock {\em Phys. Rev. E}, 85:066111.
-
-\bibitem[Lentz et~al., 2012b]{Lentz:2013PRL_arxiv}
-Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2012b).
-\newblock {Unfolding accessibility provides a macroscopic approach to temporal
-  networks}.
-\newblock {\em arXiv}, physics.soc-ph.
 
 \bibitem[Lentz et~al., 2013]{Lentz:2013PRL}
 Lentz, H. H.~K., Selhorst, T., and Sokolov, I.~M. (2013).
@@ -660,6 +664,11 @@ Visser, R., Smith, A., Rissel, C., and Richters, J. (2003).
 von Mises, R. and Pollaczek-Geiringer, H. (1929).
 \newblock {Praktische Verfahren der Gleichungsaufl{\"o}sung}.
 \newblock {\em ZAMM}, 9:152--164.
+
+\bibitem[Warshall, 1962]{Warshall:1962wr}
+Warshall, S. (1962).
+\newblock {A theorem on boolean matrices}.
+\newblock {\em J. ACM}, 9(1):11--12.
 
 \bibitem[Wasserman and Faust, 1994]{WassermanFaust}
 Wasserman, S. and Faust, K. (1994).

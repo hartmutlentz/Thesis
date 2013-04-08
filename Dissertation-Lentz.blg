@@ -13,45 +13,45 @@ Warning--empty institution in Euro-Lex
 Warning--empty journal in networkx:
 Warning--empty institution in PageRank:
 Warning--empty institution in HI-Tier
-You've used 123 entries,
+You've used 125 entries,
             1935 wiz_defined-function locations,
-            1233 strings with 22379 characters,
-and the built_in function-call counts, 49550 in all, are:
-= -- 4880
-> -- 1998
-< -- 76
-+ -- 667
-- -- 665
-* -- 4366
-:= -- 8664
-add.period$ -- 372
-call.type$ -- 123
-change.case$ -- 938
-chr.to.int$ -- 121
-cite$ -- 127
-duplicate$ -- 1759
-empty$ -- 3495
-format.name$ -- 854
-if$ -- 9573
-int.to.chr$ -- 3
+            1246 strings with 22520 characters,
+and the built_in function-call counts, 50300 in all, are:
+= -- 4959
+> -- 2007
+< -- 79
++ -- 668
+- -- 667
+* -- 4433
+:= -- 8787
+add.period$ -- 378
+call.type$ -- 125
+change.case$ -- 949
+chr.to.int$ -- 124
+cite$ -- 129
+duplicate$ -- 1788
+empty$ -- 3562
+format.name$ -- 860
+if$ -- 9723
+int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 131
-newline$ -- 617
-num.names$ -- 371
-pop$ -- 718
+missing$ -- 133
+newline$ -- 627
+num.names$ -- 377
+pop$ -- 722
 preamble$ -- 1
-purify$ -- 945
+purify$ -- 956
 quote$ -- 0
-skip$ -- 1331
+skip$ -- 1354
 stack$ -- 0
-substring$ -- 3857
-swap$ -- 158
+substring$ -- 3943
+swap$ -- 160
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 714
+type$ -- 726
 warning$ -- 4
-while$ -- 424
+while$ -- 433
 width$ -- 0
-write$ -- 1593
+write$ -- 1619
 (There were 4 warnings)
