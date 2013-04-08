@@ -516,7 +516,7 @@ We consider a static network $G=(V,E)$ with $N$ nodes and adjacency matrix $\mat
 The accessibility graph (or transitive closure) of $G$ is denoted by $G^*=(V,E^*)$, where $E^*$ contains an edge $(u,v)$, whenever $u\rightarrow v$.
 The accessibility matrix -- i.e. the adjacency matrix of the accessibility graph -- can be computed using the cumulative matrix defined
 \begin{equation*}%\label{eq:}
-\mat{P}_n=\mat{A}+\mat{A}^2+\cdots + \mat{A}^n = \sum _{i=1} ^n \mat{A}^i .
+\mat{C}_n=\mat{A}+\mat{A}^2+\cdots + \mat{A}^n = \sum _{i=1} ^n \mat{A}^i .
 \end{equation*}
 This equation was already introduced in section \ref{sec:macro_measures}, equation \eqref{eq:cumulative_matrix}.
 Every term $\mat{A}^i$ corresponds to a network where nodes are connected that have shortest path distance $i$ in G.
@@ -531,7 +531,8 @@ The analogue for distance 3 is shown on the right panel.}
 \label{fig:power_graphs}
 \end{SCfigure}
 
-Since we are not interested in the actual \emph{number} of paths between node pairs, we can treat the adjacency matrix as Boolean and use Boolean arithmetic and normal algebra.
+In general, each power of an adjacency matrix contains the number of paths between node pairs as entries.
+Since we are not interested in the actual \emph{number} of paths, we can treat the adjacency matrix as Boolean and use Boolean arithmetic and normal algebra.
 Thus, the normalized cumulative matrix can be computed using
 \begin{equation}\label{eq:static_boolean_acc}
 \mathbf{P}_{n}=\bigvee _{i=1} ^{n} \mathbf{A}^i ,
@@ -590,6 +591,68 @@ Analogues to figure \ref{fig:power_graphs}, the matrix $\mat{P}_2$ gives a graph
 In principle, the procedure $\mat{P}_n \rightarrow \mat{P}_{n+1}$ corresponds to traversing the graph by paths of one more edge.
 This is nothing other than a breadth-first-search (BFS) algorithm in the network (see appendix \ref{sec:implementation} for more details).
 A similar method was used in early algorithms for computing shortest path lengths in networks \citep{Floyd:1962vo,Warshall:1962wr}.
+At the moment, when the BFS-algorithm approaches the diameter $D$ of the network, the matrix $\mat{P}_n$ saturates and does not change for higher values of $n$.
+Moreover, the accessibility matrix of a network is reached for $n=D$, so that
+\begin{equation}\label{eq:diameter_sat}
+\mat{P}_{D}\equiv \mat{P}_{D+1}\equiv \mat{P}_{N-1}.
+\end{equation}
+Hence, it is sufficient to compute only the first $D$ term in equation \eqref{eq:static_boolean_acc}.
+
+The relation between the computation of accessibility and the BFS-algorithm suggests that this procedure contains information about the shortest path length distribution.
+In order to reveal this correlation, we define the \emph{density} of a matrix $\mat{M}$ as the number of its nonzero elements, i.e.
+\begin{equation}\label{eq:matrix_density}
+\rho (\mat{M}) =\frac{\mathrm{nnz}(\mat{M})}{N^2}.
+\end{equation}
+In equation \eqref{eq:matrix_density} the number of nonzero elements is $\mathrm{nnz}(\mat{M})$ and $N$ is the dimension of $\mathbf{M}$.
+As a special case, we define the \emph{path density} of a  network as the density of its accessibility matrix
+\begin{equation}\label{eq:path_density}
+\rho (\mat{P}_n) =\frac{\mathrm{nnz}(\mat{P}_n)}{N^2}.
+\end{equation}
+Note that the normalization in \eqref{eq:matrix_density} and \eqref{eq:path_density} are not $N(N-1)$, since we explicitly take into account self loops in the accessibility graph.
+Ignoring these self loops could give values greater than 1 for connected graphs.
+
+Now we address the relation between path density and shortest path distribution in a network.
+In the case of the adjacency matrix, equation \eqref{eq:matrix_density} gives the edge density of the network.
+It gives the probability that two randomly chosen nodes are connected by an edge.
+It follows that the probability that these nodes are connected by a path of length $n$ is given by $\rho (\mat{A}^n)$.
+
+Since the path density $\rho (\mat{P}_n)$ follows from a cumulative procedure, it corresponds to the probability that two randomly chosen nodes are connected by a length of length $l\leq n$.
+Consequently, the path density is the cumulative distribution of shortest path lengths
+\begin{equation}\label{eq:cumulative_distribution}
+\rho (\mat{P}_n)=F(l\leq n)\equiv F_n .
+\end{equation}
+The shortest path length distribution follows from equation \eqref{eq:cumulative_distribution} by differentiation.
+Since the step length is 1 by definition, the probability for a shortest path length $n$ is given by $f_n=(F_n-F_{n-1})$ and $F_0=0$.
+
+It should be noted that the probabilities considered here can be normalized to 1 only for connected networks, because for connected networks $\rho (\mat{P}_{N-1})\equiv \mat{P}_D=1$.
+In the case of unconnected networks, the saturation value is in general smaller than 1.
+Therefore,  we treat the distribution \eqref{eq:cumulative_distribution} as an ``improper'' probability distribution, which is in general not normalized to unity.
+In addition, we define the \emph{median} of $F_n$ as the value $n$ where $F_n=1/2 \; F_D$.
+
+We make use of the relations discussed above in order to obtain information about the shortest path distribution.
+The procedure is called \emph{Unfolding Accessibility}, because we explicitly analyze the step-by-step derivation of the accessibility matrix.
+Although the concept of unfolding accessibility seems to make things unnecessarily complicated, it can be generalized to temporal networks.
+
+But before we generalize the approach explained above to temporal networks, we illustrate the concept exemplarily for static \ER network.
+We compute the shortest path length distribution of a directed \ER network of 1000 nodes and 2000 edges.
+Figure \ref{fig:er_histo} shows the path density $\rho (\mat{P}_n)$ and the shortest path distribution.
+The shortest path length distribution is identical to that of figure \ref{fig:ER_shortest_path_histogram} (section \ref{sec:er_model}).
+%
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics{ER_shortest_path_histo_double.pdf}
+\caption{Path density (red line) and shortest path length distribution (grey histogram) for a directed \ER network with 1000 nodes and 2000 edges.
+Mean value $8.18$, median $n=8$, diameter $D=18$, maximum path density $\rho (\mat{P}_D\approx 0.7)$.
+The histogram is identical to that in figure \ref{sec:er_model}, where a different method was used.
+}
+\label{fig:er_histo}
+\end{center}
+\end{figure}
+%
+
+
+
+
 
 \subsection{Unfolding Accessibility of temporal networks}\label{sec:unfolding_temporal}
 
