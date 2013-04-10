@@ -90,7 +90,7 @@ The infection scheme is extended to susceptible-infected-recovered (SIR) as in t
 \end{align}
 where $\alpha $ is the infection rate and $\gamma $ is the immunization or recovery rate.
 There is no analytic solution for the system \eqref{eq:sir_model}, but some fundamental conclusions can be obtained analytically.
-We show a typical solution of \eqref{eq:sir_model} in figure \ref{fig:std_sir_model}.
+We show a typical solution of \eqref{eq:sir_model} in figure~\ref{fig:std_sir_model}.
 %
 \begin{SCfigure}%[htbp]
 %\begin{center}
@@ -166,7 +166,7 @@ R_\infty = S_*-S_* e ^{-\frac{\alpha}{\gamma}R_\infty}.
 \end{equation}
 This transcendental equation can be solved numerically using a Newton-Raphson technique.
 The outbreak size $R_\infty $ only takes finite values for $\alpha / \gamma > 1$.
-A solution of equation \eqref{eq:transcendental} is shown in figure \ref{fig:transcendental}
+A solution of equation \eqref{eq:transcendental} is shown in figure~\ref{fig:transcendental}
 %
 \begin{figure}[htbp]
 \begin{center}
@@ -186,7 +186,7 @@ Let us consider the second equation of \eqref{eq:sir_model}.
 \frac{dI}{dt} = \alpha SI -\gamma I
 \end{equation}
 In the late phase of an SIR-type epidemic, the fraction of infected is small.
-Given sufficiently large values of $R_0$, the fraction of recovered is also small in this phase (see figure \ref{fig:transcendental}).
+Given sufficiently large values of $R_0$, the fraction of recovered is also small in this phase (see figure~\ref{fig:transcendental}).
 Thus, we neglect the quadratic term in \eqref{eq:sir_model_only_i}.
 This gives $\frac{dI}{dt} = -\gamma I $, which has the solution
 \begin{equation}\label{eq:sir_characteristic_time_scale_gamma}
@@ -310,7 +310,7 @@ Time-homogenous Markov chains can be represented as weighted networks and the co
 Transition matrices are stochastic matrices, i.e. the elements of every row sum up to unity.
 Each node represents a different state of the system and the edges are weighted with the probabilities to transition into other states adjacent to these edges.
 It is obvious that a transition matrix representation is useful to describe random walks on networks.
-An example of such a process is shown in figure \ref{fig:markov_chain}.
+An example of such a process is shown in figure~\ref{fig:markov_chain}.
 The underlying network represents a line of locations, where the drunkard can be located.
 At every time-step there is a certain probability to move to another location.
 %
@@ -326,7 +326,7 @@ Weights at arrowheads mark the transition probability.
 %\end{center}
 \end{SCfigure}
 %
-The state of the random walker can be described by a probability vector $\mathbf{p}$, where the initial state of figure \ref{fig:markov_chain} is $\mathbf{p}=(0,1,0,0)$.
+The state of the random walker can be described by a probability vector $\mathbf{p}$, where the initial state of figure~\ref{fig:markov_chain} is $\mathbf{p}=(0,1,0,0)$.
 The transition matrix $\mathbf{M}$ is a weighted adjacency matrix as it follows from the figure.
 Given a state $\mathbf{p}_{t}$ at time $t$, the state of the next time step is given by $\mathbf{p}_{t+1}=\mathbf{p}_t \mathbf{M}^T$.
 The equilibrium state $\mathbf{p}_\mathrm{eq}$ follows in the limit $\lim _{n\rightarrow \infty } \mathbf{p}_0 (\mathbf{M}^T)^n$, i.e. the equilibrium state is given by the dominant eigenvector of $\mathbf{M}$.
@@ -400,7 +400,7 @@ The degree follows immediately from the adjacency matrix, i.e.
 k ^-(i) = \sum _j a_{ji} \quad \text{and} \quad k ^+ (i)= \sum _j a_{ij}
 \]
 is the in- and out-degree of node $i$, respectively.
-As an example, node $8$ in figure \ref{fig:example_net} has $k ^+(8)=4$ and $k ^- (8)=1$.
+As an example, node $8$ in figure~\ref{fig:example_net} has $k ^+(8)=4$ and $k ^- (8)=1$.
 In weighted networks, the degree is computed in the same way and is called in-weight and out-weight of a node.
 
 The degree centrality (sometimes normalized by its maximum value $N-1$) is used in a huge variety of applications.
@@ -428,7 +428,7 @@ In \citep{Zweig:closeness} it was shown that nodes of high closeness can act as 
 
 \paragraph{Betweenness\color{Cayenne}{.}}
 In order to identify nodes that act as bridges between two subgraphs, the measure of betweenness was developed.
-In figure \ref{fig:example_net}, node $4$ plays such a role.
+In figure~\ref{fig:example_net}, node $4$ plays such a role.
 It is characteristic for these nodes to contain a relatively large number of shortest paths that have to cross them.
 Therefore, betweenness of a node $i$ is defined as
 \begin{equation}\label{eq:betweenness}
@@ -439,7 +439,7 @@ The computation of betweenness is expensive using equation \eqref{eq:betweenness
 Therefore, an efficient algorithm was introduced by Brandes \citep{Brandes:2001p2757}.
 
 Note that bridge nodes might look inconspicuous in the first place, e.g. they could have only two links.
-Removing node $5$ in figure \ref{fig:example_net}, for instance, would divide the network into two disjoint subgraphs with nodes $V_1=(1,2,3)$ and $V_2=(5,6,7,8,9)$ respectively.
+Removing node $5$ in figure~\ref{fig:example_net}, for instance, would divide the network into two disjoint subgraphs with nodes $V_1=(1,2,3)$ and $V_2=(5,6,7,8,9)$ respectively.
 Therefore, removing nodes of high betweenness from the network has been proven useful in order to divide networks into smaller components \citep{girvan2002,Newman:2004}.
 
 
@@ -511,7 +511,7 @@ The identification of power-law distributions in data is discussed in \citep{Cla
 
 Distributions of the form \eqref{eq:scale-free_distr} are called \emph{scale-free}, because they do not show a typical value (mean).
 Instead, the network has nodes with only a few neighbors and hubs with very large degrees.
-The structural difference between random and scale-free networks is sketched in figure \ref{fig:random_scalefree}.
+The structural difference between random and scale-free networks is sketched in figure~\ref{fig:random_scalefree}.
 %
 \begin{figure}[htbp]
 \begin{center}
@@ -667,7 +667,7 @@ One can use similar arguments to obtain an expression for the mean cluster size 
 \mean{s}=\frac{1}{1-\mean{k}+\mean{k}S}.
 \end{equation}
 %
-The largest connected component phase transition is shown in figure \ref{fig:ER_lcc_emergence}.
+The largest connected component phase transition is shown in figure~\ref{fig:ER_lcc_emergence}.
 \begin{SCfigure}
 \includegraphics{ER_emergence_LCC.pdf}
 \caption{Emergence of the largest connected component (LCC) in an \ER graph as it follows from \eqref{eq:giant_component}
@@ -723,7 +723,7 @@ A Watts-Strogatz model interpolates between lattices and random networks by rewi
 We start with a regular ring lattice of $N$ nodes, where each node is connected to $m$ of its nearest neighbors on the lattice.
 Then, each edge is rewired randomly with probability $p$.
 Keeping $m$ constant from the beginning yields a scalable topology for different values of $p$.
-The clustering coefficient $C$ and the average shortest path length $\mean{l}$ for different values of $p$ are shown in figure \ref{fig:watts_strogatz}.
+The clustering coefficient $C$ and the average shortest path length $\mean{l}$ for different values of $p$ are shown in figure~\ref{fig:watts_strogatz}.
 Both values are normalized by their corresponding values in the initial lattice, i.e. $C/C_0$ and $\mean{l}/\mean{l}_0$ respectively.
 %
 \begin{SCfigure}
@@ -741,7 +741,7 @@ The percolation threshold of small-world networks was investigated in \citep{San
 
 There is no sharp criterion for a network to be called small-world network.
 Instead, a network is called small-world network, if it shows a sufficiently large clustering coefficient \emph{and} a sufficiently low average shortest path length.
-This is the intermediate region in figure \ref{fig:watts_strogatz}. 
+This is the intermediate region in figure~\ref{fig:watts_strogatz}. 
 
 \subsection{Barab\'asi-Albert model}
 Besides the critical behavior in \ER networks and the small-word effect in Watts-Strogatz networks, observations of real networks showed that they possess heavy-tailed degree distributions \citep{Barabasi99,Liljeros:2001p841}.
@@ -905,10 +905,10 @@ and the condition for the epidemic threshold is \citep{pastor-sat_2}
 \begin{equation}\label{eq:degree_threshold}
 \beta _c=\frac{\mean{k}}{\mean{k^2}} .
 \end{equation}
-A graphical comparison between \eqref{eq:endemic_ws} and \eqref{eq:endemic_ba} is given in figure \ref{fig:pastor-sat}.
+A graphical comparison between \eqref{eq:endemic_ws} and \eqref{eq:endemic_ba} is given in figure~\ref{fig:pastor-sat}.
 It is an important result that the epidemic threshold vanishes in \BA networks.
 As a consequence, random vaccination in \BA networks does not suppress a disease outbreak \citep{Keeling:2005}.
-Nevertheless, figure \ref{fig:pastor-sat} shows that for the outbreak size remains small for $\beta \rightarrow 0$.
+Nevertheless, figure~\ref{fig:pastor-sat} shows that for the outbreak size remains small for $\beta \rightarrow 0$.
 Finally, the absence of the epidemic threshold is generally found in infinite scale-free networks with degree distributions $P(k)\sim k^{-\gamma }$ for $2\leqslant \gamma \leqslant 3$.
 It should be noted that a geographically embedded network with the same degree distribution can still show a finite outbreak threshold \citep{Sander20031}.
 
@@ -924,7 +924,7 @@ Given a scale-free network with diverging $\mean{k^2}$, the total population has
 
 Nevertheless, scale-free networks are vulnerable to targeted removal of highly connected nodes (see section \ref{sec:resilience}).
 Immunization of the mostly connected nodes is therefore an effective vaccination strategy on these networks.
-Numerical results for different vaccination strategies applied to a SIS-disease in a \BA network are shown in figure \ref{fig:targeted_immunization}.
+Numerical results for different vaccination strategies applied to a SIS-disease in a \BA network are shown in figure~\ref{fig:targeted_immunization}.
 %
 \begin{SCfigure}
 \includegraphics{SIS-Vacc.pdf}
@@ -942,7 +942,7 @@ For the case of a \BA network \citeauthor{PastorSat:immunization} found an expre
 g_c \sim \exp (-2\mu / m\beta ),
 \end{equation}
 where $m$ is the minimum degree of the network and $\mu $ and $\alpha $ are infection parameters, respectively.
-The exact value of $g_c$ can be found by extrapolation of the curves in figure \ref{fig:targeted_immunization}.
+The exact value of $g_c$ can be found by extrapolation of the curves in figure~\ref{fig:targeted_immunization}.
 The striking feature of equation \eqref{eq:crit_vacc_BA} is, however, that the fraction nodes that have to be vaccinated decreases exponentially with the spreading rate.
 
 Besides the degree, we have to point out that any centrality measure (see section \ref{sec:micro_measures}) can be used in order to define a ranking of nodes.
