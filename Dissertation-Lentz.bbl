@@ -330,6 +330,11 @@ Grenfell, B.~T. and Harwood, J. (1997).
 \newblock {(Meta)population dynamics of infectious diseases}.
 \newblock {\em Trends. Ecol. Evol.}, 12(10):395--399.
 
+\bibitem[Grindrod et~al., 2011]{Grindrod:2011fg}
+Grindrod, P., Parsons, M., Higham, D., and Estrada, E. (2011).
+\newblock {Communicability across evolving networks}.
+\newblock {\em Phys. Rev. E}, 83(4):046120.
+
 \bibitem[Guimer{\`a} et~al., 2005]{Guimera:2005p5232}
 Guimer{\`a}, R., Mossa, S., Turtschi, A., and Amaral, L. A.~N. (2005).
 \newblock {The worldwide air transportation network: Anomalous centrality,
@@ -575,6 +580,11 @@ Nicosia, V., Tang, J., Musolesi, M., Russo, G., Mascolo, C., and Latora, V.
 Page, L. (1997).
 \newblock {Method for node ranking in a linked database}.
 \newblock Technical report.
+
+\bibitem[Pan and Saram{\"a}ki, 2011]{Pan:2011dga}
+Pan, R.~K. and Saram{\"a}ki, J. (2011).
+\newblock {Path lengths, correlations, and centrality in temporal networks.}
+\newblock {\em Phys. Rev. E}, 84(1 Pt 2):016105.
 
 \bibitem[Pastor-Satorras and Vespignani, 2001]{Pastor-Satorras_vespi:2001}
 Pastor-Satorras, R. and Vespignani, A. (2001).

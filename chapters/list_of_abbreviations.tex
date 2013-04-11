@@ -2,13 +2,14 @@
 %\thispagestyle{plain}
 \begin{acronym}[nnzzzzzzz] %5 längste Abkürzung ineckigen Klammern zur Ausrichtung
 %\setlength{\itemsep}{-\parsep}
-\acro{}[\color{Steel}{Networks}\color{Cayenne}{.}]{}
+\acro{}[\color{Steel}{Static networks}\color{Cayenne}{.}]{}
 \acro{G}[$G$]{Network/Graph. A tuple $G=(V,E)$ of a set of nodes $V$ and a set of edges~$E$.}
 \acro{N}[$N$]{Number of nodes of a network.}
 \acro{m}[$m$]{Number of edges of a network.}
 \acro{D}[$D$]{Network diameter.}
 \acro{A}[$\mathbf{A}$]{Adjacency matrix.}
 \acro{P}[$\mathbf{P}_{N-1}$]{Accessibility matrix.}
+\acro{Gstar}[$G^*_n$]{Accessibility graph up to path length $n$. The transitive closure is given by $G^* _{N-1}\equiv G^*$.}
 \acro{exists_path}[$u\rightarrow v$]{A path of arbitrary length exists between $u$ and $v$.}
 \acro{k}[$k, k^+,k^-$]{Degree of a node, Out-degree, In-degree.}
 \acro{gcc}[$G(S)CC$]{Giant (strongly) connected component.}
@@ -24,14 +25,23 @@
 \acro{}[]{}
 \acro{}[\color{Steel}{Temporal networks}\color{Cayenne}{.}]{}
 \acro{tmpgraph}[$\mathcal{G}$]{Temporal network given by triple $\mathcal{G}=(V,\mathcal{E},T)$.}
-\acro{Gstar}[$G^* (\mathcal{G}^*)$]{Transitive closure of a (temporal) network.}
-\acro{exists_temp_path}[$u\rightsquigarrow v$]{A time respecting path exists between $u$ and $v$.}
-\acro{t_horizon}[$\mathcal{H}_v$]{Horizon of node $v$.}
 \acro{adjmatrixseq}[$\mathcal{A}$]{Sequence of adjacency matrices as a graph centric temporal network representation.}
+\acro{pn}[$\mathcal{P}_n $]{Accessibility matrix of a temporal network over $n$ time steps.}
+\acro{Gstartemp}[$\mathcal{G}^*_n$]{Accessibility graph up to path \emph{duration} $n$. The real fully unfolded accessibility graph is in general $\mathcal{G}^*\equiv \mathcal{G}^*_\infty $.}
+\acro{exists_temp_path}[$u\rightsquigarrow v$]{A time respecting (causal) path exists between $u$ and $v$.}
+\acro{t_horizon}[$\mathcal{H}_v$]{Horizon of node $v$.}
 \acro{nnz}[$\mathrm{nnz}(\mat{X})$]{Number of non zeros of a matrix $\mat{X}$.}
 \acro{rho}[$\rho (\mathbf{X})$]{Density of a matrix $\mat{X}$, i.e. the number of occupied non zeros normalized by the number of all possible entries.}
-\acro{pn}[$\mathcal{P}_n $]{Accessibility matrix of a temporal network over $n$ time steps.}
-\acro{ranking}[$R(X)$]{Node ranking according to some measure $X$.}
+\acro{ranking}[$R(Y)$]{Node ranking according to some measure $Y$.}
 \acro{infperiod}[$d$]{Infectious period.}
 \acro{}[$r(v,d,t_0)$]{Range of a node for memory/infectious period $d$ and starting time $t_0$. Equivalent to outbreak size for simple compartment models.}
+\acro{}[$\mathcal{S}$]{Set of outbreak scenarios containing elements of the form $(v,d,t_0,r(v,d,t_0))$.}
+\acro{}[$RE$]{Randomized edges model. Each $\mathbf{A}$ in $\mathcal{A}$ is randomized so that the degree of each nodes is preserved.}
+\acro{}[$TR$]{Time reversal. All edges and the order of matrices in $\mathcal{A}$ are reversed.}
+\acro{}[$GST$]{Globally shuffled times. The sequence $\mathcal{A}$ is rearranged in random order.}
+\acro{}[$LST$]{Locally shuffled times. All edge occurrence times are placed randomly and the number of occurrences is preserved.}
+\acro{}[$RT$]{Random times. Every snapshot of $\mathcal{G}$ is taken as a random subset of the aggregated network.}
+
+
+
 \end{acronym}

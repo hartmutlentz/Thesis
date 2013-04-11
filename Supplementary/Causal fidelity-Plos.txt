@@ -1,0 +1,73 @@
+===============================================
+Causal Fidelity
+===============================================
+
+
+Aggregated: 2.202.369.723
+Temporal: 1.575.699.560
+
+mean shortest path distance der LSCC (statisch: __), diameter: __
+
+Hier sind evtl. einige Selfloops im Statischen Netzwerk nicht eingerechnet, da diese nicht vom Ranges-Programm berechnet werden.
+
+Die Korrektheit ist also c= 0.7154564
+
+
+
+===============================================
+Randomisiertes Netzwerk:
+===============================================
+
+Randomized edges (RE)
+---------------------------
+
+Edge Randomization (RE) des Temporal Netzwerks und danach Aggregation:
+-> neues statisches Netzwerk
+8038377825 Kanten (455 Tage)
+
+RE-Temporal: Berechnung bis t=455 nicht möglich (scipy.sparse Datenlimit wir überschritten).
+Daher Ergebnisse für t=308 (Index startet bei 0).
+Temporal: 2145843625 Pfade,
+statisch: 2854357644 Pfade
+
+=> c=0.7517781
+
+
+Time reversed (TR)
+---------------------------
+Investierung des statischen Netzwerks!
+1373361757 
+
+temporal: 984943559
+
+=> c = 0.71717706859
+
+
+Global shuffled times (GST)
+---------------------------
+statisches Netz ist unverändert.
+1373272012 
+
+temporal: 1073448320
+
+=> c = 0.781672029
+
+
+Local Shuffled times (LST)
+---------------------------
+statisches Netz ist unverändert.
+1373272012 
+
+temporal: 1072018722
+
+=> c = 0.78063101
+
+
+Random times (RT)
+---------------------------
+statisches Netz ist unverändert.
+1373272012 
+
+temporal: 1360617833
+
+=> c=0.990785380

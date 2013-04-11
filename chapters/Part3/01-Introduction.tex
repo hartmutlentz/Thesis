@@ -149,6 +149,7 @@ Consequently, we measure shortest path durations in terms of \emph{foremost} pat
 
 \subsection{Conceptual problems in temporal networks}\label{sec:conceptual_problems}
 Before we focus on different methods to analyze temporal networks, we have to point out that many static network measures, such as centrality or components, are in general time-dependent and can not be summarized to single numbers.
+\citeauthor{Grindrod:2011fg} defined a time-independent centrality measure for temporal networks \citep{Grindrod:2011fg}. 
 In addition, time-scales of node dynamics and network dynamics can be of the same order and cause significant interactions between the dynamics.
 We consider the relation between node dynamics and edge dynamics in section \ref{sec:Plos}.
 
@@ -176,7 +177,7 @@ As in the case of static networks, the concept of centrality plays an important 
 The maximum spreading potential of each node is given by its range as discussed for static networks in section \ref{sec:network_analysis}.
 In this section we analyze the out-component of the network nodes according to their constance over time.
 
-\subsection{Representative sample}
+\subsection{Representative sample}\label{sec:representative_sample}
 Before we analyze the ranges of the nodes in the network, we estimate the time span needed to cover the temporal properties of the system.
 Figure~\ref{fig:Plos_S1} A shows the activity of the nodes and edges in the network over the observation period.
 The red line shows the number of active nodes on a daily resolution.
@@ -586,8 +587,9 @@ For the more general directed case, the main diagonal of $\mathbf{P}_{N-1}$ can 
 \paragraph{Shortest paths and unfolding accessibility\color{Cayenne}{.}}
 Now we focus on the properties of the accessibility for the steps $\mathbf{P}_{n\leq N}$.
 We explicitly take into account different values of $n$, i.e. we \emph{unfold} the accessibility graph.
-The graph of $\mat{P}_1$ gives a graph containing paths of length 1, i.e. the adjacency matrix itself.
-Analogues to figure~\ref{fig:power_graphs}, the matrix $\mat{P}_2$ gives a graph containing paths of length 1 \emph{and} paths of length 2.
+Each $\mat{P}_n$ is the adjacency matrix of a preliminary accessibility graph, which we denote by $G_n ^*$.
+The graph $G_1 ^*$ (with adjacency matrix $\mat{P}_1$) gives a graph containing paths of length 1, i.e. the adjacency matrix itself.
+Analogues to figure~\ref{fig:power_graphs}, the graph $G_2 ^*$ contains paths of length 1 \emph{and} paths of length 2.
 In principle, the procedure $\mat{P}_n \rightarrow \mat{P}_{n+1}$ corresponds to traversing the graph by paths of one more edge.
 This is nothing other than a breadth-first-search (BFS) algorithm in the network (see appendix \ref{sec:implementation} for more details).
 A similar method was used in early algorithms for computing shortest path lengths in networks \citep{Floyd:1962vo,Warshall:1962wr}.
@@ -755,7 +757,10 @@ Since the actual number of paths are not important in this work, we define the t
 %
 In equation \eqref{eq:temporal_accessibility}, the linear terms correspond to the aggregation of the network over $n$ time steps.
 The higher order products always respect the temporal correct order of snapshots, that is $i<j$ for all $\mat{A}_i\mat{A}_j$ and $\mat{A}_i \cdots \mat{A}_j $.
-Using equation \eqref{eq:temporal_accessibility}, we can now unfold accessibility just like for the case of a static network as in section \ref{sec:unfolding_static}.
+Analogue to section~\ref{sec:unfolding_static}, we define the accessibility graph to path \emph{duration} $n$ as $\mathcal{G}_n ^*$.
+It should be noted that in general the ``real'' accessibility graph of a temporal network is given by $\mathcal{G}_\infty ^*$, since the observation time is limited and might not capture the real timescale of a system.
+Since the upper limit of time is predefined by the dataset under considertion, we consider the fully unfolded accessibility graph as $\mathcal{G}^* = \mathcal{G}_T ^*$.
+Using equation \eqref{eq:temporal_accessibility}, we can now unfold accessibility just like for the case of a static network reported in section \ref{sec:unfolding_static}.
 
 Before doing so, we have to point out that the identity matrix $\mathbf{I}$ on the righthand side of equation \eqref{eq:temporal_accessibility} is an artifact of the introduced memory.
 This does not make a huge difference for undirected networks, as we have discussed for the static case in section \ref{sec:unfolding_static}.
@@ -771,9 +776,6 @@ Therefore, unfolding an accessibility graph does not yield a shortest path lengt
 Even if a particular temporal network might be a small-world network in the topological sense -- say it still takes only a few edges to traverse the whole system -- the traversal could take a long time.
 In general, even a small world network could be a ``slow world'' network. 
 
-Finally, it should be noted that the accessibility graph of a temporal network is in general directed, even if every snapshot is an undirected network.
-Figure~\ref{fig:temp_acc_example} shows the accessibility graph of the network used in figure~\ref{fig:temporal_network_principle}.
-%
 \begin{figure}[htb]
 \begin{center}
 \includegraphics{Temporal_Acessibility_example.pdf}
@@ -785,6 +787,9 @@ Note that even though the temporal network is undirected, its accessibility grap
 \end{center}
 \end{figure}
 %
+Finally, it should be noted that the accessibility graph of a temporal network is in general directed, even if every snapshot is an undirected network.
+Figure~\ref{fig:temp_acc_example} shows the accessibility graph of the network used in figure~\ref{fig:temporal_network_principle}.
+
 As the figure demonstrates, the accessibility graph can be directed, even if the underlying temporal network is undirected.
 This property reflects the ``arrow of time'' in these systems.
 It is important to emphasize that the accessibility graph does not show global transitivity as opposed to the static case (compare to figure~\ref{fig:access_static}).
@@ -803,16 +808,18 @@ Multiples of weekdays are generally more likely for shortest path durations, sin
 \label{fig:plos_unfolding}
 \end{center}
 \end{figure}
-
+%
 The path density is relatively low along the whole observation period, since the pig trade network is directed.
 We have seen in section \ref{sec:components_ranges} that even the static network representation is fragmented, i.e. the largest strongly connected component is relatively small.
 Since the components of the aggregated network define an upper bound for the components in the temporal view, the temporal path density is confined.
 
 Although the shortest path distributions show a broad distribution, figure~\ref{fig:plos_unfolding} shows a global maximum of the distribution.
-It follows that there is a typical timescale in the system, which is in the region of 120~days.
+It follows that there is a typical timescale in the system, which is in the region of 180~days.
 This means that the typical spreading time of any process on the network is in the order of 100~days.
 In fact, this timescale is a manifestation of the underlying process taking place on the network: production of livestock pigs.
-The production process follows a production chain as shown in figure~\ref{fig:pork_production_chain}.
+The time scale detected in figure~\ref{fig:plos_unfolding} is in agreement with the representative sample found using a data-driven approach as reported in figure~\ref{fig:Plos_S1} (see section~\ref{sec:representative_sample}).
+We conclude that the representative sample size of 180~days can be explained by the characteristic time scale of the system.
+
 %
 \begin{figure}[htb]
 \begin{center}
@@ -824,25 +831,99 @@ The total production time of one single production chain is 180~days, which defi
 \end{center}
 \end{figure}
 %
+The production process follows a production chain as shown in figure~\ref{fig:pork_production_chain}.
 As the figure illustrates, the pig trade network is a union of many disjoint production chains.
 In addition, there a trade links in the network, which do not follow the exact path in the production chain (dashed lines in figure~\ref{fig:pork_production_chain}).
 The timescale of each production chain is strictly determined by the biological properties of pig production.
 Most pigs are slaughtered in the age of 180~days.
 This period defines the \emph{temporal diameter} of the production chain, which gives an explanation for the existence of a typical time scale observed in figure~\ref{fig:plos_unfolding}.
 
-
-
-
-
 \subsection{Causal fidelity}
+A large number of tools and measures has been developed for static networks and some of which were reported in section~\ref{sec:network_theory}.
+For this reason temporal networks are often aggregated and treated as static networks.
+The penalty of such an approximation is that it allows for paths that do not follow a causal sequence of edges.
+In other words, the most fundamental difference between a temporal network and its aggregated approximation lies in the difference between the number of possible paths.
+The question is how closely does an aggregated network reproduce the path properties of the temporal network.
+In order to quantify this ability, we define the measure of \emph{causal fidelity}
+\begin{equation}\label{eq:causal_fidelity}
+c=\frac{\rho (\mathcal{P}_T)}{\rho (\mat{P}_T)} ,
+\end{equation}
+where $\rho (\mathcal{P}_T)$ is the path density of the fully unfolded temporal accessibility graph and $\rho (\mat{P}_T)$ its static counterpart.
+The causal fidelity lies in the range $0\leq c \leq 1$.
+Large values of $c$ indicate that an aggregation of the temporal network gives a good approximation of the temporal system from a causal point of view.
+A low value of $c$ implies that most paths in the static network can not be taken in the temporal system, since their edges do not form a causal sequence.
+Consequently, temporal networks with small causal fidelities should not be treated as static systems.
+
+If a temporal network with low causal fidelity is treated as a static network, any spreading process on the system would be significantly overestimated.
+The ability to quantify this error is an important contribution to risk assessment in epidemiology.
+
+For the pig trade network, we measure $2,202,369,723$ paths in the static network and only $1,575,699,560$ paths in the temporal network.
+Hence, the causal fidelity of this network is
+\begin{equation}\label{eq:pig_causal_fidelity}
+c=\frac{1,575,699,560}{2,202,369,723}\approx 0.715.
+\end{equation}
+Thus, about $72$~\% of the paths exist in both network representations.
+We state that the aggregated network captures the causality of the system sufficiently well. 
+
+It should be noted that it equation~\eqref{eq:causal_fidelity} computes the causal fidelity for the fully unfolded accessibility graph $\mathcal{G}^*_{n=T}$.
+In principle, the causal fidelity can also be computed for intermediate steps of the unfolding procedure.
+This approach can be used in order to quantify the size of a minimal aggregation window that guarantees for a sufficiently large causality in the approximation.
 
 \subsection{Randomized models}\label{sec:randomized_models_tvg}
+In order to assess the strength of topological and temporal correlation in the network, we use randomized models of the original dataset to specifically remove certain correlations.
+A standard procedure to remove correlations on a \emph{static} network is randomizing the edges of the network.
+This procedure keeps the degree sequence constant and is similar to the configuration model.
+Time as a additional dimension in temporal networks requires for a large number of randomizing procedures in order to systematically remove correlations from the network.
+These procedures have been introduced in \citep{Holme_review,Pan:2011dga}.
+We translate these models into our formalism based on the adjacency matrix sequence of a temporal network, i.e.
+\begin{equation}\label{eq:AdMatrixSequence2}
+\mathcal{A}=\mat{A}_1,\dots ,\mat{A}_T,
+\end{equation}
+and use the following randomizing models:
+%
+\paragraph{RE -- randomized edges\color{Cayenne}{.}}
+Each snapshot in sequence \eqref{eq:AdMatrixSequence2} is randomized according to the following procedure.
+Choose two edges $(u,v)$ and $(w,x)$ in the network randomly.
+If the edges are disjoint, i.e. $u\neq w$ and $v\neq x$, then swap the nodes $v$ and $x$.
+Thus, the new edges are $(u,x)$ and $(w,v)$.
+This procedure is repeated until every edge in the original network has been swapped.
+
+The RE model is similar to the configuration model mentioned in section~\ref{sec:BA_model}.
+It keeps the degree sequence constant and removes higher order topological correlations from the network.
+Affected are properties as the clustering coefficient or more general any special subgraphs in the original system.
+In the context of the pig trade network, these subgraphs are the production chains illustrated in figure~\ref{fig:pork_production_chain}.
+Since the RE model places new edges almost randomly, it adds a significant amount of mixing to the network.
+Consequently, a large deviation between original network and RE network indicates that the initial system was not well mixed.
+Note that the RE model does explicitly affect \emph{topological} correlations.
+Models for the removal of temporal correlations are discussed next.
+
+\paragraph{TR -- time reversal\color{Cayenne}{.}}
+Using the adjacency matrix sequence, the TR procedure yields a new sequence of adjacency matrices given by
+\begin{equation}\label{eq:TR_secuence}
+\mathcal{A}^{-1}=\mat{A}^\top _T, \dots ,\mat{A}_1 ^\top,
+\end{equation}
+i.e. every matrix in the sequence is transposed and the order of the sequence are reversed.
+Transposing the matrices reverses the direction of all edges in a network.
+This step is of course obsolete in undirected networks.
+
+If the properties of a temporal networks are significantly affected by time reversal, the network has a significant temporal directionality.
+This happens in particular, if the activity of the network monotonously changing over time, e.g. during a growing or shrinking process.
+
+
+\paragraph{GST -- globally shuffled times\color{Cayenne}{.}}
+
+\paragraph{LST -- locally shuffled times\color{Cayenne}{.}}
+
+\paragraph{RT -- random times\color{Cayenne}{.}}
 
 \subsection{Temporal and topological mixing patterns}
 
 
 
-
+\subsection{further case studies}
+In this section, we apply the methods discussed before to two other datasets:
+First, a network of face-to-face contacts measured during a conference and second, a network of sexual contacts between prostitutes and their customers measured via an online rating platform for escorts.
+As the pig trade network, both networks are possible substrates for the spread of infectious diseases -- in this case, droplet transmitted diseases (e.g. flu) and sexually transmitted diseases, respectively.
 
 
 
