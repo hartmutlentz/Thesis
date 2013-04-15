@@ -64,7 +64,7 @@ Following \citep{Casteights_review}, the \emph{horizon} $\mathcal{H}$ of node $u
 \end{equation}
 where $ u\rightsquigarrow v $ means that there is a causal path from node $u$ to $v$.
 
-\subsection{Viewpoints and implementation}
+\subsection{Viewpoints and implementation}\label{sec:tvg_viewpoints}
 As in the case of static networks, temporal networks can be interpreted and implemented in different ways \citep{Casteights_review}.
 A brief report of different implementations of static networks is given in Appendix \ref{sec:implementation}.
 Besides the adjacency matrix, edge lists and adjacency lists are appropriate network representations.
@@ -84,7 +84,7 @@ Than the set of edges $\mathcal{E}$ is represented by a sequence of triples
 \end{equation*}
 An edge centric view focusses on the occurrence times of each edge, i.e.
 \[
-\mathcal{I}((u_1,v_1))=t_2,t_2,\dots \; .
+\mathcal{I}((u_1,v_1))=t_1,t_2,\dots \; .
 \]
 This point of view is particularly convenient for the time randomization of temporal networks (see section \ref{sec:randomized_models_tvg}).
 Finally, a \emph{node centric} view of a temporal network considers the neighborhood $\mathcal{N}$ of a node $v$ over time, i.e. $\mathcal{N}(v,t)$.
@@ -759,7 +759,8 @@ In equation \eqref{eq:temporal_accessibility}, the linear terms correspond to th
 The higher order products always respect the temporal correct order of snapshots, that is $i<j$ for all $\mat{A}_i\mat{A}_j$ and $\mat{A}_i \cdots \mat{A}_j $.
 Analogue to section~\ref{sec:unfolding_static}, we define the accessibility graph to path \emph{duration} $n$ as $\mathcal{G}_n ^*$.
 It should be noted that in general the ``real'' accessibility graph of a temporal network is given by $\mathcal{G}_\infty ^*$, since the observation time is limited and might not capture the real timescale of a system.
-Since the upper limit of time is predefined by the dataset under considertion, we consider the fully unfolded accessibility graph as $\mathcal{G}^* = \mathcal{G}_T ^*$.
+Also some systems could be periodic, i.e. $\mathcal{A}_{t+T}=\mathbf{A}_{t}$, but this can not be assumed in the general case.
+Since the upper limit of time is predefined by the dataset under consideretion, we consider the fully unfolded accessibility graph as $\mathcal{G}^* = \mathcal{G}_T ^*$.
 Using equation \eqref{eq:temporal_accessibility}, we can now unfold accessibility just like for the case of a static network reported in section \ref{sec:unfolding_static}.
 
 Before doing so, we have to point out that the identity matrix $\mathbf{I}$ on the righthand side of equation \eqref{eq:temporal_accessibility} is an artifact of the introduced memory.
@@ -874,12 +875,13 @@ In order to assess the strength of topological and temporal correlation in the n
 A standard procedure to remove correlations on a \emph{static} network is randomizing the edges of the network.
 This procedure keeps the degree sequence constant and is similar to the configuration model.
 Time as a additional dimension in temporal networks requires for a large number of randomizing procedures in order to systematically remove correlations from the network.
-These procedures have been introduced in \citep{Holme_review,Pan:2011dga}.
-We translate these models into our formalism based on the adjacency matrix sequence of a temporal network, i.e.
+We briefly report, how different randomization procedures affect the temporal network $\mathcal{G} $ and its aggregated counterpart $G$.
+Random models for temporal networks have been introduced in \citep{Holme_review,Pan:2011dga}.
+We use modified versions of these models and translate them into our formalism based on the adjacency matrix sequence of a temporal network, i.e.
 \begin{equation}\label{eq:AdMatrixSequence2}
-\mathcal{A}=\mat{A}_1,\dots ,\mat{A}_T,
+\mathcal{A}=\mat{A}_1,\dots ,\mat{A}_T.
 \end{equation}
-and use the following randomizing models:
+We use the following random models:
 %
 \paragraph{RE -- randomized edges\color{Cayenne}{.}}
 Each snapshot in sequence \eqref{eq:AdMatrixSequence2} is randomized according to the following procedure.
@@ -895,9 +897,13 @@ In the context of the pig trade network, these subgraphs are the production chai
 Since the RE model places new edges almost randomly, it adds a significant amount of mixing to the network.
 Consequently, a large deviation between original network and RE network indicates that the initial system was not well mixed.
 Note that the RE model does explicitly affect \emph{topological} correlations.
+
+The RE procedure also affects the aggregated network.
+Since new, random edges are placed for every snapshot, the new aggregated network can have a significantly larger edge density than the original aggregated network.
 Models for the removal of temporal correlations are discussed next.
 
 \paragraph{TR -- time reversal\color{Cayenne}{.}}
+The TR model considers the network evolution backwards in time.
 Using the adjacency matrix sequence, the TR procedure yields a new sequence of adjacency matrices given by
 \begin{equation}\label{eq:TR_secuence}
 \mathcal{A}^{-1}=\mat{A}^\top _T, \dots ,\mat{A}_1 ^\top,
@@ -906,15 +912,47 @@ i.e. every matrix in the sequence is transposed and the order of the sequence ar
 Transposing the matrices reverses the direction of all edges in a network.
 This step is of course obsolete in undirected networks.
 
-If the properties of a temporal networks are significantly affected by time reversal, the network has a significant temporal directionality.
-This happens in particular, if the activity of the network monotonously changing over time, e.g. during a growing or shrinking process.
-
+If the path density of a temporal network is significantly affected by time reversal, the network has a significant temporal directionality.
+This behavior occurs in particular, if the activity of the network monotonously changing over time, e.g. during a growing or shrinking process.
+The TR procedure also reverts the aggregated network, i.e. $G_{\mathrm{TR}}=G^{-1}$.
 
 \paragraph{GST -- globally shuffled times\color{Cayenne}{.}}
+The occurrence time of each snapshot of the network is placed randomly.
+This can be directly implemented using a random order of the matrix sequence, i.e.
+\begin{equation}\label{eq:GST_sequence}
+\mathcal{A}_\mathrm{GST}=\mathrm{shuffle}(\mathcal{A}) ,
+\end{equation}
+where the function $\mathrm{shuffle}(X)$ returns a random order of a sequence $X$.
+Although this model keeps the single snapshots constant, it explicitly removes \emph{temporal} correlations in the system.
+These correlations manifest their-selves in bursty behavior, such as a broad distribution of waiting times.
+Consequently, waiting times in the system are strongly affected by the GST model.
+
+Since the GST procedure does not affect the topology of the snapshots, the aggregated network remains unchanged, $G_\mathrm{GST}=G$.
 
 \paragraph{LST -- locally shuffled times\color{Cayenne}{.}}
+Instead of placing snapshots of the system at random times, the LST model randomly assigns the occurrence times of single \emph{edges}.
+This model is very similar to the GST model.
+It can be efficiently implemented using an edge centric network representation as discussed in section~\ref{sec:tvg_viewpoints}.
+To give an example, a particular edge $(u,v)$ could be present at times $t_1$ and $t_5$, i.e. using the edge occurrence function $\mathcal{I}((u,v))=t_1,t_5$.
+The LST model assigns new occurrence times, but keeps the number of edge occurrences constant, e.g. $\mathcal{I}_\mathrm{LST} ((u,v))=t_3,t_{12}$.
+
+As the GST model, the LST model does not change the aggregated network so that $G_\mathrm{LST}=G$.
 
 \paragraph{RT -- random times\color{Cayenne}{.}}
+The RT model uses the aggregated network $G=(V,E)$ and places random subsets of $E$ as snapshots.
+As the GST and LST models, the RT procedure removes temporal correlations from the system.
+In addition to that, the random occurrence of edges mimics a contact rate between the nodes in the system.
+The RT model is therefore similar to a weighted static representation of the system.
+Different rules for the number of edges per snapshots are possible:
+First, every time step could be treated equally so that the number of edges is constant over all snapshots on average.
+Second, the distribution of edge densities over all time steps remains constant.
+The first and the second variant correspond to the $G_{N,p}$ and the $G_{N,m}$ ensembles of \ER networks, respectively.
+Consequently, the third variant can more efficiently implemented, since the number of edges is known from the beginning.
+
+Since the RT model removes bursty behavior in every path of the network, it affects \emph{scheduled} systems in particular.
+These are systems, where paths follow strict time schedules and the systems are temporally sparse.
+This is typical for production networks such as the livestock trade network discussed in this work.
+Being related to a weighted static network, the RT model does not affect the topology of aggregated network, $G_\mathrm{RT}=G$.
 
 \subsection{Temporal and topological mixing patterns}
 
