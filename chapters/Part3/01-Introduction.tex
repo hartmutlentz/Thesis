@@ -870,7 +870,7 @@ It should be noted that it equation~\eqref{eq:causal_fidelity} computes the caus
 In principle, the causal fidelity can also be computed for intermediate steps of the unfolding procedure.
 This approach can be used in order to quantify the size of a minimal aggregation window that guarantees for a sufficiently large causality in the approximation.
 
-\subsection{Randomized models}\label{sec:randomized_models_tvg}
+\subsection{Randomization techniques}\label{sec:randomized_models_tvg}
 In order to assess the strength of topological and temporal correlation in the network, we use randomized models of the original dataset to specifically remove certain correlations.
 A standard procedure to remove correlations on a \emph{static} network is randomizing the edges of the network.
 This procedure keeps the degree sequence constant and is similar to the configuration model.
@@ -955,13 +955,76 @@ This is typical for production networks such as the livestock trade network disc
 Being related to a weighted static network, the RT model does not affect the topology of aggregated network, $G_\mathrm{RT}=G$.
 
 \subsection{Temporal and topological mixing patterns}
+In order to reveal temporal and topological correlations in the livestock trade dataset, we apply the randomization techniques from the previous section to the network.
+Every deviation from the original dataset hints to a particular correlation in the network.
+Figure \ref{fig:randomized_hit} shows the path density for the original dataset and for the randomized networks.
+The red curve shows the original network.
+\begin{figure}[htb]
+\begin{center}
+\includegraphics{Plos_Unfolding_randomized.pdf}
+\caption{Path densities of randomized networks of the livestock trade dataset.}
+\label{fig:randomized_hit}
+\end{center}
+\end{figure}
+%
+As the figure demonstrates, time reversal has a measurable effect for shortest path durations larger than about 100~days (grey line).
+Overall, the path density is lowered over a wide range of times.
+This shows that causal chains are less frequent, when the network is traversed backwards in time.
+This feature reflects the temporal directionality of the underlying production chain.
+In addition, the lower path density implies that a significant fraction of paths with duration between 100 and 700 days are ``single events'', i.e. they do not form highly frequented lanes.
+More specifically, a single event path is a causal chain of edges, where each edge has only few occurrence times.
+These structures are particularly sensitive to time reversal. 
+
+The role of temporal correlations can be examined using time shuffling models.
+In figure \ref{fig:randomized_hit}, the GST and LST models are shown as dashed blue and yellow dashed lines, respectively.
+Both lines show no significant differences from each other, indicating that the application of both procedures has a similar effect.
+The figure shows that time shuffling significantly increases the path density is over a large period of shortest path durations.
+Since the GST and LST models remove temporal bursty behavior from the system, we conclude that the node waiting times restrict the number of paths in the original system. 
+
+The random times (RT) model removes scheduling from the network.
+The consequence is a significant increase of the path density (orange line).
+An explanation for this behavior is that most paths in the system show a bursty behavior.
+
+It is a salient feature of this dataset that edge randomization (RE model, black line) considerably increases the overall path density.
+The reason is that the underlying production chain strongly determines the network.
+As we have seen in figure~\ref{fig:pork_production_chain}, the livestock trade system basically consists of a number of disjoint production chains as basic units.
+These basic units are interconnected by few ``random'' links.
+As a consequence, the whole system is by far not well mixed.
+Applying the RE model to the network provides strong mixing of the trade contacts.
+This mixing results in a large number of possible paths.
+
+In summary, the underlying production chain of the livestock trade network is ubiquitous in the path structure of the network.
+The most salient feature in this context is the poor topological mixing of the network.
+Another striking feature is that bursty trade transactions seem to dominate the traversal of the system.
+Temporal correlations and temporal directionality play a role, but these features are not as striking as mixing and scheduling.
 
 
-
-\subsection{further case studies}
+\subsection{Further case studies}
 In this section, we apply the methods discussed before to two other datasets:
 First, a network of face-to-face contacts measured during a conference and second, a network of sexual contacts between prostitutes and their customers measured via an online rating platform for escorts.
 As the pig trade network, both networks are possible substrates for the spread of infectious diseases -- in this case, droplet transmitted diseases (e.g. flu) and sexually transmitted diseases, respectively.
+Both datasets are available online.
+See \citep{isella2011,sociopatterns.org} for further information on the conference network and \citep{Rocha_pnas} for the sexual contact network, respectively.
+
+\begin{SCfigure}
+\includegraphics{113-Sociopatterns.pdf}
+\caption{Unfolding accessibility of a conference contact network}
+\label{fig:113}
+\end{SCfigure}
+%
+Figure \ref{fig:113} shows the path density and the distribution of shortest path durations for the conference contact network.
+
+
+In order to assess the mixing properties of the conference contact network, we apply the randomization techniques of section~\ref{sec:randomized_models_tvg} to the dataset.
+The result is shown in figure~\ref{fig:113_random}.
+%
+\begin{figure}[b]
+\begin{center}
+\includegraphics{Sociopatterns_Randomized.pdf}
+\caption{Path densities of randomized networks of the conference contact network.}
+\label{fig:113_random}
+\end{center}
+\end{figure}
 
 
 
