@@ -839,7 +839,7 @@ The timescale of each production chain is strictly determined by the biological 
 Most pigs are slaughtered in the age of 180~days.
 This period defines the \emph{temporal diameter} of the production chain, which gives an explanation for the existence of a typical time scale observed in figure~\ref{fig:plos_unfolding}.
 
-\subsection{Causal fidelity}
+\subsection{Causal fidelity}\label{sec:causal_fidelity}
 A large number of tools and measures has been developed for static networks and some of which were reported in section~\ref{sec:network_theory}.
 For this reason temporal networks are often aggregated and treated as static networks.
 The penalty of such an approximation is that it allows for paths that do not follow a causal sequence of edges.
@@ -962,7 +962,10 @@ The red curve shows the original network.
 \begin{figure}[htb]
 \begin{center}
 \includegraphics{Plos_Unfolding_randomized.pdf}
-\caption{Path densities of randomized networks of the livestock trade dataset.}
+\caption{Path densities of randomized networks of the livestock trade dataset.
+Black points represent the original dataset.
+The randomization models are TR -- time reversal, GST -- globally shuffled times, LST -- locally shuffled times, RE -- randomized edges and RT -- random times.
+}
 \label{fig:randomized_hit}
 \end{center}
 \end{figure}
@@ -984,6 +987,10 @@ Since the GST and LST models remove temporal bursty behavior from the system, we
 The random times (RT) model removes scheduling from the network.
 The consequence is a significant increase of the path density (orange line).
 An explanation for this behavior is that most paths in the system show a bursty behavior.
+It should be noted that the path density of the RT model almost approaches the path density of the aggregated network $\rho (\mat{P}_T)\approx 0.21$ in this system.
+% RT_path_density = 2202369723/10710180100
+This high path density is caused by the relatively high activity of the system.
+As we have observed in section~\ref{sec:representative_sample}, about 10~\% of the edges are active every day.
 
 It is a salient feature of this dataset that edge randomization (RE model, black line) considerably increases the overall path density.
 The reason is that the underlying production chain strongly determines the network.
@@ -998,33 +1005,98 @@ The most salient feature in this context is the poor topological mixing of the n
 Another striking feature is that bursty trade transactions seem to dominate the traversal of the system.
 Temporal correlations and temporal directionality play a role, but these features are not as striking as mixing and scheduling.
 
-
 \subsection{Further case studies}
 In this section, we apply the methods discussed before to two other datasets:
 First, a network of face-to-face contacts measured during a conference and second, a network of sexual contacts between prostitutes and their customers measured via an online rating platform for escorts.
+Both networks are undirected.
 As the pig trade network, both networks are possible substrates for the spread of infectious diseases -- in this case, droplet transmitted diseases (e.g. flu) and sexually transmitted diseases, respectively.
-Both datasets are available online.
-See \citep{isella2011,sociopatterns.org} for further information on the conference network and \citep{Rocha_pnas} for the sexual contact network, respectively.
+Both datasets are available online (see \citep{isella2011,sociopatterns.org} for further information on the conference network and \citep{Rocha_pnas} for the sexual contact network, respectively).
 
 \begin{SCfigure}
 \includegraphics{113-Sociopatterns.pdf}
-\caption{Unfolding accessibility of a conference contact network}
+\caption{Unfolding accessibility of a conference contact network.
+The fast saturation behavior and the high maximum of the path density suggest a high degree of mixing in this system.}
 \label{fig:113}
 \end{SCfigure}
 %
 Figure \ref{fig:113} shows the path density and the distribution of shortest path durations for the conference contact network.
-
-
-In order to assess the mixing properties of the conference contact network, we apply the randomization techniques of section~\ref{sec:randomized_models_tvg} to the dataset.
-The result is shown in figure~\ref{fig:113_random}.
+The observation period of three days separated by periods of weak interaction (nights) are clearly resolved in the figure.
+Overall, this network is particularly active.
+This is reflected by the relatively high maximum path density of $\rho \approx 0.99$, i.e. almost all possible paths are traversed within the observation period.
 %
-\begin{figure}[b]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics{Sociopatterns_Randomized.pdf}
-\caption{Path densities of randomized networks of the conference contact network.}
+\caption{Path densities of randomized networks of the conference contact network.
+Removing temporal correlations (GST, LST, RT) remove periods of no activity (nights) from the network and significantly decrease the characteristic time scale and the temporal diameter.}
 \label{fig:113_random}
 \end{center}
 \end{figure}
+%
+As we have discussed in section~\ref{sec:conceptual_problems}, the high overall path density indicates that there exists a giant causally connected component in the system.
+However, the question of mutual connectivity cannot be answered in detail using the accessibility graph alone.
 
+It can be read immediately from the path density that within the first day of the conference, more than 70~\% of all possible paths have been traversed.
+The median of the shortest path duration distribution is reached within the first 6~hours.
+Thus, we conclude that 6~hours is a typical timescale for a spreading process in this system.
 
+Following section \ref{sec:causal_fidelity}, we use equation \eqref{eq:causal_fidelity} and compute the causal fidelity of the conference network.
+As can be conjectured from the high path density, the causal fidelity attains the relatively high value $c\approx 0.99$.
+This implies that the aggregated network is a good approximation of the real system from the causal point of view.
 
+In order to assess the mixing properties of the conference contact network, we apply the randomization techniques of section~\ref{sec:randomized_models_tvg} to the dataset.
+The result is shown in figure~\ref{fig:113_random}.
+As the figure demonstrated, time reversal (TR) and randomizing edges (RE) do not significantly change the behavior of the path density.
+The small effect of the RE model implies that the system is already (topologically) well mixed.
+Also the time reversal invariance can be attributed to the strong mixing and the high activity of the system.
+Note that both models preserve the plateaus caused by nighttimes.
+
+Removing temporal correlations has a similar effect for the GST, LST and RT model.
+All three models show a steep increase of the path density and within only a few hours the maximum path density is reached.
+This effect originates from the fact that all three models remove the night periods from the system and thus the edge activity is spread over the whole time period.
+
+We now focus on a network of sexual contacts between escorts and customers over a time span of 6 years.
+Figure~\ref{fig:sexual_contacts} shows the unfolding path density of the temporal network.
+%
+\begin{SCfigure}
+\includegraphics{Sexual_Contacts.pdf}
+\caption{Path density and shortest path duration distribution for a network of sexual contacts.
+Despite the long observation period, the path density does neither saturate nor it reveals a characteristic time scale.}
+\label{fig:sexual_contacts}
+\end{SCfigure}
+%
+The accessibility graph is very sparse during the first 2 years of observation.
+Even after the 6 years it remains difficult to extrapolate the path density and estimate a saturation behavior.
+Hence, no characteristic time scale can be observed during the observation period.
+%
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics{Sexual-randomized.pdf}
+\caption{Path densities of randomized networks of the sexual contact network.
+The system is not well mixed (RE model, orange) and not time reversal invariant (TR model, grey).
+The path density of the TR model indicates that the data density is monotonously increasing in the original data.}
+\label{fig:sexual_randomized}
+\end{center}
+\end{figure}
+%
+Although the dataset does not give clear results, we can state that any disease takes more than 2~years to infect a non vanishing fraction of the system.
+The results are also valuable for further studies, since we have demonstrated that longer observation periods are needed in order to measure the characteristic spreading time in this system
+
+In addition, the causal fidelity of this network is $c=0.38$.
+This clearly provides support for treating the system from a temporal perspective -- as done in \citep{Rocha_pnas} -- since a static approximation would significantly overestimate the size of any disease outbreak.
+
+Finally, the path densities of randomized models of the sexual contact network are shown in figure~\ref{fig:sexual_randomized}.
+A salient feature of this figure is that time reversal significantly changes the behavior of the path density (grey line).
+In fact, the edge density of the system increases monotonously over time and it has been shown that this circumstance alone can cause this behavior (supplementary information of \citet{Lentz:2013PRL}).
+The impact of removal of temporal correlations -- i.e. GST (red), LST (blue) and RT (green) model respectively -- can be explained in a similar fashion.
+All of these procedures homogenize the edge density over time resulting in a systematic increase of the path density.
+Due to the overall sparsity of edge data, the RT model places relatively sparse networks as snapshots in this case.
+This impedes the formation of causal chains.
+Therefore, the path density of the RT model is slightly smaller than in the case of the time shuffling models.
+
+Interestingly, the path density of the time shuffling models fall below that of the original data in the long term.
+It is not clear, whether this can be attributed to the increasing edge density or whether it reflects an intrinsic property of this system.
+A longer dataset would be needed in order to answer this question. 
+
+As it was the case for the livestock trade network, the sexual contact network is not well mixed.
+This is measured in terms of a strictly higher path density in the RE model (orange line) than it was in the original data.
