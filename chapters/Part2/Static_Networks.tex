@@ -15,7 +15,7 @@
 %
 
 
-\chapter{Livestock trade network: Static network analysis}
+\chapter{Static network analysis -- Case study: Livestock trade network}
 In this chapter, we address the analysis of static networks, where the focus lies on epidemic spread on networks.
 Large amounts of data about different contact structures between a huge amount of subjects became available in the last years.
 In the context of epidemics, different types of networks can be obtained.
@@ -56,8 +56,7 @@ This yields a static network with $121,223$ nodes and $348,037$ edges.
 
 \section{Network analysis}\label{sec:network_analysis}
 To begin with, we analyze the livestock trade data according to the measures introduced in section \ref{sec:network_measures}.
-\paragraph{Centrality and distances\color{Cayenne}{.}}
-Figure \ref{fig:hit_deg_cdf} shows the heavy-tailed degree distribution of the network.
+From the family of centrality measures we focus on the degree distribution, which is of major importance, since it allows for a topological classification of the network.
 %
 \begin{SCfigure}
 \includegraphics{HIT_Degree_CDF.pdf}
@@ -68,6 +67,12 @@ Power law exponent was computed using a maximum likelihood estimator \citep{Clau
 \label{fig:hit_deg_cdf}
 \end{SCfigure}
 %
+%\paragraph{Degree distribution and distances\color{Cayenne}{.}}
+Figure \ref{fig:hit_deg_cdf} shows the heavy-tailed degree distribution of the network.
+The in and out degrees show distributions spanning three orders of magnitude.
+Note that the network exhibits a maximum in degree, which is significantly larger than the maximum in degree.
+In addition, the in degree distribution shows a bimodal behavior.
+This is attributed to the existence of large slaughterhouses being supplied by a large number of farms.
 
 \subsection{Components and ranges}\label{sec:components_ranges}
 % all: 121223 nodes
