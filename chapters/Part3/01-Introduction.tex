@@ -952,7 +952,49 @@ Consequently, the third variant can more efficiently implemented, since the numb
 Since the RT model removes bursty behavior in every path of the network, it affects \emph{scheduled} systems in particular.
 These are systems, where paths follow strict time schedules and the systems are temporally sparse.
 This is typical for production networks such as the livestock trade network discussed in this work.
-Being related to a weighted static network, the RT model does not affect the topology of aggregated network, $G_\mathrm{RT}=G$.
+Being related to a weighted static network, the RT model does not affect the topology of aggregated network, so that $G_\mathrm{RT}=G$.
+%
+%\paragraph{Summary of methods\color{Cayenne}{.}}
+A summary of the used randomization models is shown in table \ref{tab:random_models}.
+\begin{table}[htb]
+\sffamily
+\begin{center}%\centering
+\caption{Effects of the different randomization models.
+}
+\begin{tabular*}{\hsize}{@{\extracolsep{\fill}}cl}
+\hline
+Model & Effects\\
+\hline \hline
+\multirow{2}{*}{TR} & reverts arrow of time\\
+& static network reversed\\
+\hline
+\multirow{3}{*}{RE} & addition of topological mixing\\
+& removes topological motifs\\
+& static network changed\\
+\hline
+\multirow{4}{*}{GST} & graph-centric\\
+&conserves bursty occurrence of edges\\
+& homogenizes edge occurrences over the observation time\\
+& removes characteristic time scales\\
+& static network unchanged\\
+%
+\hline
+\multirow{4}{*}{LST} & edge-centric \\
+& conserves bursty occurrence of edges\\
+& homogenizes edge occurrences over the observation time\\
+& removes characteristic time scales\\
+& static network unchanged\\
+%
+\hline
+\multirow{2}{*}{RT} & removes bursty occurrence of edges\\
+& static network unchanged (except negligible statistical fluctuations)\\
+\hline \hline
+\end{tabular*}
+\label{tab:random_models}
+\end{center}
+\end{table}
+
+
 
 \subsection{Temporal and topological mixing patterns}
 In order to reveal temporal and topological correlations in the livestock trade dataset, we apply the randomization techniques from the previous section to the network.
@@ -987,7 +1029,7 @@ Since the GST and LST models remove temporal bursty behavior from the system, we
 The random times (RT) model removes scheduling from the network.
 The consequence is a significant increase of the path density (orange line).
 An explanation for this behavior is that most paths in the system show a bursty behavior.
-It should be noted that the path density of the RT model almost approaches the path density of the aggregated network $\rho (\mat{P}_T)\approx 0.21$ in this system.
+It should be noted that the path density of the RT model almost approaches the path density of the aggregated network $\rho (\mat{P}_T)\approx 0.206$ in this system.
 % RT_path_density = 2202369723/10710180100
 This high path density is caused by the relatively high activity of the system.
 As we have observed in section~\ref{sec:representative_sample}, about 10~\% of the edges are active every day.
@@ -998,7 +1040,7 @@ As we have seen in figure~\ref{fig:pork_production_chain}, the livestock trade s
 These basic units are interconnected by few ``random'' links.
 As a consequence, the whole system is by far not well mixed.
 Applying the RE model to the network provides strong mixing of the trade contacts.
-This mixing results in a large number of possible paths.
+This mixing results in a large number of possible paths, also the aggregated network has a path density of $\rho (\mat{P}_T)\approx 0.449$, which is more than twice as much as the original data.
 
 In summary, the underlying production chain of the livestock trade network is ubiquitous in the path structure of the network.
 The most salient feature in this context is the poor topological mixing of the network.

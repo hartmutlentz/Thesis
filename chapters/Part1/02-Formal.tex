@@ -22,21 +22,19 @@ In addition, appendix \ref{sec:implementation} describes a efficient computer im
 
 \section{Models of infectious diseases}
 %\subsection{Very briefly:}
-\paragraph{Main observations\color{Cayenne}{.}} Large scale patterns of epidemics have been measured \citep{giehl:2012}.
-
-\paragraph{Research field: Epidemiology\color{Cayenne}{.}} One goal of epidemiology is to understand the principles behind the spreading process, i.e. the way how a disease is transmitted through a population.
+%\paragraph{Main observations\color{Cayenne}{.}} Large scale patterns of epidemics have been measured \citep{giehl:2012}.
+%
+%\paragraph{Research field: Epidemiology\color{Cayenne}{.}}
+One goal of epidemiology is to understand the principles behind the spreading process, i.e. the way how a disease is transmitted through a population.
 In this context, \emph{conceptional} models are used.
 They make use of simple assumptions for the local (person-to-person) dynamics and focus on the big picture of the process.
 Conceptual models are very similar to models in theoretical physics, because they focus on the very essence of the problem (here: the macroscopic view, spreading patterns).
 However, they have to neglect many details of the real problem (here: physiology, symptoms, individual behavior, infection pathways and many more!) in order to have mathematical feasible models.
-
 Another important issue of epidemiology is the \emph{forecast} of epidemic spreading processes.
 Forecast models incorporate as much information as possible and the main focus is not an understanding of the basic principles.
 
-This section summarizes the mathematical framework that roughly reproduces the behavior of infectious diseases and briefly discusses some major insights.
-
-\subsection{Development of mathematical epidemiology}
-The modeling of infection diseases mostly uses the concept of compartment models as explained in sections \ref{sec:si_model} and \ref{sec:sir_model}.
+%\subsection{Development of mathematical epidemiology}
+The modeling of infection diseases makes extensive use of compartment models as explained in sections \ref{sec:si_model} and \ref{sec:sir_model}.
 Major contributions to the modern theoretical framework were provided by \citep{kermack:27}, \citep{bailey:57} and \citep{andersonmay:92}.
 In his review about the mathematics of infectious diseases Hethcote reports a model for smallpox was already formulated in 1760 by D. Bernoulli (see \citep{Hethcote:2000} and references therein).
 In the early 20th century, people developed mathematical models for epidemics: a discrete time model in 1906 \citep{Hamer} and a differential equation model in 1911 \citep{Ross}.
@@ -46,12 +44,12 @@ Modern models of infectious diseases include vaccination, demographic structure,
 The availability of contact data in recent years led to a strong impact on network analysis on epidemiology.
 Well known concepts of mathematics (graph theory \citep{Bollobas:1985}) and social sciences (social network analysis \citep{WassermanFaust}) have been adopted to disease modeling, since the connections between individuals are related to their epidemic spreading potential \citep{Keeling:2005}.
 
-\subsection{Infection dynamics}
-The spread of infectious diseases can be modeled in terms of compartment models as described in sections \ref{sec:si_model} and \ref{sec:sir_model}.
-We differentiate between \emph{conceptional models} and \emph{realistic disease models}.
-While the former class is used to provide conceptual results as for the computation of thresholds or to test theories \citep{Hethcote:2000}, realistic disease models use as many aspects as possible to provide a forecast of the spreading process.
+%\subsection{Infection dynamics}
+%The spread of infectious diseases can be modeled in terms of compartment models as described in sections \ref{sec:si_model} and \ref{sec:sir_model}.
+Before we formulate models for the spread of epidemic diseases, we have to differentiate between conceptional models and realistic disease models.
+While the former class is used to provide conceptual results such as the computation of thresholds or testing theories \citep{Hethcote:2000}, realistic disease models use as many aspects as possible to provide a forecast of a particular spreading process.
 Realistic disease models can be very complex and are beyond the scope of this work, thus we focus on the use of conceptional models.
-In the following section we briefly report some properties of basic epidemic models following the lecture notes of J.~R.~Chasnov \citep{Chasnov:2010}.
+In the following section we briefly report some properties of basic epidemic models following the lecture notes of \citeauthor{Chasnov:2010} \citep{Chasnov:2010}.
 
 \subsection{SI model}\label{sec:si_model}
 Let us consider a population of $N$ individuals.
@@ -237,19 +235,20 @@ However, the random mixing assumption does not allow for non homogenous mixing, 
 Nevertheless, the equality of individuals is not a reasonable assumption for many epidemic substrates.
 Examples are contact structures of humans, livestock trade, vehicles as disease vectors of links between computers.
 
-\paragraph{Main observations\color{Cayenne}{.}}
-The random mixing assumption is obsolete in the vast majority of systems.
-Instead, these systems possess an underlying contact structure -- a network.
+%\paragraph{Main observations\color{Cayenne}{.}}
+The main contribution of network science to epidemiology is that it allows for the analysis of detailed contact structures.
+If detailed information about the contact structure is available, the random mixing assumption is obsolete.
+Instead, these systems are modeled using underlying contact structure in form of a network.
 Since the beginning of the 21st century, large amounts of data about these contact structures became available for social, economic, transportation and biological networks.
 Observations showed that many real-world networks share common topological properties (see section \ref{sec:macro_measures}).
 However, the number of their non-trivial topological properties is considerable, therefore they are often referred to as \emph{complex} networks.
 
-\paragraph{Research field: network science\color{Cayenne}{.}}
+%\paragraph{Research field: network science\color{Cayenne}{.}}
 Modern network science is an interdisciplinary research field, because it addresses systems of diverse scientific affinity.
 Its roots lie in graph theory (mathematics) and social network analysis (social sciences).
-Social network analysis plays a particular role for the definition of local network measures (see section \ref{sec:micro_measures}), whereas the influence of graph theory is stronger in macroscopic problems like percolation or graph partitioning.
-An important focus of network science is to find common features of different networks and to find the basic principles behind their emergence.
-Applied network science is often found in computer science.
+Social network analysis plays a particular role for the definition of local network measures (see section \ref{sec:micro_measures}), whereas the influence of graph theory is stronger in macroscopic problems as percolation or statistical properties in the thermodynamic limit.
+An important focus of network science is to find common features of different networks and to explore the basic principles behind their emergence.
+Applied network science makes extensive use of methods used in computer science (see Appendix~\ref{sec:implementation} for a brief introduction of computer methods).
 
 \subsection{Matrix representations}\label{sec:network_matrices}
 A network is a system consisting of nodes that are connected by edges.
