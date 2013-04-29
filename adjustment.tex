@@ -28,11 +28,18 @@
 \addtokomafont{subsection}{\color{Steel}}
 \addtokomafont{subsubsection}{\color{Steel}}
 \addtokomafont{paragraph}{\color{Steel}}
-
+\addtokomafont{disposition}{\color{Steel}}
 \addtokomafont{pagehead}{\color{Steel}}
 \renewcommand{\pnumfont}{\color{Steel}} 
 \addtokomafont{headsepline}{\color{Steel}} 
 \pagestyle{scrheadings}
+
+% Textcolor for chapters in TOC
+\makeatletter
+\let\stdl@chapter\l@chapter
+\renewcommand*{\l@chapter}[2]{%
+  \stdl@chapter{\textcolor{black}{#1}}{\textcolor{black}{#2}}}
+\makeatother
 
 %  labels in description environments
 \renewcommand{\descriptionlabel}{\hspace\labelsep{}\sffamily\small\bfseries{}\color{Steel}{}}

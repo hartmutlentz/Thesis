@@ -17,36 +17,22 @@
 
 \chapter{Theory}\label{sec:theory}
 This chapter is devoted to the mathematical formalism that is used to model infectious diseases and networks.
-We define mathematical frameworks for the analysis of epidemics and networks in this chapter and summarize relevant results of earlier research.
+We define mathematical frameworks for the analysis of epidemics and networks in this chapter and summarize some relevant results of earlier research.
+The modeling of infection diseases makes extensive use of compartment models.
+We address these models in sections \ref{sec:si_model} and \ref{sec:sir_model}.
+Section~\ref{sec:network_theory} gives an overview over some results of modern network theory.
 In addition, appendix \ref{sec:implementation} describes a efficient computer implementations of networks.
 
 \section{Models of infectious diseases}
+
 %\subsection{Very briefly:}
 %\paragraph{Main observations\color{Cayenne}{.}} Large scale patterns of epidemics have been measured \citep{giehl:2012}.
 %
 %\paragraph{Research field: Epidemiology\color{Cayenne}{.}}
-One goal of epidemiology is to understand the principles behind the spreading process, i.e. the way how a disease is transmitted through a population.
-In this context, \emph{conceptional} models are used.
-They make use of simple assumptions for the local (person-to-person) dynamics and focus on the big picture of the process.
-Conceptual models are very similar to models in theoretical physics, because they focus on the very essence of the problem (here: the macroscopic view, spreading patterns).
-However, they have to neglect many details of the real problem (here: physiology, symptoms, individual behavior, infection pathways and many more!) in order to have mathematical feasible models.
-Another important issue of epidemiology is the \emph{forecast} of epidemic spreading processes.
-Forecast models incorporate as much information as possible and the main focus is not an understanding of the basic principles.
-
-%\subsection{Development of mathematical epidemiology}
-The modeling of infection diseases makes extensive use of compartment models as explained in sections \ref{sec:si_model} and \ref{sec:sir_model}.
-Major contributions to the modern theoretical framework were provided by \citep{kermack:27}, \citep{bailey:57} and \citep{andersonmay:92}.
-In his review about the mathematics of infectious diseases Hethcote reports a model for smallpox was already formulated in 1760 by D. Bernoulli (see \citep{Hethcote:2000} and references therein).
-In the early 20th century, people developed mathematical models for epidemics: a discrete time model in 1906 \citep{Hamer} and a differential equation model in 1911 \citep{Ross}.
-The epidemic threshold (section \ref{sec:sir_model}) was found in the 1920s \citep{kermack:27}.
-Starting from Bailey's book \citep{bailey:57} in the 1950s, the modeling of infectious diseases became a major scientific research field.
-Modern models of infectious diseases include vaccination, demographic structure, disease vectors, quarantine and even game theory (\citep{Bauch:2004} and references in \citep{Hethcote:2000}).
-The availability of contact data in recent years led to a strong impact on network analysis on epidemiology.
-Well known concepts of mathematics (graph theory \citep{Bollobas:1985}) and social sciences (social network analysis \citep{WassermanFaust}) have been adopted to disease modeling, since the connections between individuals are related to their epidemic spreading potential \citep{Keeling:2005}.
 
 %\subsection{Infection dynamics}
 %The spread of infectious diseases can be modeled in terms of compartment models as described in sections \ref{sec:si_model} and \ref{sec:sir_model}.
-Before we formulate models for the spread of epidemic diseases, we have to differentiate between conceptional models and realistic disease models.
+Before we formulate models for the spread of epidemic diseases, we have to differentiate between \emph{conceptional} models and \emph{realistic} disease models.
 While the former class is used to provide conceptual results such as the computation of thresholds or testing theories \citep{Hethcote:2000}, realistic disease models use as many aspects as possible to provide a forecast of a particular spreading process.
 Realistic disease models can be very complex and are beyond the scope of this work, thus we focus on the use of conceptional models.
 In the following section we briefly report some properties of basic epidemic models following the lecture notes of \citeauthor{Chasnov:2010} \citep{Chasnov:2010}.

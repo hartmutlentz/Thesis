@@ -1,11 +1,32 @@
 %\part{Setting the frame}
 
 \chapter{Introduction}
-Livestock epidemics are a major economic issue.
+%
+\paragraph{Models for epidemics\color{Cayenne}{.}}
+The understanding and prediction of the spread of infectious diseases are important issues in modern societies.
+In human medicine, an important goal is the control of severe diseases such as AIDS.
+On the other hand, a reduction of economic loss by harmless diseases, such as common cold or flu, is important for political economy.
+In the field of agriculture, livestock epidemics are a major economic issue.
+A prominent example is food and mouth disease, which caused tremendous economic losses in the UK in 2001 \citep{Kitching:2005dd}.
 
-%\section{Epidemics}
+In the context of understanding the principles behind epidemic spreading processes, i.e. the way how a disease is transmitted through a population, \emph{conceptional} models are used.
+They make use of simple assumptions for the local (person-to-person) dynamics and focus on the big picture of the process.
+Conceptual models are very similar to models in theoretical physics, because they focus on the very essence of the problem (here: the macroscopic view, spreading patterns).
+However, they have to neglect many details of the real problem (here: physiology, symptoms, individual behavior, infection pathways and many more!) in order to have mathematically feasible models.
+Another important issue of epidemiology is the \emph{forecast} of epidemic spreading processes.
+Forecast models incorporate as much information as possible and the main focus is not an understanding of the basic principles.
 
+%\subsection{Development of mathematical epidemiology}
+Major contributions to the modern theoretical framework were provided by \citep{kermack:27}, \citep{bailey:57} and \citep{andersonmay:92}.
+In his review about the mathematics of infectious diseases Hethcote reports a model for smallpox was already formulated in 1760 by D. Bernoulli (see \citep{Hethcote:2000} and references therein).
+In the early 20th century, people developed mathematical models for epidemics: a discrete time model in 1906 \citep{Hamer} and a differential equation model in 1911 \citep{Ross}.
+The epidemic threshold (section \ref{sec:sir_model}) was found in the 1920s \citep{kermack:27}.
+Starting from Bailey's book \citep{bailey:57} in the 1950s, the modeling of infectious diseases became a major scientific research field.
+Modern models of infectious diseases include vaccination, demographic structure, disease vectors, quarantine and even game theory (\citep{Bauch:2004} and references in \citep{Hethcote:2000}).
+The availability of contact data in recent years led to a strong impact on network analysis on epidemiology.
+Well known concepts of mathematics (graph theory \citep{Bollobas:1985}) and social sciences (social network analysis \citep{WassermanFaust}) have been adopted to disease modeling, since the connections between individuals are related to their epidemic spreading potential \citep{Keeling:2005}.
 
+\paragraph{Complex networks as spreading substrates\color{Cayenne}{.}}
 %\section{Complex networks}
 Data of gigantic scale have emerged by the proliferation of computerized data acquisition and storage volumes in recent years.
 A significant portion of this data describes interactions between elements in a system.

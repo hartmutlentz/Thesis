@@ -60,12 +60,12 @@
     authorsurname={Lentz}, % surname
     authorsuffix={}, % e.g. Ph.D.
     authoradd={10/23/1980, Siegen}, % date and place of birth
-    doctitle={Epidemic Paths in Static and Temporal Networks}, % title of the thesis
+    doctitle={Paths of Epidemics in Static and Temporal Networks}, % title of the thesis
     %docsubtitle={for one euro}, % subtitle of the thesis
     % docsubject={Analysis of complex networks}, % subject of the thesis (used in the properties of the pdf-document)
     approvala={Prof. Dr. Sokolov}, % approvals: a-e
     approvalb={Prof. Dr. Kurths},
-    approvalc={Prof. Dr. Thulke},
+    approvalc={Prof. Dr. Rubel},
     % approvald={},
     % approvale={},
     degree={Dr. Rer. Nat.}, % e.g. Dr. Rer. Nat.
@@ -74,10 +74,10 @@
     university={Humboldt-Universität zu Berlin}, % e.g. Humboldt-Universit\"at zu Berlin
     dean={Prof. Stefan Hecht PhD}, % dean of the faculty
     president={Prof. Dr. Jan-Hendrik Olbertz}, % president of the university
-    % datesubmitted={}, % the date of the submission
-    % dateexam={}, % the date of your last exam
-    % keywordsen={complex network, temporal network, epidemiology}, % english keywords comma separated
-    % keywordsde={Komplexes Netzwerk, zeitabhängiges Netzwerk, Epidemiologie} % german keywords comma separated
+    datesubmitted={..........}, % the date of the submission
+    dateexam={..........}, % the date of your last exam
+    keywordsen={Complex Network, Epidemiology, Temporal Network }, % english keywords comma separated
+    keywordsde={Komplexes Netzwerk, Epidemiologie, zeitabhängiges Netzwerk} % german keywords comma separated
 }
 
 % If you wish to load any further packages, 
@@ -102,9 +102,10 @@
 
 \selectlanguage{english}
     \frontmatter
-        %\maketitle
+        \maketitle
+        \cleardoublepage
         %\include{chapters/dedication}
-        %\include{chapters/abstract}
+        \include{chapters/abstract}
         \include{chapters/list_of_abbreviations}
         \tableofcontents    
     \mainmatter

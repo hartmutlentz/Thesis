@@ -18,7 +18,7 @@
 \begin{center}
 {\LARGE \textbf{\ifx\Hu@doctitle\empty\default{doctitle}\else\Hu@doctitle\fi}}
 
-\ifx\Hu@docsubtitle\empty\default{docsubtitle}\else\Hu@docsubtitle\fi
+%\ifx\Hu@docsubtitle\empty\default{docsubtitle}\else\Hu@docsubtitle\fi
 
 \so{DISSERTATION}
 
@@ -33,7 +33,10 @@ eingereicht an der\\
 \ifx\Hu@university\empty\default{university}\else\Hu@university\fi
 
 von\\
-\textbf{\ifx\Hu@authorprefix\empty\default{authorprefix}\else\Hu@authorprefix\fi\ \ifx\Hu@authorfirstname\empty\default{authorfirstname}\else\Hu@authorfirstname\fi\ \ifx\Hu@authorsurname\empty\default{authorsurname}\else\Hu@authorsurname\fi\ \ifx\Hu@authorsuffix\empty\default{authorsuffix}\else\Hu@authorsuffix\fi}\\
+\textbf{\ifx\Hu@authorprefix\empty\default{authorprefix}\else\Hu@authorprefix\fi\ \ifx\Hu@authorfirstname\empty\default{authorfirstname}\else\Hu@authorfirstname\fi\ \ifx\Hu@authorsurname\empty\default{authorsurname}\else\Hu@authorsurname\fi\ \ifx\Hu@authorsuffix\empty\default{%
+%authorsuffix
+}%
+\else\Hu@authorsuffix\fi}\\
 \ifx\Hu@authoradd\empty\default{authoradd}\else\Hu@authoradd\fi
 \end{center}
 
@@ -55,8 +58,8 @@ Gutachter:
 \end{tplist}
 
 \begin{exlist}
-  \item[eingereicht am:] \ifx\Hu@datesubmitted\empty\default{datesubmitted}\else\Hu@datesubmitted\fi % wenn nicht in der Prüfungsordnung, die Zeile bitte auskommentieren
-  \item[Tag der m\"undlichen Pr\"ufung:] \ifx\Hu@dateexam\empty\default{dateexam}\else\Hu@dateexam\fi
+  \item[\color{black}{eingereicht am:}] \ifx\Hu@datesubmitted\empty\default{datesubmitted}\else\Hu@datesubmitted\fi % wenn nicht in der PrŸfungsordnung, die Zeile bitte auskommentieren
+  \item[\color{black}{Tag der m\"undlichen Pr\"ufung:}] \ifx\Hu@dateexam\empty\default{dateexam}\else\Hu@dateexam\fi
 \end{exlist}
 
 \setlength{\parindent}{\parindentbak}
