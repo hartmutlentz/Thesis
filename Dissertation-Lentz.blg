@@ -16,45 +16,45 @@ Warning--empty journal in networkx:
 Warning--empty institution in PageRank:
 Warning--empty institution in sociopatterns.org
 Warning--empty institution in HI-Tier
-You've used 130 entries,
+You've used 147 entries,
             1935 wiz_defined-function locations,
-            1276 strings with 23350 characters,
-and the built_in function-call counts, 52281 in all, are:
-= -- 5147
-> -- 2096
-< -- 81
-+ -- 698
-- -- 697
-* -- 4617
-:= -- 9141
-add.period$ -- 393
-call.type$ -- 130
-change.case$ -- 990
-chr.to.int$ -- 129
-cite$ -- 135
-duplicate$ -- 1855
-empty$ -- 3697
-format.name$ -- 897
-if$ -- 10099
+            1381 strings with 26377 characters,
+and the built_in function-call counts, 60067 in all, are:
+= -- 5913
+> -- 2464
+< -- 92
++ -- 826
+- -- 825
+* -- 5302
+:= -- 10472
+add.period$ -- 445
+call.type$ -- 147
+change.case$ -- 1138
+chr.to.int$ -- 146
+cite$ -- 152
+duplicate$ -- 2130
+empty$ -- 4205
+format.name$ -- 1050
+if$ -- 11624
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 137
-newline$ -- 652
-num.names$ -- 392
-pop$ -- 752
+missing$ -- 155
+newline$ -- 737
+num.names$ -- 443
+pop$ -- 876
 preamble$ -- 1
-purify$ -- 996
+purify$ -- 1145
 quote$ -- 0
-skip$ -- 1404
+skip$ -- 1625
 stack$ -- 0
-substring$ -- 4082
-swap$ -- 164
-text.length$ -- 5
+substring$ -- 4649
+swap$ -- 215
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 756
+type$ -- 856
 warning$ -- 5
-while$ -- 448
+while$ -- 514
 width$ -- 0
-write$ -- 1683
+write$ -- 1904
 (There were 5 warnings)

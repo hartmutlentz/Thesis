@@ -10,6 +10,11 @@ Albert, R. and Barab{\'a}si, A.-L. (2002).
 \newblock {Statistical mechanics of complex networks}.
 \newblock {\em Rev. Mod. Phys.}, 74:47--97.
 
+\bibitem[Albert et~al., 1999]{Albert:1999uu}
+Albert, R., Jeong, H., and Barab{\'a}si, A.-L. (1999).
+\newblock {Diameter of the world-wide web}.
+\newblock {\em Nature}, 401(6749):130--131.
+
 \bibitem[Albert et~al., 2000]{Albert:2000}
 Albert, R., Jeong, H., and Barab{\'a}si, A.-L. (2000).
 \newblock {Error and attack tolerance of complex networks}.
@@ -79,6 +84,11 @@ Barrat, A., Barth{\'e}lemy, M., and Vespignani, A. (2008).
 \newblock {\em {Dynamical processes on complex networks}}.
 \newblock Cambridge University Press.
 
+\bibitem[Barrat et~al., 2013]{Barrat:2013da}
+Barrat, A., Fernandez, B., Lin, K.~K., and Young, L.-S. (2013).
+\newblock {Modeling Temporal Networks Using Random Itineraries}.
+\newblock {\em Phys. Rev. Lett.}, 110(15):158702.
+
 \bibitem[Barrat and Weigt, 2000]{Barrat:2000fj}
 Barrat, A. and Weigt, M. (2000).
 \newblock {On the properties of small-world network models}.
@@ -94,6 +104,13 @@ Belik, V., Geisel, T., and Brockmann, D. (2011).
 \newblock {Natural Human Mobility Patterns and Spatial Spread of Infectious
   Diseases}.
 \newblock {\em Phys. Rev. X}, 1(1).
+
+\bibitem[Bhadra and Ferreira, 2003]{Bhadra:2003uv}
+Bhadra, S. and Ferreira, A. (2003).
+\newblock {Complexity of connected components in evolving graphs and the
+  computation of multicast trees in dynamic networks}.
+\newblock In {\em Ad-Hoc, Mobile, and Wireless Networks}, pages 259--270.
+  Springer.
 
 \bibitem[Bianconi and Barab{\'a}si, 2001]{Bianconi:2001}
 Bianconi, G. and Barab{\'a}si, A.-L. (2001).
@@ -121,6 +138,14 @@ Bonacich, P. (1972).
 Bonacich, P. (2007).
 \newblock {Some unique properties of eigenvector centrality}.
 \newblock {\em Soc. Networks}, 29(4):555--564.
+
+\bibitem[Bos et~al., 2011]{Bos:2011kr}
+Bos, K.~I., Schuenemann, V.~J., Golding, G.~B., Burbano, H.~A., Waglechner, N.,
+  Coombes, B.~K., McPhee, J.~B., DeWitte, S.~N., Meyer, M., Schmedes, S., Wood,
+  J., Earn, D. J.~D., Herring, D.~A., Bauer, P., Poinar, H.~N., and Krause, J.
+  (2011).
+\newblock {A draft genome of Yersinia pestis from victims of the Black Death}.
+\newblock {\em Nature}, pages 1--6.
 
 \bibitem[Brandes, 2001]{Brandes:2001p2757}
 Brandes, U. (2001).
@@ -224,6 +249,18 @@ Dorogovtsev, S., Mendes, J., and Samukhin, A. (2001).
 \newblock {Giant strongly connected component of directed networks}.
 \newblock {\em Phys. Rev. E}, 64:025101(R).
 
+\bibitem[Dub{\'e} et~al., 2009]{Dube:2009gx}
+Dub{\'e}, C., Ribble, C., Kelton, D., and Mcnab, B. (2009).
+\newblock {A Review of Network Analysis Terminology and its Application to
+  Foot-and-Mouth Disease Modelling and Policy Development}.
+\newblock {\em Transbound. Emerg. Dis.}, 56(3):73--85.
+
+\bibitem[Egghe and Rousseau, 1990]{egghe90}
+Egghe, L. and Rousseau, R. (1990).
+\newblock {\em {Introduction to informetrics: Quantitative methods in library,
+  documentation and information science}}.
+\newblock Elsevier, Amsterdam.
+
 \bibitem[Erd{\H o}s and R{\'e}nyi, 1959]{ER:1959}
 Erd{\H o}s, P. and R{\'e}nyi, A. (1959).
 \newblock {On random graphs}.
@@ -305,8 +342,13 @@ Girvan, M. and Newman, M. E.~J. (2002).
 
 \bibitem[Good et~al., 2010]{Good2010}
 Good, B.~H., de~Montjoye, Y.-A., and Clauset, A. (2010).
-\newblock {The Performance of modularity maximization in practical contexts}.
-\newblock {\em Phys. Rev. E}, 81(4):046106.
+\newblock {Performance of modularity maximization in practical contexts}.
+\newblock {\em Phys. Rev. E}, 81:046106.
+
+\bibitem[Granovetter, 1973]{Granovetter:1973wj}
+Granovetter, M.~S. (1973).
+\newblock {The strength of weak ties}.
+\newblock {\em Am. J. Sociol.}, pages 1360--1380.
 
 \bibitem[Grassberger, 1983]{Grassberger1983157}
 Grassberger, P. (1983).
@@ -468,6 +510,12 @@ Konschake, M., Lentz, H. H.~K., Conraths, F.~J., H{\"o}vel, P., and Selhorst,
 \newblock {On the Robustness of In- and Out-Components in a Temporal Network}.
 \newblock {\em PLoS ONE}, 8(2):e55223.
 
+\bibitem[Kovanen et~al., 2011]{Kovanen:2011bs}
+Kovanen, L., Karsai, M., Kaski, K., Kert{\'e}sz, J., and Saram{\"a}ki, J.
+  (2011).
+\newblock {Temporal motifs in time-dependent networks}.
+\newblock {\em J. Stat. Mech.: Theory Exp.}, 2011(11):P11005.
+
 \bibitem[Krapivsky and Redner, 2001]{Krapivsky:2001bg}
 Krapivsky, P. and Redner, S. (2001).
 \newblock {Organization of growing random networks}.
@@ -508,6 +556,17 @@ Liljeros, F., Edling, C., Amaral, L. A.~N., and Stanley, H.~E. (2001).
 \newblock {The web of human sexual contacts}.
 \newblock {\em Nature}, 411:907.
 
+\bibitem[Mackiewicz and Ratajczak, 1996]{mackewitz}
+Mackiewicz, A. and Ratajczak, W. (1996).
+\newblock {Towards a new definition of topological accessibility}.
+\newblock {\em Transpn. Res.-B}, {30}({1}):{47--79}.
+
+\bibitem[Martinez, 1991]{Martinez:1991wv}
+Martinez, N.~D. (1991).
+\newblock {Artifacts or attributes? Effects of resolution on the Little Rock
+  Lake food web}.
+\newblock {\em Ecological Monographs}, pages 367--392.
+
 \bibitem[Mart{\'\i}nez-L{\'o}pez et~al., 2011]{MartinezLopez:2011db}
 Mart{\'\i}nez-L{\'o}pez, B., Ivorra, B., Ramos, A.~M., and
   S{\'a}nchez-Vizca{\'\i}no, J.~M. (2011).
@@ -539,6 +598,13 @@ Merton, R.~K. (1968).
 Milgram, S. (1967).
 \newblock {The small world problem}.
 \newblock {\em Psychology today}, 2(1):60--67.
+
+\bibitem[Mucha et~al., 2010]{Mucha:2010}
+Mucha, P.~J., Richardson, T., Macon, K., Porter, M.~A., and Onnela, J.~P.
+  (2010).
+\newblock {Community Structure in Time-Dependent, Multiscale, and Multiplex
+  Networks}.
+\newblock {\em Science}, 328(5980):876--878.
 
 \bibitem[Newman, 2001]{Newman:2001p}
 Newman, M. E.~J. (2001).
@@ -649,6 +715,12 @@ Sander, L.~M., Warren, C.~P., Sokolov, I.~M., Simon, C., and Koopman, J.
 \newblock {Percolation on heterogeneous networks as a model for epidemics}.
 \newblock {\em Math. Biosci.}, 180:293--305.
 
+\bibitem[Schneider et~al., 2013]{Schneider:2013uc}
+Schneider, C.~M., Belik, V., Couronn{\'e}, T., Smoreda, Z., and Gonz{\'a}lez,
+  M. (2013).
+\newblock {Unraveling Daily Human Mobility Motifs}.
+\newblock {\em J. R. Soc. Interface}, xx:1--9.
+
 \bibitem[Sen et~al., 2003]{indian_railway}
 Sen, P., Dasgupta, S., Chatterjee, A., Sreeram, P.~A., Mukherjee, G., and
   Manna, S.~S. (2003).
@@ -681,11 +753,27 @@ Sudarshan~Iyengar, S.~R., Veni~Madhavan, C.~E., Zweig, K.~A., and Natarajan, A.
 \newblock {Understanding Human Navigation Using Network Analysis}.
 \newblock {\em Topics in Cognitive Science}, 4(1):121--134.
 
+\bibitem[Tang et~al., 2010]{Tang:2010dn}
+Tang, J., Scellato, S., Musolesi, M., Mascolo, C., and Latora, V. (2010).
+\newblock {Small-world behavior in time-varying graphs}.
+\newblock {\em Phys. Rev. E}, 81(5).
+
+\bibitem[Vernon and Keeling, 2009]{Vernon:2009p5068}
+Vernon, M.~C. and Keeling, M.~J. (2009).
+\newblock {Representing the UK's cattle herd as static and dynamic networks}.
+\newblock {\em Proc. R. Soc. B}, 276:469--476.
+
 \bibitem[Visser et~al., 2003]{Visser:2003p784}
 Visser, R., Smith, A., Rissel, C., and Richters, J. (2003).
 \newblock {Sex in Australia: Heterosexual experience and recent heterosexual
   encounters among a representative \ldots}.
 \newblock {\em Aust. N Z. J. Public Health}, 27(2):146--154.
+
+\bibitem[Vogel et~al., 2011]{Vogel:2011bb}
+Vogel, P., Greiser, T., and Mattfeld, D.~C. (2011).
+\newblock {Understanding Bike-Sharing Systems using Data Mining: Exploring
+  Activity Patterns}.
+\newblock {\em Procedia Soc. Behav. Sci.}, 20:514--523.
 
 \bibitem[von Mises and Pollaczek-Geiringer, 1929]{van_mises}
 von Mises, R. and Pollaczek-Geiringer, H. (1929).
@@ -707,10 +795,21 @@ Watts, D. and Strogatz, S. (1998).
 \newblock {Collective dynamics of small-world networks}.
 \newblock {\em Nature}, 393:440--442.
 
+\bibitem[Xuan et~al., 2003]{Xuan:2003ts}
+Xuan, B.~B., Ferreira, A., and Jarry, A. (2003).
+\newblock {Computing shortest, fastest, and foremost journeys in dynamic
+  networks}.
+\newblock {\em Internat. J. Found. Comput. Sci.}, 14(02):267--285.
+
 \bibitem[Yang and Leskovec, 2011]{Yang:2011}
 Yang, J. and Leskovec, J. (2011).
 \newblock {Patterns of temporal variation in online media}.
 \newblock In {\em Proceedings of the fourth ACM international conference on Web
   search and data mining}, pages 177--186, New York, NY, USA. ACM.
+
+\bibitem[Zachary, 1977]{Zachary:1977p5449}
+Zachary, W. (1977).
+\newblock {An information flow model for conflict and fission in small groups}.
+\newblock {\em Journal Anthropol. Res.}, 33(4):452--473.
 
 \end{thebibliography}

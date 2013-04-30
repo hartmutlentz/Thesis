@@ -3,78 +3,106 @@
 \chapter{Introduction}
 %
 \paragraph{Models for epidemics\color{Cayenne}{.}}
-The understanding and prediction of the spread of infectious diseases are important issues in modern societies.
-In human medicine, an important goal is the control of severe diseases such as AIDS.
-On the other hand, a reduction of economic loss by harmless diseases, such as common cold or flu, is important for political economy.
-In the field of agriculture, livestock epidemics are a major economic issue.
-A prominent example is food and mouth disease, which caused tremendous economic losses in the UK in 2001 \citep{Kitching:2005dd}.
+The understanding and prediction of the spread of infectious diseases has always been an important issue for societies.
+The probably most prominent example is the spread of black death in Europe, which eradicated half of the European population between 1347 and 1351 \citep{Bos:2011kr}.
+Although the course of this particular outbreak was rather uncomplicated from a present-day perspective, modeling the course of an infectious disease is in general a major challenge.
+Early attempts go back to the 18th century.
+In his review about the mathematics of infectious diseases, Hethcote reports a model for smallpox was already formulated in 1760 by D. Bernoulli (see \citep{Hethcote:2000} and references therein).
 
-In the context of understanding the principles behind epidemic spreading processes, i.e. the way how a disease is transmitted through a population, \emph{conceptional} models are used.
-They make use of simple assumptions for the local (person-to-person) dynamics and focus on the big picture of the process.
-Conceptual models are very similar to models in theoretical physics, because they focus on the very essence of the problem (here: the macroscopic view, spreading patterns).
-However, they have to neglect many details of the real problem (here: physiology, symptoms, individual behavior, infection pathways and many more!) in order to have mathematically feasible models.
-Another important issue of epidemiology is the \emph{forecast} of epidemic spreading processes.
-Forecast models incorporate as much information as possible and the main focus is not an understanding of the basic principles.
-
-%\subsection{Development of mathematical epidemiology}
-Major contributions to the modern theoretical framework were provided by \citep{kermack:27}, \citep{bailey:57} and \citep{andersonmay:92}.
-In his review about the mathematics of infectious diseases Hethcote reports a model for smallpox was already formulated in 1760 by D. Bernoulli (see \citep{Hethcote:2000} and references therein).
 In the early 20th century, people developed mathematical models for epidemics: a discrete time model in 1906 \citep{Hamer} and a differential equation model in 1911 \citep{Ross}.
-The epidemic threshold (section \ref{sec:sir_model}) was found in the 1920s \citep{kermack:27}.
+Major contributions to the modern theoretical framework were provided by \citep{kermack:27}, \citep{bailey:57} and \citep{andersonmay:92}.
+In particular, \citeauthor{kermack:27} found the existence of an epidemic threshold in the 1920s \citep{kermack:27}.
 Starting from Bailey's book \citep{bailey:57} in the 1950s, the modeling of infectious diseases became a major scientific research field.
-Modern models of infectious diseases include vaccination, demographic structure, disease vectors, quarantine and even game theory (\citep{Bauch:2004} and references in \citep{Hethcote:2000}).
+Modern models of infectious diseases include vaccination, demographic structure, disease vectors, quarantine and even game theory (see \citep{Bauch:2004} and references in \citep{Hethcote:2000}).
 The availability of contact data in recent years led to a strong impact on network analysis on epidemiology.
-Well known concepts of mathematics (graph theory \citep{Bollobas:1985}) and social sciences (social network analysis \citep{WassermanFaust}) have been adopted to disease modeling, since the connections between individuals are related to their epidemic spreading potential \citep{Keeling:2005}.
+Well known concepts of mathematics, such as graph theory \citep{Bollobas:1985}, and social sciences, such as social network analysis \citep{WassermanFaust}, have been adopted to disease modeling, since the connections between individuals are related to their epidemic spreading potential \citep{Keeling:2005}.
+
+Besides infectious diseases of humans, livestock epidemics are a major economic issue in the field of agriculture.
+A prominent example is food and mouth disease, which caused tremendous economic losses in the UK in 2001 \citep{Kitching:2005dd}.
+As a matter of fact, many methods from human epidemiology have been adopted to animal diseases.
+Since large amounts of data of livestock movements have been collected in Europe after the BSE crisis in 2001, network models reflecting these movement have gained particular attention in recent years \citep{Dube:2009gx,Green:2006,Kao:2007,Konschake:2013js,Lentz:2011,MartinezLopez2009,Christley:2005,Bigras:2007}.
+
+Epidemic models can be divided into two classes: \emph{forecast} models and \emph{conceptual} models. 
+Forecast models incorporate as much information as possible and the main focus is not an understanding of the basic principles.
+Conceptual models are used in the context of understanding the principles behind epidemic spreading processes, i.e. the way how a disease is transmitted through a population.
+They make use of simple assumptions for the local dynamics and focus on a macroscopic picture of the process.
+Conceptual models are very similar to models in theoretical physics, because they focus on the very essence of the problem.
+However, they have to neglect many details of the real problem -- like physiology, symptoms, individual behavior, infection pathways and many more! -- in order to have mathematically feasible models.
+
+In this work, we use conceptional models in combination with different network topologies in order to obtain insights into the impact of certain network properties on the course of a disease outbreak.
 
 \paragraph{Complex networks as spreading substrates\color{Cayenne}{.}}
-%\section{Complex networks}
-Data of gigantic scale have emerged by the proliferation of computerized data acquisition and storage volumes in recent years.
-A significant portion of this data describes interactions between elements in a system.
-Depending on the particular system, both the interactions and the elements themselves can have various meanings.
-Thus, for example the structure of the world wide web can be described by links between web pages, or a biological system by the food transport between individual species.
-The availability of data describing such systems has facilitated the emergence of modern network science.
-Network science is concerned in the broadest sense with the development, description and development of complex networks, no matter what the network structure describes in particular.
-Due to its applicability to many different systems, network science is an inherently interdisciplinary field.
-Interdisciplinarity is not least important, because subject-specific meta-information is needed for the validation of a specific result.
+Network analysis has become an essential element of epidemiology, where networks models interactions between the individuals of a population.
+Except from epidemiological substrates, networks can be anything that has actors (nodes) that are connected by links (edges).
+Modern network science is concerned in the broadest sense with the development, description and development of complex networks, no matter what the network structure describes in particular.
+Reviews on network science are provided in \citet{Newman2003,RevModPhys.74}.
 
-Network science makes use of tools and methods known from \emph{graph theory}.
-The elements of a network are called nodes and the interactions are links between the nodes.   
-The mathematical roots of graph theory originally go back to L. Euler \citep{euler:1736}.
-In 1735, Euler solved the so-called Kšnigsberg bridge problem: the city of Kšnigsberg was divided by a river into four quarters, which were connected by 7 bridges.
-Is it now possible to cross each of the bridges exactly once in a closed walk?
-Euler reduced quarters to nodes and bridges to edges of a network such that the edges connect the nodes.
-He was able to show that there is no closed path that uses each bridge exactly once.
-He also has the given the conditions that must be met for the existence of such a closed path in any network.
-%%
+The mathematical roots of network science go back to \emph{graph theory} developed by \citeauthor{euler:1736}.
+In the 18th century, \citeauthor{euler:1736} solved the so-called Kšnigsberg bridge problem by showing that there is no closed path in any network, when at least one node has an odd degree \citep{euler:1736}.
+Since detailed information about most networks was not available until the end of the 20th century, research focused on the study of random networks.
+In 1959, \citeauthor{ER:1959} studied the properties of dense random networks and later analyzed the percolation properties of these systems \citep{ER:1960,ER:1961}.
 
-Beyond the tools and methods of graph theory, the origin of modern network science goes back to psychology.
-More specifically, the analysis of \emph{social networks} raised a lot of questions about the roles of particular individuals in these systems.
-In fact, many of the measures of network theory have been defined in the psychological literature decades ago.
+Beyond the tools and methods of graph theory, the origin of modern network science goes back to \emph{sociology}.
+More specifically, the analysis of social networks raised a lot of questions about the roles of particular individuals in these systems.
+In fact, many of the measures used in modern network science have been defined in the psychological literature decades ago \citep{Milgram:1967,Merton:1968fh,Granovetter:1973wj,Zachary:1977p5449,Freeman,WassermanFaust}.
 
+In recent years, data of gigantic scale have emerged by the proliferation of computerized data acquisition and storage volumes.
+These data can be used in order to gain a deeper insight into many networked systems such as the trade of livestock animals between farms \citep{Euro-Lex} or the structure of the world wide web \citep{Albert:1999uu,Barabasi99}.
+Other prominent examples are food webs \citep{Martinez:1991wv}, citation networks \citep{egghe90}, power grids \citep{Watts:1998} or mobile phone call networks \citep{Schneider:2013uc}.
 
+The analysis of real-world networks lead to the formulation of network models other than the purely random allocation of edges as done for random graphs.
+It was found that many real-world networks show a high degree of clustering.
+This fact was first reported in \citep{Milgram:1967} and finally incorporated into in the small-world model \citep{Watts:1998}.
+Additionally, the observations of many network datasets showed that many networks are scale free, i.e. their degree distribution can be approximated by power laws \citep{Albert:1999uu,Newman2003}.
+The existence of these power laws can be explained using a preferential attachment model for the formation of the network \citep{Barabasi99}.
+It has been shown that scale-free networks are particularly vulnerable to targeted attacks \citep{Albert:2000} and the epidemic threshold vanishes in these systems \citep{Pastor-Satorras_vespi:2001}.
 
-A review on networks is found in \citet{Newman2003}.
-Analyses of livestock trade networks are in \citet{Christley:2005}
-\citet{Bigras:2007}\citet{Green:2006}.
+The very essence of the spread of infectious diseases on networks is to determine the \emph{paths} that a spreading process can unfold on.
+The distribution of paths between the nodes of a network is closely related to its percolation properties.
+In fact, percolation is inherently related to the epidemic threshold \citep{Sander20031,Sander2002293}.
+Although undirected networks show a relatively simple percolation behavior, it is known that the percolating cluster in \emph{directed} networks is generally comprised of other complex substructures \citep{Dorogovtsev:2001jd}.
+Similar to the network components, the concept of modules was introduced by \citeauthor{Newman06062006}.
+Modules allow for a statistically small number of paths between each other \citep{Newman06062006}.
+These structures have been observed in a number of networks \citep{Clauset_greedy,Fortunanto2010,Lentz:2011}.
+The impact of modular structure on disease spread has been analyzed for social networks in \citep{Salathe:2010p6333}.
 
-The interplay between aggregation window and spreading potential was analyzed in \citet{Bajardi:2012}.
+Nevertheless, the impact of directionality and modular structure has not been analyzed systematically yet for systems as livestock trade networks.
+There remain the following unanswered questions:
+\begin{itemize}
+\item how does the direction of edges affect epidemics?
+\item how does a modular structure affect epidemics in a livestock trade network?
+\end{itemize}
+We address these questions in chapter~\ref{chap:static}.
 
-In principle, networks can be recognized in many systems including a matrix model, i.e. any kind of interaction between elements.
-However, the focus of this work and of other works reported here lies in the topological complexity of the systems.
-Therefore, the term \emph{complex network} is frequently used in the literature in order to make a distinction between systems with sophisticated topological features and systems showing a simple topology, such as lattices.
+Although network analysis in the sense above provides a powerful tool for the understanding and forecast of epidemics, it neglects the fact that most networks are not static systems.
+As a matter of fact, the edges of many networks show heavy fluctuations over time.
+Therefore, the analysis of \emph{temporal networks} has attracted significant attention during the last years.
+Reviews about temporal networks can be found in \citep{Casteights_review,Holme_review}.
+Due to temporal appearance of edges, the non-causality of paths gives rise to ubiquitous problems in temporal network analysis \citep{Casteights_review,Nicosia:2012hz}.
 
+For this reason, the majority of contributions to temporal network analysis uses data-driven approaches.
+Extensive data driven analyses of livestock trade networks of different European countries are found in \citep{Bajardi:2011iv,Konschake:2013js,Vernon:2009p5068}.
 
-Network science is capable of analyzing large scale systems.
-Prominent examples are the internet or the world wide web.
-Figure~\ref{fig:opte} shows a visualization of the internet on the physical level.
-Note that the world wide web names the links between web pages, while the internet is the network of physical (or wireless) connections between routers.
-\begin{figure}[htb]
-\begin{center}
-\includegraphics{opte.png}
-\caption{Figure from opte.}
-\label{fig:opte}
-\end{center}
-\end{figure}
+The analysis of a temporal human sexual contact network is found in \citep{Rocha_pnas,Rocha_plosbc}.
+Algorithms for the computation of shortest paths in temporal networks are provided in \citep{Xuan:2003ts}.
+Temporal distances between nodes in a communication network and an air transportation network were determined in  \citep{Pan:2011dga}.
+\citeauthor{Pan:2011dga} also defined a temporal closeness.
+An algorithmic detection of modules in temporal networks was reported in \citep{Mucha:2010}.
+Data mining methods have also been used in order to provide different node classes according to a similarity of temporal degree patterns \citep{Vogel:2011bb}.
 
-This work has an explicit focus on \emph{paths} being a very essential property of networks.
+On the other hand, there have been few approaches to provide a graph centric, formal view on temporal networks.
+The complexity of finding connected components in temporal networks is found in \citep{Bhadra:2003uv,Nicosia:2012hz}.
+Adjacency matrices of network snapshots are used in \citep{Grindrod:2011fg} in order to give a temporal formulation of Katz centrality.
+The clustering coefficient known from static small world networks has been generalized using correlations between different network snapshots in \citep{Tang:2010dn}.
+Random walk models can be used in order to generate random models of temporal networks with temporal burst behavior \citep{Barrat:2013da}.
+
+What is still missing concerning temporal network analysis is a closed mathematical formalism that captures the causality of paths in temporal networks. 
+Central questions in this context are
+\begin{itemize}
+\item how can causal paths be computed using adjacency matrices?
+\item what is the distribution of shortest path durations?
+\item how can the causal goodness of the static approximation of a temporal network be quantified?
+%\item how can the degree of temporal and topological randomness in temporal networks be measured?
+\end{itemize}
+
 
