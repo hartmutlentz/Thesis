@@ -35,7 +35,7 @@
 \usepackage[
     inputenc=applemac, % default - latin1
     %fontset=palatino, % other possible parameters: lmodern, times, palatino
-    natbib={round,authoryear}, %include to use the natbib-package
+    natbib={round,authoryear}, %include to use the natbib-package % sort sortiert nach Name
     % jurabib={}, %include to use the jurabib-package
     % apacite={}, %include to use the apacite-package
     hints=true, % set to 'false' for submission
@@ -106,7 +106,7 @@
         \cleardoublepage
         %\include{chapters/dedication}
         \include{chapters/abstract}
-        \include{chapters/list_of_abbreviations}
+        %\include{chapters/list_of_abbreviations}
         \tableofcontents    
     \mainmatter
         % Part 1
@@ -122,6 +122,7 @@
     %\backmatter
         \appendix
         \include{chapters/Part4-app/Appendix}
+        \include{chapters/list_of_abbreviations}
         \nocite{*}                
 		% See the documentation or under
 		% http://edoc.hu-berlin.de/e_autoren/latex/bedingung.php

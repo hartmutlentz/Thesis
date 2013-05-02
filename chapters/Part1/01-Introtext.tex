@@ -20,7 +20,7 @@ Well known concepts of mathematics, such as graph theory \citep{Bollobas:1985}, 
 Besides infectious diseases of humans, livestock epidemics are a major economic issue in the field of agriculture.
 A prominent example is food and mouth disease, which caused tremendous economic losses in the UK in 2001 \citep{Kitching:2005dd}.
 As a matter of fact, many methods from human epidemiology have been adopted to animal diseases.
-Since large amounts of data of livestock movements have been collected in Europe after the BSE crisis in 2001, network models reflecting these movement have gained particular attention in recent years \citep{Dube:2009gx,Green:2006,Kao:2007,Konschake:2013js,Lentz:2011,MartinezLopez2009,Christley:2005,Bigras:2007}.
+Since large amounts of data of livestock movements have been collected in Europe after the BSE crisis in 2001, network models reflecting these movement have gained particular attention in recent years \citep{Christley:2005,Green:2006,Kao:2007,Bigras:2007,Dube:2009gx,MartinezLopez2009,Lentz:2011,Konschake:2013js}.
 
 Epidemic models can be divided into two classes: \emph{forecast} models and \emph{conceptual} models. 
 Forecast models incorporate as much information as possible and the main focus is not an understanding of the basic principles.
@@ -59,7 +59,7 @@ It has been shown that scale-free networks are particularly vulnerable to target
 
 The very essence of the spread of infectious diseases on networks is to determine the \emph{paths} that a spreading process can unfold on.
 The distribution of paths between the nodes of a network is closely related to its percolation properties.
-In fact, percolation is inherently related to the epidemic threshold \citep{Sander20031,Sander2002293}.
+In fact, percolation is inherently related to the epidemic threshold \citep{Sander2002293,Sander20031}.
 Although undirected networks show a relatively simple percolation behavior, it is known that the percolating cluster in \emph{directed} networks is generally comprised of other complex substructures \citep{Dorogovtsev:2001jd}.
 Similar to the network components, the concept of modules was introduced by \citeauthor{Newman06062006}.
 Modules allow for a statistically small number of paths between each other \citep{Newman06062006}.
@@ -72,29 +72,28 @@ There remain the following unanswered questions:
 \item how does the direction of edges affect epidemics?
 \item how does a modular structure affect epidemics in a livestock trade network?
 \end{itemize}
-We address these questions in chapter~\ref{chap:static}.
+We address these questions in chapter~\ref{chap:static}, where we derive a model for infection dynamics on a network of meta populations connected by trade edges.
 
 Although network analysis in the sense above provides a powerful tool for the understanding and forecast of epidemics, it neglects the fact that most networks are not static systems.
 As a matter of fact, the edges of many networks show heavy fluctuations over time.
 Therefore, the analysis of \emph{temporal networks} has attracted significant attention during the last years.
 Reviews about temporal networks can be found in \citep{Casteights_review,Holme_review}.
-Due to temporal appearance of edges, the non-causality of paths gives rise to ubiquitous problems in temporal network analysis \citep{Casteights_review,Nicosia:2012hz}.
+Due to the fluctuating appearance of edges, the non-causality of paths results in ubiquitous problems in temporal network analysis \citep{Casteights_review,Nicosia:2012hz}.
 
 For this reason, the majority of contributions to temporal network analysis uses data-driven approaches.
-Extensive data driven analyses of livestock trade networks of different European countries are found in \citep{Bajardi:2011iv,Konschake:2013js,Vernon:2009p5068}.
+Extensive data driven analyses of livestock trade networks of different European countries were done in \citep{Vernon:2009p5068,Bajardi:2011iv,Konschake:2013js}.
 
 The analysis of a temporal human sexual contact network is found in \citep{Rocha_pnas,Rocha_plosbc}.
 Algorithms for the computation of shortest paths in temporal networks are provided in \citep{Xuan:2003ts}.
-Temporal distances between nodes in a communication network and an air transportation network were determined in  \citep{Pan:2011dga}.
-\citeauthor{Pan:2011dga} also defined a temporal closeness.
+Temporal distances between nodes in a communication network and an air transportation network were determined in  \citep{Pan:2011dga}, where the authors also defined a temporal closeness.
 An algorithmic detection of modules in temporal networks was reported in \citep{Mucha:2010}.
 Data mining methods have also been used in order to provide different node classes according to a similarity of temporal degree patterns \citep{Vogel:2011bb}.
 
-On the other hand, there have been few approaches to provide a graph centric, formal view on temporal networks.
-The complexity of finding connected components in temporal networks is found in \citep{Bhadra:2003uv,Nicosia:2012hz}.
-Adjacency matrices of network snapshots are used in \citep{Grindrod:2011fg} in order to give a temporal formulation of Katz centrality.
+Beyond data driven approaches, there have been few approaches to provide a graph centric, formal view on temporal networks.
+The complexity of finding connected components in temporal networks is discussed in \citep{Bhadra:2003uv,Nicosia:2012hz}.
+Adjacency matrices of network snapshots are used in \citep{Grindrod:2011fg} in order to obtain a temporal formulation of the Katz centrality.
 The clustering coefficient known from static small world networks has been generalized using correlations between different network snapshots in \citep{Tang:2010dn}.
-Random walk models can be used in order to generate random models of temporal networks with temporal burst behavior \citep{Barrat:2013da}.
+Finally, random walk models have been successfully used in order to generate random temporal networks with temporal bursty behavior \citep{Barrat:2013da}.
 
 What is still missing concerning temporal network analysis is a closed mathematical formalism that captures the causality of paths in temporal networks. 
 Central questions in this context are
@@ -104,5 +103,5 @@ Central questions in this context are
 \item how can the causal goodness of the static approximation of a temporal network be quantified?
 %\item how can the degree of temporal and topological randomness in temporal networks be measured?
 \end{itemize}
-
+We address these questions in chapter~\ref{sec:temporal_networks}, where we introduce the novel method of unfolding accessibility for temporal networks.
 

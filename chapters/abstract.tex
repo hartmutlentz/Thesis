@@ -1,34 +1,33 @@
 \selectlanguage{english}
 \begin{abstract}
-The outbreak pattern of any infectious disease is limited by the topology of the underlying substrate.
-Since several years, detailed information about various examples of such substrates in the form of complex networks are available.
-This information describes for instance interpersonal contact structures (social networks), the travel behavior of people (mobility) or animals (migration) or the externally controlled, industrial transfer of livestock (livestock trade).
-Networks are described by nodes (actors), which are connected via edges (links).
-Although the nature of the above networks may be very different, it has been found that many networks share similar properties.
-In this work, the influence of some of these properties is analyzed in the context of the spread of infectious diseases.
-As a case study, the network of German pork trade is examined in detail.
-The findings are generalized to other networks where possible.
+The objective of this thesis is to examine the role of paths for the spread of infectious diseases on networks.
+We demonstrate the importance of paths in the context of epidemiology for the case of static networks and then carry over the approach to temporal networks.
+As a central result, we introduce the unfolding accessibility method for temporal networks in order to analyze the path structure of these systems.
 
-Any epidemic follows paths in the network.
-Therefore, the course of an outbreak is always bounded by the placing of paths.
-The severity of paths and their lengths is directly linked to the connected components of the network.
-A connected component is a sub-network, on which all nodes can reach each other.
-The components of a network can be considered as isolated from each other and thus form epidemiological islands.
-The livestock trade network shows a typical component distribution networks, which implies that the nodes form two risk classes.
-In addition to the components, other subnetworks can be found for the livestock trade network:
-So called modules are sub-networks that are internally densely connected and contain only few edges to other modules.
-Thus modules correspond to a less severe type of islands in the network.
-In this work the influence of components and modules on disease outbreaks is studied systematically.
-It turns out that the existence of a modular structure can cause a significant delay of a disease outbreak.
+Concerning the spread of infectious diseases on complex networks, detailed knowledge of the dynamical aspects of disease transmission is not known in most real-world scenarios.
+It turns out however that the pure topology of contact patterns is of major importance in this context.
+In contrast to the infection parameters of most diseases, the contact structures can be measured to great detail for a large number of real-world systems.
+Although these contact structures form complex networks, which exhibit a variety of properties in most examples, it turns out that the structure of paths in these systems defines the domain for any spreading process.
+On the one hand, the range (out-component) of a node defines an upper limit for the size of disease outbreaks.
+On the other hand, the path structure of the whole system can be mapped onto the accessibility (transitive closure) of the network.
 
-In the last part of the work, the concept of paths for time-dependent networks is studied.
-These are characterized by the fact that the edges fluctuate over time.
-Such behavior can not be described by means of classical network analysis.
-In particular, the causality of paths plays a crucial role here.
-As a major result of this work, a new method for the calculation of paths between all pairs of nodes should be emphasized.
-The method includes the step by step construction of paths and is therefore called unfolding accessibility.
-Using this method, we can detect characteristic time scales and quantify the goodness of a static approximation of the time-dependent system.
-Furthermore, the method can be used to compute the intensity of mixing in the network.
+In this thesis, we analyze the impact of two particular attributes of \emph{static} complex networks on the properties of their paths.
+As a case study, we analyze the properties of a livestock trade network in Germany in detail.
+Among other features, this network exhibits a giant component and a significant modular structure.
+We analyze the role of the giant component and the modular structure systematically.
+The main findings here are that first percolating networks are likely to show two disjoint risk classes for the nodes, and second that a modular structure causes a significant delay for disease outbreaks.
+
+Special emphasis should be placed on the methods introduced for the analysis of \emph{temporal} networks, i.e. systems where the occurrence of edges varies over time.
+These systems are particularly intractable due to the importance of causality on paths.
+We show a novel method to obtain the accessibility graph of a temporal network.
+We believe that the definition of accessibility of temporal networks contributes a key element for a theoretical framework for the macroscopic analysis of these systems, because it maps the whole causal path structure of the system onto a single mathematical object.
+Moreover, we introduce \emph{unfolding accessibility} as a novel formalism for the evaluation of shortest path durations in temporal networks.
+This approach is able to reveal characteristic timescales for the traversal of temporal networks.
+Knowledge of these timescales is of fundamental importance for the estimation of spreading times.
+
+In addition to the above, the accessibility graph of a temporal network can be compared to its aggregated, static counterpart.
+Using this concept, we define the novel measure of \emph{causal fidelity}, which quantifies the goodness of the static approximation of a temporal network from the causal point of view.
+
 \paragraph{Keywords\color{Cayenne}{:}} Complex Network, Epidemiology, Temporal Network 
 \end{abstract}
 
@@ -37,35 +36,8 @@ Furthermore, the method can be used to compute the intensity of mixing in the ne
 
 \selectlanguage{ngerman}
 \begin{abstract}
-Das Ausbruchsmuster jedes infektiösen Krankheitsausbruchs ist durch die Topologie des darunter liegenden Substrates beschränkt.
-Seit einigen Jahren sind detaillierte Informationen über verschiedenste Beispiele solche Substrate in Form von komplexen Netzwerken verfügbar.
-Diese beschreiben z.B. zwischenmenschliche Kontaktstrukturen (soziale Netzwerke), das Reiseverhalten von Menschen (Travel) bzw. Tieren (Migration) oder die extern gesteuerte, industrielle Verbringung von Nutztieren (Viehhandel).
-Netzwerke werden durch Knoten (Akteure) beschrieben, die über Kanten (Verbindungen) miteinander verbunden sind.
-Obwohl die Natur der oben genannten Netzwerke sehr verschieden sein kann, hat sich herausgestellt, dass viele Netzwerke ähnliche Eigenschaften teilen.
-In dieser Arbeit wird der Einfluss einiger dieser Eigenschaften auf die Ausbreitung von Infektionskrankheiten untersucht.
-Als Fallbeispiel wird das Netzwerk des deutschen Schweinehandels näher untersucht.
-An entsprechenden Stellen werden jedoch (wenn möglich) die gewonnenen Erkenntnisse verallgemeinert.
 
-Für die Verbreitung von Infektionskrankheiten ist der Pfad ein zentraler Begriff, weil die Verteilung der Pfade im Netzwerk den Verlauf eines Ausbruchs begrenzt.
-Die Ausprägung von Pfaden und deren Längen ist unmittelbar an die zusammenhängenden Komponenten des Netzwerks gekoppelt.
-Eine zusammenhängende Komponente ist ein Subnetzwerk, auf dem sich alle Knoten gegenseitig erreichen können.
-Verschiedene Komponenten eines Netzwerks können als isoliert voneinander betrachtet werden und bilden damit epidemiologische Inseln.
-Das Viehhandelsnetzwerk zeigt eine für Netzwerke typische Komponentenverteilung, die dazu führt, dass die Knoten zwei Risikoklassen bilden.
-Neben den Komponenten werden für das Viehhandelsnetzwerk auch andere Subnetzwerke bestimmt:
-Sog. Module sind Subnetzwerke, die intern stark vernetzt sind und nur wenige Kanten zu anderen Modulen enthalten.
-Damit entsprechen Module einer weniger strengen Art von Inseln im Netzwerk.
-In dieser Arbeit wird der Einfluss von Komponenten und Modulen auf Krankheitsausbrüche systematisch untersucht.
-Es stellt sich heraus, dass die Existenz einer modularen Struktur zu einer signifikanten Verlangsamung eines Krankheitsausbruchs führen kann.
-
-Im letzten Teil der Arbeit das Konzept der Pfade für zeitabhängige Netzwerke untersucht.
-Diese zeichnen sich dadurch aus, dass die Kanten über die Zeit fluktuieren.
-Ein solches Verhalten kann nicht mit den Mitteln der klassischen Netzwerkanalyse beschrieben werden.
-Insbesondere spielt die Kausalität von Pfaden hier eine entscheidende Rolle.
-Als besonderes Ergebnis dieser Arbeit ist eine neue Methode für die Berechnung der Pfade zwischen allen Knotenpaaren im Netzwerk hervorzuheben.
-Die Methode berücksichtigt die Schrittweise Konstruktion von Pfaden und wird deshalb als heißt Pfadentfaltung (unfolding accessibility) bezeichnet.
-Mit Hilfe dieser Methode lassen sich charakteristische Zeitskalen detektieren und die Güte einer statischen Approximation des zeitabhängigen Systems berechnen.
-Ferner kann die Methode benutzt werden, um die Ausprägung bestimmter Mischungseigenschaften im Netzwerk messbar zu machen.
-\vspace{-0.2cm}
+%\vspace{-0.2cm}
 %\vfill
 %\noindent \textbf{Schlagwörter}\color{Cayenne}{:} Netzwerk, Epidemiologie, zeitabhängiges Netzwerk
 \paragraph{Schlagwörter\color{Cayenne}{:}} Netzwerk, Epidemiologie, zeitabhängiges Netzwerk 
