@@ -101,7 +101,12 @@ Implementations of graph structures as discussed above are for example available
 \paragraph{Hard problems\color{Cayenne}{.}}
 Although the libraries introduced above provide a huge and efficient toolbox for network analysis, there are still network problems, where no efficient algorithm is known for their exact solution.
 In the language of complexity theory, the time to solve these problems scales with the problem size in non-polynomial time.
-Problems of this kind can typically be solved exactly only for small system sizes.
+There are two important complexity classes of problems in computational complexity theory.
+First, the class of NP-complete (NP stands for Non-deterministic Polynomial-time) problems, and second, the class of NP-hard problems.
+All problems mentioned in this thesis have been proven to be NP-complete in our context.
+For most practical questions, a distinction between the two classes is irrelevant, however.
+It is rather important to recognize intractable graph theoretical problems.
+NP complete problems can typically be solved exactly only for small system sizes.
 
 Probably the most popular example is the \emph{traveling salesman problem}: a salesman has to traverse a set of cities and thereby choose the order of those cities that minimizes the total distance.
 For small problem sizes, it is possible just to try out all possible combinations and find the minimal total distance.
@@ -111,6 +116,18 @@ In other words, if the problem could be solved for 20 cities in 1 second, it wou
 A more exhaustive overview about hard problems is in \citep{algorithm_design} and the references therein.
 Generally, heuristic methods have to be used in order to get an approximate solution.
 It should be noted that the \emph{maximum clique} problem (see section \ref{sec:PRL}) and \emph{graph partitioning} (see section \ref{sec:network_analysis}, equation \eqref{eq:modularity}) belong to the class of hard problems \citep{brandes2007}.
+
+\section{Centrality in the static livestock trade network}\label{sec:centrality_hit}
+In this section, we compute the centrality measures introduced in Section~\ref{sec:micro_measures} and compare them with the degree.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics{static_centrality_pvm.pdf}
+\caption{default}
+\label{fig:centrality_pvm}
+\end{center}
+\end{figure}
+
 
 \section{Subgraphs and maximum modularity}\label{sec:maximum_modularity_subgraphs}
 We derive an estimation of the maximum modularity value depending on the number of modules in the network.
@@ -254,13 +271,12 @@ The figure demonstrates that equation \eqref{eq:q_max} gives a good approximatio
 %
 \begin{SCfigure}
 \includegraphics{Q_max.pdf}
-\caption{Equation \eqref{eq:q_max} (grey dashed line) is in good agreement with numerical simulations (red circles).
+\caption{Equation \eqref{eq:q_max} (grey dashed line) reproduces the values from numerical simulations (red circles).
 In the simulations, modules are dense, directed subgraphs ($p_\mathrm{in}=0.5$) with $32$ nodes each.
 Modules are connected on a ring so that the resulting graph is connected.
 }
 \label{fig:q_max}
 \end{SCfigure}
-
 
 \paragraph{Finite systems\color{Cayenne}{.}}
 In finite systems, we get a minimum fraction of inter-module edges, when modules are connected to each other on a ring, each module having two nearest neighbors.

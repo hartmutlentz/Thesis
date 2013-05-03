@@ -739,7 +739,7 @@ More general, the time span $\tau $ could correspond to a production time in val
 
 On the whole, we have to include \emph{all} possible higher order products into the computation of the accessibility matrix.
 It turns out that this is equivalent to adding a memory into the system, i.e. the ability of each node to keep edge information over time.
-This can be done using selfloops so that we add an identity matrix $\mat{I}$ to each matrix in the sequence $\mathcal{A}$.
+This can be done using self-loop so that we add an identity matrix $\mat{I}$ to each matrix in the sequence $\mathcal{A}$.
 Then the unnormalized accessibility matrix of a temporal networks reads
 %
 \begin{align*}
@@ -760,10 +760,10 @@ The higher order products always respect the temporal correct order of snapshots
 Analogue to section~\ref{sec:unfolding_static}, we define the accessibility graph to path \emph{duration} $n$ as $\mathcal{G}_n ^*$.
 It should be noted that in general the ``real'' accessibility graph of a temporal network is given by $\mathcal{G}_\infty ^*$, since the observation time is limited and might not capture the real timescale of a system.
 Also some systems could be periodic, i.e. $\mathcal{A}_{t+T}=\mathbf{A}_{t}$, but this can not be assumed in the general case.
-Since the upper limit of time is predefined by the dataset under consideretion, we consider the fully unfolded accessibility graph as $\mathcal{G}^* = \mathcal{G}_T ^*$.
+Since the upper limit of time is predefined by the dataset under consideration, we consider the fully unfolded accessibility graph as $\mathcal{G}^* = \mathcal{G}_T ^*$.
 Using equation \eqref{eq:temporal_accessibility}, we can now unfold accessibility just like for the case of a static network reported in section \ref{sec:unfolding_static}.
 
-Before doing so, we have to point out that the identity matrix $\mathbf{I}$ on the righthand side of equation \eqref{eq:temporal_accessibility} is an artifact of the introduced memory.
+Before doing so, we have to point out that the identity matrix $\mathbf{I}$ on the right-hand side of equation \eqref{eq:temporal_accessibility} is an artifact of the introduced memory.
 This does not make a huge difference for undirected networks, as we have discussed for the static case in section \ref{sec:unfolding_static}.
 A similar argument can be used in the temporal case, since there is always a path from a node back to itself after 2 contacts at different time steps.
 In directed networks, the identity matrix could indeed cause discrepancy from the real accessibility matrix.
@@ -1091,7 +1091,7 @@ The result is shown in figure~\ref{fig:113_random}.
 As the figure demonstrated, time reversal (TR) and randomizing edges (RE) do not significantly change the behavior of the path density.
 The small effect of the RE model implies that the system is already (topologically) well mixed.
 Also the time reversal invariance can be attributed to the strong mixing and the high activity of the system.
-Note that both models preserve the plateaus caused by nighttimes.
+Note that both models preserve the plateaus caused by night-times.
 
 Removing temporal correlations has a similar effect for the GST, LST and RT model.
 All three models show a steep increase of the path density and within only a few hours the maximum path density is reached.
