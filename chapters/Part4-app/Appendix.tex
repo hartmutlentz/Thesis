@@ -16,48 +16,47 @@
 \chapter{Appendix}
 
 \section{Network implementation}\label{sec:implementation}
-In order to efficiently implement networks and their analysis on a computer, it is necessary to use data structures adjusted to these problems.
+In order to efficiently implement networks and their analysis on a computer, it is necessary to use appropriate data structures.
 A short and transparent introduction to data structures and algorithms is in the book of \citeauthor{algorithm_design} \citep{algorithm_design}.
-In this section, we discuss some essential data structures appropriate for network analysis and give a brief description of fundamental algorithms.
-The purpose of this section is not to list different algorithms and source code, but rather to sketch the basic ideas behind the data structures and algorithms.
+In this section, we review some essential data structures appropriate for network analysis and give a brief description of fundamental algorithms.
+The purpose of this section is to sketch the basic ideas behind the data structures and algorithms rather than to list algorithms and source code.
 For source code of data structures and algorithms, the reader is encouraged to the lecture of \citep{algorithm_design} and \citep{Merali:2010ih}.
 
 \paragraph{Matrix implementation\color{Cayenne}{.}}
 To begin with, we consider the implementation of adjacency matrices as introduced in section \ref{sec:network_matrices}.
-Matrices can be seen as a \emph{graph centric view} on the network, since they map the whole network topology onto a single object.
+%Matrices can be seen as a \emph{graph centric view} on the network, since they map the whole network topology onto a single object.
 Adjacency matrices are by definition square matrices.
-Their entries are either $0$ or $1$, and can take any floating number value for weighted networks.
-In this work, we neglect negative edge weights.
+Their entries are either $0$ or $1$.
+In weighted networks, their entries can take any positive value.
 The number of nodes in most complex network datasets is relatively large. 
-Starting with small networks (100 nodes, conference contacts \citep{isella2011}), complex networks can be gigantic (0.5 billion nodes, twitter tweeds \citep{Yang:2011}).
-Note that the size of the adjacency matrices scales with the square of the networks size, hence large networks intractable for straightforward computer-based matrix analyses.
+Starting with small networks (100 nodes, conference contacts \citep{isella2011}), complex networks can be gigantic ($\sim 10^9$ nodes in the case twitter tweeds \citep{Yang:2011} or the world wide web \citep{Albert:1999uu,Broder:2000ej})
+Note that the sizes of adjacency matrices scales with the square of the networks size, hence adjacency matrices of these networks are intractable for straightforward computer-based matrix analyses.
 
-Nevertheless, there is one feature, that most adjacency matrices of real-world networks have in common:
-they are \emph{sparse}, i.e. the vast majority of their entries are zeros\footnote{Typically, the number of edges in the network is of the same order as the number of nodes.}.
+Nevertheless, it is a common feature of many real-world networks that they are sparse, i.e. the vast majority of their entries are zeros\footnote{Typically, the number of edges in the network is of the same order as the number of nodes.}.
 Since zeros do not contribute to matrix operations as products or additions, it is reasonable to use data structures ignoring zeros.
 These data structures are called \verb"sparse matrices".
 Their advantages is (1) they save much memory and (2) computations are faster, because operations with zeros involved are not executed.
 Sparse matrix data structures are available in most modern computer languages (e.g. Matlab, Python: \verb"scipy" library, C/C++: \verb"boost" library).
-They perform well for all problems based on adjacency matrices, e.g. degree or eigenvector centrality.
+They perform well for problems based on adjacency matrices as the computation of the degree or eigenvector centrality.
 However, matrix methods are not suitable for the computation of many other network measures, such as betweenness, closeness or network navigation.
 
 \paragraph{Graph implementation\color{Cayenne}{.}}
-The weakness of matrix representations of networks is that it is rather complicated to \emph{traverse} a network using matrices.
-A traversal is a procedure like: start at a node, visit all of its neighbors, from each neighbor visit its neighbor and so forth, until there are no more new nodes to traverse.
+The drawback of matrix representations of networks is that it is rather complicated to \emph{traverse} a network using matrices.
+A traversal is a procedure of the following form: start at a node, visit all of its neighbors, from each neighbor visit its neighbor and so forth, until there are no more new nodes to traverse.
 This is a searching process.
-These processes are used in many implementations of graph theoretic methods.
+Network traversal is used in many implementations of graph theoretic methods.
 
-An alternative implementation to the adjacency matrix is the \verb"adjacency list".
-It stores the neighbors of every node and is implemented in terms of a linked list.
-Adjacency lists can be considered as a \emph{node centric view} on the network, since they capture the horizon/neighborhood of each node.
-Using the example network of \ref{fig:simple_digraph}, we get the following adjacency list:
+As an alternative implementation of the adjacency matrix the \verb"adjacency list" is a well suited data structure for network traversal.
+It stores the neighbors of every node and can be implemented as linked lists.
+Adjacency lists can be considered as a node centric view on the network, since they allow for a fast access to the neighborhood of each node.
+Considering the example network on the left panel of Figure~\ref{fig:dfs_bfs}, the corresponding adjacency list is as follows:
 \begin{align*}
 1 &\rightarrow 2,3 \\
 2 &\rightarrow 4 \\
 3 &\rightarrow 2 \\
 4 &\rightarrow 2,3 .
 \end{align*}
-In order to traverse the graph starting at node $1$, we can choose any of the neighbors of $1$ and repeat the process until we have traversed all nodes.
+In order to traverse the graph starting at node $1$, we choose one of the neighbors of $1$ and repeat the process until we have traversed all nodes.
 One possible traversal starting at $1$ would be $1\rightarrow 3 \rightarrow 2 \rightarrow 4$.
 
 During a traversal process, one can decide to either exploit the whole neighborhood of a node first and then traverse the next generation or choose a neighbor of every traversed node at every step.
@@ -67,23 +66,23 @@ Figure \ref{fig:dfs_bfs} shows resulting search trees of the two methods.
 Starting at node $1$, the traversal $1\rightarrow 3 \rightarrow 2 \rightarrow 4$ would be found using a DFS-search, while a BFS-search would yield $1\rightarrow 2 \rightarrow 3 \rightarrow 4$.
 It should be noted that in general there exist multiple BFS and DFS trees for each starting node. 
 %
-\begin{figure}[htbp]
+\begin{figure}[htb]
 \begin{center}
 \includegraphics{DFS-BFS.pdf}
-\caption{Breadth-first-search and depth-first-search trees in the directed network of fig.~\ref{fig:simple_digraph}. Searches are started at node $1$.}
+\caption{Breadth-first-search and depth-first-search trees in a directed network. Search processes are started at node $1$.}
 \label{fig:dfs_bfs}
 \end{center}
 \end{figure}
 
-Both search algorithms are used in many applications.
+Both search algorithms are used in a large number of algorithmic applications.
 BFS is efficient to compute shortest paths in unweighted networks.
 With every generation in a BFS tree, the distance from the starting node is incremented by 1, and thus the set of nodes with a certain distance from the starting node can be directly read from the BFS tree (see figure \ref{fig:dfs_bfs}).
 Shortest paths in weighted networks can be identified using a the algorithm of Dijkstra \citep{Dijkstra:1959}.
-DFS can be used to identify connected components in directed graphs (see next section).
+Connected components in directed graphs can be efficiently identified using closed DFS paths \citep{algorithm_design}.
 
-Due to the sparsity of typical adjacency matrices, networks can be efficiently stored as \verb"edge lists".
+Due to the sparsity of typical adjacency matrices, networks can also be efficiently stored as \verb"edge lists".
 An edge list is a list of tuples, where each tuple $(u,v)$ is an edge connecting nodes $u$ and $v$.
-The edge list of example \ref{fig:simple_digraph} would be
+The edge list of the network shows in Figure~\ref{fig:dfs_bfs} is
 \begin{align*}
 &(1,2)\\
 &(1,3)\\
@@ -92,14 +91,14 @@ The edge list of example \ref{fig:simple_digraph} would be
 &(4,2)\\
 &(4,3) .
 \end{align*}
-Due to their human readable structure, edge lists are a very convenient format to store networks as column wise text files.
-Edge lists correspond to an \emph{edge centric view} on a network.
-They can be efficiently used for edge randomization and random graph generation.
+Due to their human readable structure, edge lists are a convenient format to store networks as column wise text files.
+Edge lists can also be efficiently used for edge randomization and random graph generation.
 
-Implementations of graph structures as discussed above are for example available in the libraries \verb"networkx" (Python), \verb"igraph" (C, Python, R), \verb"Lemon" and \verb"Boost" (C++).
+Implementations of the graph structures discussed above are for example available in the libraries \verb"networkx" (Python), \verb"igraph" (C, Python, R), \verb"Lemon" and \verb"Boost" (C++).
 
 \paragraph{Hard problems\color{Cayenne}{.}}
-Although the libraries introduced above provide a huge and efficient toolbox for network analysis, there are still network problems, where no efficient algorithm is known for their exact solution.
+The tools introduced above provide a huge and efficient toolbox for network analysis.
+Nevertheless, there are still network problems, where no efficient algorithm is known for their exact solution.
 In the language of complexity theory, the time to solve these problems scales with the problem size in non-polynomial time.
 There are two important complexity classes of problems in computational complexity theory.
 First, the class of NP-complete (NP stands for Non-deterministic Polynomial-time) problems, and second, the class of NP-hard problems.
@@ -109,7 +108,7 @@ It is rather important to recognize intractable graph theoretical problems.
 NP complete problems can typically be solved exactly only for small system sizes.
 
 Probably the most popular example is the \emph{traveling salesman problem}: a salesman has to traverse a set of cities and thereby choose the order of those cities that minimizes the total distance.
-For small problem sizes, it is possible just to try out all possible combinations and find the minimal total distance.
+For small problem sizes, it is possible simply to try out all possible combinations and find the minimal total distance (brute-force search).
 The number of possible combinations, however, grows factorial with the system size, i.e. finding a solution takes $t\propto n!$ for $n$ cities.
 In other words, if the problem could be solved for 20 cities in 1 second, it would take 21 seconds to solve it for 21 cities, 7 minutes for 22 cities and 3 million years for 30 cities!
 
@@ -117,24 +116,34 @@ A more exhaustive overview about hard problems is in \citep{algorithm_design} an
 Generally, heuristic methods have to be used in order to get an approximate solution.
 It should be noted that the \emph{maximum clique} problem (see section \ref{sec:PRL}) and \emph{graph partitioning} (see section \ref{sec:network_analysis}, equation \eqref{eq:modularity}) belong to the class of hard problems \citep{brandes2007}.
 
-\section{Centrality in the static livestock trade network}\label{sec:centrality_hit}
+\section{Degree vs. other centrality measures}\label{sec:centrality_hit}
 In this section, we compute the centrality measures introduced in Section~\ref{sec:micro_measures} and compare them with the degree.
-
+In particular, we compare the degree with betweenness, closeness and eigenvector centrality.
+Since the eigenvector centrality is defined only on connected networks, the analysis is restricted to the LSCC of the network.
+%
 \begin{figure}[htb]
 \begin{center}
 \includegraphics{static_centrality_pvm.pdf}
-\caption{default}
+\caption{Correlation between the degree and other centrality measures for the livestock trade network.
+The left panel shows the closeness centrality $C_C$, eigenvector centrality $C_E$ and betweenness centrality $C_B$ vs. the in-degree.
+The respective picture for the out-degree is shown on the right.
+Dashed lines show power-law fits of the data.
+Only nodes with in/out-degree greater than 10 are shown.}
 \label{fig:centrality_pvm}
 \end{center}
 \end{figure}
-
+%
+Figure~\ref{fig:centrality_pvm} shows different centrality measures for the network being compared with the degree.
+Each point represents one node, and the dashed lines show power-law fits of the scatter plots, respectively.
+The figure demonstrates that all considered centrality measures show a correlation with the the degree.
 
 \section{Subgraphs and maximum modularity}\label{sec:maximum_modularity_subgraphs}
-We derive an estimation of the maximum modularity value depending on the number of modules in the network.
-The results are derived for a clique of modules, but remain the same for a ring of modules as it is reasonable in finite systems (see below).
-In addition, the estimation is also valid for directed networks (see below).
+Although computer generated modular networks are used in many applications, the author is not aware of any systematic analysis of the maximum value of modularity depending on the number of modules.
+Therefore, we derive an estimation of the maximum modularity value depending on the number of modules in the network.
+The results are derived for a clique of modules, but remain unchanged for a ring of modules as this distinction is reasonable in finite systems.
+In addition, the estimation is also valid for directed networks.
 
-The modularity of a network can be computed using the equation
+The modularity of a network with given modular structure can be computed using the equation
 \begin{equation}\label{eq:mod_undir}
 Q=\sum _i \left( e_{ii}-a_i^2 \right),
 \end{equation}
@@ -149,7 +158,7 @@ If a network consists of two modules $x$ and $y$, the fraction of edges in $y$ i
 y=c-x,
 \end{equation}
 where the constant $c<1$ is the fraction of all inner module edges.
-In general, it is $c=\mathrm{Tr} (e)$.
+In general, this expression is $c=\mathrm{Tr} (e)$.
 
 \subsection{Two modules}
 In the case of two communities, the fraction of inter-module-edges is uniquely determined by the fraction of inner-module-edges.
@@ -215,7 +224,7 @@ We use the above expression for the non-diagonal elements $d$ and compute the ex
 \sum _j e_{ij} = e_{ii} + \sum _{j\neq i} e_{ij} = x_i + (n-1) \frac{1-c}{n(n-1)} = x_i + \frac{1-c}{n}.
 \end{equation}
 %
-Now we insert $\sum _j e_{ij}=x_i+\frac{1-c}{n}$ in equation \eqref{eq:modumatrix} and after some algebra we get the general expression for the modularity for networks of the form \eqref{eq:general_module_matrix}:
+Now we insert $\sum _j e_{ij}=x_i+\frac{1-c}{n}$ in equation \eqref{eq:modumatrix} and after some algebra we get a general expression for the modularity for networks of the form \eqref{eq:general_module_matrix}:
 \begin{equation}\label{eq:Qndim}
 Q=c-\sum _i x_i^2 - \frac{1-c^2}{n} = \sum _i x_i -\sum _i x_i^2 - \frac{1-(\sum _i x_i)^2}{n}.
 \end{equation}
@@ -231,7 +240,7 @@ Q_{\text{relevant}}\equiv Q_\text{r}= -\sum _{i=1}^n x_i^2&=-\sum _{i=1}^{n-1} x
 c-\sum _{i=1}^{n-1} x_i \right) ^2 }_{x_n^2} \label{eq:relevant_Q}\\
 &= -\sum _{i=1}^{n-1} x_i^2 - c^2 + 2c\sum _{i=1}^{n-1} x_i -\left( \sum _{i=1}^{n-1} x_i \right) ^2. \nonumber
 \end{align}
-Note that the sum on the r.h.s. runs to $n-1$.
+Note that the sum on the right-hand side is up to $n-1$.
 This effectively eliminates the last variable.
 The derivative of $Q$ is
 \begin{equation}
@@ -264,23 +273,11 @@ Thus, it follows for dense modules
 Q_\mathrm{max}= \lim _{c\rightarrow 1}Q=1-\frac{1}{n}.
 \end{equation}
 Consequently, the maximum value of $Q_\mathrm{max}$ is determined by the number of modules.
-The same result was found using probabilistic arguments in \citep{Good2010}.
-Figure \ref{fig:q_max} shows a comparison between equation \eqref{eq:q_max} and a computer simulation of a ring of modules where new modules are added to the system successively and the maximum modularity is computed. 
-The edge density of each module is given by the edge occupation probability $p_\mathrm{in}=0.5$.
-The figure demonstrates that equation \eqref{eq:q_max} gives a good approximation of the maximum value $Q_\mathrm{max}$ even for small systems.
-%
-\begin{SCfigure}
-\includegraphics{Q_max.pdf}
-\caption{Equation \eqref{eq:q_max} (grey dashed line) reproduces the values from numerical simulations (red circles).
-In the simulations, modules are dense, directed subgraphs ($p_\mathrm{in}=0.5$) with $32$ nodes each.
-Modules are connected on a ring so that the resulting graph is connected.
-}
-\label{fig:q_max}
-\end{SCfigure}
+A similar result was found using probabilistic arguments in \citep{Good2010}.
 
 \paragraph{Finite systems\color{Cayenne}{.}}
-In finite systems, we get a minimum fraction of inter-module edges, when modules are connected to each other on a ring, each module having two nearest neighbors.
-In this case we set  $e_{ij}= \frac{1}{n}(1-c)$ for $j=i+1$ and $j=i-1$ and all other elects are zero.
+In finite systems, the minimum fraction of inter-module edges is obtained, when modules are connected to each other on a ring, each module having two nearest neighbors.
+In this case we set  $e_{ij}= \frac{1}{n}(1-c)$ for $j=i+1$ and $j=i-1$ and all other elements are zero.
 This yields
 \begin{equation}\label{eq:ring_module_matrix}
 e_{ij}=\left(\begin{array}{cccccc}
@@ -298,7 +295,23 @@ Inserting this into equation \eqref{eq:modumatrix} gives a similar expression fo
 \begin{equation*}
 Q=c-\sum _i x_i^2 - \frac{4(1-c)}{n} .
 \end{equation*}
-Since the relevant part for maximum finding is the quadratic term as in \eqref{eq:relevant_Q}, the results remain unchanged for modules along a chain.
+Since the relevant part for maximum finding is the quadratic term as in \eqref{eq:relevant_Q}, the results remain unchanged for modules along a chain and the maximum value is as above
+\begin{equation}\label{eq:q_max2}
+Q_\mathrm{max}=1-\frac{1}{n}.
+\end{equation}
+
+Figure~\ref{fig:q_max} shows a comparison between equation \eqref{eq:q_max2} and a computer simulation of a ring of modules where new modules are added to the system successively and the maximum modularity is computed. 
+The edge density of each module is given by the edge occupation probability $p_\mathrm{in}=0.5$.
+The figure demonstrates that equation \eqref{eq:q_max} gives a good approximation of the maximum value $Q_\mathrm{max}$ even for small systems.
+%
+\begin{SCfigure}
+\includegraphics{Q_max.pdf}
+\caption{Equation \eqref{eq:q_max2} (grey dashed line) reproduces the values found by numerical simulations (red circles).
+In the simulations, modules are dense, directed subgraphs ($p_\mathrm{in}=0.5$) with $32$ nodes each.
+Modules are connected on a ring so that the resulting graph is connected.
+}
+\label{fig:q_max}
+\end{SCfigure}
 
 \paragraph{Directed networks\color{Cayenne}{.}}
 In analog to equation \eqref{eq:mod_undir} the modularity of directed networks can be written as \citep{Kao:2007}

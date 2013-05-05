@@ -2,16 +2,17 @@
 The previous chapter has demonstrated that network analysis provides a deep insight into the processes behind epidemic spreading.
 Given a sufficient amount of data, a contact network is capable to capture all possible infection pathways in the system.
 The potential of static network analysis lies in the huge toolbox of methods that has been developed in the last decades.
-As depicted in section \ref{sec:network_theory}, there exist coherent definitions for both their large scale topological features and local centrality measures allowing for node rankings.
+As depicted in Section~\ref{sec:network_theory}, there exist conclusive definitions for both their large scale topological features and local centrality measures allowing for node rankings.
 
-Nevertheless, the concept of static networks neglects temporal variations in the system, i.e. the edges of a particular network are not necessarily present all the time.
-This chapter addresses some of the conceptional problems owing to a sparse and heterogenous occurrence of edges in the network, the most central one being the \emph{causality of paths} in the network.
-Section \ref{sec:Plos} focusses on the computational analysis of the full temporal representation of the network analyzed (from the static perspective) in section \ref{sec:network_analysis}.
-In section \ref{sec:PRL}, we present a novel formalism mapping the causality of temporal networks onto a mathematical graph.
+Nevertheless, the concept of static networks neglects temporal variations in the system, i.e. the edges of a particular network are not necessarily present at all times.
+Networks showing a sparse and heterogenous temporal occurrence of edges are said to show \emph{bursty} behavior.
+This chapter addresses some of the conceptional problems owing to bursty links occurence, the most central one being the \emph{causality} of paths.
+Section~\ref{sec:Plos} focusses on the computational analysis of the full temporal representation of the network analyzed in Section~\ref{sec:network_analysis}.
+In Section~\ref{sec:PRL}, we present a novel formalism mapping the causality of temporal networks onto a mathematical graph.
 
 \section{Introduction}
 To begin with, we highlight the most fundamental difference between static and temporal networks.
-In particular, we compare the static and the temporal representation of the system.
+In particular, we compare the static to the temporal representation of the system.
 Figure~\ref{fig:temporal_network_principle} shows a temporal network and its aggregated graph.
 %
 \begin{figure}[htb]
@@ -26,16 +27,17 @@ Although there is a path from node $3$ to $4$ (and vice versa) in the aggregated
 \end{center}
 \end{figure}
 %
-Although the edges of the temporal network are present in the aggregated graph, the situation becomes more complex, if we consider paths of length greater than one.
-The aggregated graph (right panel in figure~\ref{fig:temporal_network_principle}) suggests that the network is connected, i.e. there is a path between every node pair.
+Although the edges of the temporal network are present also in the aggregated graph, the existence of paths of length greater than one is not as obvious.
+The aggregated graph (right panel in Figure~\ref{fig:temporal_network_principle}) suggests that the network is connected, i.e. there is a path between every node pair.
 As an example, there are two different paths from node $3$ to $4$ in the aggregated system.
-However, this does not hold for the temporal system.
+However, this does not hold for the temporal view of the system.
 Consequently, paths in an aggregated graph of a temporal network have to be treated with care.
 
-Before we give a formal definition of temporal networks, we have to distinguish between terms used for temporal networks and other systems.
+Before we give a formal definition of temporal networks, we briefly discuss the different terms used for temporal networks in the literature.
+Hereby, we have to distinguish between temporal networks in the sense above and other systems, which have a different focus.
 
 \paragraph{Disambiguation\color{Cayenne}{.}}
-Since the analysis of temporal networks is an interdisciplinary field, there is still no consistent designation for what the author refers to as \emph{temporal networks} \citep{Holme_review}.
+Since the analysis of temporal networks is an interdisciplinary field, there is still no consistent designation for what we refer to as \emph{temporal networks} \citep{Holme_review}.
 Different phrases, such as temporal graphs, dynamic graphs, dynamic networks are used in the literature.
 In addition to that, there are other classes of networks seeming to be related to temporal networks, i.e. adaptive networks, growing networks, evolving graphs.
 The analysis of the latter has a strong focus on network growth, i.e. the process behind the evolution of static networks.
@@ -48,12 +50,13 @@ Furthermore, the systems under consideration are not mathematical graphs; theref
 
 \subsection{Formal definition}
 A temporal network $\mathcal{G}=(V,\mathcal{E},T)$ consists of a set of nodes $V$ and a set of edges $\mathcal{E}$, where each edge in $\mathcal{E}$ is given by a triple $(u,v,t)$ and connects nodes $u$ and $v$ at time $t\in T$.
-$T$ is the observation period of $\mathcal{G}$, where $T\subset \mathbb{N}^+$ for time discrete systems and $T\subset \mathbb{R}^+$ for continuous systems.
-\footnote{
-In this work, we focus on time discrete systems, since a continuous time process can be approximated by a discrete one by choosing an appropriately small increment.
+$T$ is the observation period of $\mathcal{G}$, where $T\subset \mathbb{N}^+$ for time discrete systems and $T\subset \mathbb{R}^+$ for continuous systems%
+\footnote{%
+In this thesis, we focus on time discrete systems, since a continuous time process can be approximated by a discrete one by choosing an appropriately small increment.
 Furthermore, edge weights and a latency functions for edge traversal could be added to the definition \citep{Casteights_review}.
 This is, however, beyond the scope of this thesis.
-}
+}.
+Using discrete time steps, a temporal network can be represented as a sequence of static snapshots, i.e. $\mathcal{G}=G_1,\dots ,G_T$.
 The aggregated graph $G=(V,E)$ of a temporal network simply ignores the occurrence times of the edges in $\mathcal{E}$ and the set of nodes $V$ is the same in both representations.
 %
 In analogy to static networks, we denote the \emph{transitive closure} of $\mathcal{G}=(V,\mathcal{E},T)$ by $\mathcal{G}^*=(V,\mathcal{E}^*,T)$, where $\mathcal{E}^*$ contains an edge $(u,v,t)$, wherever there is a causal path from node $u$ to $v$ arriving at time $t$ and having started at some time $t_0<t$.
@@ -70,73 +73,74 @@ A brief report of different implementations of static networks is given in Appen
 Besides the adjacency matrix, edge lists and adjacency lists are appropriate network representations.
 Considering a temporal network as a sequence of static networks (called snapshots or graphlets) can be seen as a \emph{graph centric} view on the system.
 It is the analogue of the adjacency matrix in static networks.
-More formally, a temporal network $\mathcal{G}$ is represented by a sequence of adjacency matrices
+More formally, a temporal network $\mathcal{G}$ can be represented by a sequence of adjacency matrices
 \begin{equation}\label{eq:AdMatrixSequence}
 \mathcal{A}=\mat{A}_1,\dots ,\mat{A}_T,
 \end{equation}
 where $T$ is the observation time and the increment is the temporal resolution.
 
-In analogy to the edge lists of static networks (see Appendix \ref{sec:implementation}), an \emph{edge centric} view on a temporal network consists of the occurrence times of the edges.
+In analogy to the edge lists of static networks (see Appendix \ref{sec:implementation}), an \emph{edge centric} view on a temporal network is represented by an edge set respecting the occurrence times of the edges.
 Let $\mathcal{G}=(V,\mathcal{E})$ be a temporal network.
 Than the set of edges $\mathcal{E}$ is represented by a sequence of triples
 \begin{equation*}%\label{eq:temporal_edges}
 \mathcal{E}=(u_1,v_1,t_1),(u_1,v_1,t_2),(u_2,v_2,t_2),\dots \;.
 \end{equation*}
-An edge centric view focusses on the occurrence times of each edge, i.e.
+Alternatively the set of edges can be expressed in the form
 \[
-\mathcal{I}((u_1,v_1))=t_1,t_2,\dots \; .
+\mathcal{I}((u_1,v_1))=t_1,t_2,\dots \; ,
 \]
-This point of view is particularly convenient for the time randomization of temporal networks (see section \ref{sec:randomized_models_tvg}).
+where $\mathcal{I}$ is called edge presence function.
+This point of view is particularly convenient for the time randomization of temporal networks that we will use in Section~\ref{sec:randomized_models_tvg}.
+
 Finally, a \emph{node centric} view of a temporal network considers the neighborhood $\mathcal{N}$ of a node $v$ over time, i.e. $\mathcal{N}(v,t)$.
-This view corresponds to the adjacency list of a static network (see Appendix \ref{sec:implementation}).
+This view is the counterpart of the adjacency list in static networks (see Appendix \ref{sec:implementation}).
 The temporal degree of each node immediately follows from $d(v,t)=\abs{\mathcal{N}(v,t)}$.
 The edge centric and node centric network view is considered as a microscopic perspective, while the graph centric view provides a macroscopic perspective.
 
-We make use of microscopic perspective implicitly in computer implementations as in section \ref{sec:Plos}.
-Furthermore, we focus on the graph centric view \eqref{eq:AdMatrixSequence} in section \ref{sec:PRL} to analyze macroscopic path structures in temporal networks.
+We make use of microscopic perspective implicitly in computer implementations as in Section~\ref{sec:Plos}.
+Furthermore, we focus on the graph centric view \eqref{eq:AdMatrixSequence} in Section~\ref{sec:PRL} to analyze macroscopic path structures in temporal networks.
 
 \subsection{Paths in temporal networks}\label{sec:paths_in_temporal_networks}
-A causal sequence of edges between two nodes $u$ and $v$ in a temporal network is called (causal) path.
-It is given by a sequence of edges, i.e.
+A causal sequence of edges between two nodes in a temporal network is called (causal) path.
+A path between two nodes $u$ and $v$ starting at node $u$ at time $t_1$ is given by a sequence of edges, i.e.
 \[
-\mathrm{path}(u,v,t)= \{ (u,x,t_1),(x,y,t_2),\dots ,(z,v,t_n) \}, 
+\mathrm{path}(u,v,t_1)= \{ (u,x,t_1),(x,y,t_2),\dots ,(z,v,t_n) \}, 
 \]
 where $ t_1<t_2<\dots <t_n$ and $x$, $y$ and $z$ are nodes on the path.
-It is interesting to note that paths in a temporal network are in general \emph{not transitive}.
+It is important to note that paths in a temporal network are in general \emph{not transitive}.
 Transitive means that the existence of a path from node $u$ to $v$ and a path from $v$ to $w$ implies that there is a path from $u$ to $w$, i.e.
 \begin{equation}\label{eq:def_transitive}
 (u\rightarrow v) \wedge (v\rightarrow w) \; \Longrightarrow \; (u\rightarrow w).
 \end{equation}
-This property is obviously satisfied for all static networks.
+This property is obviously satisfied in all static networks.
 In temporal networks, however, paths are in general not transitive, since a path from $u$ to $v$ could simply exist only at a later time than the path from $v$ to $w$, so that
 \begin{equation}\label{eq:def_not_transitive}
 (u\rightsquigarrow v) \wedge (v\rightsquigarrow w) \;\centernot \Longrightarrow \; (u\rightsquigarrow w)
 \end{equation}
 in general.
-The reasons why paths in temporal networks can not be easily represented by paths in static networks originate from property \eqref{eq:def_not_transitive}.
-In section \ref{sec:conceptual_problems} we briefly discuss some conceptual problems that arise from this circumstance.
-
+The reasons why paths in temporal networks can not be easily represented as paths in static networks originate from property \eqref{eq:def_not_transitive}.
+In Section~\ref{sec:conceptual_problems} we briefly discuss some conceptual problems that arise from this circumstance.
 
 \begin{SCfigure}
 \includegraphics{Shortest_foremost_fastest.pdf}
 \caption{Topological shortest distance and temporal shortest durations for a path between nodes $u$ and $v$.
-The shortest path (panel A) counts the number of edges between the nodes.
+The shortest path (Panel A) counts the number of edges between the nodes.
 Panel~B demonstrates that although the fastest path could take $t_3-t_2 < t_1-t_0$, the foremost path arrives already at $t_1<t_2$.
 }
 \label{fig:shortest_foremost_fastest}
 \end{SCfigure}
 %
 Note that possible paths between nodes depend on time in general.
-This has crucial implications on the \emph{shortest path distance} known from static networks (see section  \ref{sec:network_terminology}).
+This has crucial implications on the shortest path distance known from static networks (see section  \ref{sec:network_terminology}).
 As a matter of fact, there are three different shortest path types in temporal networks.
-Just like in the static case, the shortest path distance between two nodes measures the topological distance between the nodes.
+Just like in the static case, the \emph{shortest} path distance between two nodes measures the topological distance between the nodes.
 It counts the number of edges used do traverse the shortest path.
 In addition, the \emph{duration} of a path can be measured in temporal networks.
 This duration can be measured in two different time frames \citep{Casteights_review}:
 First, the \emph{fastest} path between two nodes is the path of shortest duration, no matter when the path starts in time.
 Second, the \emph{foremost} path between two nodes is the path that arrives earliest in a global time frame.
 
-Figure~\ref{fig:shortest_foremost_fastest} demonstrates the difference between the foremost, fastest and shortest path concept, respectively.
+Figure~\ref{fig:shortest_foremost_fastest} demonstrates the difference between the foremost, fastest and shortest path concepts, respectively.
 Edge labels are edge occurrence times, which are ordered so that $t_1<t_2<t_3<t_4<t_5$.
 The dashed edge $(x,y)$ indicates that these nodes are not connected directly, but by other nodes of the network.
 Panel A shows that the shortest topological path between nodes $u$ and $v$ is $(u,x,v)$ and the distance is $3$.
@@ -148,34 +152,33 @@ Throughout the rest of this work, we use a global time scale, which is defined b
 Consequently, we measure shortest path durations in terms of \emph{foremost} path durations, if not explicitly stated.
 
 \subsection{Conceptual problems in temporal networks}\label{sec:conceptual_problems}
-Before we focus on different methods to analyze temporal networks, we have to point out that many static network measures, such as centrality or components, are in general time-dependent and can not be summarized to single numbers.
-\citeauthor{Grindrod:2011fg} defined a time-independent centrality measure for temporal networks \citep{Grindrod:2011fg}. 
+Before we focus on different methods to analyze temporal networks, we have to point out that many static network measures, such as centrality or components, are in general time-dependent and can not be summarized to static measures.
+As an exception, \citeauthor{Grindrod:2011fg} defined a time-independent centrality measure for temporal networks \citep{Grindrod:2011fg}. 
 In addition, time-scales of node dynamics and network dynamics can be of the same order and cause significant interactions between the dynamics.
-We consider the relation between node dynamics and edge dynamics in section \ref{sec:Plos}.
+We consider the relation between node dynamics and edge dynamics in Section~\ref{sec:Plos}.
 
 The most essential difference between static and temporal networks lies in the importance of causality of paths in temporal networks.
-Although it is possible to analyze paths in temporal networks systematically (see section \ref{sec:PRL}) we have to stress that generalizing the concept of connected components is far more complex in temporal networks.
+Although it is possible to analyze paths in temporal networks systematically (see Section~\ref{sec:PRL}) we have to stress that generalizing the concept of connected components is far more complex in temporal networks as it is in the static case.
 \citeauthor{Nicosia:2012hz} point out that finding connected components in temporal networks is NP-complete in general \citep{Nicosia:2012hz}.
 In addition to that, the authors demonstrate that components in temporal networks can be \emph{degenerated}, i.e. there are multiple possible partitions of connected components and nodes can belong two multiple components at the same time.
 
-We take up this point at the end of section \ref{sec:PRL}.
-In order to get an impression about paths in temporal networks, we start with a pure data-analysis of a temporal network dataset. 
-
-
+We take up this point at the end of Section~\ref{sec:PRL}.
+In order to get an impression about the path structure in temporal networks, we start with a pure data-analysis of a temporal network dataset. 
 
 \section{Data driven network analysis}\label{sec:Plos}
-In this section we analyze the pig trade data set as introduced in section \ref{sec:network_analysis}, but we explicitly take into account temporal information%
+In this section we analyze the livestock trade data set as introduced in Section~\ref{sec:network_analysis}, but we explicitly take into account temporal information%
 \footnote{%
 In order to be congruent with the datasets used in the publications, we use the pig trade dataset of \citep{Konschake:2013js} in this chapter.
-This dataset differs slightly from the dataset used in section \ref{sec:network_analysis}.
+This dataset differs slightly from the static network dataset used in Section~\ref{sec:network_analysis}.
 It covers the period from 01 January 2008 to 31 December 2009.
 The results do not change qualitatively and hereby the results of \citep{Konschake:2013js} and \citep{Lentz:2013PRL} are comparable.}. %
-Each edge in the system is only present at certain days.
-Long waiting times between edge occurrences can be present in the system.
+%
+Each edge in the system is only present at certain days, i.e. the network can show bursty behavior and long waiting times between edge occurrences can be present in the system.
 
 As in the case of static networks, the concept of centrality plays an important role for risk assessment and the implementation of vaccination and surveillance strategies also in time-varying topologies.
-The maximum spreading potential of each node is given by its range as discussed for static networks in section \ref{sec:network_analysis}.
-In this section we analyze the out-component of the network nodes according to their constance over time.
+The maximum spreading potential of each node is given by its range as discussed for static networks in Section~\ref{sec:network_analysis}.
+In this section we analyze the ranges of the network nodes according to their constance over time.
+The results shown in this section are published in \citep{Konschake:2013js}.
 
 \subsection{Representative sample}\label{sec:representative_sample}
 Before we analyze the ranges of the nodes in the network, we estimate the time span needed to cover the temporal properties of the system.
@@ -188,7 +191,7 @@ In addition, there is a slight trend to a decrease of the number of nodes, which
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics{Plos_S2AB.pdf}
-\caption{\textbf{Panel A:} Daily activity of the network over two years.
+\caption{\textbf{Panel A:} Daily activity of the livestock trade network over two years.
 Original data is shown as points and solid lines are local regressions of the original data.\\
 \textbf{Panel B:} Time aggregation of the network for different aggregation windows.
 Dashed lines show the fractions of nodes/edges in the aggregated network.
@@ -198,26 +201,25 @@ Solid lines are local regressions of the aggregation rates.
 \end{center}
 \end{figure}
 
-Figure~\ref{fig:Plos_S1} B gives a picture of the convergence of the network during the aggregation process, i.e. summing up the snapshots of the temporal system to obtain the static network representation.
-The network is successively aggregated over more and more snapshots.
+Figure~\ref{fig:Plos_S1} B gives a picture about the convergence of the network during the aggregation process, i.e. summing up the snapshots of the temporal system step by step to obtain the static network representation.
 Dashed lines show the fractions of nodes and edges in the aggregated network, respectively.
 The solid lines show the respective aggregation rates.
-Since the latter are derivatives of the aggregation fractions, we do show a local regression of the aggregation rate to reduce noise in the signal.
+Since the latter are derivatives of the aggregation fractions, we show a local regression of the aggregation rate to reduce noise in the signal.
 
 The figure demonstrates that the aggregation rates for both nodes and edges becomes negligible after 1 year.
 Therefore, we can assess a period of 1 year sufficient to provide stationarity of the system, i.e. the time span, after which only few more edges are added to the network.
 
 \subsection{Simulated disease outbreaks}
 Node rankings are of major importance for epidemiology.
-We try to answer the question, if a constant ranking of node makes sense on a temporal network.
+We try to answer the question, if a constant ranking of node makes sense in this particular temporal network.
 As a generic measure for the spreading potential of a node, we consider its range.
-In analogy to section \ref{sec:network_analysis}, we define the range of a node in a temporal network as the size of its temporal out-component.
+In analogy to Section~\ref{sec:network_analysis}, we define the range of a node in a temporal network as the size of its temporal out-component.
 It is important to note that the out-component of each node depends on the time $t_0$, when it is measured.
 In addition to that, the range of a node can depend on the particular spreading process, e.g. an epidemic, a chemical reaction or rumor spread.
 More specifically, a spreading process can have a finite memory $d$ that shortens the ability of a node to maintain in a certain state over time.
 In our context, this memory corresponds to the \emph{infectious period} $d$ of a disease, i.e. the time period, after the infection dies out if it is not carried over to another agent.
-Computing the range combined with a finite infectious period mimics an SIR-type process, where the infectious period is related to the reciprocal recovery rate (see section \ref{sec:sir_model}).
-For clarity reasons we do not solve differential equations for epidemics in this section and reduce the infection dynamics to assigning a discrete infection state -- susceptible, infected or recovered -- to each node in the network (see section \ref{sec:epi_networks}).
+Computing the range combined with a finite infectious period mimics an SIR-type process, where the infectious period is related to the reciprocal recovery rate as discussed in Section~\ref{sec:sir_model}.
+For clarity reasons we do not solve differential equations for epidemics in this section and reduce the infection dynamics to assigning a discrete infection state -- susceptible, infected or recovered -- to each node in the network.
 An infected node remains infected over the infectious period $d$.
 Thus, the infection state of the whole network is given by the number of susceptible $S(t)$, infected $I(t)$ and recovered $R(t)$ nodes, respectively.
 
@@ -230,13 +232,13 @@ In summary, range and infectious period are intrinsically entangled on temporal 
 \end{equation}
 For the rest of this work, we therefore use the notion \emph{range} and \emph{outbreak size} synonymously.
 Although the temporal range should approach the static range for infinite memory, i.e. $r(v,d=\infty ) \rightarrow r(v)$, the static range of a node is in general not reached even in this case.
-This is caused by causality of paths in temporal networks as explained in figure~\ref{fig:temporal_network_principle}.
+This is caused by causality of paths in temporal networks as explained in Figure~\ref{fig:temporal_network_principle}.
 
 \subsubsection{Single outbreaks}
-We discuss the outbreak pattern caused by single outbreaks in this section, while we discuss the properties of the set of all possible outbreak scenarios in the next section.
+We address the outbreak pattern caused by single outbreaks in this section, while we discuss the properties of the set of all possible outbreak scenarios in the next section.
 In order to analyze node ranges in the pig trade network, we use a modified breadth-first-search algorithm (see Appendix \ref{sec:implementation} for a brief summary of search algorithms for static networks).
 Given a fixed infectious period, we mark a particular node $v$ to be infected at time $t_0$.
-For every time step in the interval $[t_0,t_0+d]$, we identify the neighborhood $\mathcal{N}(v,t)$ and mark all susceptible nodes in $\mathcal{N}(v,t)$ as infected.
+For every time step $t$ in the interval $[t_0,t_0+d]$, we identify the neighborhood $\mathcal{N}(v,t)$ and mark all susceptible nodes in $\mathcal{N}(v,t)$ as infected.
 Infected nodes are marked as removed after the infectious period $k$ and do not contribute to further infections.
 This procedure is repeated for all infected nodes as long as there are still infected nodes in the system.
 
@@ -252,21 +254,21 @@ The grey interval corresponds to the fixed infectious period $d=24$~days.
 Figure~\ref{fig:range_exemplary} shows the range of an exemplary node in the network for different infection times $t_0$.
 The infectious period is $d=24$ days.
 For most infection times the example node can infect about $6~\%$ of the network.
-The range distribution over time shows a similar bimodal pattern similar to the distribution over nodes for the static network in figure~\ref{fig:node_range}.
+The range distribution over time shows a similar bimodal pattern similar to the distribution over nodes for the static network in Figure~\ref{fig:node_range}.
 This provides evidence that there is an infection path from the exemplary node to a connected component in the network.
-It is important to stress that the concept of connected components does not translate to temporal networks in a straightforward manner (see section \ref{sec:conceptual_problems}).
+It is important to stress that the concept of connected components does not translate to temporal networks in a straightforward manner (see Section~\ref{sec:conceptual_problems}).
 Besides the bimodality itself, it remarkable that the majority of adjacent primary infection times cause outbreaks of similar size.
 
 This feature is can be explained, if we underline the temporal sparsity of edges, i.e. nodes are likely to have only few contacts within one infectious period.
 If the primarily infected node $v$ has no trade contact within the infectious period, the disease dies out.
 Even if the disease is transferred to a successor node $w$ at a time $t_1$ within the interval $[t_0,t_0+d]$, the disease dies out, if there is not further trade contact within the period $[t_1+d]$ and so forth.
-The regions of small/vanishing range in figure~\ref{fig:range_exemplary} correspond to these scenarios.
-On the other hand, if all successors of node $v$ have one or more trading contacts within their respective infectious periods, the disease can be transferred to a larger number of nodes.
-The majority of small variations in $t_0$ implies stable ranges in the order of $d$ (the infectious period is shown by the grey line in figure~\ref{fig:range_exemplary}).
-If the degree of $v$ or a successor node in the infection chain is even larger than 1, even more secondary outbreaks are triggered and manifest themselves in smaller range fluctuations as for the long range values in \ref{fig:range_exemplary}.
+The regions of small/vanishing range in Figure~\ref{fig:range_exemplary} correspond to these scenarios.
+On the other hand, if all successors of node $v$ have one or more trading contact within their respective infectious periods, the disease can be transferred to a larger number of nodes.
+The majority of small variations in $t_0$ implies stable ranges in the order of $d$ (the infectious period is shown by the grey line in Figure~\ref{fig:range_exemplary}).
+If the degree of $v$ or a successor node in the infection chain is even larger than 1, even more secondary outbreaks are triggered and manifest themselves in smaller range fluctuations as for the long range values in Figure~\ref{fig:range_exemplary}.
 
 We have seen in this section that a temporal degree of freedom adds a significant amount of complexity even to the outbreak pattern of a single node.
-Now we focus on the set of all outbreak scenarios, i.e. the set of all initial conditions and variations in the infectious period as a parameter.
+Now we focus on the set of \emph{all} outbreak scenarios, i.e. the set of all initial conditions and variations in the infectious period as a parameter.
 %
 \subsubsection{Set of outbreak scenarios}
 We apply the method discussed in the previous section to all nodes in the network.
@@ -308,8 +310,8 @@ ID & $t_0$  &$d$ &$r(v,d,t_0)$  \\
 \end{table}
 
 Considering static networks, every node can cause an epidemic, if it is connected to other nodes in the network.
-We have seen in the previous section that the time of primary infection has to be in an appropriate interval in temporal networks.
-In addition, this constraint depends on the infectious period, since a disease with high infectious period is more likely to spread over the network than a disease with low infectious period.
+We have seen in the previous section that in temporal networks the time of primary infection has to be in an appropriate interval.
+In addition, the range also depends on the infectious period, since a disease with high infectious period is more likely to spread over the network than a disease with low infectious period.
 We define the \emph{outbreak probability} $p_s(d)$ as the fraction of elements in $\mathcal{S}$ that causes a secondary outbreak at all, that is
 \begin{equation}\label{eq:outbreak_prob}
 p_s(k)=\frac{\abs{\left\{ x \subset \mathcal{S}: r(v,d,t_0) \in x >0, d=\mathrm{const.} \right\}}}{\abs{\mathcal{S}}} .
@@ -317,11 +319,11 @@ p_s(k)=\frac{\abs{\left\{ x \subset \mathcal{S}: r(v,d,t_0) \in x >0, d=\mathrm{
 Note that we compute the outbreak probability for each infectious period separately.
 
 Figure~\ref{fig:plosfig1} A shows the outbreak probability for different infectious periods.
-For comparison, the outbreak probability in the static network is shown as dashed.
-This is just the fraction of nodes with finite out degree and apparently the outbreak probability shows no dependence on the infectious period in the static case.
+For comparison, the outbreak probability in the static network is shown by the dashed line.
+This is just the fraction of nodes with finite out degree and apparently the outbreak probability has no dependence on the infectious period in the static case.
 The outbreak probability saturates for sufficiently large infectious periods, but it is still only half as much as in the static case even for $d=56$.
 %
-\begin{figure}[htbp]
+\begin{figure}[htb]
 \begin{center}
 \includegraphics{Plos_fig1}
 \caption{Outbreak probability (A) and mean range (B) for different infectious periods $d$ as solid lines.
@@ -344,16 +346,7 @@ Rankings are very important for the implementation of vaccination and surveillan
 For every infectious period $d$, we average over all times of primary infection in \eqref{eq:outbreak_set}.
 Thus, $b(v,d)=\mean{r(v,d,t_0)}_{t_0}$ is a function of the node and infectious period.
 Ordering $b(v,d)$ for every $d$ in descending order gives a ranking $R(d)$ of the nodes according to their outbreak sizes, where $R(d)$ is an ordered set of nodes for every infectious period.
-The question here is, whether these rankings remain stable, if the infectious period is changed.
-%
-\begin{SCfigure}
-\includegraphics{vir_ranking.pdf}
-\caption{Node ranking of the top 100 nodes over different infectious periods.
-Rankings are computed by averaging \eqref{eq:outbreak_set} over the time of primary infection.
-Top 100 nodes are the nodes with the largest outbreak sizes averaged over $d$ and $t_0$.
-The rankings of an arbitrary node are shown in red for illustration purposes.}
-\label{fig:ranking}
-\end{SCfigure}
+The question is, whether these rankings remain stable, if the infectious period is changed.
 
 Figure~\ref{fig:ranking} shows the ranking trajectories over different infectious periods of the top 100 nodes in the network. 
 We define the top 100 nodes as the nodes with the largest outbreak size in $\mathcal{S}$ averaged over both $t_0$ and $d$, i.e. $\mean{r(v,d,t_0)}_{d,t_0}$.
@@ -365,6 +358,15 @@ This region is dominated by temporal fluctuations of the infection paths in the 
 Interestingly, the ranking approaches a stable region for $d>21$~days.
 For $d>28$~days most nodes in the top 100 sample do not undergo significant rank changes any more.
 This means that a ranking of nodes is reasonable for sufficiently large infectious periods.
+%
+\begin{SCfigure}
+\includegraphics{vir_ranking.pdf}
+\caption{Node ranking of the top 100 nodes over different infectious periods.
+Rankings are computed by averaging \eqref{eq:outbreak_set} over the time of primary infection.
+Top 100 nodes are the nodes with the largest outbreak sizes averaged over $d$ and $t_0$.
+The rankings of an arbitrary node are shown in red for illustration purposes.}
+\label{fig:ranking}
+\end{SCfigure}
 
 \subsection{Inaccurate infectious periods and the robustness of node rankings}
 Finding exact values of the infectious periods of a certain disease is often unachievable in real world scenarios.
@@ -372,7 +374,7 @@ Therefore, we look into the impact of variations in the infectious period on the
 We consider pairs of rankings as defined in the previous section with different infectious periods, i.e. $R(d_1)$ and $R(d_2)$.
 
 In order to compare two rankings, we could use measures of rank correlation, such as Spearman or Kendall rank correlation coefficients.
-These turn out, however, to very sensitive to even small differences between two rankings.
+These turn out, however, to be very sensitive to even small differences between two rankings.
 Figure~\ref{fig:ranking} suggests that even in the stable region where $d>28$~days node ranks remain similar, but not equal.
 Computing Spearman or Kendall rank correlation coefficients for different infectious periods $(k_1,k_2)$ in our dataset would give vanishing values for almost all pairs $(d_1,d_2)$.
 For that reason, we relax the requirements for similarity between to rankings.
@@ -389,7 +391,7 @@ We get $s_\tau (d_1,d_2) =1$, if the upper $\tau $ nodes in the rankings $R(d_1)
 On the other hand, $s_\tau (d_1,d_2) =0$ implies that ranks for $d_2$ and $d_2$ are completely different.
 
 Using equation \eqref{eq:rank_intersection} yields a similarity matrix with $1540$ different combinations of infectious periods for our outbreak scenarios \eqref{eq:outbreak_set}.
-Since particular combinations of infectious periods are nor relevant, we analyze the \emph{uncertainty} of the infectious period
+Since particular combinations of infectious periods are not relevant, we analyze the \emph{uncertainty} of the infectious period
 \begin{equation}\label{eq:uncertainty_k}
 \Delta d= \abs{d_1-d_2} .
 \end{equation}
@@ -414,7 +416,7 @@ That is, we replace the top $\tau $ nodes by the top fraction of nodes $n$:
 \end{equation}
 The same is implicitly done for rank intersection $s_n(d_1,d_2)$ \eqref{eq:robustness_k} and the node ranking $R_n(d)$.
 
-We show the rank robustness for the fraction of the $0.1$~\%, $1$~\% and $10$~\% upper nodes in figure~\ref{fig:plos_fig4a}.
+We show the rank robustness for the fraction of the $0.1$~\%, $1$~\% and $10$~\% upper nodes in Figure~\ref{fig:plos_fig4a}.
 These fractions correspond to approximately 100, 1000 and 10,000 nodes, respectively.
 The $50$~\% confidence intervals of each curve are shown as shaded areas.
 As expected, larger uncertainty in the infectious period generally leads to a decrease of rank robustness.
@@ -426,7 +428,7 @@ As a smaller sample is more prone to fluctuations, variations of rank robustness
 The red curve shows an intermediate behavior.
 
 \subsection{Temporal vs. static representation}
-Since the analysis of a network using a data driven approach is computationally expensive, we compare the node rankings $R_n(k)$ to centrality measures for the static network representation as defined in section \ref{sec:micro_measures}.
+Since the analysis of a temporal network using a data driven approach is computationally expensive, we compare the node rankings $R_n(k)$ to centrality measures for the static network representation as defined in Section~\ref{sec:micro_measures}.
 We denote the upper $\tau $ nodes according to a static centrality measure as $C_\tau $.
 Note that $C_\tau $ does not depend on the infectious period, since the latter plays no role in static networks.
 In this work, we consider betweenness, closeness, degree centrality and range as centrality measures.
@@ -449,22 +451,22 @@ The top panels demonstrate that finite intersections appear only for sample size
 \end{center}
 \end{figure}
 
-In figure~\ref{fig:plos_fig5}, we plot the centrality intersection \eqref{eq:centrality_intersection} for different static centrality measures and two exemplary infectious periods.
+In Figure~\ref{fig:plos_fig5}, we plot the centrality intersection \eqref{eq:centrality_intersection} for different static centrality measures and two exemplary infectious periods.
 Upper panels are identical to the lower panels, but use logarithmic $x$-axes. 
 The upper figures show that non vanishing intersections are taken for samples of at least 1000 nodes.
 Consequently, the upper part of the ranked nodes does not coincide with high ranked nodes in any static centrality measure.
-Intersection between outbreak size and static measures become significant for sample sizes of more than 10,000 nodes, i.e. about 10~\% of the network!
-Although this fraction is rather large, the coincidence of centrality and outbreak size is still relatively small (lower panels, compare to dotted line).
+Intersections between outbreak size and static centrality measures become significant only for sample sizes of more than 10,000 nodes, i.e. about 10~\% of the network!
+Although this fraction is rather large, the coincidence of centrality and outbreak size is still relatively small, as can be seen when comparing the centrality curves to the dotted line on the lower panel.
 The different centrality measures show similar intersections with the outbreak size.
 An exception is closeness centrality, which performs significantly better than the other measures.
-An explanation for this special role is that nodes with high closeness per definition are likely to infect other nodes within only few steps.
+An explanation for this special role is that nodes with high closeness are likely to infect other nodes within only few steps as it follows from the definition of closeness.
 This way long static paths are avoided, i.e. the chance that one of these static paths is disrupted by causality is relatively low.
 It should be noted that all features discussed above are almost identical for both infectious periods.
 
-\paragraph{Summary of data aggregation methods\color{Cayenne}{.}}
+\paragraph{Summary of the data-driven analysis\color{Cayenne}{.}}
 We simulated an SIR-type disease on the livestock trade dataset and explicitly took into account the temporal dynamics of edges.
 This yields a set of outbreak scenarios, which can be thought of as a scalar-field $r(v,d,t_0)$, where each triple $(v,d,t_0)$ is assigned an outbreak size $r$, if $r>0$.
-A schematic sketch of this scalar-field is given in figure~\ref{fig:Plos_parameter-space}.
+A schematic sketch of this scalar-field is given in Figure~\ref{fig:Plos_parameter-space}.
 %
 \begin{SCfigure}
 \includegraphics{Plos_parameter-space.pdf}
@@ -474,13 +476,13 @@ The domain is bounded as defined in \eqref{eq:outbreak_set}.}
 \label{fig:Plos_parameter-space}
 \end{SCfigure}
 %
-Using the state space of figure~\ref{fig:Plos_parameter-space}, we can summarize the different aggregation techniques used in this section as follows:
+Using the state space of Figure~\ref{fig:Plos_parameter-space}, we can summarize the different aggregation techniques used in this section as follows:
 \begin{description}
-\item [Exemplary outbreak:] Sum over all outbreak sizes for a cut through $r$ for constant $d$ and $v$ (see figure~\ref{fig:range_exemplary}).
-\item [Outbreak probability:] State density of $r$ for every $d$-slice of the state space (see figure~\ref{fig:plosfig1}~A).
-\item [Mean outbreak size:] The mean value of the field in every $d$-slice (see figure~\ref{fig:plosfig1}~B).
-\item [Node ranking:] First, average over the $t_0$-axis. Afterwards ordering of nodes by largest outbreak size for every $d$-slice. See figure~\ref{fig:ranking}.
-\item [Infectious period uncertainty:] Comparison between pairs of node rankings. See figure~\ref{fig:plos_fig4a}.
+\item [Exemplary outbreak:] All outbreak sizes for a cut through $r$ for constant $d$ and $v$ (see Figure~\ref{fig:range_exemplary}).
+\item [Outbreak probability:] State density of $r$ for every $d$-slice of the state space (see Figure~\ref{fig:plosfig1}~A).
+\item [Mean outbreak size:] The mean value of the field in every $d$-slice (see Figure~\ref{fig:plosfig1}~B).
+\item [Node ranking:] First, average over the $t_0$-axis. Afterwards ordering of nodes by largest outbreak size for every $d$-slice. See Figure~\ref{fig:ranking}.
+\item [Infectious period uncertainty:] Comparison between pairs of node rankings. See Figure~\ref{fig:plos_fig4a}.
 \end{description}
 %
 The comparison to the static network representation (figure~\ref{fig:plos_fig5}) is obtained using intersections between pairs of node rankings in analogy to the estimation of uncertainty of the infectious period.
@@ -491,15 +493,15 @@ In addition to that, a static network view systematically overestimates disease 
 Even for large infectious periods, we found the mean outbreak sizes to be six times smaller as for the static case.
 
 \section{Graph centric temporal network analysis}\label{sec:PRL}
-The previous section has shown that even the analysis of simple measures as node ranges is a complex endeavor.
+The previous section has shown that even the analysis of simple measures such as node ranges is a complex endeavor.
 While the previous section implicitly used a node centric approach to the system, we now introduce a \emph{graph centric} approach to temporal networks.
 It is important to emphasize that the capability of static network analysis originates from the fact that the adjacency matrix provides a graph centric (``big picture'') of the system.
-Therefore, a graph centric view on temporal networks contributes a key element for a theoretical framework for temporal systems.
+Therefore, a graph centric view for temporal networks contributes a key element for a theoretical framework for temporal systems.
 
-As we have seen in section \ref{sec:paths_in_temporal_networks}, the static approximation of a temporal network falsely shows transitivity and therefore lacks a differentiation between causal and non causal paths.
-We make use of adjacency matrix sequences (as defined by equation \eqref{eq:AdMatrixSequence}) and derive a method for the computation of causal paths.
+As we have seen in Section~\ref{sec:paths_in_temporal_networks}, the static approximation of a temporal network leads us to believe that all paths are transitive and therefore lacks a differentiation between causal and non causal paths.
+We make use of adjacency matrix sequences as defined by equation \eqref{eq:AdMatrixSequence} and derive a method for the computation of causal paths.
 
-This yields first the ranges of all nodes in the network (see sections \ref{sec:micro_measures} and \ref{sec:Plos}) and second information about the \emph{accessibility} between nodes.
+This yields first the ranges of all nodes in the network and second information about the mutual \emph{accessibility} between nodes.
 In analogy to the static range defined in equation \eqref{eq:range_def}, the range of a node $v$ in a temporal network $\mathcal{G}=(V,\mathcal{E},T)$ can formally be defined as
 \begin{equation}\label{eq:temporal_range_def}
 r(v)=\frac{\left| \mathcal{H}(v) \right| }{N}, \; \text{ where } \; \mathcal{H}(v)=\{u \in V: v\rightsquigarrow u \},
@@ -507,19 +509,20 @@ r(v)=\frac{\left| \mathcal{H}(v) \right| }{N}, \; \text{ where } \; \mathcal{H}(
 where $\mathcal{H}(v)$ is the horizon of node $v$ and $N$ the number of nodes in the network.
 
 The set of all horizons in a network defines its \emph{accessibility graph}.
-For static networks, the concept of accessibility was defined at the end of section \ref{sec:macro_measures}.
-We extend the static accessibility approach to the explicit step by step derivation of accessibility in section \ref{sec:unfolding_static}.
+For static networks, the concept of accessibility was defined at the end of Section~\ref{sec:macro_measures}.
+We extend the static accessibility approach to the explicit step by step derivation of accessibility in Section~\ref{sec:unfolding_static}.
 This novel procedure is called \emph{unfolding} of accessibility.
-Finally, we generalize the unfolding accessibility approach to temporal networks in section \ref{sec:unfolding_temporal}.
+Finally, we generalize the unfolding accessibility approach to temporal networks in Section~\ref{sec:unfolding_temporal}.
+The results presented in this section are in part published in \citep{Lentz:2013PRL}.
 
 \subsection{Accessibility of static networks}\label{sec:unfolding_static}
 We consider a static network $G=(V,E)$ with $N$ nodes and adjacency matrix $\mathbf{A}$.
 The accessibility graph (or transitive closure) of $G$ is denoted by $G^*=(V,E^*)$, where $E^*$ contains an edge $(u,v)$, whenever $u\rightarrow v$.
-The accessibility matrix -- i.e. the adjacency matrix of the accessibility graph -- can be computed using the cumulative matrix defined
+The accessibility matrix -- i.e. the adjacency matrix of the accessibility graph -- can be computed using the cumulative matrix defined by
 \begin{equation}\label{eq:cumulative_matrix2}
 \mat{C}_n=\mat{A}+\mat{A}^2+\cdots + \mat{A}^n = \sum _{i=1} ^n \mat{A}^i .
 \end{equation}
-This equation was already introduced in section \ref{sec:macro_measures}, equation \eqref{eq:cumulative_matrix}.
+%This equation was already introduced in Section~\ref{sec:macro_measures}.
 Every term $\mat{A}^i$ corresponds to a network where nodes are connected that have shortest path distance $i$ in G.
 Figure~\ref{fig:power_graphs} illustrates this observation.
 %
@@ -543,16 +546,18 @@ where the $i$-th power of the adjacency matrix is computed using the matrix prod
 (\mat{A}\mat{B})_{ij}&=(a_{i1}\wedge b_{1j})\vee \dots \vee(a_{iN}\wedge b_{Nj}) \nonumber \\
 &= \bigvee _{k=1}^N a_{ik} \wedge b_{kj} .
 \end{align}
+In Equations~\eqref{eq:static_boolean_acc} and \eqref{eq:boolean_product}, $\vee $ denotes a Boolean OR and $\wedge $ a Boolean AND, respectively.
+
 The adjacency matrix of the accessibility graph is given by $\mathbf{P}_{n=N-1}$.
 We call $\mathbf{P}_{N-1}$ the \emph{accessibility matrix} of $G$.
 Note that the index $N-1$ corresponds to the maximum path length in the network.
-The graph $G^*$ given by $\mathbf{P}_{N-1}$ is the fully exploited accessibility graph.
+The graph $G^*$ given by $\mathbf{P}_{N-1}$ is called fully exploited accessibility graph.
 We focus on accessibility for values other than $N-1$ below.
 
 \paragraph{Properties of accessibility graphs\color{Cayenne}{.}}
 In a \emph{connected} network $G$, the graph $G^*$ contains links between all node pairs, since all nodes are connected by a path.
 Thus, $G^*$ is fully connected and the matrix $\mathbf{P}_{N-1}$ has only nonzero entries.
-It follows from the transitivity of paths that all entries $(\mathbf{P})_{ii}$ are unity, since there is always a path from node $i$ to some other node $j$ and vice versa.
+It follows from the transitivity of paths that also all entries $(\mathbf{P})_{ii}$ are unity, since there is always a path from node $i$ to some other node $j$ and vice versa.
 Consequently, $\mathbf{P}_{N-1}$ has $N^2$ nonzero entries in this case.
 If the network $G$ is \emph{not connected}, the accessibility matrix can be transformed into a block diagonal form, where each block has only nonzero entries.
 The total number of nonzero elements in this case is smaller than $N^2$.
@@ -578,20 +583,21 @@ The corresponding accessibility matrix is
 0 & 1 & 1 & 1
 \end{array}\right) .
 \end{equation*}
-The nodes of the connected components in the adjacency matrix $\mathbf{A}$ form blocks in $\mathbf{P}_N$.
+The nodes of the connected components in the adjacency matrix $\mathbf{A}$ form blocks in $\mathbf{P}_N$ so that nodes 2, 3 and 4 form a fully connected subgraph (clique) in $G^*$.
 
 If the network $G$ is \emph{undirected}, every $\mathbf{P}_n$ has a non vanishing main diagonal for $n\geq 2$, if there are no isolated nodes.
 This corresponds to the fact that there is always a path of length 2 from a node back to itself.
-For the more general directed case, the main diagonal of $\mathbf{P}_{N-1}$ can contain 0 or 1 entries.
+For the directed case, the main diagonal of $\mathbf{P}_{N-1}$ can contain 0 or 1 entries.
 
 \paragraph{Shortest paths and unfolding accessibility\color{Cayenne}{.}}
-Now we focus on the properties of the accessibility for the steps $\mathbf{P}_{n\leq N}$.
+Now we focus on the properties of the accessibility graph for the steps $\mathbf{P}_{n\leq N}$.
 We explicitly take into account different values of $n$, i.e. we \emph{unfold} the accessibility graph.
 Each $\mat{P}_n$ is the adjacency matrix of a preliminary accessibility graph, which we denote by $G_n ^*$.
 The graph $G_1 ^*$ (with adjacency matrix $\mat{P}_1$) gives a graph containing paths of length 1, i.e. the adjacency matrix itself.
-Analogues to figure~\ref{fig:power_graphs}, the graph $G_2 ^*$ contains paths of length 1 \emph{and} paths of length 2.
+Analogues to Figure~\ref{fig:power_graphs}, the graph $G_2 ^*$ contains paths of length 1 \emph{and} paths of length 2.
 In principle, the procedure $\mat{P}_n \rightarrow \mat{P}_{n+1}$ corresponds to traversing the graph by paths of one more edge.
-This is nothing other than a breadth-first-search (BFS) algorithm in the network (see appendix \ref{sec:implementation} for more details).
+This is equivalent to a breadth-first-search (BFS) algorithm in the network, which is a standard procedure in computational network analysis.
+The BFS technique is explained in Appendix~\ref{sec:implementation}.
 A similar method was used in early algorithms for computing shortest path lengths in networks \citep{Floyd:1962vo,Warshall:1962wr}.
 At the moment, when the BFS-algorithm approaches the diameter $D$ of the network, the matrix $\mat{P}_n$ saturates and does not change for higher values of $n$.
 Moreover, the accessibility matrix of a network is reached for $n=D$, so that
@@ -610,15 +616,14 @@ As a special case, we define the \emph{path density} of a  network as the densit
 \begin{equation}\label{eq:path_density}
 \rho (\mat{P}_n) =\frac{\mathrm{nnz}(\mat{P}_n)}{N^2}.
 \end{equation}
-Note that the normalization in \eqref{eq:matrix_density} and \eqref{eq:path_density} are not $N(N-1)$, since we explicitly take into account self loops in the accessibility graph.
-Ignoring these self loops could give values greater than 1 for connected graphs.
+Note that the normalization in \eqref{eq:matrix_density} and \eqref{eq:path_density} is not $N(N-1)$, since we explicitly take into account self loops in the accessibility graph.
+These self loops guarantee that the maximum path density is unity in connected graphs.
 
-Now we address the relation between path density and shortest path distribution in a network.
-In the case of the adjacency matrix, equation \eqref{eq:matrix_density} gives the edge density of the network.
-It gives the probability that two randomly chosen nodes are connected by an edge.
-It follows that the probability that these nodes are connected by a path of length $n$ is given by $\rho (\mat{A}^n)$.
+Now we address the relation between path density and shortest path distribution.
+In the case of the adjacency matrix, equation \eqref{eq:matrix_density} gives the edge density of the network, which is equivalent to the probability that two randomly chosen nodes are connected by an edge.
+It follows that the probability that two nodes are connected by a path of length $n$ is given by $\rho (\mat{A}^n)$.
 
-Since the path density $\rho (\mat{P}_n)$ follows from a cumulative procedure, it corresponds to the probability that two randomly chosen nodes are connected by a length of length $l\leq n$.
+Since the path density $\rho (\mat{P}_n)$ follows from a cumulative procedure, it corresponds to the probability that two randomly chosen nodes are connected by a path of length $l\leq n$.
 Consequently, the path density is the cumulative distribution of shortest path lengths
 \begin{equation}\label{eq:cumulative_distribution}
 \rho (\mat{P}_n)=F(l\leq n)\equiv F_n .
@@ -626,26 +631,26 @@ Consequently, the path density is the cumulative distribution of shortest path l
 The shortest path length distribution follows from equation \eqref{eq:cumulative_distribution} by differentiation.
 Since the step length is 1 by definition, the probability for a shortest path length $n$ is given by $f_n=(F_n-F_{n-1})$ and $F_0=0$.
 
-It should be noted that the probabilities considered here can be normalized to 1 only for connected networks, because for connected networks $\rho (\mat{P}_{N-1})\equiv \mat{P}_D=1$.
-In the case of unconnected networks, the saturation value is in general smaller than 1.
+It should be noted that the probabilities considered here are normalized to unity only for connected networks, because for connected networks $\rho (\mat{P}_{N-1})\equiv \mat{P}_D=1$.
+In the case of disconnected networks, the saturation value is in general smaller than 1.
 Therefore,  we treat the distribution \eqref{eq:cumulative_distribution} as an ``improper'' probability distribution, which is in general not normalized to unity.
 In addition, we define the \emph{median} of $F_n$ as the value $n$ where $F_n=1/2 \; F_D$.
 
 We make use of the relations discussed above in order to obtain information about the shortest path distribution.
-The procedure is called \emph{Unfolding Accessibility}, because we explicitly analyze the step-by-step derivation of the accessibility matrix.
+We call this procedure \emph{Unfolding Accessibility}, because we explicitly analyze the step-by-step derivation of the accessibility matrix.
 Although the concept of unfolding accessibility seems to make things unnecessarily complicated, it can be generalized to temporal networks.
 
-But before we generalize the approach explained above to temporal networks, we illustrate the concept exemplarily for static \ER network.
+But before we generalize the approach explained above to temporal networks, we illustrate the concept exemplarily for a static \ER network.
 We compute the shortest path length distribution of a directed \ER network of 1000 nodes and 2000 edges.
 Figure~\ref{fig:er_histo} shows the path density $\rho (\mat{P}_n)$ and the shortest path distribution.
-The shortest path length distribution is identical to that of figure~\ref{fig:ER_shortest_path_histogram} (section \ref{sec:er_model}).
+The shortest path length distribution is identical to that of Figure~\ref{fig:ER_shortest_path_histogram} (section \ref{sec:er_model}).
 %
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics{ER_shortest_path_histo_double.pdf}
 \caption{Path density (red line) and shortest path length distribution (grey histogram) for a directed \ER network with 1000 nodes and 2000 edges.
 Mean value $8.18$, median $n=8$, diameter $D=18$, maximum path density $\rho (\mat{P}_D\approx 0.7)$.
-The histogram is identical to that in figure~\ref{sec:er_model}, where a different method was used.
+The histogram is identical to that in Figure~\ref{sec:er_model}, where a standard BFS algorithm was used.
 }
 \label{fig:er_histo}
 \end{center}
@@ -653,7 +658,7 @@ The histogram is identical to that in figure~\ref{sec:er_model}, where a differe
 %
 
 \subsection{Unfolding Accessibility of temporal networks}\label{sec:unfolding_temporal}
-We generalize the static accessibility \eqref{eq:static_boolean_acc} to the case of temporal networks.
+We generalize the definition of the static accessibility matrix \eqref{eq:static_boolean_acc} to the case of temporal networks.
 The basic problem is how to generalize different powers of an adjacency matrix to the case, where the adjacency matrix is not constant.
 Let us consider a temporal network $\mathcal{G}=(V,\mathcal{E},T)$ with adjacency matrix sequence as defined in \eqref{eq:AdMatrixSequence}
 \begin{equation}\label{eq:AdMatrixSequence2}
@@ -661,13 +666,13 @@ Let us consider a temporal network $\mathcal{G}=(V,\mathcal{E},T)$ with adjacenc
 \end{equation}
 Treating each element $\mat{A}_t$ in $\mathcal{A}$ as Boolean, the aggregated network is given by the Boolean sum of the matrices
 \begin{equation}\label{eq:aggregation}
-\mat{A}=\bigvee _{i=1} ^{T} \mathbf{A}_t .
+\mat{A}=\bigvee _{t=1} ^{T} \mathbf{A}_t .
 \end{equation}
 Before we derive an expression for the accessibility graph $\mathcal{G}^*=(V,\mathcal{E}^*,T)$, we have to discuss the meaning of matrix multiplication in temporal networks.
 In particular, we have to discuss the role of causality in paths generated by matrix products.
-As shown in figure~\ref{fig:power_graphs}, a product of adjacency matrices gives information about paths of a certain length in static networks.
+As shown in Figure~\ref{fig:power_graphs}, a product of adjacency matrices gives information about paths of a certain length in static networks.
 The multiplication of two different matrices $\mat{A}_1$ and $\mat{A}_2$ yields nonzero entries, i.e. paths of length 2, wherever nodes of the graph of $\mat{A}_1$ receive links at time 1 and cast forth links at time 2.
-An example is illustrated in figure~\ref{fig:matrix_product}.
+An example is illustrated in Figure~\ref{fig:matrix_product}.
 %
 \begin{figure}[htb]
 \begin{center}
@@ -711,12 +716,12 @@ and
 \end{equation}
 respectively.
 Although this naive approach shows great similarities with the accessibility matrix of a static network, it turns out that it has a crucial drawback:
-If we compute the product $\mat{A}_1 \mat{A}_2$ in figure~\ref{fig:matrix_product}, we would get a zero matrix
+If we compute the product $\mat{A}_1 \mat{A}_2$ in Figure~\ref{fig:matrix_product}, we would get a zero matrix
 \begin{equation}\label{eq:zero_matrix_product}
 \mat{A}_1 \mat{A}_2 = \mat{0} .
 \end{equation}
 It follows from equation \eqref{eq:wrong_access} that $\tilde{\mathcal{P}}_n =\mat{A}_1$ for all $n=2$. 
-As opposed to this, figure~\ref{fig:matrix_product} suggests that the accessibility graph should contain other paths than $1\rightsquigarrow 2$ only, for example $1\rightsquigarrow 4$.
+As opposed to this, Figure~\ref{fig:matrix_product} suggests that the accessibility graph should contain other paths than $1\rightsquigarrow 2$ only, for example $1\rightsquigarrow 4$.
 Apparently, the elements of the matrix products in \eqref{eq:wrong_access} become zero, if the requirement of receiving links at time $t$ and casting forth links at time $t+1$ is violated.
 In a more general sense, the accessibility matrix given in equation \eqref{eq:wrong_access} gives meaningful results in the case that temporal correlations are only between successive snapshots of the system.
 Systems with this property can be considered as Markovian temporal networks.
@@ -733,7 +738,7 @@ As a consequence, these snapshots show relatively low edge densities.
 \citeauthor{Bajardi:2011iv} reported a maximum path length of 8 days for a temporal cattle trade network, when edge sequences are at successive time steps \citep{Bajardi:2011iv}.
 
 In order to overcome the drawbacks of equation \eqref{eq:wrong_access}, we explicitly take into account products of matrices over distant time steps.
-In the example of livestock trade networks, a subset of nodes of the system could for instance fatten livestock animals for $\tau $.
+In the example of livestock trade networks, a subset of nodes of the system could for instance fatten livestock animals for a timespan $\tau $.
 Thus, these nodes receive links at time $t_1$ and cast forth links at time $t_2=t_1+\tau $.
 More general, the time span $\tau $ could correspond to a production time in value chains or the period of stay at one place in human mobility networks.
 
@@ -756,16 +761,30 @@ Since the actual number of paths are not important in this work, we define the t
 \end{align}
 %
 In equation \eqref{eq:temporal_accessibility}, the linear terms correspond to the aggregation of the network over $n$ time steps.
+These are all paths of length 1, which are always causal.
 The higher order products always respect the temporal correct order of snapshots, that is $i<j$ for all $\mat{A}_i\mat{A}_j$ and $\mat{A}_i \cdots \mat{A}_j $.
-Analogue to section~\ref{sec:unfolding_static}, we define the accessibility graph to path \emph{duration} $n$ as $\mathcal{G}_n ^*$.
+Analogue to Section~\ref{sec:unfolding_static}, we define the accessibility graph to path duration $n$ as $\mathcal{G}_n ^*$
+
 It should be noted that in general the ``real'' accessibility graph of a temporal network is given by $\mathcal{G}_\infty ^*$, since the observation time is limited and might not capture the real timescale of a system.
 Also some systems could be periodic, i.e. $\mathcal{A}_{t+T}=\mathbf{A}_{t}$, but this can not be assumed in the general case.
 Since the upper limit of time is predefined by the dataset under consideration, we consider the fully unfolded accessibility graph as $\mathcal{G}^* = \mathcal{G}_T ^*$.
-Using equation \eqref{eq:temporal_accessibility}, we can now unfold accessibility just like for the case of a static network reported in section \ref{sec:unfolding_static}.
+Using equation \eqref{eq:temporal_accessibility}, we can now unfold accessibility just like for the case of a static network reported in Section~\ref{sec:unfolding_static}.
+%
+\begin{figure}[htb]
+\begin{center}
+\includegraphics{Temporal_Acessibility_example.pdf}
+\caption{A temporal network (left panel) and its accessibility graph (right panel).
+The network is taken from Figure~\ref{fig:temporal_network_principle}.
+Only nodes 3 and 4 have self loops in this example.
+Note that even though the temporal network is undirected, its accessibility graph is directed (edge (4,2) is unidirectional).}
+\label{fig:temp_acc_example}
+\end{center}
+\end{figure}
 
 Before doing so, we have to point out that the identity matrix $\mathbf{I}$ on the right-hand side of equation \eqref{eq:temporal_accessibility} is an artifact of the introduced memory.
-This does not make a huge difference for undirected networks, as we have discussed for the static case in section \ref{sec:unfolding_static}.
+This does not make a huge difference for undirected networks, as we have discussed for the static case in Section~\ref{sec:unfolding_static}.
 A similar argument can be used in the temporal case, since there is always a path from a node back to itself after 2 contacts at different time steps.
+Consequently, whenever an edge between two nodes appears twice, both nodes have a self loop in the accessibility graph.
 In directed networks, the identity matrix could indeed cause discrepancy from the real accessibility matrix.
 Nevertheless, this discrepancy is small, since the contribution of the diagonal is small compared to the total number of elements in $\mathcal{P}_n$.
 This holds in particular, since accessibility matrices are in general not sparse.
@@ -777,48 +796,37 @@ Therefore, unfolding an accessibility graph does not yield a shortest path lengt
 Even if a particular temporal network might be a small-world network in the topological sense -- say it still takes only a few edges to traverse the whole system -- the traversal could take a long time.
 In general, even a small world network could be a ``slow world'' network. 
 
-\begin{figure}[htb]
-\begin{center}
-\includegraphics{Temporal_Acessibility_example.pdf}
-\caption{A temporal network (left panel) and its accessibility graph (right panel).
-The network is taken from figure~\ref{fig:temporal_network_principle}.
-Only nodes 3 and 4 have self loops in this example.
-Note that even though the temporal network is undirected, its accessibility graph is directed (edge (4,2) is unidirectional).}
-\label{fig:temp_acc_example}
-\end{center}
-\end{figure}
-%
 Finally, it should be noted that the accessibility graph of a temporal network is in general directed, even if every snapshot is an undirected network.
-Figure~\ref{fig:temp_acc_example} shows the accessibility graph of the network used in figure~\ref{fig:temporal_network_principle}.
-
-As the figure demonstrates, the accessibility graph can be directed, even if the underlying temporal network is undirected.
-This property reflects the ``arrow of time'' in these systems.
-It is important to emphasize that the accessibility graph does not show global transitivity as opposed to the static case (compare to figure~\ref{fig:access_static}).
-In out example, the existence of the paths $(4\rightsquigarrow 2)$ and $(2\rightsquigarrow 3)$ does not imply that $(4\rightsquigarrow 3)$ as it would be in a static accessibility graph.
+Figure~\ref{fig:temp_acc_example} shows the accessibility graph of the network used in Figure~\ref{fig:temporal_network_principle}.
+As the figure demonstrates, the accessibility graph is directed, eventhough the underlying temporal network is undirected.
+This property reflects the ``arrow of time'' in temporal networks.
+In addition to that, the accessibility graph does not show global transitivity as opposed to the static case (compare to Figure~\ref{fig:access_static}).
+In our example, the existence of the paths $4\rightsquigarrow 2$ and $2\rightsquigarrow 3$ does not imply that $4\rightsquigarrow 3$, as it would be in the static case.
  
 \subsection{Representative sample / characteristic time scale}
-We apply the unfolding accessibility method to the dataset used in section \ref{sec:Plos}, i.e. we take more and more snapshots to obtain information about the path density.
-The derivation of this path density yields the distribution os shortest path durations in the system.
-The result for the pig trade network is shown in figure~\ref{fig:plos_unfolding}.
+We come back to the the findings of Section~\ref{sec:representative_sample}, where we determined the typical timescale of the livestock trade network using data-driven methods.
+Thus, we apply the unfolding accessibility method to the livestock trade network dataset, i.e. we take more and more snapshots to obtain information about the path density.
+From the derivative of the path density we obtain the distribution of shortest path durations in the network.
+The result for the livestock trade network is shown in Figure~\ref{fig:plos_unfolding}.
 %
 \begin{figure}[htb]
 \begin{center}
 \includegraphics{Plos_Unfolding.pdf}
-\caption{Path density (red) and distribution of shortest path duration (blue) for the pig trade network.
+\caption{Path density (red) and distribution of shortest path durations (blue) for the pig trade network.
 Multiples of weekdays are generally more likely for shortest path durations, since trade is less on sundays and almost absent on sundays.}
 \label{fig:plos_unfolding}
 \end{center}
 \end{figure}
 %
 The path density is relatively low along the whole observation period, since the pig trade network is directed.
-We have seen in section \ref{sec:components_ranges} that even the static network representation is fragmented, i.e. the largest strongly connected component is relatively small.
+We have seen in Section~\ref{sec:components_ranges} that even the static network representation is fragmented, i.e. the largest strongly connected component is relatively small.
 Since the components of the aggregated network define an upper bound for the components in the temporal view, the temporal path density is confined.
 
-Although the shortest path distributions show a broad distribution, figure~\ref{fig:plos_unfolding} shows a global maximum of the distribution.
+Although the shortest path durations show a broad distribution, Figure~\ref{fig:plos_unfolding} shows that this distributions has a global maximum.
 It follows that there is a typical timescale in the system, which is in the region of 180~days.
 This means that the typical spreading time of any process on the network is in the order of 100~days.
-In fact, this timescale is a manifestation of the underlying process taking place on the network: production of livestock pigs.
-The time scale detected in figure~\ref{fig:plos_unfolding} is in agreement with the representative sample found using a data-driven approach as reported in figure~\ref{fig:Plos_S1} (see section~\ref{sec:representative_sample}).
+In fact, this timescale is a manifestation of the underlying process taking place on the network, i.e. the production of livestock pigs.
+The time scale detected in Figure~\ref{fig:plos_unfolding} is in agreement with the representative sample found using a data-driven approach as reported in Figure~\ref{fig:Plos_S1} (see Section~\ref{sec:representative_sample}).
 We conclude that the representative sample size of 180~days can be explained by the characteristic time scale of the system.
 
 %
@@ -827,21 +835,21 @@ We conclude that the representative sample size of 180~days can be explained by 
 \includegraphics{Pork_production_chain.pdf}
 \caption{Simplified representation of the pig trade network.
 The system consists of multiple distinct production chains plus a certain degree of ``random'' trade connections indicated by the dashed arrows.
-The total production time of one single production chain is 180~days, which defines the temporal diameter of the chain.}
+The total production time of one single production chain is 180~days, which defines its temporal diameter.}
 \label{fig:pork_production_chain}
 \end{center}
 \end{figure}
 %
-The production process follows a production chain as shown in figure~\ref{fig:pork_production_chain}.
+The underlying process follows a production chain as shown in Figure~\ref{fig:pork_production_chain}.
 As the figure illustrates, the pig trade network is a union of many disjoint production chains.
-In addition, there a trade links in the network, which do not follow the exact path in the production chain (dashed lines in figure~\ref{fig:pork_production_chain}).
+In addition, there a trade links in the network, which do not follow the exact production path and are shown as dashed lines in Figure~\ref{fig:pork_production_chain}.
 The timescale of each production chain is strictly determined by the biological properties of pig production.
 Most pigs are slaughtered in the age of 180~days.
-This period defines the \emph{temporal diameter} of the production chain, which gives an explanation for the existence of a typical time scale observed in figure~\ref{fig:plos_unfolding}.
+This period defines the \emph{temporal diameter} of the production chain, which gives an explanation for the existence of a typical time scale observed in Figure~\ref{fig:plos_unfolding}.
 
 \subsection{Causal fidelity}\label{sec:causal_fidelity}
-A large number of tools and measures has been developed for static networks and some of which were reported in section~\ref{sec:network_theory}.
-For this reason temporal networks are often aggregated and treated as static networks.
+A large number of tools and measures has been developed for static networks and some of which were reported in Section~\ref{sec:network_theory}.
+For this reason, temporal networks are often aggregated and treated as static networks.
 The penalty of such an approximation is that it allows for paths that do not follow a causal sequence of edges.
 In other words, the most fundamental difference between a temporal network and its aggregated approximation lies in the difference between the number of possible paths.
 The question is how closely does an aggregated network reproduce the path properties of the temporal network.
@@ -852,7 +860,7 @@ c=\frac{\rho (\mathcal{P}_T)}{\rho (\mat{P}_T)} ,
 where $\rho (\mathcal{P}_T)$ is the path density of the fully unfolded temporal accessibility graph and $\rho (\mat{P}_T)$ its static counterpart.
 The causal fidelity lies in the range $0\leq c \leq 1$.
 Large values of $c$ indicate that an aggregation of the temporal network gives a good approximation of the temporal system from a causal point of view.
-A low value of $c$ implies that most paths in the static network can not be taken in the temporal system, since their edges do not form a causal sequence.
+A low value of $c$ implies that most paths in the static network can not be taken in the temporal system, since their edges do not causal sequences.
 Consequently, temporal networks with small causal fidelities should not be treated as static systems.
 
 If a temporal network with low causal fidelity is treated as a static network, any spreading process on the system would be significantly overestimated.
@@ -866,22 +874,22 @@ c=\frac{1,575,699,560}{2,202,369,723}\approx 0.715.
 Thus, about $72$~\% of the paths exist in both network representations.
 We state that the aggregated network captures the causality of the system sufficiently well. 
 
-It should be noted that it equation~\eqref{eq:causal_fidelity} computes the causal fidelity for the fully unfolded accessibility graph $\mathcal{G}^*_{n=T}$.
+It should be noted that Equation~\eqref{eq:causal_fidelity} computes the causal fidelity for the fully unfolded accessibility graph $\mathcal{G}^*_{n=T}$.
 In principle, the causal fidelity can also be computed for intermediate steps of the unfolding procedure.
 This approach can be used in order to quantify the size of a minimal aggregation window that guarantees for a sufficiently large causality in the approximation.
 
 \subsection{Randomization techniques}\label{sec:randomized_models_tvg}
-In order to assess the strength of topological and temporal correlation in the network, we use randomized models of the original dataset to specifically remove certain correlations.
-A standard procedure to remove correlations on a \emph{static} network is randomizing the edges of the network.
+In order to assess the strength of topological and temporal correlations in the network, we make use of randomized models of the original dataset to remove specific correlations.
+A standard procedure to remove correlations on a \emph{static} network is randomizing its edges.
 This procedure keeps the degree sequence constant and is similar to the configuration model.
-Time as a additional dimension in temporal networks requires for a large number of randomizing procedures in order to systematically remove correlations from the network.
+Time as an additional dimension in temporal networks requires for a large number of randomizing procedures in order to systematically remove correlations.
 We briefly report, how different randomization procedures affect the temporal network $\mathcal{G} $ and its aggregated counterpart $G$.
-Random models for temporal networks have been introduced in \citep{Holme_review,Pan:2011dga}.
-We use modified versions of these models and translate them into our formalism based on the adjacency matrix sequence of a temporal network, i.e.
+Random models for temporal networks have been introduced in \citep{Pan:2011dga,Holme_review}.
+We use these models and translate them into our formalism based on the adjacency matrix sequence of a temporal network, i.e.
 \begin{equation}\label{eq:AdMatrixSequence2}
 \mathcal{A}=\mat{A}_1,\dots ,\mat{A}_T.
 \end{equation}
-We use the following random models:
+The following random models are applied to our dataset:
 %
 \paragraph{RE -- randomized edges\color{Cayenne}{.}}
 Each snapshot in sequence \eqref{eq:AdMatrixSequence2} is randomized according to the following procedure.
@@ -890,12 +898,12 @@ If the edges are disjoint, i.e. $u\neq w$ and $v\neq x$, then swap the nodes $v$
 Thus, the new edges are $(u,x)$ and $(w,v)$.
 This procedure is repeated until every edge in the original network has been swapped.
 
-The RE model is similar to the configuration model mentioned in section~\ref{sec:BA_model}.
+The RE model is similar to the configuration model mentioned in Section~\ref{sec:BA_model}.
 It keeps the degree sequence constant and removes higher order topological correlations from the network.
-Affected are properties as the clustering coefficient or more general any special subgraphs in the original system.
-In the context of the pig trade network, these subgraphs are the production chains illustrated in figure~\ref{fig:pork_production_chain}.
+Affected are properties as the clustering coefficient or generally any specific subgraph in the original system.
+In the context of the pig trade network, these subgraphs are the production chains illustrated in Figure~\ref{fig:pork_production_chain}.
 Since the RE model places new edges almost randomly, it adds a significant amount of mixing to the network.
-Consequently, a large deviation between original network and RE network indicates that the initial system was not well mixed.
+Consequently, a large deviation between the original network and the RE network indicates that the initial system was not well mixed.
 Note that the RE model does explicitly affect \emph{topological} correlations.
 
 The RE procedure also affects the aggregated network.
@@ -932,7 +940,7 @@ Since the GST procedure does not affect the topology of the snapshots, the aggre
 \paragraph{LST -- locally shuffled times\color{Cayenne}{.}}
 Instead of placing snapshots of the system at random times, the LST model randomly assigns the occurrence times of single \emph{edges}.
 This model is very similar to the GST model.
-It can be efficiently implemented using an edge centric network representation as discussed in section~\ref{sec:tvg_viewpoints}.
+It can be efficiently implemented using an edge centric network representation as discussed in Section~\ref{sec:tvg_viewpoints}.
 To give an example, a particular edge $(u,v)$ could be present at times $t_1$ and $t_5$, i.e. using the edge occurrence function $\mathcal{I}((u,v))=t_1,t_5$.
 The LST model assigns new occurrence times, but keeps the number of edge occurrences constant, e.g. $\mathcal{I}_\mathrm{LST} ((u,v))=t_3,t_{12}$.
 
@@ -946,16 +954,18 @@ The RT model is therefore similar to a weighted static representation of the sys
 Different rules for the number of edges per snapshots are possible:
 First, every time step could be treated equally so that the number of edges is constant over all snapshots on average.
 Second, the distribution of edge densities over all time steps remains constant.
-The first and the second variant correspond to the $G_{N,p}$ and the $G_{N,m}$ ensembles of \ER networks, respectively.
+The first and the second variant correspond to the $G_{N,p}$ and the $G_{N,m}$ ensembles known from \ER networks, respectively.
 Consequently, the third variant can more efficiently implemented, since the number of edges is known from the beginning.
 
 Since the RT model removes bursty behavior in every path of the network, it affects \emph{scheduled} systems in particular.
 These are systems, where paths follow strict time schedules and the systems are temporally sparse.
-This is typical for production networks such as the livestock trade network discussed in this work.
+This is typical for production networks such as the livestock trade network discussed in this thesis.
 Being related to a weighted static network, the RT model does not affect the topology of aggregated network, so that $G_\mathrm{RT}=G$.
+It should be noted that due to the impact of chance, a small number of edges might not be chosen in the snapshots of $E$.
+Consequently, $G_\mathrm{RT}\approx G$ up to negligible statistical fluctuations.
 %
 %\paragraph{Summary of methods\color{Cayenne}{.}}
-A summary of the used randomization models is shown in table \ref{tab:random_models}.
+A summary of the used randomization models is shown in Table~\ref{tab:random_models}.
 \begin{table}[htb]
 \sffamily
 \begin{center}%\centering
@@ -965,12 +975,12 @@ A summary of the used randomization models is shown in table \ref{tab:random_mod
 \hline
 Model & Effects\\
 \hline \hline
+\multirow{3}{*}{RE} & addition of topological mixing\\
+& removes specific topological subgraphs\\
+& static network changed\\
+\hline
 \multirow{2}{*}{TR} & reverts arrow of time\\
 & static network reversed\\
-\hline
-\multirow{3}{*}{RE} & addition of topological mixing\\
-& removes topological motifs\\
-& static network changed\\
 \hline
 \multirow{4}{*}{GST} & graph-centric\\
 &conserves bursty occurrence of edges\\
@@ -987,19 +997,17 @@ Model & Effects\\
 %
 \hline
 \multirow{2}{*}{RT} & removes bursty occurrence of edges\\
-& static network unchanged (except negligible statistical fluctuations)\\
+& static network (almost) unchanged \\
 \hline \hline
 \end{tabular*}
 \label{tab:random_models}
 \end{center}
 \end{table}
 
-
-
 \subsection{Temporal and topological mixing patterns}
 In order to reveal temporal and topological correlations in the livestock trade dataset, we apply the randomization techniques from the previous section to the network.
 Every deviation from the original dataset hints to a particular correlation in the network.
-Figure \ref{fig:randomized_hit} shows the path density for the original dataset and for the randomized networks.
+Figure \ref{fig:randomized_hit} shows the path density for the original dataset and for the randomized versions.
 The red curve shows the original network.
 \begin{figure}[htb]
 \begin{center}
@@ -1011,7 +1019,7 @@ The randomization models are TR -- time reversal, GST -- globally shuffled times
 \label{fig:randomized_hit}
 \end{center}
 \end{figure}
-%
+
 As the figure demonstrates, time reversal has a measurable effect for shortest path durations larger than about 100~days (grey line).
 Overall, the path density is lowered over a wide range of times.
 This shows that causal chains are less frequent, when the network is traversed backwards in time.
@@ -1021,22 +1029,22 @@ More specifically, a single event path is a causal chain of edges, where each ed
 These structures are particularly sensitive to time reversal. 
 
 The role of temporal correlations can be examined using time shuffling models.
-In figure \ref{fig:randomized_hit}, the GST and LST models are shown as dashed blue and yellow dashed lines, respectively.
+In Figure~\ref{fig:randomized_hit}, the GST and LST models are shown as dashed blue and red lines, respectively.
 Both lines show no significant differences from each other, indicating that the application of both procedures has a similar effect.
 The figure shows that time shuffling significantly increases the path density is over a large period of shortest path durations.
 Since the GST and LST models remove temporal bursty behavior from the system, we conclude that the node waiting times restrict the number of paths in the original system. 
 
 The random times (RT) model removes scheduling from the network.
-The consequence is a significant increase of the path density (orange line).
+The consequence is a significant increase of the path density (green line).
 An explanation for this behavior is that most paths in the system show a bursty behavior.
-It should be noted that the path density of the RT model almost approaches the path density of the aggregated network $\rho (\mat{P}_T)\approx 0.206$ in this system.
+It should be noted that the path density of the RT model almost approaches the path density of the aggregated network -- i.e. $\rho (\mat{P}_T)\approx 0.206$ -- in this case study.
 % RT_path_density = 2202369723/10710180100
 This high path density is caused by the relatively high activity of the system.
-As we have observed in section~\ref{sec:representative_sample}, about 10~\% of the edges are active every day.
+As we have observed in Section~\ref{sec:representative_sample}, about 10~\% of the edges are active every day.
 
-It is a salient feature of this dataset that edge randomization (RE model, black line) considerably increases the overall path density.
+It is a salient feature of this dataset that edge randomization (RE model, orange line) considerably increases the overall path density.
 The reason is that the underlying production chain strongly determines the network.
-As we have seen in figure~\ref{fig:pork_production_chain}, the livestock trade system basically consists of a number of disjoint production chains as basic units.
+As we have seen in Figure~\ref{fig:pork_production_chain}, the livestock trade system basically consists of a number of disjoint production chains as basic units.
 These basic units are interconnected by few ``random'' links.
 As a consequence, the whole system is by far not well mixed.
 Applying the RE model to the network provides strong mixing of the trade contacts.
@@ -1048,12 +1056,7 @@ Another striking feature is that bursty trade transactions seem to dominate the 
 Temporal correlations and temporal directionality play a role, but these features are not as striking as mixing and scheduling.
 
 \subsection{Further case studies}
-In this section, we apply the methods discussed before to two other datasets:
-First, a network of face-to-face contacts measured during a conference and second, a network of sexual contacts between prostitutes and their customers measured via an online rating platform for escorts.
-Both networks are undirected.
-As the pig trade network, both networks are possible substrates for the spread of infectious diseases -- in this case, droplet transmitted diseases (e.g. flu) and sexually transmitted diseases, respectively.
-Both datasets are available online (see \citep{isella2011,sociopatterns.org} for further information on the conference network and \citep{Rocha_pnas} for the sexual contact network, respectively).
-
+%
 \begin{SCfigure}
 \includegraphics{113-Sociopatterns.pdf}
 \caption{Unfolding accessibility of a conference contact network.
@@ -1061,41 +1064,48 @@ The fast saturation behavior and the high maximum of the path density suggest a 
 \label{fig:113}
 \end{SCfigure}
 %
+In order to demonstrate the capability of the unfolding accessibility method for the study of other systems, we apply the methods discussed before to two other datasets:
+First, a network of face-to-face contacts measured during a conference and second, a network of sexual contacts between prostitutes and their customers measured via an online rating platform for escorts.
+Both networks are undirected.
+As the pig trade network, both networks are possible substrates for the spread of infectious diseases -- in this case, droplet transmitted diseases (e.g. flu) and sexually transmitted diseases, respectively.
+Both datasets are available online.
+Further information on the conference network is found in \citep{isella2011,sociopatterns.org} and the sexual contact network is analyzed in \citep{Rocha_pnas}.
+
 Figure \ref{fig:113} shows the path density and the distribution of shortest path durations for the conference contact network.
 The observation period of three days separated by periods of weak interaction (nights) are clearly resolved in the figure.
 Overall, this network is particularly active.
-This is reflected by the relatively high maximum path density of $\rho \approx 0.99$, i.e. almost all possible paths are traversed within the observation period.
+This is reflected by the relatively high maximum path density of $\rho (\mathcal{P}_T) \approx 0.99$, i.e. almost all possible paths are traversed within the observation period.
 %
 \begin{figure}[h!]
 \begin{center}
 \includegraphics{Sociopatterns_Randomized.pdf}
 \caption{Path densities of randomized networks of the conference contact network.
-Removing temporal correlations (GST, LST, RT) remove periods of no activity (nights) from the network and significantly decrease the characteristic time scale and the temporal diameter.}
+Removing temporal correlations (GST, LST, RT) removes periods of no activity (nights) from the network and significantly decrease the characteristic time scale and the temporal diameter.}
 \label{fig:113_random}
 \end{center}
 \end{figure}
 %
-As we have discussed in section~\ref{sec:conceptual_problems}, the high overall path density indicates that there exists a giant causally connected component in the system.
+As we have discussed in Section~\ref{sec:conceptual_problems}, the high overall path density indicates that there exists a giant causally connected component in the system.
 However, the question of mutual connectivity cannot be answered in detail using the accessibility graph alone.
 
 It can be read immediately from the path density that within the first day of the conference, more than 70~\% of all possible paths have been traversed.
 The median of the shortest path duration distribution is reached within the first 6~hours.
-Thus, we conclude that 6~hours is a typical timescale for a spreading process in this system.
+Thus, we conclude that 6~hours is a typical timescale for spreading processes in this system.
 
-Following section \ref{sec:causal_fidelity}, we use equation \eqref{eq:causal_fidelity} and compute the causal fidelity of the conference network.
+Following Section~\ref{sec:causal_fidelity}, we use equation \eqref{eq:causal_fidelity} and compute the causal fidelity of the conference network.
 As can be conjectured from the high path density, the causal fidelity attains the relatively high value $c\approx 0.99$.
-This implies that the aggregated network is a good approximation of the real system from the causal point of view.
+This implies that an aggregated network gives a good approximation of the real system from the causal point of view.
 
-In order to assess the mixing properties of the conference contact network, we apply the randomization techniques of section~\ref{sec:randomized_models_tvg} to the dataset.
-The result is shown in figure~\ref{fig:113_random}.
-As the figure demonstrated, time reversal (TR) and randomizing edges (RE) do not significantly change the behavior of the path density.
+In order to assess the mixing properties of the conference contact network, we apply the randomization techniques of Section~\ref{sec:randomized_models_tvg} to the dataset.
+The result is shown in Figure~\ref{fig:113_random}.
+As the figure demonstrates, time reversal (TR) and randomizing edges (RE) do not significantly change the behavior of the path density.
 The small effect of the RE model implies that the system is already (topologically) well mixed.
 Also the time reversal invariance can be attributed to the strong mixing and the high activity of the system.
 Note that both models preserve the plateaus caused by night-times.
 
 Removing temporal correlations has a similar effect for the GST, LST and RT model.
 All three models show a steep increase of the path density and within only a few hours the maximum path density is reached.
-This effect originates from the fact that all three models remove the night periods from the system and thus the edge activity is spread over the whole time period.
+This effect originates from the fact that all three models remove the night periods from the system and thus the edge activity is distributed over the whole time period.
 
 We now focus on a network of sexual contacts between escorts and customers over a time span of 6 years.
 Figure~\ref{fig:sexual_contacts} shows the unfolding path density of the temporal network.
@@ -1121,15 +1131,15 @@ The path density of the TR model indicates that the data density is monotonously
 \end{center}
 \end{figure}
 %
-Although the dataset does not give clear results, we can state that any disease takes more than 2~years to infect a non vanishing fraction of the system.
+Although the dataset does not give clear results, we can state that any disease takes more than 2~years to infect a finite fraction of the network.
 The results are also valuable for further studies, since we have demonstrated that longer observation periods are needed in order to measure the characteristic spreading time in this system
 
 In addition, the causal fidelity of this network is $c=0.38$.
 This clearly provides support for treating the system from a temporal perspective -- as done in \citep{Rocha_pnas} -- since a static approximation would significantly overestimate the size of any disease outbreak.
 
-Finally, the path densities of randomized models of the sexual contact network are shown in figure~\ref{fig:sexual_randomized}.
+Finally, the path densities of randomized models of the sexual contact network are shown in Figure~\ref{fig:sexual_randomized}.
 A salient feature of this figure is that time reversal significantly changes the behavior of the path density (grey line).
-In fact, the edge density of the system increases monotonously over time and it has been shown that this circumstance alone can cause this behavior (supplementary information of \citet{Lentz:2013PRL}).
+In fact, the edge density of the system increases monotonously over time and it has been shown that this circumstance alone can cause this behavior in the supplementary information of \citet{Lentz:2013PRL}.
 The impact of removal of temporal correlations -- i.e. GST (red), LST (blue) and RT (green) model respectively -- can be explained in a similar fashion.
 All of these procedures homogenize the edge density over time resulting in a systematic increase of the path density.
 Due to the overall sparsity of edge data, the RT model places relatively sparse networks as snapshots in this case.

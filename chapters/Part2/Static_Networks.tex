@@ -16,8 +16,8 @@
 
 
 \chapter{Static network analysis -- Case study: Livestock trade network}\label{chap:static}
-In this chapter, we analyze the pig trade between agricultural holding in Germany as a static network.
-The focus hereby lies the epidemic spreading potential of networks of this type.
+In this chapter, we analyze the pig trade between agricultural holdings in Germany as a static network and focus on the epidemic spreading potential of networks of this type.
+The epidemiological relevance of the pig trade network has been studied in \citep{Fritzemeier:2000p5909} for the case of classical swine fever.
 Depending on the system under consideration, there are different approaches to data acquisition for different epidemiologically relevant networks.
 In the case of \emph{human} contact structures, it is in most cases impossible to gather information about all possible paths of infection.
 
@@ -395,7 +395,7 @@ In this work, we use random networks with fixed node number $N$ and edge probabi
 The connection of subgraphs is achieved by by placing edges between them with probability $p_\mathrm{out}$.
 Varying $p_\mathrm{out}$ allows for an adjustment of the modularity $Q$, which is computed using equation \eqref{eq:directed_modularity}.
 
-It should be noted that a sufficient number of subgraphs is necessary to obtain large values of $Q$.
+It should be noted that a sufficiently large number of subgraphs is necessary to obtain large values of $Q$.
 We found an analytic approximation for the maximum possible modularity by maximizing equation \eqref{eq:modularity} (or \eqref{eq:directed_modularity}, respectively) for different module numbers. 
 For a network of $n$ modules the maximum modularity is
 \begin{equation}\label{eq:Q_max}
@@ -403,8 +403,8 @@ Q_\mathrm{max}=1-\frac{1}{n}.
 \end{equation}
 A full derivation of \eqref{eq:Q_max} is given in Appendix \ref{sec:maximum_modularity_subgraphs}.
 Derivation sketch: given a modular network with adjacency matrix $\mat{A}$, there is always a relabeling of indices $\mat{P}$ so that $\mat{A}'=\mat{P}\mat{A}\mat{P}^{-1}$ is block diagonal.
-Thereofre, modularity can be computed using a property matrix, where the properties are module labels.
-The maximum modularity can be derived from the blocks of $\mat{A}'$, since the graphs of $\mat{A}'$ and $\mat{A}$ are isomorphic.
+The blocks of $\mat{A}'$ capture the number of edges within and between the modules respectively and therefore allow for a simple computation of modularity.
+The maximum modularity can be derived from $\mat{A}'$, since the graphs of $\mat{A}'$ and $\mat{A}$ are isomorphic.
 
 \subsection{Impact of directionality}\label{sec:impact_directionality}
 We solve the system \eqref{eq:sir_with_pacing} on a sequence of networks as generated according to the previous section.

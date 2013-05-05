@@ -159,6 +159,12 @@ Brandes, U., Delling, D., Gaertler, M., G{\"o}rke, R., Hoefer, M., Nikoloski,
 \newblock In {\em Graph-Theoretic Concepts in Computer Science}, pages
   121--132. Springer.
 
+\bibitem[Broder et~al., 2000]{Broder:2000ej}
+Broder, A., Kumar, R., Maghoul, F., Raghavan, P., Rajagopalan, S., Stata, R.,
+  Tomkins, A., and Wiener, J. (2000).
+\newblock {Graph structure in the web}.
+\newblock {\em Computer networks}, 33(1):309--320.
+
 \bibitem[Buchholz et~al., 2011]{Wilking}
 Buchholz, U., Bernard, H., Werber, D., B{\"o}hmer, M.~M., Remschmidt, C.,
   Wilking, H., Deler{\'e}, Y., an~der Heiden, M., Adlhoch, C., Dreesman, J.,
@@ -322,6 +328,11 @@ Fortunato, S., Flammini, A., and Menczer, F. (2006).
 Freeman, L.~C. (1978).
 \newblock {Centrality in social networks}.
 \newblock {\em Soc. Networks}, 1:215--239.
+
+\bibitem[Fritzemeier, 2000]{Fritzemeier:2000p5909}
+Fritzemeier, J. (2000).
+\newblock {Epidemiology of classical swine fever in Germany in the 1990s}.
+\newblock {\em Vet. Microbiol.}, 77(1-2):29--41.
 
 \bibitem[Garlaschelli and Loffredo, 2004]{Garlaschelli2004}
 Garlaschelli, D. and Loffredo, M. (2004).
