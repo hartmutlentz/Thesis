@@ -21,7 +21,7 @@ We define mathematical frameworks for the analysis of epidemics and networks in 
 The modeling of infectious diseases makes extensive use of compartment models.
 We address these models in sections \ref{sec:si_model} and \ref{sec:sir_model}.
 Section~\ref{sec:network_theory} gives an overview over several results of modern network theory.
-In addition, appendix \ref{sec:implementation} describes a efficient computer implementations of networks.
+In addition, Appendix~\ref{sec:implementation} describes a efficient computer implementations of networks.
 
 \section{Models of infectious diseases}
 
@@ -121,14 +121,14 @@ R_0 = N \frac{\alpha }{\gamma } >1.
 The basic reproduction number describes the average number of follow-up infections by each infected individual.
 It is one of the main goals in epidemiology to bring down the basic reproduction number of a disease below the critical value $R_0=1$.
 This is the reason for the implementation of mass vaccination.
-As one can immediately see from equation \eqref{eq:r0}, this can be done by reducing the infection rate $\alpha $ or by increasing the immunization rate $\gamma $.
+As one can immediately see from Equation~\eqref{eq:r0}, this can be done by reducing the infection rate $\alpha $ or by increasing the immunization rate $\gamma $.
 Vaccination basically decreases the size of the initial susceptible population $S_*$ .
 A reduction of the infection rate can be achieved by increasing hygiene standards or appropriate behavior, say wearing warm clothes in winter time to avoid common cold.
 The immunization rate can be increased by drugs.
 
 Let us now focus on the late phase of an SIR-infection.
 In contrast to the SI-model of Section~\ref{sec:si_model} an SIR like outbreak does not necessarily infect the whole population, even if $R_0>1$.
-The reason is that there has to be a critical mass of susceptible individuals in order to keep an infection alive (see equation \eqref{eq:prelim_rnod}).
+The reason is that there has to be a critical mass of susceptible individuals in order to keep an infection alive (see Equation~\eqref{eq:prelim_rnod}).
 The total number of infected during an infection given by the number of recovered at the end of the infection, since every recovered has to be in the infected state in the first place.
 A central measure throughout this work is therefore the \emph{outbreak size} $R_\infty$.
 
@@ -151,7 +151,7 @@ R_\infty = S_*-S_* e ^{-\frac{\alpha}{\gamma}R_\infty}.
 \end{equation}
 This transcendental equation can be solved numerically using a Newton-Raphson technique.
 The outbreak size $R_\infty $ only takes finite values for $\alpha / \gamma > 1$.
-A solution of equation \eqref{eq:transcendental} is shown in Figure~\ref{fig:transcendental}
+A solution of Equation~\eqref{eq:transcendental} is shown in Figure~\ref{fig:transcendental}
 %
 \begin{figure}[htbp]
 \begin{center}
@@ -410,7 +410,7 @@ c(i)=\frac{N-1}{ \sum _j  d_{ij}}
 where $d_{ij}$ is the distance between nodes $i$ and $j$.
 Some tools for an efficient computation of shortest-path distances are summarized in Section~\ref{sec:implementation}.
 It should be noted that the distance between two nodes is defined to be infinite, if the underlying network is not connected.
-In this case, the corresponding terms are ignored and do not contribute to the sum in equation \eqref{eq:closeness}.
+In this case, the corresponding terms are ignored and do not contribute to the sum in Equation~\eqref{eq:closeness}.
 Thus the closeness is computed for each connected component separately.
 
 Closeness centrality is capable of identifying nodes with short average path lengths to other nodes in the network.
@@ -427,7 +427,7 @@ Therefore, betweenness of a node $i$ is defined as
 b(i)=\sum _{s\neq i \neq t} \frac{\sigma _{st}(i)}{\sigma _{st}}
 \end{equation}
 where $\sigma _{st}$ is the number of shortest paths between nodes $s$ and $t$ and $\sigma _{st} (i)$ is the number of shortest paths between $s$ and $t$ going through node $i$.
-The computation of betweenness is expensive using equation \eqref{eq:betweenness} directly.
+The computation of betweenness is expensive using Equation~\eqref{eq:betweenness} directly.
 Therefore, an efficient algorithm was introduced by Brandes \citep{Brandes:2001p2757}.
 
 Note that bridge nodes might look ordinary in the first place, e.g. they could have only a few links.
@@ -621,7 +621,7 @@ Thus, the degree distribution is immediately given by a bimodal distribution
 \begin{equation}\label{eq:bimodal}
 P(k)= \left(\begin{array}{c}N-1 \\k\end{array}\right) p^k (1-p)^{N-k-1} .
 \end{equation}
-Provided that we are interested in large networks ($N\rightarrow \infty $), equation \eqref{eq:bimodal} can be approximated by a Poisson distribution,
+Provided that we are interested in large networks ($N\rightarrow \infty $), Equation~\eqref{eq:bimodal} can be approximated by a Poisson distribution,
 \begin{equation}\label{eq:poisson_distribution}
 P(k) =\frac{\mean{k}^k }{k!} e^{-\mean{k}}
 \end{equation}
@@ -639,7 +639,7 @@ Their results for the occurrence of different subgraphs are summarized in \citep
 \includegraphics{ER_emergence_LCC.pdf}
 \caption{Emergence of the largest connected component (LCC) in an \ER graph as it follows from \eqref{eq:giant_component}
 The size of the of the largest component takes finite values for $\mean{k}>1$.
-The mean cluster size is given by equation \eqref{eq:mean_cluster_size} and diverges at $\mean{k}=1$.
+The mean cluster size is given by Equation~\eqref{eq:mean_cluster_size} and diverges at $\mean{k}=1$.
 }
 \label{fig:ER_lcc_emergence}
 \end{SCfigure}
@@ -662,7 +662,7 @@ One can use similar arguments to obtain an expression for the mean cluster size 
 \mean{s}=\frac{1}{1-\mean{k}+\mean{k}S}.
 \end{equation}
 %
-The mean cluster size \eqref{eq:mean_cluster_size} and a numerical solution of equation~\eqref{eq:giant_component}
+The mean cluster size \eqref{eq:mean_cluster_size} and a numerical solution of Equation~\eqref{eq:giant_component}
 are shown in Figure~\ref{fig:ER_lcc_emergence}.
 As the figure demonstrates, the system shows a second-order phase transition at $\mean{k}=1$.
 %The largest connected component phase transition is shown in figure~\ref{fig:ER_lcc_emergence}.
@@ -695,14 +695,14 @@ Since we are only interested in the rough behavior of the average shortest path 
 \begin{equation}\label{eq:er_av_shortest}
 \mean{l}\simeq \frac{\log N}{\log \mean{k}}.
 \end{equation}
-The average degree remains constant for different network orders, so that equation \eqref{eq:er_av_shortest} demonstrates that the average shortest path length grows logarithmically with the number of nodes in \ER graphs.
+The average degree remains constant for different network orders, so that Equation~\eqref{eq:er_av_shortest} demonstrates that the average shortest path length grows logarithmically with the number of nodes in \ER graphs.
 Figure \ref{fig:ER_shortest_path_histogram} shows the shortest path length distribution for one realization in the $G_{N,p}$ ensemble.
 Note that the mean value $\sim 10$ is relatively small compared with the number of nodes in the network (1000).
 This relation is found in many complex networks and is an indication for the small-world effect (see Section~\ref{sec:watts_strogatz_model}).
 
 \subsection{Watts-Strogatz model}\label{sec:watts_strogatz_model}
 We have seen that random graphs can reproduce some important properties of real-world networks, particularly the existence of a giant component and small average shortest path length.
-Nevertheless, equation \eqref{eq:er_clustering} demonstrates that the tendency to form connected triangles is absent in \ER networks.
+Nevertheless, Equation~\eqref{eq:er_clustering} demonstrates that the tendency to form connected triangles is absent in \ER networks.
 Observations show, however, that many real-world networks exhibit this feature \citep{Milgram:1967,WassermanFaust,Newman2003}.
 It is characteristic for social networks in particular to have a high degree of clustering and at the same time short-cuts allowing for small average shortest path lengths.
 In this sense they can be seen as an intermediate structure between lattices (high local order) and random graphs (small shortest path lengths).
@@ -845,7 +845,7 @@ In order to obtain a rate-equation for the total number of infected in a homogen
 \frac{di(t)}{dt}=\beta \mean{k} i(t) [1-i(t)],
 \end{equation}
 where $1-i(t)$ is the fraction of susceptible nodes.
-This model can easily be extended to a SIS model by adding a loss term $-\gamma i(t)$ to equation \eqref{eq:si_network}.
+This model can easily be extended to a SIS model by adding a loss term $-\gamma i(t)$ to Equation~\eqref{eq:si_network}.
 Setting $\gamma =1 $ without loss of generality, we obtain 
 \begin{equation}\label{eq:sis_network}
 \frac{di(t)}{dt}=-i(t)+ \beta \mean{k} i(t) [1-i(t)] .
@@ -933,7 +933,7 @@ g_c \sim \exp (-2\mu / m\beta ),
 \end{equation}
 where $m$ is the minimum degree of the network and $\mu $ and $\alpha $ are infection parameters, respectively.
 The exact value of $g_c$ can be found by extrapolation of the curves in Figure~\ref{fig:targeted_immunization}.
-The striking feature of equation \eqref{eq:crit_vacc_BA} is, however, that the fraction nodes that have to be vaccinated decreases exponentially with the spreading rate.
+The striking feature of Equation~\eqref{eq:crit_vacc_BA} is, however, that the fraction nodes that have to be vaccinated decreases exponentially with the spreading rate.
 
 Besides the degree, we have to point out that any centrality measure (see Section~\ref{sec:micro_measures}) can be used in order to define a ranking of nodes.
 This node ranking can then be used to define a vaccination priority for all nodes.
@@ -971,7 +971,7 @@ Additionally to the local infection model, we add a migration term so that the g
 \begin{equation}\label{eq:general_metapop_sir}
 \frac{dI_\mu }{dt} = R(S_\mu, I_\mu , R_\mu) + M (S_\mu, I_\mu , R_\mu, S_\nu ,I_\nu ,R_\nu, \tau ).
 \end{equation}
-The first term $R$ in equation \eqref{eq:general_metapop_sir} is a \emph{local reaction} term, while the \emph{migration} $M$ to other subpopulations could depend on the local distribution and the infection status of other subpopulations connected to $\mu $.
+The first term $R$ in Equation~\eqref{eq:general_metapop_sir} is a \emph{local reaction} term, while the \emph{migration} $M$ to other subpopulations could depend on the local distribution and the infection status of other subpopulations connected to $\mu $.
 Furthermore, the migration between subpopulations could occur on a time-scale $\tau $ different from the time-scale of the local infection.
 The impact of these time-scales on disease spread was analyzed in  \citep{cross2005,Balcan:2011gv,Lentz:2012pre}.
 We investigate the interplay between network properties and disease outbreaks in Section~\ref{sec:PRE}. 

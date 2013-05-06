@@ -96,7 +96,7 @@ This means that it takes typically 6 steps to infect every node of the network a
 
 The giant strongly connected component has an interesting impact on the distribution of node ranges (and reachabilities) in the network.
 Note that the range of a node defines the upper bound for any disease outbreak starting from this very node.
-Following equation \eqref{eq:range_def}, we compute the ranges of all nodes and focus for the moment on the \emph{sequence} of these ranges. 
+Following Equation~\eqref{eq:range_def}, we compute the ranges of all nodes and focus for the moment on the \emph{sequence} of these ranges. 
 For most sequences of centralities in a network, we would find rather noisy sequences.
 These result in distributions such as the degree distribution in Figure~\ref{fig:hit_deg_cdf}.
 In contrast to most other centrality measures, the range shows a strikingly different behavior.
@@ -248,7 +248,7 @@ In fact, is has been shown that there is a resolution limit for community detect
 In general, additional meta information such as the geographical embedding of the network, is required to extract knowledge about the function of a network out of its large scale structure.
 
 A particular partitioning of a network, however, is not guaranteed to give unambiguous information about the network.
-On the contrary, equation \eqref{eq:modularity} is a mapping from a high dimensional partition space to a scalar.
+On the contrary, Equation~\eqref{eq:modularity} is a mapping from a high dimensional partition space to a scalar.
 The number of elements in the partition space is given by the so called \emph{bell number} counting the number of partitions of a set.
 This means that the number of partitions of a network with 10 nodes is $\sim 10^5$ and it is already $\sim 10^{47}$ for 50 nodes!
 Adjacent partitions in the partition space can have huge differences in $Q$ and it is not guaranteed that approximative algorithms are capable to find the global optimum.
@@ -278,7 +278,7 @@ Following Section~\ref{sec:sir_model}, the infection model for each node $\mu $ 
 \partial _t i_\mu &=  \alpha s_\mu \frac{i_\mu}{n_\mu} - \gamma i_\mu \notag \\
 \partial _t r_\mu &= \gamma i_\mu ,
 \end{align}
-where $n_\mu =s_\mu + i_\mu + r_\mu $ is the total population of node $\mu $ and we use the force of infection $i_\mu / n_\mu $ as suggested in equation \eqref{eq:force_of_infection}.
+where $n_\mu =s_\mu + i_\mu + r_\mu $ is the total population of node $\mu $ and we use the force of infection $i_\mu / n_\mu $ as suggested in Equation~\eqref{eq:force_of_infection}.
 The \emph{infection status} of node $\mu $ is given by the triple $(s_\mu , i_\mu , r_\mu )$.
 Now we add the migration between the meta populations by introducing a network with adjacency matrix elements $a_{\mu \nu }$.
 
@@ -375,10 +375,10 @@ In principle, the strength of direction could be measured by this fraction alone
 It has been shown, however, that this measure would yield finite values even for purely random networks \citep{Garlaschelli2004}.
 Therefore, \citeauthor{Garlaschelli2004} introduced the measure of \emph{link reciprocity} $\rho $ of a given network with $N$ nodes and adjacency matrix $\mat{A}$ as
 \begin{equation}\label{eq:link_reciprocity}
-\rho =\frac{\sum _{i\neq j} (a_{ij}-\bar{a})(a^T _{ij}-\bar{a})}{\sum _{i\neq j} (a_{ij}-\bar{a})^2}.
+\rho =\frac{\sum _{i\neq j} (a_{ij}-\bar{a})(a^\top _{ij}-\bar{a})}{\sum _{i\neq j} (a_{ij}-\bar{a})^2}.
 \end{equation}
 The edge density is denoted as $\bar{a}=\sum _{ij} a_{ij}/(N(N-1))$.
-In fact, equation \eqref{eq:link_reciprocity} is the correlation between the adjacency matrix and its transpose.
+In fact, Equation~\eqref{eq:link_reciprocity} is the correlation between the adjacency matrix and its transpose.
 Reciprocity is $\rho =1$ for undirected networks, whereas $\rho \approx 0 $ for directed random graphs.
 In the latter case the fraction of bidirectional links would take finite values, since some bidirectional links are placed by chance in random networks.
 
@@ -386,17 +386,17 @@ To investigate the impact of directionality on disease dynamics, we generate ran
 The networks are generated as follows:
 1. generate an undirected \ER network, 2. replace all edges by bidirectional directed edge pairs and 3. remove one edge of the bidirectional edge pair with probability $q$.
 Consequently, the probability that an edge pair is connected by an undirected (bidirectional) edge is $p_\mathrm{rev} = 1-q$.
-The link reciprocity of the generated network can directly be computed using equation \eqref{eq:link_reciprocity}.
+The link reciprocity of the generated network can directly be computed using Equation~\eqref{eq:link_reciprocity}.
 We have to point out that this analysis focuses on \ER networks for the sake of clarity.
 
 \paragraph{Modular networks\color{Cayenne}{.}}
 Following \citeauthor{Newman:2004}, a modular network can be realized as a union of independent subgraphs, that are afterwards sparsely connected \citep{Newman:2004}.
 In this work, we use random networks with fixed node number $N$ and edge probability $p$ as subgraphs.
 The connection of subgraphs is achieved by by placing edges between them with probability $p_\mathrm{out}$.
-Varying $p_\mathrm{out}$ allows for an adjustment of the modularity $Q$, which is computed using equation \eqref{eq:directed_modularity}.
+Varying $p_\mathrm{out}$ allows for an adjustment of the modularity $Q$, which is computed using Equation~\eqref{eq:directed_modularity}.
 
 It should be noted that a sufficiently large number of subgraphs is necessary to obtain large values of $Q$.
-We found an analytic approximation for the maximum possible modularity by maximizing equation \eqref{eq:modularity} (or \eqref{eq:directed_modularity}, respectively) for different module numbers. 
+We found an analytic approximation for the maximum possible modularity by maximizing Equation~\eqref{eq:modularity} (or \eqref{eq:directed_modularity}, respectively) for different module numbers. 
 For a network of $n$ modules the maximum modularity is
 \begin{equation}\label{eq:Q_max}
 Q_\mathrm{max}=1-\frac{1}{n}.
@@ -416,7 +416,7 @@ Figure \ref{fig:typical_trajectory} shows a typical solution of the system on a 
 
 \begin{SCfigure}
 \includegraphics{Typical_Trajectory.pdf}
-\caption{Typical infection curve $\sum _\nu i_\nu (t)$ of a solution of equation \eqref{eq:sir_with_pacing}.
+\caption{Typical infection curve $\sum _\nu i_\nu (t)$ of a solution of Equation~\eqref{eq:sir_with_pacing}.
 The ratio of $1/\tau $ and $\gamma $ results in a comb shape of the infection curve.
 Inset shows the more noisy infection curve obtained in a critical network.
 Networks: \ER network with 2000 nodes, $p=0.05$, $p_\mathrm{rev}=0.5$ (inset: $p=0.001$, $p_\mathrm{rev}=0.01$).
@@ -429,7 +429,7 @@ Although the choice of parameters seems a bit arbitrary in the first place, the 
 We have seen in Section~\ref{sec:sir_model} that the outbreak condition \eqref{eq:r0} determines whether an outbreak occurs at all.
 Above threshold, SIR-type outbreaks show quasi similar behavior.
 That is why the fraction $\alpha / \gamma $ in equations \eqref{eq:sir_with_pacing} is of minor importance as long as $\alpha / \gamma >1$.
-In addition to that, the characteristic time scale of an SIR infection is given by $1/\gamma $ (see equation \eqref{eq:sir_characteristic_time_scale_gamma}).
+In addition to that, the characteristic time scale of an SIR infection is given by $1/\gamma $ (see Equation~\eqref{eq:sir_characteristic_time_scale_gamma}).
 If the pacing of the network coupling $\tau $ is too slow, a local infection dies out before it can be moved to the next node.
 Therefore, we choose $\tau $ and $\gamma $ so that an infection can spread along the network.
 An analysis of the outbreak dynamics in the $(\tau \gamma)$ parameter space is given in \citep{Lentz:2012pre}.

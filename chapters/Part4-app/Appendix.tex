@@ -76,7 +76,7 @@ It should be noted that in general there exist multiple BFS and DFS trees for ea
 
 Both search algorithms are used in a large number of algorithmic applications.
 BFS is efficient to compute shortest paths in unweighted networks.
-With every generation in a BFS tree, the distance from the starting node is incremented by 1, and thus the set of nodes with a certain distance from the starting node can be directly read from the BFS tree (see figure \ref{fig:dfs_bfs}).
+With every generation in a BFS tree, the distance from the starting node is incremented by 1, and thus the set of nodes with a certain distance from the starting node can be directly read from the BFS tree (see Figure~\ref{fig:dfs_bfs}).
 Shortest paths in weighted networks can be identified using a the algorithm of Dijkstra \citep{Dijkstra:1959}.
 Connected components in directed graphs can be efficiently identified using closed DFS paths \citep{algorithm_design}.
 
@@ -114,7 +114,7 @@ In other words, if the problem could be solved for 20 cities in 1 second, it wou
 
 A more exhaustive overview about hard problems is in \citep{algorithm_design} and the references therein.
 Generally, heuristic methods have to be used in order to get an approximate solution.
-It should be noted that the \emph{maximum clique} problem (see section \ref{sec:PRL}) and \emph{graph partitioning} (see section \ref{sec:network_analysis}, equation \eqref{eq:modularity}) belong to the class of hard problems \citep{brandes2007}.
+It should be noted that the \emph{maximum clique} problem (see section \ref{sec:PRL}) and \emph{graph partitioning} (see section \ref{sec:network_analysis}, Equation~\eqref{eq:modularity}) belong to the class of hard problems \citep{brandes2007}.
 
 \section{Degree vs. other centrality measures}\label{sec:centrality_hit}
 In this section, we compute the centrality measures introduced in Section~\ref{sec:micro_measures} and compare them with the degree.
@@ -219,12 +219,12 @@ Thus, the general expression for modularity is
 Q= c-\sum  _i \left( \sum _j e_{ij} \right)^2 .
 \end{equation}
 %
-We use the above expression for the non-diagonal elements $d$ and compute the expression $\sum _j e_{ij}$ in equation \eqref{eq:modumatrix}.
+We use the above expression for the non-diagonal elements $d$ and compute the expression $\sum _j e_{ij}$ in Equation~\eqref{eq:modumatrix}.
 \begin{equation}\label{eq:sumeij}
 \sum _j e_{ij} = e_{ii} + \sum _{j\neq i} e_{ij} = x_i + (n-1) \frac{1-c}{n(n-1)} = x_i + \frac{1-c}{n}.
 \end{equation}
 %
-Now we insert $\sum _j e_{ij}=x_i+\frac{1-c}{n}$ in equation \eqref{eq:modumatrix} and after some algebra we get a general expression for the modularity for networks of the form \eqref{eq:general_module_matrix}:
+Now we insert $\sum _j e_{ij}=x_i+\frac{1-c}{n}$ in Equation~\eqref{eq:modumatrix} and after some algebra we get a general expression for the modularity for networks of the form \eqref{eq:general_module_matrix}:
 \begin{equation}\label{eq:Qndim}
 Q=c-\sum _i x_i^2 - \frac{1-c^2}{n} = \sum _i x_i -\sum _i x_i^2 - \frac{1-(\sum _i x_i)^2}{n}.
 \end{equation}
@@ -264,7 +264,7 @@ x_n=\frac{c}{n}.
 \end{equation}
 Hence, the maximum of $Q$ is obtained, if all modules have the same size, i.e. $x_i=\frac{c}{n} \; \forall i$.
 
-In order to find the maximum value of $Q$, we insert the module size $x_i=c/n$ into equation \eqref{eq:Qndim} and get
+In order to find the maximum value of $Q$, we insert the module size $x_i=c/n$ into Equation~\eqref{eq:Qndim} and get
 \[
 Q=c-\sum _{i=1} ^n \left( \frac{c}{n} \right) ^2 - \frac{1-c^2}{n}=c-\frac{c^2}{n}-\frac{1}{n}+\frac{c^2}{n}.
 \]
@@ -291,7 +291,7 @@ x_1 & \frac{1}{n}(1-c)&  & \hdots &  & 0 \\
 \right) .
 \end{equation}
 It follows immediately that $\sum _j e_{ij}=x_i+\frac{2(1-c)}{n}$, which is equivalent to \eqref{eq:sumeij} up to a factor 2.
-Inserting this into equation \eqref{eq:modumatrix} gives a similar expression for modularity \eqref{eq:Qndim} as for the general case:
+Inserting this into Equation~\eqref{eq:modumatrix} gives a similar expression for modularity \eqref{eq:Qndim} as for the general case:
 \begin{equation*}
 Q=c-\sum _i x_i^2 - \frac{4(1-c)}{n} .
 \end{equation*}
@@ -300,9 +300,9 @@ Since the relevant part for maximum finding is the quadratic term as in \eqref{e
 Q_\mathrm{max}=1-\frac{1}{n}.
 \end{equation}
 
-Figure~\ref{fig:q_max} shows a comparison between equation \eqref{eq:q_max2} and a computer simulation of a ring of modules where new modules are added to the system successively and the maximum modularity is computed. 
+Figure~\ref{fig:q_max} shows a comparison between Equation~\eqref{eq:q_max2} and a computer simulation of a ring of modules where new modules are added to the system successively and the maximum modularity is computed. 
 The edge density of each module is given by the edge occupation probability $p_\mathrm{in}=0.5$.
-The figure demonstrates that equation \eqref{eq:q_max} gives a good approximation of the maximum value $Q_\mathrm{max}$ even for small systems.
+The figure demonstrates that Equation~\eqref{eq:q_max} gives a good approximation of the maximum value $Q_\mathrm{max}$ even for small systems.
 %
 \begin{SCfigure}
 \includegraphics{Q_max.pdf}
@@ -314,7 +314,7 @@ Modules are connected on a ring so that the resulting graph is connected.
 \end{SCfigure}
 
 \paragraph{Directed networks\color{Cayenne}{.}}
-In analog to equation \eqref{eq:mod_undir} the modularity of directed networks can be written as \citep{Kao:2007}
+In analog to Equation~\eqref{eq:mod_undir} the modularity of directed networks can be written as \citep{Kao:2007}
 \begin{equation}\label{eq:mod_directed}
 Q=\sum _i e_{ii} - a_i ^{\text{in}} a_i ^{\text{out}}.
 \end{equation}

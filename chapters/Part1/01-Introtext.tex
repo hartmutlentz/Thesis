@@ -3,11 +3,10 @@
 \chapter{Introduction}
 %
 \paragraph{Models for epidemics\color{Cayenne}{.}}
-The understanding and prediction of the spread of infectious diseases has always been an important issue for societies.
+Understanding and predicting the spread of infectious diseases has always been an important issue for societies.
 The probably most prominent example is the spread of black death in Europe, which eradicated half of the European population between 1347 and 1351 \citep{Bos:2011kr}.
-Although the course of this particular outbreak was rather uncomplicated from a present-day perspective, modeling the course of an infectious disease is in general a major challenge.
-Early attempts go back to the 18th century.
-In his review about the mathematics of infectious diseases, Hethcote reports a model for smallpox was already formulated in 1760 by D. Bernoulli (see \citep{Hethcote:2000} and references therein).
+Although the course of this particular outbreak was rather uncomplicated from a present-day perspective, modeling the dynamics of an infectious disease is in general a major challenge.
+Early attempts go back to the 18th century; in his review about the mathematics of infectious diseases, Hethcote reports a model for smallpox was already formulated in 1760 by D. Bernoulli (see \citep{Hethcote:2000} and references therein).
 
 In the early 20th century, people developed mathematical models for epidemics: a discrete time model in 1906 \citep{Hamer} and a differential equation model in 1911 \citep{Ross}.
 Major contributions to the modern theoretical framework were provided by \citep{kermack:27}, \citep{bailey:57} and \citep{andersonmay:92}.
@@ -19,11 +18,11 @@ Well known concepts of mathematics, such as graph theory \citep{Bollobas:1985}, 
 
 Besides infectious diseases of humans, livestock epidemics are a major economic issue in the field of agriculture.
 A prominent example is food and mouth disease, which caused tremendous economic losses in the UK in 2001 \citep{Kitching:2005dd}.
-As a matter of fact, many methods from human epidemiology have been adopted to animal diseases.
+As a matter of fact, many methods from human epidemiology have also been adopted to animal diseases.
 Since large amounts of data of livestock movements have been collected in Europe after the BSE crisis in 2001, network models reflecting these movement have gained particular attention in recent years \citep{Christley:2005,Green:2006,Kao:2007,Bigras:2007,Dube:2009gx,MartinezLopez2009,Lentz:2011,Konschake:2013js}.
 
 Epidemic models can be divided into two classes: \emph{forecast} models and \emph{conceptual} models. 
-Forecast models incorporate as much information as possible and the main focus is not an understanding of the basic principles.
+Forecast models incorporate as much information as possible and the main focus does not lie on an understanding of the basic principles.
 Conceptual models are used in the context of understanding the principles behind epidemic spreading processes, i.e. the way how a disease is transmitted through a population.
 They make use of simple assumptions for the local dynamics and focus on a macroscopic picture of the process.
 Conceptual models are very similar to models in theoretical physics, because they focus on the very essence of the problem.
@@ -33,13 +32,13 @@ In this work, we use conceptional models in combination with different network t
 
 \paragraph{Complex networks as spreading substrates\color{Cayenne}{.}}
 Network analysis has become an essential element of epidemiology, where networks models interactions between the individuals of a population.
-Except from epidemiological substrates, networks can be anything that has actors (nodes) that are connected by links (edges).
-Modern network science is concerned in the broadest sense with the development, description and development of complex networks, no matter what the network structure describes in particular.
+Besides epidemiological substrates, networks can be anything that has actors (nodes) that are connected by links (edges).
+Modern network science is concerned in the broadest sense with the description and development of complex networks, no matter what the network structure describes in particular.
 Reviews on network science are provided in \citet{Newman2003,RevModPhys.74}.
 
-The mathematical roots of network science go back to \emph{graph theory} developed by \citeauthor{euler:1736}.
-In the 18th century, \citeauthor{euler:1736} solved the so-called Kšnigsberg bridge problem by showing that there is no closed path in any network, when at least one node has an odd degree \citep{euler:1736}.
-Since detailed information about most networks was not available until the end of the 20th century, research focused on the study of random networks.
+The mathematical roots of network science go back to \emph{graph theory} developed by \citeauthor{euler:1736} in the 18th century.
+\citeauthor{euler:1736} solved the so-called Kšnigsberg bridge problem by showing that there is no closed path in any network, when at least one node has an odd degree \citep{euler:1736}.
+Since detailed information about most networks was not available until the end of the 20th century, early research focused on the study of random networks.
 In 1959, \citeauthor{ER:1959} studied the properties of dense random networks and later analyzed the percolation properties of these systems \citep{ER:1960,ER:1961}.
 
 Beyond the tools and methods of graph theory, the origin of modern network science goes back to \emph{sociology}.
@@ -49,6 +48,7 @@ In fact, many of the measures used in modern network science have been defined i
 In recent years, data of gigantic scale have emerged by the proliferation of computerized data acquisition and storage volumes.
 These data can be used in order to gain a deeper insight into many networked systems such as the trade of livestock animals between farms \citep{Euro-Lex} or the structure of the world wide web \citep{Albert:1999uu,Barabasi99}.
 Other prominent examples are food webs \citep{Martinez:1991wv}, citation networks \citep{egghe90}, power grids \citep{Watts:1998} or mobile phone call networks \citep{Schneider:2013uc}.
+As a particular case study, we analyze the network of livestock trade in Germany \citep{Euro-Lex} in detail in this thesis.
 
 The analysis of real-world networks lead to the formulation of network models other than the purely random allocation of edges as done for random graphs.
 It was found that many real-world networks show a high degree of clustering.
@@ -60,29 +60,31 @@ It has been shown that scale-free networks are particularly vulnerable to target
 The very essence of the spread of infectious diseases on networks is to determine the \emph{paths} that a spreading process can unfold on.
 The distribution of paths between the nodes of a network is closely related to its percolation properties.
 In fact, percolation is inherently related to the epidemic threshold \citep{Sander2002293,Sander20031}.
-Although undirected networks show a relatively simple percolation behavior, it is known that the percolating cluster in \emph{directed} networks is generally comprised of other complex substructures \citep{Dorogovtsev:2001jd}.
-Similar to the network components, the concept of modules was introduced by \citeauthor{Newman06062006}.
-Modules allow for a statistically small number of paths between each other \citep{Newman06062006}.
-These structures have been observed in a number of networks \citep{Clauset_greedy,Fortunanto2010,Lentz:2011}.
-The impact of modular structure on disease spread has been analyzed for social networks in \citep{Salathe:2010p6333}.
+Furthermore, the structure of the percolating cluster is generally comprised of other complex substructures in directed systems \citep{Dorogovtsev:2001jd}.
+As a concept similar to components, modules as densely connected subgraphs were introduced in \citeauthor{Newman06062006}
+%Similar to the network components, the concept of modules was introduced by \citeauthor{Newman06062006}.
+They allow for a statistically small number of paths between each other \citep{Newman06062006}.
+These structures have been observed in the livestock network analyzed in this thesis \citep{Lentz:2011} and in other networks \citep{Clauset_greedy,Fortunanto2010,Lentz:2011}.
 
-Nevertheless, the impact of directionality and modular structure has not been analyzed systematically yet for systems as livestock trade networks.
+The impact of modular structure on disease spread has been studied for social networks in \citep{Salathe:2010p6333}.
+Nevertheless, for the case livestock trade networks, the impact of a modular structure has not been analyzed systematically yet.
+Moreover, the role of edge direction needs to be investigated, since livestock trade networks are directed.
+%Nevertheless, the impact of directionality and modular structure has not been analyzed systematically yet for systems as livestock trade networks.
 There remain the following unanswered questions:
 \begin{itemize}
-\item how does the direction of edges affect epidemics?
+\item what role does the direction of edges play for the spread of infectious diseases?
 \item how does a modular structure affect epidemics in a livestock trade network?
 \end{itemize}
-We address these questions in chapter~\ref{chap:static}, where we derive a model for infection dynamics on a network of meta populations connected by trade edges.
+We address these questions in Chapter~\ref{chap:static}, where we derive a model for infection dynamics on a network of meta populations connected by directed edges.
 
 Although network analysis in the sense above provides a powerful tool for the understanding and forecast of epidemics, it neglects the fact that most networks are not static systems.
 As a matter of fact, the edges of many networks show heavy fluctuations over time.
 Therefore, the analysis of \emph{temporal networks} has attracted significant attention during the last years.
 Reviews about temporal networks can be found in \citep{Casteights_review,Holme_review}.
-Due to the fluctuating appearance of edges, the non-causality of paths results in ubiquitous problems in temporal network analysis \citep{Casteights_review,Nicosia:2012hz}.
+In contrast to static network analysis, ubiquitous problems arise from the non-causality of paths in temporal network analysis \citep{Casteights_review,Nicosia:2012hz}.
 
 For this reason, the majority of contributions to temporal network analysis uses data-driven approaches.
 Extensive data driven analyses of livestock trade networks of different European countries were done in \citep{Vernon:2009p5068,Bajardi:2011iv,Konschake:2013js}.
-
 The analysis of a temporal human sexual contact network is found in \citep{Rocha_pnas,Rocha_plosbc}.
 Algorithms for the computation of shortest paths in temporal networks are provided in \citep{Xuan:2003ts}.
 Temporal distances between nodes in a communication network and an air transportation network were determined in  \citep{Pan:2011dga}, where the authors also defined a temporal closeness.
@@ -103,5 +105,5 @@ Central questions in this context are
 \item how can the causal goodness of the static approximation of a temporal network be quantified?
 %\item how can the degree of temporal and topological randomness in temporal networks be measured?
 \end{itemize}
-We address these questions in chapter~\ref{sec:temporal_networks}, where we introduce the novel method of unfolding accessibility for temporal networks.
-
+We address these questions in Chapter~\ref{sec:temporal_networks}, where we introduce the novel method of \emph{unfolding accessibility} for temporal networks.
+The method is capable of answering all questions above.
