@@ -21,26 +21,22 @@ We define mathematical frameworks for the analysis of epidemics and networks in 
 The modeling of infectious diseases makes extensive use of compartment models.
 We address these models in sections \ref{sec:si_model} and \ref{sec:sir_model}.
 Section~\ref{sec:network_theory} gives an overview over several results of modern network theory.
-In addition, Appendix~\ref{sec:implementation} describes a efficient computer implementations of networks.
+In addition, Appendix~\ref{sec:implementation} describes efficient computer implementations of networks.
 
-\section{Models of infectious diseases}
-
-%\subsection{Very briefly:}
-%\paragraph{Main observations\color{Cayenne}{.}} Large scale patterns of epidemics have been measured \citep{giehl:2012}.
-%
-%\paragraph{Research field: Epidemiology\color{Cayenne}{.}}
-
-%\subsection{Infection dynamics}
-%The spread of infectious diseases can be modeled in terms of compartment models as described in sections \ref{sec:si_model} and \ref{sec:sir_model}.
+\section{Models of infectious diseases}\label{sec:inf_diseases}
 Before we formulate models for the spread of epidemic diseases, we have to differentiate between \emph{conceptional} models and \emph{realistic} disease models.
-While the former class is used to provide conceptual results such as the computation of thresholds or testing theories \citep{Hethcote:2000}, realistic disease models use as many aspects as possible to provide a forecast of a particular spreading process.
+While the former class is used to provide conceptional results such as the computation of thresholds or testing theories \citep{Hethcote:2000}, realistic disease models use as many aspects as possible to provide a forecast of a particular spreading process.
 Realistic disease models can be very complex and are beyond the scope of this work, hence we focus on the use of conceptional models.
-In the following section we briefly report some properties of basic epidemic models following the lecture notes of \citeauthor{Chasnov:2010} \citep{Chasnov:2010}.
+In the following section we briefly report some properties of basic epidemic models following the lecture notes of \citet{Chasnov:2010}.
 
 \subsection{SI model}\label{sec:si_model}
 Let us consider a population of $N$ individuals.
-In the simplest case, the infection status of each individual is either susceptible or infected and there are no births and deaths in the population.
-Susceptible individuals become infected, if they are in contact with an infected.
+In the simplest case, the infection status of each individual is either susceptible ($S$) or infected ($I$) and there are no births and deaths in the population.
+Susceptible individuals become infected, if they are in contact with an infected%
+\footnote{There is a distinction between infected and infectious, in general.
+By definition, infected individuals are invaded by a pathogen and act as hosts for its multiplication.
+On the contrary, only \emph{infectious} individuals have the ability to infect others and infected individuals are not necessarily infectious \citep{Rolle:2006vr}.
+Nevertheless, we consider infected equivalent infectious throughout this thesis.}.%
 In epidemiology, the classes susceptible and infected are called \emph{compartments} and every new infection increases the population of the infected compartment following the local reaction scheme
 \[
 S+I \rightarrow 2 I.
@@ -63,9 +59,9 @@ i.e. a logistic differential equation.
 Hence, in the limit $t\rightarrow \infty $ the whole population is infected ($I(\infty )=N$). 
 
 \subsection{SIR model}\label{sec:sir_model}
-In contrast to the infection dynamics introduced in the previous section, many epidemics allow for an immunization of the individuals.
+In contrast to the infection dynamics introduced in the previous section, many epidemics include an immunized state, where immunized individuals do not contribute to disease spread.
 Examples are measles or whooping cough \citep{andersonmay:92,grenfell:92}.
-In this case, individuals recover from the disease after being infected for a certain time period.
+In these cases, individuals recover from the disease after being infected for a certain time period.
 This behavior is modeled by the introduction of an additional compartment for the recovered population.
 The infection scheme is extended to susceptible-infected-recovered (SIR) as in the following infection model \citep{kermack:27}:
 \begin{align}\label{eq:sir_model}
@@ -113,15 +109,15 @@ It follows from \eqref{eq:prelim_condition} that the number of infected grows, i
 Equation \eqref{eq:prelim_rnod} is extremely important in epidemiology, because it defines a threshold for the unfolding of an infection spreading process.
 This fraction is called the \emph{basic reproduction number} $R_0$.
 Recall that $S_* \approx N$ in the fixed point.
-Thus it follows that the outbreak condition is
+Thus, it follows that the outbreak condition is
 \begin{equation} \label{eq:r0}
 R_0 = N \frac{\alpha }{\gamma } >1.
 \end{equation}
 
 The basic reproduction number describes the average number of follow-up infections by each infected individual.
 It is one of the main goals in epidemiology to bring down the basic reproduction number of a disease below the critical value $R_0=1$.
-This is the reason for the implementation of mass vaccination.
 As one can immediately see from Equation~\eqref{eq:r0}, this can be done by reducing the infection rate $\alpha $ or by increasing the immunization rate $\gamma $.
+This is the reason for the implementation of mass vaccination.
 Vaccination basically decreases the size of the initial susceptible population $S_*$ .
 A reduction of the infection rate can be achieved by increasing hygiene standards or appropriate behavior, say wearing warm clothes in winter time to avoid common cold.
 The immunization rate can be increased by drugs.
@@ -134,7 +130,7 @@ A central measure throughout this work is therefore the \emph{outbreak size} $R_
 
 To compute the outbreak size, we consider the second fixed point of \eqref{eq:sir_model}, i.e. the fixed point for $t \rightarrow \infty $.
 At this point there are no infected and a fraction of the population is recovered.
-Hence the fixed point is $(N-R_\infty , 0, R_\infty )$.
+Hence, the fixed point is $(N-R_\infty , 0, R_\infty )$.
 A simple way to obtain the outbreak size $R_\infty $ is to use equations \eqref{eq:sir_model} and compute 
 \[
 \frac{dS}{dR}=-\frac{\alpha }{\gamma } S 
@@ -184,20 +180,20 @@ Being a single-event model, the SIS model has many similarities to the SIR model
 The most crucial difference is that SIS models show an endemic state for $t\rightarrow \infty $, i.e. both $S$ and $I$ take finite values in the long term so that fraction of infected remains in the system permanently.
 
 \subsection{Force of infection}\label{sec:force_of_infection}
-The model presented in Section~\ref{sec:sir_model} describes only the very basic behavior of epidemic dynamics, and is therefore a conceptual model.
-However, it is one of the main objectives in epidemiology to have an understanding of the exact infection rates in the process.
-Infection rates themselves can cause complex infection dynamics.
+The model presented in Section~\ref{sec:sir_model} describes only the very basic behavior of epidemic dynamics, and is therefore a conceptional model.
+However, it is one of the main objectives in epidemiology to have an understanding of the explicit \emph{infection rates} in the process.
+Depending on their detailed structure, the infection rates themselves can cause complex infection dynamics.
 
-The term $\alpha I$ used in Section~\ref{sec:sir_model} is a special, very simple case of an infection rate.
+The term $\alpha I$ used in $\alpha S I$ in the second equation of \eqref{eq:sir_model} is a special, very simple case of an infection rate.
 It corresponds to the case where every susceptible is in contact with every infected in the population.
 More generally, we have to replace $\alpha I$ by an abstract infection rate $\lambda $ containing more information about the interaction between susceptible and infected individuals \citep{Keeling:2005}.
 Thus, the equation for the infected becomes
 \[
-dI/dt = -\lambda S -\gamma I.
+\frac{dI}{dt} = -\lambda S -\gamma I.
 \]
 The rate $\lambda $ is called the \emph{force of infection}.
 In principle, this parameter can be arbitrarily complex, because it contains detailed information about the mixing properties of the population.
-This information could be given as contact networks, demographic contact structures, etc.
+This information can be represented as contact networks, demographic contact structures, etc.
 
 In most cases, detailed information about mixing is not available.
 Instead, we assume \emph{random mixing} of the population, i.e. every individual can be in contact with every other individual.
@@ -217,20 +213,20 @@ Even if the exact data of an epidemic system is not available, research on compl
 In the next section, we briefly report important results in complex network research and focus on the interplay between networks and epidemics in Section~\ref{sec:epi_networks}.
 
 \section{Network theory}\label{sec:network_theory}
-As we have seen in the previous section, standard epidemic models make use of the random mixing assumption.
-This assumption seems reasonable, if no further information about the contact structure within a population is available.
+As we have pointed out in the previous section, standard epidemic models make use of the random mixing assumption.
+This assumption is reasonable, if no further information about the contact structure within a population is available.
 The random mixing assumption yields a worst case scenario of the infection dynamics.
 Even an overestimation of the outbreak size can be corrected by introducing smaller, effective disease parameters.
-However, the random mixing assumption does not allow for non heterogenous mixing, since each individual is considered equal.
-Equality of individuals is not a reasonable assumption for many epidemic substrates.
+However, the random mixing assumption does not allow for non heterogeneous mixing, since each individual is considered equal.
+The equality of links between individuals is not a reasonable assumption for many epidemic substrates.
 Examples of epidemic substrates are contact structures of humans, livestock trade or links between computers.
-Apparently, not all pairs of individuals are connected in these systems.
+Apparently, connections are not purely random in these systems so that there are certain rules for the occurrence of links.
 
 %\paragraph{Main observations\color{Cayenne}{.}}
 The main contribution of network science to epidemiology is that it allows for the analysis of detailed contact structures.
 If detailed information about the contact structure is available, the random mixing assumption is obsolete.
 Instead, the system can be treated using the underlying contact structure in form of a network.
-Since the beginning of the 21st century, large amounts of data about these contact structures have become available for social, economic, transportation and biological networks.
+Since the beginning of the 21st century, large amounts of data about these contact structures have become available for social, economic, transportation, and biological networks.
 Observations showed that many real-world networks share common topological properties, which are described in Section~\ref{sec:macro_measures}).
 Since the number of their non-trivial topological properties is considerable, they are often referred to as \emph{complex} networks.
 
@@ -243,7 +239,7 @@ Applied network science makes extensive use of methods used in computer science.
 A brief introduction to efficient computer methods for network analysis is provided in Appendix~\ref{sec:implementation}.
 
 \subsection{Matrix representations}\label{sec:network_matrices}
-A network is a system consisting of nodes that are connected by edges.
+A network is a system of nodes that are connected by edges.
 Edges can be undirected, directed and weighted.
 In principle, a network can consist of edges of different types.
 In this case, the network can be represented by multiple networks sharing the same set of nodes, but different edges.
@@ -252,8 +248,7 @@ Networks are called graphs in mathematical literature.
 A graph $G=(V,E)$ is a set of nodes (or vertices) $V$ and edges (or arcs) $E$, where each edge is given by the tuple of nodes it connects, i.e. $e_1 =(u,v) \in E$ connects nodes $u$ and $v$.
 An edge $(u,v)$ being present in an undirected network implies the existence an edge $(v,u)$.
 Apparently, this does not hold in directed networks.
-Edges of weighted networks carry additional meta information about their weight.
-This meta information can be their importance, capacity, number of transported items or the geographical distance between the nodes they connect.
+In weighted networks, the edges carry additional information -- such as their importance, capacity, number of transported items or the geographical distance between the nodes they connect.
 %
 \begin{SCfigure}%[h]
 %\begin{center}
@@ -297,8 +292,8 @@ This applies also to paths of arbitrary length $n$ using the elements of $\mathb
 
 An important example for weighted network matrices is a \emph{Markov chain}.
 A Markov chain is a random process without memory and with a discrete state space and discrete time.
-It is called time-homogenous, if the transition rates are constant.
-Time-homogenous Markov chains can be represented as weighted networks and the corresponding weighted adjacency matrix is the \emph{transition matrix}.
+It is called time-homogeneous, if the transition rates are constant.
+Time-homogeneous Markov chains can be represented as weighted networks and the corresponding weighted adjacency matrix is the \emph{transition matrix}.
 Transition matrices are stochastic matrices, i.e. the elements of every row sum up to unity.
 Each node represents a different state of the system and each edge is weighted with the probability to transition into the other state adjacent to the edge.
 It is obvious that a transition matrix representation is useful to describe random walks on networks.
@@ -338,18 +333,17 @@ The definition \eqref{eq:laplace_matrix} has strong analogies to the discrete La
 Consequently, it can be used to model diffusion processes on graphs in analogy to Laplace operators in continuous systems (see Section~\ref{sec:PRE}).
 The spectra of adjacency and Laplace matrices also contain information about the evolution/history of networks \citep{Banerjee2009}.
 
-
 \subsection{Network measures}\label{sec:network_measures}
 Before we address ourselves to models of real world networks, we have to introduce methods to measure structural properties of networks.
 On the microscopic scale, this can be done in terms of \emph{node centrality} measures.
 These measures are very important to assess the importance of single nodes in the network.
-On the macroscopic side, we are interested in the large-scale properties of networks, i.e. percolation, distributions of centralities, connected components or other large scale structures.
+On the macroscopic scale, we are interested in the large-scale properties of networks, i.e. percolation, distributions of centralities, connected components, or other large scale structures.
 
 Implementations of appropriate data structures for the computation of network measures are briefly summarized in Appendix \ref{sec:implementation}.
 
 \subsubsection{Network terminology}\label{sec:network_terminology}
 Let $G=(V,E)$ be a graph consisting of a set of nodes $V$ and a set of edges $E$.
-We denote the number of nodes in the network by $\abs{V}=N$ and the number of edges by $m=\abs{E}$.
+We denote the number of nodes in the network by $N=\abs{V}$ and the number of edges by $m=\abs{E}$.
 Every route across a graph along its edges without repeating nodes is called a \emph{path}.
 Each path is given by an ordered set of the nodes traversed, i.e. $(v_1,v_2,\dots ,v_l)$, with $v_i \in V$ and all traversed edges are in $E$, i.e. $v_i,v_{i+1} \subseteq E$ for all $i$.
 A \emph{shortest path} between a node pair is given by the smallest set of nodes connecting it.
@@ -367,7 +361,7 @@ We distinguish between in-degree and out-degree in directed networks.
 Finally, $G_0=(V_0,E_0)$ is a \emph{subgraph} of $G=(V,E)$, if $V_0 \subseteq V$ and $E_0 \subseteq E$.
 
 \subsubsection{Microscopic measures}\label{sec:micro_measures}
-Given a network, an important question is, if some nodes are more important than other nodes.
+Given a network, an important question is, if some nodes are more important than others.
 Therefore, we summarize several measures of node \emph{centrality}.
 The idea of centrality mainly goes back to social network analysis \citep{Granovetter:1973wj,Freeman,WassermanFaust}, but has been widely adopted and extended in network science.
 We restrict ourselves to those measures, that are indispensable when describing networks.
@@ -398,7 +392,7 @@ The degree centrality (sometimes normalized by its maximum value $N-1$) is used 
 One of its most important applications is to measure the heterogeneity of network connections, i.e. the existence of hubs in the network.
 Hubs are nodes with a degree much larger than the rest of the system.
 The heterogeneity of networks can be measured in terms of degree distributions.
-We discuss the role degree distributions in sections \ref{sec:macro_measures} and \ref{sec:BA_model}.
+We discuss the role degree distributions in Sections~\ref{sec:macro_measures} and \ref{sec:BA_model}.
 
 \paragraph{Closeness\color{Cayenne}{.}} 
 The closeness of a node $i$ is the reciprocal average distance to all other nodes that can be reached from $i$.
@@ -414,7 +408,7 @@ In this case, the corresponding terms are ignored and do not contribute to the s
 Thus the closeness is computed for each connected component separately.
 
 Closeness centrality is capable of identifying nodes with short average path lengths to other nodes in the network.
-Identifying high closeness nodes is therefore reasonable for network navigation.
+Identifying high-closeness nodes is therefore reasonable for network navigation.
 This holds in particular, if the exact route to the destination is unknown, because nodes with high closeness are probable to reach many destinations quickly.
 In \citep{Zweig:closeness} it was shown that nodes of high closeness can act as efficient landmarks for navigation.
 
@@ -436,8 +430,8 @@ Therefore, removing nodes of high betweenness from the network has been proven u
 
 \paragraph{Eigenvector centrality\color{Cayenne}{.}}
 The idea of eigenvector centrality can be easily captured recalling the Markov chains described in Section~\ref{sec:network_matrices}.
-Frequent multiplication of the transition matrix $\mathbf{M}$ with a random vector gives the largest eigenvector of $\mathbf{M}$.
-This relation is known as power method or van Mises iteration \citep{van_mises}.
+Frequent iterative multiplication of the transition matrix $\mathbf{M}$ with a random vector gives the largest eigenvector of $\mathbf{M}$.
+This relation is known as power method or von Mises iteration \citep{van_mises}.
 The dominant eigenvector of the transition matrix gives the equilibrium state of the system.
 Using this state as a measure of centrality assigns every node with the probability to find a random walker there after a long period.
 The principle behind the dominant eigenvector of an adjacency matrix $\mathbf{A}$ is that important nodes are likely to be connected to other important nodes.
@@ -451,7 +445,7 @@ This equation can be written as
 \mathbf{Ax}=\lambda \mathbf{x}.
 \end{equation}
 It follows from the Perron-Frobenius-Theorem that $\lambda $ must be the largest eigenvalue of $\mathbf{A}$ in order to guarantee all entries of $\mathbf{x}$ to be positive \citep{Bonacich:1972,Bonacich:2007}.
-The theorem guaranties unique solutions only to adjacency matrices of connected networks.
+The theorem guaranties unique solutions only for adjacency matrices of connected networks.
 Hence, eigenvector centrality is only defined for connected graphs.
 Nevertheless, the eigenvector centrality can be computed for each component separately, if a graph is not connected \citep{Bonacich:2007}.
 Two widely used variants of eigenvector centrality allowing for disconnected networks are the PageRank and HITS algorithm \citep{Kleinberg:1999,PageRank:}.
@@ -478,7 +472,7 @@ We discuss this relation in Section~\ref{sec:network_analysis}.
 In order to obtain a macroscopic view of a network, we discuss measures that capture its large scale properties.
 The central question for the analysis of real-world networks is, whether different networks share similar large-scale features or whether each network is unique.
 In principle, the distribution of any centrality measure could yield insights into the macroscopic network structure.
-As a matter of fact, the distribution of a networks degrees has been proven useful for the classification into different network types.
+As a matter of fact, the degree distribution of a network has been proven useful for the classification into different network types.
 Therefore, we restrict ourselves to a discussion of the degree distribution being the most representative centrality distribution.
 
 \paragraph{Degree Distribution\color{Cayenne}{.}}
@@ -490,7 +484,7 @@ Observations of real-world networks have shown that some networks exhibit expone
 Examples are social networks and technological and economic networks, such as electric power-grids and traffic networks \citep{Amaral:2000,indian_railway}.
 
 The nodes of the vast majority of large real-world networks, however, show a degree variation over several orders of magnitude.
-Examples are networks of internet routers \citep{Faloutsos:1999}, links in the world-wide-web \citep{Barabasi99} or scientific citations \citep{Price:1965}.
+Examples are networks of internet routers \citep{Faloutsos:1999}, links in the world-wide-web \citep{Barabasi99}, or scientific citations \citep{Price:1965}.
 Their degree distributions are approximated by \emph{power-laws} of the form
 \begin{equation}\label{eq:scale-free_distr}
 P(k) \propto k^{-\gamma } ,
@@ -531,7 +525,7 @@ C=\frac{\operatorname{tr}(\mathbf{A}^3)}{\operatorname{sum} (A^2) -\operatorname
 where $\operatorname{tr}(\mathbf{A} )$ denotes the trace of $\mathbf{A}$ and $\operatorname{sum} (\mathbf{A})=\sum _{ij} a_{ij}$ is the sum over all elements of $\mathbf{A}$.
 In this work, we focus on the clustering coefficient as a macroscopic property of networks.
 It should be noted that there is also a node clustering coefficient defined by $c_i=\sum _{jl} a_{ij}a_{jl}a_{li}/(k_i (k_i -1))$ \citep{Watts:1998,dynamical_processes}.
-Thus, a network clustering coefficient can also be defined by the average $\mean{c_i}$, which gives slightly different values as \eqref{eq:clustering_coefficient} and should not be mixed up with the latter.
+Thus, a network clustering coefficient can also be defined by the average $\mean{c_i}$, which gives slightly different values than \eqref{eq:clustering_coefficient} and should not be mixed up with the latter.
 
 The clustering coefficient plays an essential role in the small-world model of networks \citep{Watts:1998}.
 We discuss this model in Section~\ref{sec:network_models}.
@@ -558,18 +552,15 @@ This component is therefore also called \emph{giant component}.
 
 In fact, the emergence of a giant component in a network is a second-order phase transition and is a graph theoretical percolation process \citep{Newman2003}. 
 Components play an important role for epidemic processes, because the component membership of each node defines the maximum outbreak size of any epidemic started at this very node.
-%In the directed case, maximum outbreak sizes are bounded by the underlying strongly connected component (lower bound) and the out component of the starting node (higher bound).
 The general component structure of directed networks is discussed in \citep{Dorogovtsev:2001jd} and we provide further discussion of their epidemiological relevance in Section~\ref{sec:components_ranges}.
 
-
 \paragraph{Accessibility\color{Cayenne}{.}}
-If we directly connect each node of a network with all other nodes it is connected to by a path of whatever length, we obtain the \emph{accessibility} of the network.
-Accessibility measures the ability of each node to reach destinations, which is in particular important for transportation systems \citep{Garrison:1960up,mackewitz}.
+If we directly connect each node of a network with all other nodes it is connected to by any path, we obtain the \emph{accessibility} of the network.
+Accessibility measures the ability of each node to reach destinations, which is of particular importance for transportation systems \citep{Garrison:1960up,mackewitz}.
 Mathematically, we define the accessibility graph (also \emph{transitive closure}) of a network as follows:
 Let $G=(V,E)$ be a network.
 Than $G^*=(V,E^*)$ is the accessibility graph of $G$ with $(u,v) \in E^*$, if there is a path from $u$ to $v$.
 The accessibility graph is typically dense, because it contains many more edges than the underlying network.
-%In mathematical literature accessibility is called \emph{transitive closure} of a network.
 A (weighted) adjacency matrix $\mathbf{C}$ of $G^*$ for a $N$-node network is given by the cumulative matrix
 \begin{equation}\label{eq:cumulative_matrix}
 \mathbf{C}= \sum _{i=1} ^{N-1} \mathbf{A}^i,
@@ -586,22 +577,22 @@ Consequently, we obtain the adjacency matrix $\tilde{\mathbf{C}}$ of the accessi
 
 \section{Network models and epidemiology}\label{sec:network_models}
 The analysis of real-world networks in terms of the measures introduced in Section~\ref{sec:network_theory} has given useful insight into the structural properties of these systems.
-In particular, observations showed that many networks have heavy-tailed degree distributions and show non vanishing clustering coefficients.
+In particular, observations showed that many networks have heavy-tailed degree distributions and show non-vanishing clustering coefficients.
 In this section we review the results of some widely used network models.
 Neglecting higher order link correlations, most network models in this section are entirely defined by their degree distributions.
 They are therefore generic realizations of ensembles with fixed $P(k)$.
-At the end of the section, we give a comparison between the different models an discuss their relevance in epidemiology.
+At the end of the section, we give a comparison between the different models and discuss their relevance in epidemiology.
 
 \subsection{Lattice model}
 Lattice models are inherently related to homogeneously distributed geographical positions of individuals.
 They show a high degree of regularity and their potential for SIS and SIR spreading processes has been studied in \citep{Harris:1974} and \citep{Bak:1990}, respectively.
-The impact of the heterogenous susceptibilities has been studied in \citep{Sander2002293}.
-It was found that this heterogeneity introduces a broadening of the critical region and the outbreak threshold can be increased in the case of heterogenous susceptibilities.
+The impact of the heterogeneous susceptibilities has been studied in \citep{Sander2002293}.
+It was found that this heterogeneity introduces a broadening of the critical region and the outbreak threshold can be increased in the case of heterogeneous susceptibilities.
 
 
 \subsection{Erd\H{o}s-R\'enyi model}\label{sec:er_model}
 The Erd\H{o}s-R\'enyi model makes use of probabilistic methods to analyze network properties and is therefore a random graph model.
-A \emph{random network} is generated by generating a set of $N$ nodes and connect each of the $\frac{1}{2}N(N-1)$ possible node pairs\footnote{We focus on undirected networks here. In the directed case, there are $N(N-1)$ possible node pairs.} with a certain probability $p$.
+A \emph{random network} is generated by creating a set of $N$ nodes and connecting each of the $\frac{1}{2}N(N-1)$ possible node pairs\footnote{We focus on undirected networks here. In the directed case, there are $N(N-1)$ possible node pairs.} with a certain probability $p$.
 Networks generated this way are often called $G_{N,p}$ networks, although they are in the proper sense elements of a $G_{N,p}$ \emph{ensemble}\footnote{A similar approach is to consider a fixed number of edges $m$ instead, yielding a $G_{N,m}$ ensemble.}.
 
 Random graph theory addresses questions about typical properties of networks with an infinite number of nodes, i.e. networks in the thermodynamic limit $N\rightarrow \infty $.
@@ -612,9 +603,9 @@ In addition, every edge increases the degree of two nodes, so that the \emph{ave
 \begin{equation}\label{eq:mean_er_degree}
 \mean{k}=\frac{2\mean{E}}{N}=(N-1)p\simeq pN .
 \end{equation}
-In the directed case, we would get the same result for both, in degree and out degree, since the factors $2$ and $\frac{1}{2}$ would just disappear in \eqref{eq:mean_er_degree}.
+In the directed case, we would get the same result for both, in-degree and out-degree, since the factors $2$ and $\frac{1}{2}$ would just disappear in \eqref{eq:mean_er_degree}.
 Equation \eqref{eq:mean_er_degree} demonstrates that the system behavior for each value of $p$ depends on the system size.
-We choose the mean degree is a convenient parameter for the analysis of random graphs, since it can be used to replace the explicit system size.
+We choose the mean degree as a convenient parameter for the analysis of random graphs, since it can be used to replace the explicit system size.
 
 We obtain the \emph{degree distribution} of $G_{N,p}$, if we realize that the probability to find a node with degree $k$ is equal to the probability to find a node that is connected to $k$ other nodes, but not to the $N-k-1$ remaining nodes in the network.
 Thus, the degree distribution is immediately given by a bimodal distribution
@@ -628,8 +619,8 @@ P(k) =\frac{\mean{k}^k }{k!} e^{-\mean{k}}
 i.e. there is variation in the degrees, but there still remains a \emph{typical degree} in the system.
 
 It is an interesting feature of random graphs that for different edge occupation probabilities they show different phases.
-For low values of $p$, nodes tend to form small connected components, whereas for increasing $p$ suddenly a \emph{giant component} emerges.
-The giant component contains almost all nodes of the network.
+For low values of $p$, nodes tend to form small connected components, whereas for increasing $p$ a \emph{giant component} emerges.
+The giant component contains the majority of all nodes of the network.
 The behavior for large values of $p$ has first been studied by Erd\H{o}s and R\'enyi \citep{ER:1959}.
 One year later, Erd\H{o}s and R\'enyi found thresholds for the emergence of subgraphs and a giant connected component \citep{ER:1960,ER:1961}.
 Their results for the occurrence of different subgraphs are summarized in \citep{RevModPhys.74}.
@@ -645,7 +636,7 @@ The mean cluster size is given by Equation~\eqref{eq:mean_cluster_size} and dive
 \end{SCfigure}
 %
 The size of the giant component and the mean component size can be computed analytically for random networks.
-Following Newman \citep{Newman2003}, we observe that the probability that a node is in the giant component is equivalent to the probability that none of its neighbors are part of the giant component.
+Following \citeauthor{Newman2003}, we observe that the probability that a node is not in the giant component is equivalent to the probability that none of its neighbors is part of the giant component \citep{Newman2003}.
 If $u$ is the fraction of nodes that are not in the giant component, this probability is given by $u^k$.
 An expression for $u$ can be obtained by averaging $u^k$ over all degrees $k$.
 The degree distribution is given by \eqref{eq:poisson_distribution}.
@@ -726,7 +717,7 @@ The clustering coefficient $C$ and the average shortest path length $\mean{l}$ f
 Both values are normalized by their corresponding values in the initial lattice, i.e. $C/C_0$ and $\mean{l}/\mean{l}_0$ respectively.
 
 The degree distribution collapses to a single peak for $p=0$.
-In their paper about properties of small-world networks \citep{Barrat:2000fj}, the authors showed that the degree distribution converges to a Poisson distribution in the limit $p\rightarrow 1$ and found an analytical approximation for the clustering coefficient for different values of $p$.
+In their paper on the properties of small-world networks \citep{Barrat:2000fj}, the authors showed that the degree distribution converges to a Poisson distribution in the limit $p\rightarrow 1$ and found an analytical approximation for the clustering coefficient for different values of $p$.
 The percolation threshold of small-world networks was investigated in \citep{Sander2002293}, where the authors found the threshold to be reduced for increasing values of $p$.
 
 There is no sharp criterion for a network to be called small-world network.
@@ -770,9 +761,9 @@ Barab\'asi and Albert could show analytically that the resulting network has a p
 \begin{equation}\label{eq:BA_law}
 P(k)=2m^2 k^{-3}.
 \end{equation}
-Although the slope $\xi = 3$ does not match the power-law exponent of the world wide web ($\xi = 2.1\pm 0.1$ \citep{Barabasi99}) the model explains the existence of a scale-free degree distribution.
+Although the slope $\xi = 3$ does not match the power-law exponent of the world-wide web ($\xi = 2.1\pm 0.1$ \citep{Barabasi99}) the model explains the existence of a scale-free degree distribution.
 
-Being a conceptual model, the \BA model has a huge field of applications for theoretical questions.
+Being a conceptional model, the \BA model is extensively used for the investigation of theoretical questions.
 In fact, the power-law degree behavior is also reproduced by fitness models \citep{Bianconi:2001,Fortunato:2006} and copy models \citep{Kleinberg99theweb}.
 Fitness models allow for higher flexibility in terms of the power-law exponent.
 However, the range of possible exponents cannot take values in the interval $0<\xi < 2$ \citep{all_scale_free_are_sparse}.
@@ -830,17 +821,17 @@ This corresponds to the failure of nodes as discussed previously.
 Moreover, results from attacking networks can be carried over to vaccination strategies.
 The central subjects of interest remain the same as in Section~\ref{sec:sir_model}, namely the epidemic threshold $R_0$ and the outbreak size $R_\infty $.
 
-We have seen in sections \ref{sec:si_model} and \ref{sec:sir_model} how epidemics can be modeled under the assumption of homogenous mixing of individuals.
+We have seen in sections \ref{sec:si_model} and \ref{sec:sir_model} how epidemics can be modeled under the assumption of homogeneous mixing of individuals.
 Nevertheless, data sources are available allowing for a more detailed analysis of an epidemic spreading process.
 We start by considering the network models as introduced in Section~\ref{sec:network_theory} and review some results about the impact of different topologies on spreading processes.
 
-\paragraph{Epidemic models on homogenous contact networks\color{Cayenne}{.}}
+\paragraph{Epidemic models on homogeneous contact networks\color{Cayenne}{.}}
 To begin with, we consider a 2-compartment SI-model on a network of $N$ individuals, where a fraction $i(t)=I(t)/N$ individuals are infected and the remaining fraction $s(t)=1-i(t)$ is susceptible.
 The force of infection (\eqref{eq:force_of_infection} in Section~\ref{sec:force_of_infection}) models the effective interaction between susceptible and infected individuals in terms of passing on the infection.
-In a homogenous network, e.g. an \ER or Watts-Strogatz network, the force of infection is $\lambda = \beta ki$, where $ki$ is the number of infectious contacts for a node of degree $k$ and $\beta $ is the probability of infection per time unit \citep{dynamical_processes}.
+In a homogeneous network, e.g. an \ER or Watts-Strogatz network, the force of infection is $\lambda = \beta ki$, where $ki$ is the number of infectious contacts for a node of degree $k$ and $\beta $ is the probability of infection per time unit \citep{dynamical_processes}.
 Consequently, $1/\beta $ is the spreading time scale of the process.
 
-In order to obtain a rate-equation for the total number of infected in a homogenous network, we replace the local degree $k$ by the mean degree $\mean{k}$ and obtain
+In order to obtain a rate-equation for the total number of infected in a homogeneous network, we replace the local degree $k$ by the mean degree $\mean{k}$ and obtain
 \begin{equation}\label{eq:si_network}
 \frac{di(t)}{dt}=\beta \mean{k} i(t) [1-i(t)],
 \end{equation}
@@ -859,19 +850,19 @@ $\beta $ being fixed as a local reaction constant, the average degree $\mean{k}$
 We define the critical connectivity $\beta _c=\mean{k}^{-1}$ and obtain distinct regimes for different values of $\beta $.
 Thus, the density of infected in the endemic state is
 \begin{align}\label{eq:endemic_ws}
-i&=0   &\text{if} \quad \beta < \beta _c \nonumber \\
-i &=1-\frac{\beta _c}{\beta }  &\text{if} \quad \beta > \beta _c .
+i &= 0   & ~ &\mathrm{if} \quad \beta < \beta _c \nonumber \\
+i &= 1-\frac{\beta _c}{\beta }  & ~ &\mathrm{if} \quad \beta > \beta _c .
 \end{align}
 
-This shows that the threshold behavior seen in Section~\ref{sec:sir_model} for homogeneously mixed populations remains unchanged for homogenous networks.
+This shows that the threshold behavior seen in Section~\ref{sec:sir_model} for homogeneously mixed populations remains unchanged for homogeneous networks.
 In fact, is has been shown that homogeneously mixed epidemic models can always be mapped onto a percolation process on a regular lattice \citep{Grassberger1983157,Sander2002293}.
 
-\paragraph{Impact of heterogenous connectivity\color{Cayenne}{.}}
+\paragraph{Impact of heterogeneous connectivity\color{Cayenne}{.}}
 In order to consider networks with heavy-tailed degree distributions, we modify the SIS model above and include the heterogeneity of node degrees explicitly \citep{Pastor-Satorras_vespi:2001}.
 \citeauthor{Pastor-Satorras_vespi:2001} replaced the infected compartment $i(t)$ by the fraction of infected with a given degree, that is $i(t)\rightarrow i_k(t)$.
 The average degree in \eqref{eq:sis_network} is replaced by the actual degree and the force of infection is extended by the probability $\Theta (i(t))$ that a given link points to an infected node.
 The latter depends on the total density of infected and it depends only on $\beta $ in the steady state.
-This gives the following SIS model for heterogenous networks:
+This gives the following SIS model for heterogeneous networks:
 \begin{equation}\label{eq:sis_het_network}
 \frac{di_k(t)}{dt}=-i_k(t)+\beta k [1-i_k(t)] \Theta (i(t)).
 \end{equation}
@@ -880,7 +871,7 @@ This gives the following SIS model for heterogenous networks:
 \includegraphics{Pastor-Satorras.pdf}
 \caption{Fraction of infected in the endemic state for an SIS model.
 The figure reveals the disappearance of the epidemic threshold for in \BA networks (red).
-The epidemic threshold remains finite (here: $\beta _c=1/6$) for homogenous networks and $\beta _c \rightarrow 0$ for \BA networks.
+The epidemic threshold remains finite (here: $\beta _c=1/6$) for homogeneous networks and $\beta _c \rightarrow 0$ for \BA networks.
 }
 \label{fig:pastor-sat}
 \end{SCfigure}
@@ -924,7 +915,7 @@ Infection parameters $\beta / \mu =2$.}
 \end{SCfigure}
 %
 
-In analogy to \eqref{eq:critical_vacc}, an analytic expression for the critical immunization density can be computed also for heterogenous networks \citep{PastorSat:immunization}.
+In analogy to \eqref{eq:critical_vacc}, an analytic expression for the critical immunization density can be computed also for heterogeneous networks \citep{PastorSat:immunization}.
 In this case, the fraction $g$ of nodes with the highest degrees in the network is vaccinated.
 This introduces a cut-off degree $k_c(g)$ so that all nodes with degree $k>k_c$ do not contribute to the spread of the disease.
 For the case of a \BA network \citeauthor{PastorSat:immunization} found an expression for the critical vaccination density to be
@@ -933,12 +924,12 @@ g_c \sim \exp (-2\mu / m\beta ),
 \end{equation}
 where $m$ is the minimum degree of the network and $\mu $ and $\alpha $ are infection parameters, respectively.
 The exact value of $g_c$ can be found by extrapolation of the curves in Figure~\ref{fig:targeted_immunization}.
-The striking feature of Equation~\eqref{eq:crit_vacc_BA} is, however, that the fraction nodes that have to be vaccinated decreases exponentially with the spreading rate.
+The striking feature of Equation~\eqref{eq:crit_vacc_BA} is, however, that the fraction of nodes that have to be vaccinated decreases exponentially with the spreading rate.
 
 Besides the degree, we have to point out that any centrality measure (see Section~\ref{sec:micro_measures}) can be used in order to define a ranking of nodes.
 This node ranking can then be used to define a vaccination priority for all nodes.
 A generalized node ranking approach is of particular interest for networks, where the degree is not correlated to other centrality measures, as for example found in \citep{Guimera:2005p5232}.
-A betweenness based vaccination has been proposed in \citep{holme:2002}.
+A betweenness-based vaccination has been proposed in \citep{holme:2002}.
 
 It should be noted that global knowledge about the network structure is needed in order to apply vaccination strategies as degree targeted vaccination.
 However, the detailed contact structure of many real systems -- especially human contacts -- is not known.
@@ -947,27 +938,27 @@ This ideal strategy can be approximated using \emph{nearest neighbor vaccination
 The basic idea is to use local information by just asking for the neighbors of an individual, which gives some edges of the network.
 It is generally more probable that a randomly chosen edge is connected to a node of large degree, simply because these node class is connected to relatively many edges.
 
-\paragraph{Meta-populations\color{Cayenne}{.}}
+\paragraph{Metapopulations\color{Cayenne}{.}}
 The models and results discussed so far considered every node in the network as one individual.
 In many systems, however, the detailed internal contact structure is unknown, but information about contacts between whole subpopulations is available.
 A subpopulation can be a city in a mobility network, an agricultural holding in a livestock trade network or a habitat in ecology. 
-A \emph{meta-population} is a set of subpopulations which are connected by migration processes \citep{Grenfell:1997ts,Hanski:1998,dynamical_processes}.
-Recent works have made use of meta-population approaches to model large scale disease outbreaks \citep{VittoriaColizza02142006}, such as influenza \citep{DuyguBalcan12222009} and SARS \citep{Hufnagel:2004p27}.
+A \emph{metapopulation} is a set of subpopulations which are connected by migration processes \citep{Grenfell:1997ts,Hanski:1998,dynamical_processes}.
+Recent works have made use of metapopulation approaches to model large scale disease outbreaks \citep{VittoriaColizza02142006}, such as influenza \citep{DuyguBalcan12222009} and SARS \citep{Hufnagel:2004p27}.
 
-The computation of outbreak thresholds in meta-populations was addressed in \citep{Colizza:2007p6276,Colizza:2007p5906} and the spreading velocity was additionally analyzed in \citep{Belik:2011ke}.
-The impact of network topology on disease spread in meta-populations was addressed in (\citet{Lentz:2012pre}, Section~\ref{sec:PRE}).
-Although meta-population approaches provide a useful tool for the modeling of epidemics, they systematically overestimate the outbreak size when compared to individual resolved approaches \citep{Keeling11052010}.
+The computation of outbreak thresholds in metapopulations was addressed in \citep{Colizza:2007p6276,Colizza:2007p5906} and the spreading velocity was additionally analyzed in \citep{Belik:2011ke}.
+The impact of network topology on disease spread in metapopulations was addressed in (\citet{Lentz:2012pre}, Section~\ref{sec:PRE}).
+Although metapopulation approaches provide a useful tool for the modeling of epidemics, they systematically overestimate the outbreak size when compared to individual resolved approaches \citep{Keeling11052010}.
 
 \begin{SCfigure}
 \includegraphics{Metapop_scheme.pdf}
-\caption{Three meta-populations $\mu $,$\nu $ and $\sigma $ of different size and infection status.
+\caption{Three metapopulations $\mu $,$\nu $ and $\sigma $ of different size and infection status.
 The infection status is represented by the local color distribution.
 The edge $(\mu, \nu )$ indicates migration from $\mu $ to $\nu $.}
 \label{fig:metapop_scheme}
 \end{SCfigure}
 
 In the context of epidemics every subpopulation has a different infection status, i.e. a distribution of $S$, $I$ and $R$.
-Additionally to the local infection model, we add a migration term so that the general form of a meta-population SIR-infection-model for a subpopulation $\mu $ is
+Additionally to the local infection model, we add a migration term so that the general form of a metapopulation SIR-infection-model for a subpopulation $\mu $ is
 \begin{equation}\label{eq:general_metapop_sir}
 \frac{dI_\mu }{dt} = R(S_\mu, I_\mu , R_\mu) + M (S_\mu, I_\mu , R_\mu, S_\nu ,I_\nu ,R_\nu, \tau ).
 \end{equation}

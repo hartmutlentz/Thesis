@@ -23,7 +23,7 @@
 % Upload:
 %    https://edoc.hu-berlin.de/cgi/dokupload/dokupload.cgi
 
-\documentclass[openright,twoside,headsepline% 
+\documentclass[openright,twoside,headsepline,bibtotoc% 
 ]{scrbook}[2007/12/24]
 
 % The following package is necessary.
@@ -38,9 +38,9 @@
     natbib={round,authoryear}, %include to use the natbib-package % sort sortiert nach Name
     % jurabib={}, %include to use the jurabib-package
     % apacite={}, %include to use the apacite-package
-    hints=true, % set to 'false' for submission
-    checktabu=False, % set to 'false' for submission
-    draft=False, % set to 'false' for submission
+    hints=false, % set to 'false' for submission
+    checktabu=false, % set to 'false' for submission
+    draft=false, % set to 'false' for submission
     qserie=false
  ]{hudiss}
 
@@ -59,8 +59,8 @@
     authorfirstname={Hartmut}, % first name
     authorsurname={Lentz}, % surname
     authorsuffix={}, % e.g. Ph.D.
-    authoradd={10/23/1980, Siegen}, % date and place of birth
-    doctitle={Paths of Epidemics in Static and Temporal Networks}, % title of the thesis
+    authoradd={23.10. 1980, Siegen}, % date and place of birth
+    doctitle={Paths for Epidemics in Static and Temporal Networks}, % title of the thesis
     %docsubtitle={for one euro}, % subtitle of the thesis
     % docsubject={Analysis of complex networks}, % subject of the thesis (used in the properties of the pdf-document)
     approvala={Prof. Dr. Sokolov}, % approvals: a-e
@@ -68,7 +68,7 @@
     approvalc={Prof. Dr. Rubel},
     % approvald={},
     % approvale={},
-    degree={Dr. Rer. Nat.}, % e.g. Dr. Rer. Nat.
+    degree={doctor rerum naturalium\\(Dr. rer. nat.)}, % e.g. Dr. Rer. Nat.
     subject={Physik}, % e.g. Informatik
     faculty={Mathematisch-Wissenschaftlichen Fakultät I}, % in Dativ/Genitiv! e.g. Mathematisch-Wissenschaftlichen Fakult\"at II
     university={Humboldt-Universität zu Berlin}, % e.g. Humboldt-Universit\"at zu Berlin
@@ -106,7 +106,7 @@
         \cleardoublepage
         %\include{chapters/dedication}
         \include{chapters/abstract}
-        %\include{chapters/list_of_abbreviations}
+        \include{chapters/list_of_abbreviations}
         \tableofcontents    
     \mainmatter
         % Part 1
@@ -122,8 +122,9 @@
     %\backmatter
         \appendix
         \include{chapters/Part4-app/Appendix}
-        \include{chapters/list_of_abbreviations}
-        \nocite{*}                
+        \include{chapters/Acknowledgements}
+        
+        %\nocite{*}                
 		% See the documentation or under
 		% http://edoc.hu-berlin.de/e_autoren/latex/bedingung.php
 		% for the list of the permitted styles.
@@ -131,7 +132,7 @@
         \bibliography{bibliography}
         %\listoffigures
         %\listoftables    
-        %\include{chapters/declaration}    % Use our template or write your own.
-        %\include{chapters/list_of_publications}
+        \include{chapters/declaration}    % Use our template or write your own.
+        \include{chapters/list_of_publications}
         %\include{chapters/CV}
 \end{document}

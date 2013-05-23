@@ -45,7 +45,7 @@ In particular, we focus on a network of pig trade in Germany in the years 2006--
 Each node in this network represents an agricultural holding and trade contacts between holdings are represented by directed edges.
 (An analogue analysis of a cattle network dataset was published in \citep{Lentz2009}).
 This chapter is devoted to a static network analysis of this system and a general topological classification.
-In Section~\ref{sec:temporal_networks} we highlight the effects of a time-resolved treatment of this system.
+In Section~\ref{sec:temporal_networks}, we highlight the effects of a time-resolved treatment of this system.
 
 \paragraph{Background of the dataset\color{Cayenne}{.}}
 After the BSE crisis in Europe in 2001, the EU member states established livestock trade movement databases to track potential pathways of pathogen spread.
@@ -94,6 +94,17 @@ The diameter of the giant strongly connected component is 21 and its average sho
 This means that it takes typically 6 steps to infect every node of the network and never more than 21 steps.
 % dong30 static_analysis
 
+%
+\begin{figure}[htb]
+\begin{center}
+\includegraphics{Node_Range_PVM_100th.pdf}
+\caption{Range sequence for all nodes in the livestock trade network.
+Every 100th node with range larger than 0 is shown.
+}
+\label{fig:node_range}
+\end{center}
+\end{figure}
+%
 The giant strongly connected component has an interesting impact on the distribution of node ranges (and reachabilities) in the network.
 Note that the range of a node defines the upper bound for any disease outbreak starting from this very node.
 Following Equation~\eqref{eq:range_def}, we compute the ranges of all nodes and focus for the moment on the \emph{sequence} of these ranges. 
@@ -101,17 +112,6 @@ For most sequences of centralities in a network, we would find rather noisy sequ
 These result in distributions such as the degree distribution in Figure~\ref{fig:hit_deg_cdf}.
 In contrast to most other centrality measures, the range shows a strikingly different behavior.
 The sequence of ranges for all nodes in the network is shown in Figure~\ref{fig:node_range}. 
-%
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics{Node_Range_PVM_100th.pdf}
-\caption{Range sequence for all nodes in the livestock trade network.
-Every 100th node with range greater than 0 is shown.
-}
-\label{fig:node_range}
-\end{center}
-\end{figure}
-%
 The striking feature here is the \emph{gap} in the distribution: no range in between $7\cdot 10^{-4}$ (87 nodes) and $0.45$ (54693 nodes) is present in the system.
 %There is another, smaller gap for values between $0.33$ (29325 nodes) and $0.35$ (31033 nodes).
 Consequently, a randomly chosen node can only belong to one of two classes, namely long ranged nodes and short ranged nodes.
@@ -198,7 +198,8 @@ Hence, modularity measures the goodness of a particular partition of the network
 $Q\sim 0$ implies that a given partition of a network does not yield a significant modular structure.
 Its maximum value is $Q=1$ provided that a network has a strong modular partition \emph{and} the latter is known for the computation of $Q$.
 
-Finding the best possible partition that maximizes modularity has been shown to be NP-complete\footnote{NP-complete means that this problem is not exactly solvable for large network sizes. NP-completeness is discussed in Appendix~\ref{sec:implementation}.} \citep{brandes2007}.
+Finding the best possible partition that maximizes modularity has been shown to be NP-complete\footnote{NP-complete means that this problem is not exactly solvable for large network sizes.
+See \citep{algorithm_design} and Appendix~\ref{sec:implementation} for brief discussions of NP-completeness.} \citep{brandes2007}.
 However, several approximate methods -- such as simulated annealing \citep{guimera_mod_SA} and greedy algorithms \citep{Clauset_greedy,Newman:fast_algo} -- have been proposed to find approximate partitions that maximize modularity.
 In order to detect community structure in the pig trade network, we analyze the system using the method of \citeauthor{Newman:fast_algo}.
 The results presented in this section are published in \citep{Lentz:2011}.
@@ -262,11 +263,11 @@ We consider this line of thought in the next section, where we analyze artificia
 In this section, we investigate the impact of directionality and modularity on the spread of infectious diseases on networks.
 Therefore, we use random network models that mimic the desired network properties.
 To begin with, we derive a system of equations that models an epidemic process as it would take place on the pig trade network of Section~\ref{sec:network_analysis}.
-Hereby we consider the agricultural holdings as meta-populations and the time scales between trade and infection are separated using a pacing of trade.
+Hereby we consider the agricultural holdings as metapopulations and the time scales between trade and infection are separated using a pacing of trade.
 All results presented in this section are published in \citep{Lentz:2012pre}.
 
 \subsection{Epidemic model}
-We derive an infection model for agricultural holdings that are considered as meta populations, each holding containing a certain number of animals. 
+We derive an infection model for agricultural holdings that are considered as metapopulations, each holding containing a certain number of animals. 
 The coupling between the holdings is given by trade, which appears as transportation of livestock animals (see Figure~\ref{fig:metapop_scheme}).
 The union of all trade links is given by a trade network with adjacency matrix $\mat{A}$. 
 Since transportation/trade is a non symmetric process in this system, we focus on \emph{directed networks} in particular.
@@ -280,7 +281,7 @@ Following Section~\ref{sec:sir_model}, the infection model for each node $\mu $ 
 \end{align}
 where $n_\mu =s_\mu + i_\mu + r_\mu $ is the total population of node $\mu $ and we use the force of infection $i_\mu / n_\mu $ as suggested in Equation~\eqref{eq:force_of_infection}.
 The \emph{infection status} of node $\mu $ is given by the triple $(s_\mu , i_\mu , r_\mu )$.
-Now we add the migration between the meta populations by introducing a network with adjacency matrix elements $a_{\mu \nu }$.
+Now we add the migration between the metapopulations by introducing a network with adjacency matrix elements $a_{\mu \nu }$.
 
 The total \emph{outflow} from node $\mu $ is given by its degree $\sum _\nu a_{\mu \nu }$ and branches into the different compartments
 \[
@@ -340,7 +341,7 @@ The system \eqref{eq:sir_indices_with_flow_correction} now reads
 \partial _t \mat{I} &=\mat{L}\mat{i}- \mathrm{diag} (\mat{s}\mat{F}_i)-\alpha \; \mathrm{diag}(\mat{S}\mat{i}) -\gamma \mat{I} \nonumber \\
 \partial _t \mat{S} &=\mat{L}\mat{r}- \mathrm{diag} (\mat{r}\mat{F}_r) +\gamma \mat{I} .
 \end{align}
-This system models an SIR-type epidemic on a meta population which is connected by a network structure given by the Laplacian $\mat{L}$.
+This system models an SIR-type epidemic on a metapopulation which is connected by a network structure given by the Laplacian $\mat{L}$.
 Terms of the form $\mat{L}\mat{s}$ correspond to diffusion terms.
 In \eqref{eq:sir_no_pacing}, vector-vector products are outer products.
 Thus, $\mathrm{diag} (\mat{x} \mat{y})$ denotes the main diagonal of the outer product of vectors $\mat{x}$ and $\mat{y}$, i.e. the Hadamard-product.
@@ -554,7 +555,7 @@ Consequently, the effective number of susceptible population is decreased and fo
 \paragraph{Conclusion of the section\color{Cayenne}{.}}
 The German pig trade network was analyzed in terms of static network measures.
 Our main observations are the following:
-First, the system possesses a heavy-tailed degree distribution (Figure~\ref{fig:hit_deg_cdf}) indicating that the system is heterogenous.
+First, the system possesses a heavy-tailed degree distribution (Figure~\ref{fig:hit_deg_cdf}) indicating that the system is heterogeneous.
 This implies that the network is epidemiologically stable to random vaccination and targeted vaccination should be efficient (see Section~\ref{sec:epi_networks}).
 
 Second, the network components and the distribution of ranges result in a node classification into either long range or short range nodes.
@@ -565,7 +566,7 @@ The directionality of the network results in a rather complex large scale struct
 %An undirected network would not show a two class distribution.
 
 Third, the network under consideration can be partitioned into modules, i.e. relatively densely connected subgraphs.
-By adding meta-information (in this case geographical information) to the network partition, we found a reasonable partition into compact geographical regions (see Figure~\ref{fig:D9}).
+By adding meta information (in this case geographical information) to the network partition, we found a reasonable partition into compact geographical regions (see Figure~\ref{fig:D9}).
 The large scale trade structure of the system can be revealed this way.
 
 Finally, the observations above raise two questions for the context of epidemics on networks:

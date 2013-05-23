@@ -5,12 +5,12 @@ The potential of static network analysis lies in the huge toolbox of methods tha
 As depicted in Section~\ref{sec:network_theory}, there exist conclusive definitions for both their large scale topological features and local centrality measures allowing for node rankings.
 
 Nevertheless, the concept of static networks neglects temporal variations in the system, i.e. the edges of a particular network are not necessarily present at all times.
-Networks showing a sparse and heterogenous temporal occurrence of edges are said to show \emph{bursty} behavior.
+Networks showing a sparse and heterogeneous temporal occurrence of edges are said to show \emph{bursty} behavior \citep{Holme_review}.
 This chapter addresses some of the conceptional problems owing to bursty links occurence, the most central one being the \emph{causality} of paths.
 Section~\ref{sec:Plos} focusses on the computational analysis of the full temporal representation of the network analyzed in Section~\ref{sec:network_analysis}.
 In Section~\ref{sec:PRL}, we present a novel formalism mapping the causality of temporal networks onto a mathematical graph.
 
-\section{Introduction}
+\section{Introduction}\label{sec:temporal_networks_basics}
 To begin with, we highlight the most fundamental difference between static and temporal networks.
 In particular, we compare the static to the temporal representation of the system.
 Figure~\ref{fig:temporal_network_principle} shows a temporal network and its aggregated graph.
@@ -119,7 +119,7 @@ In temporal networks, however, paths are in general not transitive, since a path
 \end{equation}
 in general.
 The reasons why paths in temporal networks can not be easily represented as paths in static networks originate from property \eqref{eq:def_not_transitive}.
-In Section~\ref{sec:conceptual_problems} we briefly discuss some conceptual problems that arise from this circumstance.
+In Section~\ref{sec:conceptional_problems} we briefly discuss some conceptional problems that arise from this circumstance.
 
 \begin{SCfigure}
 \includegraphics{Shortest_foremost_fastest.pdf}
@@ -151,7 +151,7 @@ Note that shortest path and temporal shortest path do not coincide in this examp
 Throughout the rest of this work, we use a global time scale, which is defined by the first time in the dataset under consideration.
 Consequently, we measure shortest path durations in terms of \emph{foremost} path durations, if not explicitly stated.
 
-\subsection{Conceptual problems in temporal networks}\label{sec:conceptual_problems}
+\subsection{Conceptional problems in temporal networks}\label{sec:conceptional_problems}
 Before we focus on different methods to analyze temporal networks, we have to point out that many static network measures, such as centrality or components, are in general time-dependent and can not be summarized to static measures.
 As an exception, \citeauthor{Grindrod:2011fg} defined a time-independent centrality measure for temporal networks \citep{Grindrod:2011fg}. 
 In addition, time-scales of node dynamics and network dynamics can be of the same order and cause significant interactions between the dynamics.
@@ -165,7 +165,7 @@ In addition to that, the authors demonstrate that components in temporal network
 We take up this point at the end of Section~\ref{sec:PRL}.
 In order to get an impression about the path structure in temporal networks, we start with a pure data-analysis of a temporal network dataset. 
 
-\section{Data driven network analysis}\label{sec:Plos}
+\section{Data-driven network analysis}\label{sec:Plos}
 In this section we analyze the livestock trade data set as introduced in Section~\ref{sec:network_analysis}, but we explicitly take into account temporal information%
 \footnote{%
 In order to be congruent with the datasets used in the publications, we use the pig trade dataset of \citep{Konschake:2013js} in this chapter.
@@ -216,10 +216,10 @@ As a generic measure for the spreading potential of a node, we consider its rang
 In analogy to Section~\ref{sec:network_analysis}, we define the range of a node in a temporal network as the size of its temporal out-component.
 It is important to note that the out-component of each node depends on the time $t_0$, when it is measured.
 In addition to that, the range of a node can depend on the particular spreading process, e.g. an epidemic, a chemical reaction or rumor spread.
-More specifically, a spreading process can have a finite memory $d$ that shortens the ability of a node to maintain in a certain state over time.
-In our context, this memory corresponds to the \emph{infectious period} $d$ of a disease, i.e. the time period, after the infection dies out if it is not carried over to another agent.
+More specifically, a spreading process can have a finite memory $d$ that shortens the ability of a node to remain in a certain state over time.
+In our context, this memory corresponds to the \emph{infectious period} $d$ of a disease, i.e. the time period, before the infection dies out if it is not carried over to another agent.
 Computing the range combined with a finite infectious period mimics an SIR-type process, where the infectious period is related to the reciprocal recovery rate as discussed in Section~\ref{sec:sir_model}.
-For clarity reasons we do not solve differential equations for epidemics in this section and reduce the infection dynamics to assigning a discrete infection state -- susceptible, infected or recovered -- to each node in the network.
+For clarity reasons we do not solve differential equations for epidemics in this section, but reduce the infection dynamics to assigning a discrete infection state -- susceptible, infected or recovered -- to each node in the network.
 An infected node remains infected over the infectious period $d$.
 Thus, the infection state of the whole network is given by the number of susceptible $S(t)$, infected $I(t)$ and recovered $R(t)$ nodes, respectively.
 
@@ -256,11 +256,11 @@ The infectious period is $d=24$ days.
 For most infection times the example node can infect about $6~\%$ of the network.
 The range distribution over time shows a similar bimodal pattern similar to the distribution over nodes for the static network in Figure~\ref{fig:node_range}.
 This provides evidence that there is an infection path from the exemplary node to a connected component in the network.
-It is important to stress that the concept of connected components does not translate to temporal networks in a straightforward manner (see Section~\ref{sec:conceptual_problems}).
+It is important to stress that the concept of connected components does not translate to temporal networks in a straightforward manner (see Section~\ref{sec:conceptional_problems}).
 Besides the bimodality itself, it remarkable that the majority of adjacent primary infection times cause outbreaks of similar size.
 
 This feature is can be explained, if we underline the temporal sparsity of edges, i.e. nodes are likely to have only few contacts within one infectious period.
-If the primarily infected node $v$ has no trade contact within the infectious period, the disease dies out.
+If the primarily infected node $v$ has no trade contact during the infectious period, the disease dies out.
 Even if the disease is transferred to a successor node $w$ at a time $t_1$ within the interval $[t_0,t_0+d]$, the disease dies out, if there is not further trade contact within the period $[t_1+d]$ and so forth.
 The regions of small/vanishing range in Figure~\ref{fig:range_exemplary} correspond to these scenarios.
 On the other hand, if all successors of node $v$ have one or more trading contact within their respective infectious periods, the disease can be transferred to a larger number of nodes.
@@ -311,7 +311,7 @@ ID & $t_0$  &$d$ &$r(v,d,t_0)$  \\
 
 Considering static networks, every node can cause an epidemic, if it is connected to other nodes in the network.
 We have seen in the previous section that in temporal networks the time of primary infection has to be in an appropriate interval.
-In addition, the range also depends on the infectious period, since a disease with high infectious period is more likely to spread over the network than a disease with low infectious period.
+In addition, the range also depends on the infectious period, since a disease with long infectious period is more likely to spread over the network than a disease with low infectious period.
 We define the \emph{outbreak probability} $p_s(d)$ as the fraction of elements in $\mathcal{S}$ that causes a secondary outbreak at all, that is
 \begin{equation}\label{eq:outbreak_prob}
 p_s(k)=\frac{\abs{\left\{ x \subset \mathcal{S}: r(v,d,t_0) \in x >0, d=\mathrm{const.} \right\}}}{\abs{\mathcal{S}}} .
@@ -344,7 +344,7 @@ This section is devoted to the analysis of the node ranking according to their r
 Rankings are very important for the implementation of vaccination and surveillance strategies, where the exact value of a certain measure for each node is not important.
 %In fact, the \emph{ordering}
 For every infectious period $d$, we average over all times of primary infection in \eqref{eq:outbreak_set}.
-Thus, $b(v,d)=\mean{r(v,d,t_0)}_{t_0}$ is a function of the node and infectious period.
+Thus, the quantity $b(v,d)=\mean{r(v,d,t_0)}_{t_0}$ is a function of the node and infectious period.
 Ordering $b(v,d)$ for every $d$ in descending order gives a ranking $R(d)$ of the nodes according to their outbreak sizes, where $R(d)$ is an ordered set of nodes for every infectious period.
 The question is, whether these rankings remain stable, if the infectious period is changed.
 
@@ -378,7 +378,7 @@ These turn out, however, to be very sensitive to even small differences between 
 Figure~\ref{fig:ranking} suggests that even in the stable region where $d>28$~days node ranks remain similar, but not equal.
 Computing Spearman or Kendall rank correlation coefficients for different infectious periods $(k_1,k_2)$ in our dataset would give vanishing values for almost all pairs $(d_1,d_2)$.
 For that reason, we relax the requirements for similarity between to rankings.
-Thus, we consider the \emph{intersection} between the sets of the respective upper samples of each ranking.
+Thus, we consider the Jaccard index -- i.e. the \emph{intersection} between the sets of the respective upper samples of each ranking.
 In other words, we examine whether the same nodes appear in the upper ranks of both the $R_{d_1}$ and the $R_{d_2}$ rankings.
 
 We denote the subset of the upper $\tau $ ranks of $R(d)$ by $R_\tau (d)$.
@@ -391,7 +391,7 @@ We get $s_\tau (d_1,d_2) =1$, if the upper $\tau $ nodes in the rankings $R(d_1)
 On the other hand, $s_\tau (d_1,d_2) =0$ implies that ranks for $d_2$ and $d_2$ are completely different.
 
 Using Equation~\eqref{eq:rank_intersection} yields a similarity matrix with $1540$ different combinations of infectious periods for our outbreak scenarios \eqref{eq:outbreak_set}.
-Since particular combinations of infectious periods are not relevant, we analyze the \emph{uncertainty} of the infectious period
+Since particular combinations of infectious periods are less relevant, we analyze the ranking as a function of the \emph{uncertainty} of the infectious period
 \begin{equation}\label{eq:uncertainty_k}
 \Delta d= \abs{d_1-d_2} .
 \end{equation}
@@ -428,7 +428,7 @@ As a smaller sample is more prone to fluctuations, variations of rank robustness
 The red curve shows an intermediate behavior.
 
 \subsection{Temporal vs. static representation}
-Since the analysis of a temporal network using a data driven approach is computationally expensive, we compare the node rankings $R_n(k)$ to centrality measures for the static network representation as defined in Section~\ref{sec:micro_measures}.
+Since the analysis of a temporal network using a data-driven approach is computationally expensive, we compare the node rankings $R_n(k)$ to centrality measures for the static network representation as defined in Section~\ref{sec:micro_measures}.
 We denote the upper $\tau $ nodes according to a static centrality measure as $C_\tau $.
 Note that $C_\tau $ does not depend on the infectious period, since the latter plays no role in static networks.
 In this work, we consider betweenness, closeness, degree centrality and range as centrality measures.
@@ -1085,7 +1085,7 @@ Removing temporal correlations (GST, LST, RT) removes periods of no activity (ni
 \end{center}
 \end{figure}
 %
-As we have discussed in Section~\ref{sec:conceptual_problems}, the high overall path density indicates that there exists a giant causally connected component in the system.
+As we have discussed in Section~\ref{sec:conceptional_problems}, the high overall path density indicates that there exists a giant causally connected component in the system.
 However, the question of mutual connectivity cannot be answered in detail using the accessibility graph alone.
 
 It can be read immediately from the path density that within the first day of the conference, more than 70~\% of all possible paths have been traversed.

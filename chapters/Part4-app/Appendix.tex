@@ -27,9 +27,9 @@ To begin with, we consider the implementation of adjacency matrices as introduce
 %Matrices can be seen as a \emph{graph centric view} on the network, since they map the whole network topology onto a single object.
 Adjacency matrices are by definition square matrices.
 Their entries are either $0$ or $1$.
-In weighted networks, their entries can take any positive value.
+In weighted networks, their entries can take any floating-point value.
 The number of nodes in most complex network datasets is relatively large. 
-Starting with small networks (100 nodes, conference contacts \citep{isella2011}), complex networks can be gigantic ($\sim 10^9$ nodes in the case twitter tweeds \citep{Yang:2011} or the world wide web \citep{Albert:1999uu,Broder:2000ej})
+Starting with small networks (100 nodes, conference contacts \citep{isella2011}), complex networks can be gigantic ($\sim 10^9$ nodes in the case twitter tweeds \citep{Yang:2011} or the world-wide web \citep{Albert:1999uu,Broder:2000ej})
 Note that the sizes of adjacency matrices scales with the square of the networks size, hence adjacency matrices of these networks are intractable for straightforward computer-based matrix analyses.
 
 Nevertheless, it is a common feature of many real-world networks that they are sparse, i.e. the vast majority of their entries are zeros\footnote{Typically, the number of edges in the network is of the same order as the number of nodes.}.

@@ -1,10 +1,10 @@
 \chapter{Conclusion}
 In this thesis we have examined the role of paths for the spread of infectious diseases on networks.
 The importance of paths in the context of epidemiology has been demonstrated for the case of static networks and was then carried over to the temporal case.
-As a central result, we have introduced the unfolding accessibility method for temporal networks in order to analyze the path structure of these systems.
+As a central result, we have introduced the method of unfolding accessibility for temporal networks in order to analyze the path structure of these systems.
 
 Concerning the spread of infectious diseases on complex networks, detailed knowledge of the dynamical aspects of disease transmission is not known in most real-world scenarios.
-It turns out however that the pure topology of contact patterns is of major importance in this context.
+It turns out, however, that the pure topology of contact patterns is of major importance in this context.
 In contrast to the infection parameters of most diseases, the contact structures can be measured to great detail for a large number of real-world systems.
 Although these contact structures form complex networks, which exhibit a wealth of properties in most cases, it turns out that the structure of paths in these systems defines the domain for any spreading process.
 On the one hand, the range of a node defines an upper limit for the size of disease outbreaks.
@@ -23,9 +23,9 @@ However, a modular network is likely to show a significantly delayed outbreak pe
 This result could be useful for the implementation of counter measures, since it does not depend on a particular partitioning of a network, but only on the fact that the network is to a certain extent modular.
 
 Special emphasis should be placed on the methods introduced for the analysis of \emph{temporal} networks, i.e. systems where the occurrence of edges varies over time.
-These systems are particularly challenging due to the importance of causality for any path on a temporal network.
+These systems are particularly challenging due to the importance of preserving causality for any path on a temporal network.
 We have introduced a novel method to obtain the accessibility graph of a temporal network.
-We believe that the definition of accessibility of temporal networks contributes a key element for a theoretical framework for the macroscopic analysis of temporal networks, because it maps the whole causal path structure of the system onto a single mathematical object.
+We believe that the definition of accessibility contributes a key element for a theoretical framework for the macroscopic analysis of temporal networks, because it maps the whole causal path structure of the system onto a single mathematical object.
 Moreover, we have introduced \emph{unfolding} accessibility as a novel formalism for the evaluation of shortest path durations in temporal networks.
 This approach is able to reveal characteristic timescales for the traversal of temporal networks.
 Knowledge of these timescales is of fundamental importance for the estimation of spreading times.
@@ -44,11 +44,11 @@ The generalization of the \emph{clustering coefficient} known from static networ
 Thus, the temporal clustering coefficient reads $C_{ijk}=\text{tr} (A_{i}A_{j}A_{k})/( \sum_{\mu,\nu\in\{i,j,k\}:\mu<\nu}\left[\sum _{\mu \nu }\left(A_{\mu}A_{\nu}\right)-\text{tr}\left(A_{\mu}A_{\nu}\right)\right])$.
 The clustering coefficient has to be computed for all snapshot triples with indices $i<j<k$ and gives a 3-dimensional object.
 This object can be contracted to a clustering matrix $\mat{C}$ with elements $c_{j-i,k-j}$ and a clustering vector $\mat{c}$ with elements $c_{k-i}$.
-The former gives information about the node waiting times in closed triangles and the latter measures the total time of closed triangles in the network.
+The former gives information about the node waiting times in closed triangles and the latter measures the total time for the traversal of closed triangles in the network.
 
 Although accessibility is a fundamental building block for the understanding of temporal networks, the development of a macroscopic theory of temporal networks is still in its infancy.
 A promising approach would consist in mapping temporal network properties onto some static network image and analyze the latter instead.
-Besides the obvious temporal nature of most network measures in temporal networks, the difficulty in such an approach lies in conceptual problems such as the degeneration of connected components.
+Besides the obvious temporal nature of most network measures in temporal networks, the difficulty in such an approach lies in conceptional problems such as the degeneration of connected components.
 These problems are mostly attributed to the non-transitivity of paths in temporal networks.
 Hence, finding the transitive part of an accessibility graph could prove to be useful.
 The author suggests to quantify \emph{transitivity} as follows: the transitivity matrix $\mathbf{T}=\mathcal{P}_T\circ \mathcal{P}_T ^2$ contains the transitive edges of the accessibility graph ($\circ $ denotes the Hadamard product).
