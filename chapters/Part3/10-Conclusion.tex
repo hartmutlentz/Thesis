@@ -1,55 +1,83 @@
 \chapter{Conclusion}
 In this thesis we have examined the role of paths for the spread of infectious diseases on networks.
-The importance of paths in the context of epidemiology has been demonstrated for the case of static networks and was then carried over to the temporal case.
+A path is a route through the network along its edges.
+The importance of paths in the context of disease spread has been demonstrated for the case of static networks and was then extended to the temporal case.
 As a central result, we have introduced the method of unfolding accessibility for temporal networks in order to analyze the path structure of these systems.
 
-Concerning the spread of infectious diseases on complex networks, detailed knowledge of the dynamical aspects of disease transmission is not known in most real-world scenarios.
-It turns out, however, that the pure topology of contact patterns is of major importance in this context.
-In contrast to the infection parameters of most diseases, the contact structures can be measured to great detail for a large number of real-world systems.
-Although these contact structures form complex networks, which exhibit a wealth of properties in most cases, it turns out that the structure of paths in these systems defines the domain for any spreading process.
+Concerning the spread of infectious diseases, detailed knowledge about the parameters governing the dynamics of disease transmission is not known in most real-world scenarios.
+It turns out, however, that the mere topology of contact patterns is of major importance in this context.
+In contrast to the infection parameters of most diseases, the contact patterns can be measured to great detail for a large number of real-world systems.
+Although these contact structures form complex networks, it turns out that solely the structure of paths defines the domain for any spreading process.
 On the one hand, the range of a node defines an upper limit for the size of disease outbreaks.
 On the other hand, the path structure of the whole system can be mapped onto the accessibility of the network.
 
-In this thesis, we have analyzed the impact of two particular attributes of \emph{static} complex networks on the properties of their paths.
-As a generic complex network, we analyzed the properties of a livestock trade network in Germany in detail.
-Among other features, the network exhibits a giant component and a significant modular structure.
+In Section~\ref{sec:network_analysis}, we have for the first time analyzed pig trade in Germany as a \textbf{static~network} systematically.
+We found that -- among other features -- the network exhibits a giant component and a significant modular structure.
 The existence of a giant component strikingly affects the spreading potential of the network nodes.
-Whenever a network is close to its critical point, its nodes can be divided into two disjoint risk classes.
+Whenever a network is close to the percolation threshold, its nodes can be divided into long ranged and short ranged nodes, which define a high risk and a low risk class, respectively.
+As we have discussed in Section~\ref{sec:components_ranges}, this result is valid for all networks close to the percolation threshold.
+Modules are a weaker restriction on the path-connectivity between subgraphs than components, since they allow for a small number of paths between subgraphs.
+We have seen in Section~\ref{sec:modules} that the pig trade network shows a modular structure which is also related to the geographical positions of the nodes.
 
-A weaker restriction on the path-connectivity between subgraphs is the concept of modules, i.e. densely connected subgraphs being sparsely interconnected.
-These structures have a relatively weak effect on the outbreak size.
+The impact of these structural features on the spread of infectious diseases was analyzed in Section~\ref{sec:PRE}.
+First, the directed nature of the trade network lead to the question, how directionality affects disease spreading.
+We have seen in Section~\ref{sec:impact_directionality} directed networks show smaller outbreak sizes than undirected ones, since they statistically allow for a smaller number of paths.
+
+As we have demonstrated in Section~\ref{sec:impact_of_modularity} a modular structure has a relatively weak effect on the outbreak size.
 This is particularly true for meta population networks, where nodes are permeable for disease spread, if they are not fully recovered.
-However, a modular network is likely to show a significantly delayed outbreak peak.
+However, a modular network is likely to show a significantly delayed outbreak peak, i.e. the ``median'' of the infection curve.
 This result could be useful for the implementation of counter measures, since it does not depend on a particular partitioning of a network, but only on the fact that the network is to a certain extent modular.
 
-Special emphasis should be placed on the methods introduced for the analysis of \emph{temporal} networks, i.e. systems where the occurrence of edges varies over time.
-These systems are particularly challenging due to the importance of preserving causality for any path on a temporal network.
-We have introduced a novel method to obtain the accessibility graph of a temporal network.
-We believe that the definition of accessibility contributes a key element for a theoretical framework for the macroscopic analysis of temporal networks, because it maps the whole causal path structure of the system onto a single mathematical object.
-Moreover, we have introduced \emph{unfolding} accessibility as a novel formalism for the evaluation of shortest path durations in temporal networks.
-This approach is able to reveal characteristic timescales for the traversal of temporal networks.
-Knowledge of these timescales is of fundamental importance for the estimation of spreading times.
+Treating a system as a static network, however, is not a reasonable assumption, if the links in the system vary over time.
+This is true for many real-world systems and livestock trade networks in particular.
+A static network view neglects preserving of chronology of edges, which is essential for any path in the network.
+Edge chronology is particularly important in systems showing a bursty occurrence of links.
+This consideration is fundamental for a realistic model of disease spread.
+In Section~\ref{sec:Plos}, we systematically analyzed data about pig trade in Germany including temporal resolution for the first time.
+We found that even if the network shows temporal fluctuations, it is still possible to define a relatively stable ranking of nodes according to their potential of disease spread.
+Data-driven approaches are indispensable tools to extract information from temporal network data.
+Nevertheless, their use does not provide a deeper understanding of the reasons for the observed results.
 
-In addition to the above, the accessibility graph of a temporal network can be compared to its aggregated, static counterpart.
-Using this concept, we have defined the novel measure of \emph{causal fidelity}, which quantifies the goodness of the static approximation of a temporal network from the causal point of view.
+Therefore, special emphasis should be placed on the methods introduced for the analysis of \textbf{temporal~networks}, i.e. systems where the occurrence of edges varies over time.
+These systems are particularly challenging due to the importance of preserving causality for any path.
+In Section~\ref{sec:unfolding_temporal}, we have introduced a novel method to obtain the accessibility graph of a temporal network.
+We believe that the definition of accessibility contributes a key element for a theoretical framework for the macroscopic analysis of temporal networks, because it maps the whole causal path structure of the system onto a single mathematical object.
+Moreover, we have introduced the explicit \emph{unfolding} of accessibility as a novel formalism for the evaluation of shortest path durations in temporal networks in Section~\ref{sec:characteristic_timescale}.
+This approach is able to reveal characteristic timescales for the traversal of temporal networks.
+Knowledge of these timescales is of fundamental importance for the estimation of realistic spreading times, since nodes can be connected by slow paths, even if they seem close in the aggregated network.
+
+In addition, the accessibility graph of a temporal network can be compared to its aggregated, static counterpart.
+Using this concept, we have defined the novel measure of \emph{causal fidelity} in Section~\ref{sec:causal_fidelity}.
+Causal fidelity quantifies the goodness of the static approximation of a temporal network from the causal point of view.
 This measure is of major importance, since due to the lack of established temporal network analysis tools, a static approximation can provide useful insights into the real system.
 %This measure is of major importance, since static network analysis provides a huge toolbox for quantifying network properties. 
 %Since there is no such toolbox for temporal networks yet, the static approximation of a temporal network can give useful insights into the real system.
 On the other hand, temporal networks with low causal fidelities should be analyzed with care, when static network tools are used.
 In particular, a low causal fidelity implies that disease outbreaks are systematically overestimated in the static approximation.
 
+Finally, the unfolding of accessibility contains implicit information about temporal and topological mixing properties of the network under consideration.
+This information can be revealed when the path density of the network is compared to randomized versions.
+We used different randomization techniques in Section~\ref{sec:mixing_hit} to reveal mixing properties of the livestock trade network.
+Hereby, we found that the network is first, poorly topologically mixed and second, link occurrence is temporally sparse, i.e. the system shows bursty behavior.
+Additionally, we demonstrated the capability of the method introduced above by application to other temporal network datasets.
+
 
 \paragraph{Outlook\color{Cayenne}{.}}
-The generalization of the \emph{clustering coefficient} known from static networks (see equation \eqref{eq:clustering_coefficient}) can be done in a straightforward manner using the adjacency matrices of network snapshots.
-Thus, the temporal clustering coefficient reads $C_{ijk}=\text{tr} (A_{i}A_{j}A_{k})/( \sum_{\mu,\nu\in\{i,j,k\}:\mu<\nu}\left[\sum _{\mu \nu }\left(A_{\mu}A_{\nu}\right)-\text{tr}\left(A_{\mu}A_{\nu}\right)\right])$.
-The clustering coefficient has to be computed for all snapshot triples with indices $i<j<k$ and gives a 3-dimensional object.
+The idea of the \emph{clustering coefficient} for temporal networks introduced by \citet{Tang:2010dn} is the persistence of links over time.
+On the other hand, it is straightforward to generalize the concept of closed triangles known from static networks as it was introduced by Equation~\eqref{eq:clustering_coefficient}.
+Using different snapshots of the temporal network, the temporal clustering coefficient reads
+\[
+C_{ijk}=\frac{\text{tr} (\mathbf{A}_{i}\mathbf{A}_{j}\mathbf{A}_{k})}{\sum_{\mu,\nu\in\{i,j,k\}:\mu<\nu}\left[\sum _{\mu \nu }\left(\mathbf{A}_{\mu}\mathbf{A}_{\nu}\right)-\text{tr}\left(\mathbf{A}_{\mu}\mathbf{A}_{\nu}\right)\right]} \quad ,
+\]
+where $\mathbf{A}_i$ is a snapshot of the network at time $i$.
+The clustering coefficient is then computed for all snapshot triples with indices $i<j<k$ and yields a 3-dimensional object.
 This object can be contracted to a clustering matrix $\mat{C}$ with elements $c_{j-i,k-j}$ and a clustering vector $\mat{c}$ with elements $c_{k-i}$.
 The former gives information about the node waiting times in closed triangles and the latter measures the total time for the traversal of closed triangles in the network.
 
 Although accessibility is a fundamental building block for the understanding of temporal networks, the development of a macroscopic theory of temporal networks is still in its infancy.
 A promising approach would consist in mapping temporal network properties onto some static network image and analyze the latter instead.
-Besides the obvious temporal nature of most network measures in temporal networks, the difficulty in such an approach lies in conceptional problems such as the degeneration of connected components.
-These problems are mostly attributed to the non-transitivity of paths in temporal networks.
+Besides the obvious temporal nature of most network measures in temporal networks, the difficulty in such an approach lies in conceptional problems, such as the degeneration of connected components.
+These problems are mostly attributed to the non-transitivity of paths in temporal networks, which we discussed in Section~\ref{sec:paths_in_temporal_networks}.
 Hence, finding the transitive part of an accessibility graph could prove to be useful.
 The author suggests to quantify \emph{transitivity} as follows: the transitivity matrix $\mathbf{T}=\mathcal{P}_T\circ \mathcal{P}_T ^2$ contains the transitive edges of the accessibility graph ($\circ $ denotes the Hadamard product).
 This measure could help to identify transitive paths in temporal networks and facilitate the generalization of other concepts of static network analysis.

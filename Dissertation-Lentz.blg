@@ -21,34 +21,34 @@ Warning--empty institution in sociopatterns.org
 Warning--empty institution in HI-Tier
 You've used 148 entries,
             1935 wiz_defined-function locations,
-            1384 strings with 26693 characters,
-and the built_in function-call counts, 60621 in all, are:
-= -- 5952
-> -- 2520
-< -- 94
-+ -- 848
-- -- 847
-* -- 5355
-:= -- 10580
-add.period$ -- 448
+            1385 strings with 26799 characters,
+and the built_in function-call counts, 60755 in all, are:
+= -- 5964
+> -- 2536
+< -- 93
++ -- 854
+- -- 853
+* -- 5371
+:= -- 10601
+add.period$ -- 449
 call.type$ -- 148
-change.case$ -- 1154
+change.case$ -- 1157
 chr.to.int$ -- 147
 cite$ -- 153
-duplicate$ -- 2144
-empty$ -- 4226
-format.name$ -- 1073
-if$ -- 11722
+duplicate$ -- 2148
+empty$ -- 4233
+format.name$ -- 1079
+if$ -- 11750
 int.to.chr$ -- 2
 int.to.str$ -- 0
 missing$ -- 157
 newline$ -- 742
 num.names$ -- 446
-pop$ -- 893
+pop$ -- 900
 preamble$ -- 1
-purify$ -- 1161
+purify$ -- 1164
 quote$ -- 0
-skip$ -- 1636
+skip$ -- 1634
 stack$ -- 0
 substring$ -- 4651
 swap$ -- 216
@@ -59,5 +59,5 @@ type$ -- 860
 warning$ -- 5
 while$ -- 515
 width$ -- 0
-write$ -- 1916
+write$ -- 1917
 (There were 5 warnings)

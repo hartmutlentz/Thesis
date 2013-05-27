@@ -463,7 +463,7 @@ An explanation for this special role is that nodes with high closeness are likel
 This way long static paths are avoided, i.e. the chance that one of these static paths is disrupted by causality is relatively low.
 It should be noted that all features discussed above are almost identical for both infectious periods.
 
-\paragraph{Summary of the data-driven analysis\color{Cayenne}{.}}
+\paragraph{Conclusion of the section\color{Cayenne}{.}}
 We simulated an SIR-type disease on the livestock trade dataset and explicitly took into account the temporal dynamics of edges.
 This yields a set of outbreak scenarios, which can be thought of as a scalar-field $r(v,d,t_0)$, where each triple $(v,d,t_0)$ is assigned an outbreak size $r$, if $r>0$.
 A schematic sketch of this scalar-field is given in Figure~\ref{fig:Plos_parameter-space}.
@@ -803,7 +803,7 @@ This property reflects the ``arrow of time'' in temporal networks.
 In addition to that, the accessibility graph does not show global transitivity as opposed to the static case (compare to Figure~\ref{fig:access_static}).
 In our example, the existence of the paths $4\rightsquigarrow 2$ and $2\rightsquigarrow 3$ does not imply that $4\rightsquigarrow 3$, as it would be in the static case.
  
-\subsection{Representative sample / characteristic time scale}
+\subsection{Representative sample / characteristic time scale}\label{sec:characteristic_timescale}
 We come back to the the findings of Section~\ref{sec:representative_sample}, where we determined the typical timescale of the livestock trade network using data-driven methods.
 Thus, we apply the unfolding accessibility method to the livestock trade network dataset, i.e. we take more and more snapshots to obtain information about the path density.
 From the derivative of the path density we obtain the distribution of shortest path durations in the network.
@@ -1004,7 +1004,7 @@ Model & Effects\\
 \end{center}
 \end{table}
 
-\subsection{Temporal and topological mixing patterns}
+\subsection{Temporal and topological mixing patterns}\label{sec:mixing_hit}
 In order to reveal temporal and topological correlations in the livestock trade dataset, we apply the randomization techniques from the previous section to the network.
 Every deviation from the original dataset hints to a particular correlation in the network.
 Figure \ref{fig:randomized_hit} shows the path density for the original dataset and for the randomized versions.
@@ -1055,7 +1055,7 @@ The most salient feature in this context is the poor topological mixing of the n
 Another striking feature is that bursty trade transactions seem to dominate the traversal of the system.
 Temporal correlations and temporal directionality play a role, but these features are not as striking as mixing and scheduling.
 
-\subsection{Further case studies}
+\subsection{Further case studies}\label{sec:further_cases}
 %
 \begin{SCfigure}
 \includegraphics{113-Sociopatterns.pdf}
@@ -1152,3 +1152,6 @@ A longer dataset would be needed in order to answer this question.
 
 As it was the case for the livestock trade network, the sexual contact network is not well mixed.
 This is measured in terms of a strictly higher path density in the RE model (orange line) than it was in the original data.
+
+
+
