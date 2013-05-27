@@ -3,30 +3,29 @@
 \chapter{Introduction}
 %
 \paragraph{Models for epidemics\color{Cayenne}{.}}
-Epidemics have always been a serious issue for societies and therefore, the understanding and prediction of the spread of infectious diseases became an important factor of research.
-%Understanding and predicting the spread of infectious diseases has always been an important issue for societies.
+Epidemics have always been a serious issue for societies and therefore, the understanding and prediction of the spread of infectious diseases became an important area of research.
 Medieval disease outbreaks, such as the spread of black death in Europe, showed a traveling wave spreading pattern \citep{noble:nature}.
-The disease eradicated half of the European population between 1347 and 1351 \citep{Bos:2011kr}.
+%The disease eradicated half of the European population between 1347 and 1351 \citep{Bos:2011kr}.
 %An example of a severe disease outbreak is the spread of black death in Europe, which eradicated half of the European population between 1347 and 1351 \citep{Bos:2011kr} and showed a traveling wave spreading pattern \citep{noble:nature}.
 Although the course of this particular outbreak was rather simple from a present-day perspective, modeling the dynamics of an infectious disease is in general a challenging endeavor.
-Early attempts go back to the 18th century; in his review about the mathematics of infectious diseases, \citeauthor{Hethcote:2000} reports a model for smallpox was formulated in 1760 by D. Bernoulli (see \citet{Hethcote:2000} and references therein).
+Early attempts go back to the 18th century; in his review about the mathematics of infectious diseases, \citeauthor{Hethcote:2000} reports that a model for smallpox was formulated already in 1760 by D. Bernoulli (see \citet{Hethcote:2000} and references therein).
 
 In the early 20th century, mathematical models for epidemics were developed: a discrete time model in 1906 \citep{Hamer} and a differential equation model in 1911 \citep{Ross}.
 Major contributions to the modern theoretical framework were provided by \citet{kermack:27}, \citet{bailey:57}, and \citet{andersonmay:92}.
 In particular, \citeauthor{kermack:27} found the existence of an epidemic threshold, i.e. a critical infection rate necessary to overcome the extinction of the epidemic \citep{kermack:27}.
 Starting from Bailey's book \citep{bailey:57} in the 1950s, the modeling of infectious diseases became a major scientific research field.
-Modern models of infectious diseases increase in complexity.
+Modern models of infectious diseases increase in complexity:
 They include vaccination, demographic structure, disease vectors and quarantine (see references in \citep{Hethcote:2000}).
 In addition to that, the actual usage of vaccines in the population can be modeled in terms of game theory \citep{Bauch:2004}.
 The availability of host contact data in recent years led to a strong impact of network analysis on epidemiology \citep{Mossong:2008vz}.
 Well-known concepts of mathematics, such as graph theory \citep{Bollobas:1985}, and social sciences, such as social network analysis \citep{WassermanFaust}, have been adopted to disease modeling, since the links between individuals are related to their epidemic spreading potential \citep{Keeling:2005}.
 
-Besides infectious diseases of humans, livestock epidemics are a major economic issue in agriculture.
+Besides infectious diseases of humans, many methods from human epidemiology have also been adopted to animal diseases and livestock diseases in particular.
+Livestock epidemics are a major economic issue in agriculture.
 A prominent example is foot-and-mouth disease, which caused tremendous economic losses in the UK in 2001 \citep{Kitching:2005dd}.
-As a matter of fact, many methods from human epidemiology have also been adopted to animal diseases.
 Due to legislation introduced 2001 after the BSE crisis, large amounts of data on livestock movements have been collected in Europe.
 Network models reflecting livestock trade movements have gained particular attention in recent years \citep{Christley:2005,Green:2006,Kao:2007,Bigras:2007,Dube:2009gx,MartinezLopez2009,Lentz:2011,Konschake:2013js,Fournie:2013dp}.
-Livestock trade network analysis provides support for the planning of surveillance and vaccination strategies in agriculture.
+Livestock trade network analysis provides support for the planning of surveillance and vaccination strategies in livestock disease management.
 
 Epidemic models can be divided into two classes: \emph{forecast} models and \emph{conceptional} models. 
 Forecast models incorporate as much information as necessary to predict the course of a disease.
@@ -74,7 +73,8 @@ Modules allow for a statistically small number of paths between each other.
 These structures have been observed in the livestock network analyzed in this thesis (see Section~\ref{sec:modules} and \citet{Lentz:2011}) and in other networks \citep{Clauset_greedy,Fortunanto2010}.
 
 The impact of modular structure on disease spreading has been studied for social networks by \citet{Salathe:2010p6333}.
-However, for the case livestock trade networks, the impact of a modular structure has not been analyzed systematically yet.
+However, livestock trade networks differ from social networks in the sense that in livestock trade networks, nodes are not individuals and edges appear as directed links.
+For the case livestock trade networks, the impact of a modular structure has not been analyzed systematically yet.
 Moreover, the directed nature of these systems requires investigation of the role of edge direction.
 The following unanswered questions remain:
 \begin{itemize}
