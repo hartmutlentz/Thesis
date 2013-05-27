@@ -10,9 +10,9 @@ Medieval disease outbreaks, such as the spread of black death in Europe, showed 
 Although the course of this particular outbreak was rather simple from a present-day perspective, modeling the dynamics of an infectious disease is in general a challenging endeavor.
 Early attempts go back to the 18th century; in his review about the mathematics of infectious diseases, \citeauthor{Hethcote:2000} reports that a model for smallpox was formulated already in 1760 by D. Bernoulli (see \citet{Hethcote:2000} and references therein).
 
-In the early 20th century, mathematical models for epidemics were developed: a discrete time model in 1906 \citep{Hamer} and a differential equation model in 1911 \citep{Ross}.
+In the early 20th century, the foundations for modern mathematical models of epidemics were developed: a discrete time model in 1906 \citep{Hamer} and a differential equation model in 1911 \citep{Ross}.
 Major contributions to the modern theoretical framework were provided by \citet{kermack:27}, \citet{bailey:57}, and \citet{andersonmay:92}.
-In particular, \citeauthor{kermack:27} found the existence of an epidemic threshold, i.e. a critical infection rate necessary to overcome the extinction of the epidemic \citep{kermack:27}.
+In particular, \citeauthor{kermack:27} found the existence of an epidemic threshold, i.e. a disease requires a critical infection rate in order to propagate \citep{kermack:27}.
 Starting from Bailey's book \citep{bailey:57} in the 1950s, the modeling of infectious diseases became a major scientific research field.
 Modern models of infectious diseases increase in complexity:
 They include vaccination, demographic structure, disease vectors and quarantine (see references in \citep{Hethcote:2000}).
@@ -43,9 +43,9 @@ Modern network science is concerned in the broadest sense with the description a
 Reviews on network science are provided by \citet{Newman2003} and \citet{RevModPhys.74}.
 
 The mathematical roots of network science go back to \emph{graph theory} developed by \citeauthor{euler:1736} in the 18th century.
-\citeauthor{euler:1736} solved the so-called seven bridges of Kšnigsberg problem by showing that there is no closed path using all edges of a network exactly once, if more than two nodes have an odd number of neighbors \citep{euler:1736}, say an odd degree.
+\citeauthor{euler:1736} solved the so-called seven bridges of Kšnigsberg problem by showing that there is no closed path traversing all edges of a network exactly once, if more than two nodes have an odd number of adjacent links \citep{euler:1736}, say an odd degree.
 Since detailed information about most networks was not available until the end of the 20th century, early network science focused on the study of random networks.
-In 1959, \citeauthor{ER:1959} studied the properties of dense random networks and later analyzed the percolation properties of these systems \citep{ER:1960,ER:1961}.
+In 1959, \citeauthor{ER:1959} studied dense random networks and later analyzed the percolation properties of these systems \citep{ER:1960,ER:1961}.
 
 Beyond the tools and methods of graph theory, the origins of modern network science also go back to \emph{sociology}.
 More specifically, the complexity of human interactions was modeled in terms of social networks.
@@ -87,7 +87,7 @@ Although network analysis in the sense above provides a powerful tool for the un
 As a matter of fact, the edges of many networks show heavy fluctuations over time.
 Therefore, the analysis of \emph{temporal networks} has attracted significant attention during the last years.
 Reviews about temporal networks are provided by \citet{Casteights_review} and \citet{Holme_review}.
-In contrast to static network analysis, a number of problems arise from the importance of causality in temporal network analysis \citep{Casteights_review,Nicosia:2012hz}.
+In contrast to static network analysis, a number of problems arise from the significance of causality in temporal network analysis \citep{Casteights_review,Nicosia:2012hz}.
 
 %%%%%%
 For this reason, the majority of contributions to temporal network analysis has made use of data-driven approaches.
@@ -97,7 +97,7 @@ Different time aggregation windows have been investigated in data-driven analyse
 The stability of node rankings in a temporal livestock trade network was analyzed by \citet{Konschake:2013js} for different infectious periods, where stability regions of node rankings have been found numerically.
 
 Considering human mobility networks, temporal distances between nodes have been analyzed in an air transportation network, where systematical deviations between static shortest path distances and temporal shortest path durations were observed \citep{Pan:2011dga}.
-On the local mobility level, a network of bike sharing locations has been investigated by \citet{Vogel:2011bb}, where the authors found different node classes according to a similarity of temporal degree patterns.
+On a more local mobility level, a network of bike sharing locations has been investigated by \citet{Vogel:2011bb}, where the authors found different node classes according to a similarity of temporal degree patterns.
 Temporal contact patterns in form of a growing network of sexual contacts were analyzed by \citet{Rocha_pnas,Rocha_plosbc}.
 \citeauthor{Rocha_pnas} found a preferential attachment rule for a growing web community.
 
@@ -116,7 +116,7 @@ In fact, it has been shown that even the detection of connected components in is
 Nevertheless, network snapshots can be used to generalize static centrality concepts.
 \citeauthor{Grindrod:2011fg} found a convenient way to quantify the ability of every node to receive and broadcast information \citep{Grindrod:2011fg}.
 Network snapshots have also been used in order to generalize the concept of small-world networks in \citep{Tang:2010dn}, where clustering is measured in terms of the persistence of links over time.
-Besides the temporal network model introduced by \citet{Tang:2010dn}, random walk models can be used in order generate synthetic temporal networks reproducing the bursty behavior of real-world datasets \citep{Barrat:2013da}.
+Besides the temporal network model introduced by \citet{Tang:2010dn}, random walk models can be used in order to generate synthetic temporal networks reproducing the bursty behavior of real-world datasets \citep{Barrat:2013da}.
 
 %The clustering coefficient known from static small-world networks has been generalized using correlations between different network snapshots in \citep{Tang:2010dn}.
 %Finally, random walk models have been successfully used in order to generate random temporal networks with temporal bursty behavior \citep{Barrat:2013da}.
@@ -131,17 +131,18 @@ Central questions in this context are
 \end{itemize}
 We address these questions in Chapter~\ref{sec:temporal_networks}, where we introduce the novel method of \emph{unfolding accessibility} for temporal networks.
 The method is capable of answering all questions above.
+We believe that providing the causal path structure of temporal networks contributes a key element for the construction of a variety of other temporal network analysis tools.
 
 \paragraph{This work is structured as follows\color{Cayenne}{:}}
 We review some fundamental results of mathematical epidemiology and network science necessary for understanding the other chapters in \textbf{Chapter~\ref{sec:theory}}.
 Classic models for the spread of infectious diseases are discussed in Section~\ref{sec:inf_diseases}.
 In Section~\ref{sec:network_theory}, we report basic concepts of network theory and discuss the relevance of different network types for epidemiological questions in Section~\ref{sec:network_models}.
 %
-In \textbf{Chapter~\ref{chap:static}}, for the first time we systematically analyze the trade of livestock in Germany as a static network.
+In \textbf{Chapter~\ref{chap:static}}, for the first time we systematically analyze the trade of livestock pigs in Germany as a static network.
 Hereby, we identify its path structure as a crucial epidemiological factor in Section~\ref{sec:network_analysis}.
 The spreading potential of the observed path structure is analyzed in Section~\ref{sec:PRE}.
 %
-\textbf{Chapter~\ref{sec:temporal_networks}} is devoted to considering the full temporal information of the livestock trade network.
+\textbf{Chapter~\ref{sec:temporal_networks}} is devoted to the investigation of the full temporal information of the livestock trade network.
 After a general discussion of temporal networks in Section~\ref{sec:temporal_networks_basics}, we analyze the network data systematically in Section~\ref{sec:Plos}.
 Moreover, we introduce the unfolding accessibility method as a new approach to measure the causal path structure in temporal networks in Section~\ref{sec:PRL}.
 We use accessibility in order to quantify the goodness of an aggregated representation of a temporal network in Section~\ref{sec:causal_fidelity}.
