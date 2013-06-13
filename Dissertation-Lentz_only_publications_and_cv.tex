@@ -1,0 +1,169 @@
+% Template to be used while publishing    
+% a scientific work (PhD Thesis etc.)
+% at the EDOC-Server of HU-Berlin                      
+%    developed 2003-2008 by
+% AG Elektronisches Publizieren, 
+% Computer- und Medienservice,
+% Humboldt-Universitaet zu Berlin
+%    with friendly support of
+% TeX-Stammtisch in Berlin     
+
+% $Revision: 19 $
+% $HeadURL: svn+ssh://ryckojox@svn.cms.hu-berlin.de/svn/projects/epub/latex/hudiss/mustermann.tex $
+% $Date: 2009-07-03 15:49:19 +0200 (ptk, 03 lip 2009) $
+% $Author$
+% $Id: mustermann.tex 19 2009-07-03 13:49:19Z ryckojox $
+                             
+% Questions, comments, support:
+%    edoc-latex@cms.hu-berlin.de    
+
+% Documentation and information about the conditions of a publication:
+%    http://edoc.hu-berlin.de/e_autoren/latex          
+
+% Upload:
+%    https://edoc.hu-berlin.de/cgi/dokupload/dokupload.cgi
+
+\documentclass[openright,twoside,headsepline,bibtotoc]{scrbook}[2007/12/24]
+
+% The following package is necessary.
+% To change the default options of the packages, use the key=value interface.
+% See the documentation for details.
+% If you need to use any special characters or LaTeX-commands 
+% within the options, use \hudisssetup{} after loading this package,
+% otherwise they will NOT work correctly.
+\usepackage[
+    inputenc=applemac, % default - latin1
+    %fontset=palatino, % other possible parameters: lmodern, times, palatino
+    natbib={round,authoryear}, %include to use the natbib-package % sort sortiert nach Name
+    % jurabib={}, %include to use the jurabib-package
+    % apacite={}, %include to use the apacite-package
+    hints=false, % set to 'false' for submission
+    checktabu=false, % set to 'false' for submission
+    draft=false, % set to 'false' for submission
+    qserie=false
+ ]{hudiss}
+
+%\usepackage{layouts} % nur für Ausgabe der Textbreite
+% Breite hier: B=14,6979 cm. Ergibt H=8,3988 cm für 7/4 Verhältnis
+% für kleine Bilder nehmen wir 6.5/4: BxH=8.819x5.427
+
+                
+\hudisssetup{%
+    titlepagefont={\Large\sffamily} % Use to change the titlepage font
+}
+
+% Fill out all the metadata here:
+\hudissmetadata{%
+    authorprefix={Dipl.-Phys.}, % e.g. Dipl.-Inf.
+    authorfirstname={Hartmut}, % first name
+    authorsurname={Lentz}, % surname
+    authorsuffix={}, % e.g. Ph.D.
+    authoradd={geboren am 23.\,10.~1980 in Siegen}, % date and place of birth
+    doctitle={Paths for Epidemics\\ in Static and Temporal Networks}, % title of the thesis
+    %docsubtitle={for one euro}, % subtitle of the thesis
+    % docsubject={Analysis of complex networks}, % subject of the thesis (used in the properties of the pdf-document)
+    approvala={..........................}, % approvals: a-e
+    approvalb={..........................},
+    approvalc={..........................},
+    % approvald={},
+    % approvale={},
+    degree={doctor rerum naturalium\\(Dr. rer. nat.)}, % e.g. Dr. Rer. Nat.
+    subject={Physik}, % e.g. Informatik
+    faculty={Mathematisch-Wissenschaftlichen Fakultät I}, % in Dativ/Genitiv! e.g. Mathematisch-Wissenschaftlichen Fakult\"at II
+    university={Humboldt-Universität zu Berlin}, % e.g. Humboldt-Universit\"at zu Berlin
+    dean={Prof. Stefan Hecht, PhD}, % dean of the faculty
+    president={Prof. Dr. Jan-Hendrik Olbertz}, % president of the university
+    %datesubmitted={..........................}, % the date of the submission
+    dateexam={..........................}, % the date of your last exam
+    keywordsen={Complex Network, Epidemiology, Temporal Network }, % english keywords comma separated
+    keywordsde={Komplexes Netzwerk, Epidemiologie, zeitabhängiges Netzwerk} % german keywords comma separated
+}
+
+% If you wish to load any further packages, 
+% make any own adjustments (e. g. for the package fancyhdr)
+% or define any own commands
+% put ALL of them in the following file:
+\input{adjustment.tex}
+
+
+% The order of the parts in the document is only our suggestion,
+% you can change it, if you wish.
+% Don't put any other text between those commands.
+% Do not remove the \*matter macros.
+% Use standard macros to include new chapters.
+
+
+
+%%%%%    \includeonly{chapters/Part1/01-Introtext}
+% DIV is 10, BCOR is 0mm
+\begin{document}
+\selectlanguage{english}
+
+\chapter*{List of publications}
+\thispagestyle{empty}
+\begin{enumerate}
+ \item \textbf{H. H. K. Lentz}, T. Selhorst and I. M. Sokolov\\
+ \textit{Unfolding Accessibility provides a Macroscopic Approach to Temporal Networks}\\
+  Physical Review Letters 110: 118701 (2013).
+
+ \item M. Konschake, \textbf{H. H. K. Lentz}, F. J. Conraths, P. Hoevel and T. Selhorst\\
+  \textit{On the Robustness of In- and Out-Components in a Temporal Network}\\
+  PLoS ONE 8(2): e55223 (2013).
+
+ \item \textbf{H. H. K. Lentz}, T. Selhorst and I. M. Sokolov\\
+  \textit{Spread of infectious diseases in directed and modular metapopulation networks}\\
+  Physical Review E 85: 066111 (2012).
+
+  \item \textbf{H. H. K. Lentz},  M. Konschake, K. Teske, M. Kasper, B. Rother, R. Carmanns, B. Petersen, F. J. Conraths and T. Selhorst \\
+   \textit{Trade communities and their spatial patterns in the German pork production network}\\
+  Preventive Veterinary Medicine 98: 176--181 (2011).
+
+  \item \textbf{H. Lentz},  M. Kasper and T. Selhorst \\
+   \textit{Beschreibung des Handels mit Rindern in Deutschland mittels Netzwerkanalyse -- Ergebnisse von Voruntersuchungen}\\
+  Berliner und Münchener Tierärztliche Wochenschrift 122: 193--198 (2009).
+
+\end{enumerate}%\clearpage
+%%%% CV %%%%%
+\chapter*{Curriculum Vitae}
+\thispagestyle{empty}
+
+\begin{cv}{~}
+  
+\begin{cvlist}{\color{Steel}{Personal information}}
+  \item Dipl.-Phys. Hartmut Lentz
+    \item born in Siegen, October 23rd 1980\\
+	Nationality: German
+    \item[contact] Friedrich-Loeffler-Institute\\
+    Institute for Epidemiology\\
+    Seestr. 55\\
+    106868 Wusterhausen, Germany
+ % \item +49-(30)~2093-7750\\
+   \item hartmut.lentz@fli.bund.de	
+
+\end{cvlist}
+%\vspace{0.1cm}
+ % \noindent\hrulefill
+
+  \begin{cvlist}{\color{Steel}{Education and job history}}
+  \item[since 04/2008] Research assistant, Friedrich-Loeffler-Institute (Federal Research Institute for Animal Health), Working group Theoretical Epidemiology
+   \item[since 04/2008] Ph.D. student, Humboldt-University of Berlin, Department of
+Physics, Statistical Physics and Nonlinear Dynamics, Topic: \emph{Spread of infectious diseases in complex networks}.
+  \item[10/2007] Diploma in theoretical physics at Department of Physics, Technical University Berlin, Topic: \emph{Rotierende Wellenmuster in erregbaren Medien}, (graduated with honors).
+  \item[10/2007--04/2008] Research assistant, Technical University Berlin
+  \item[10/2001--10-2007] Physics study at Freie University Berlin and Technical University Berlin
+  \item[06/2001] Abitur, Evangelisches Gymnasium Siegen
+  \end{cvlist}
+
+  \date{}
+\end{cv}
+
+\vspace{1\baselineskip}
+\noindent Berlin, \today   %\newline
+
+\par\hspace{8cm}  ( \authorfirstname \authorsurname)
+
+
+
+
+
+\end{document}
