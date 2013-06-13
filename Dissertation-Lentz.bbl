@@ -38,7 +38,7 @@ Bailey, N. T.~J. (1957).
 \bibitem[Bajardi et~al., 2011]{Bajardi:2011iv}
 Bajardi, P., Barrat, A., Natale, F., Savini, L., and Colizza, V. (2011).
 \newblock {Dynamical patterns of cattle trade movements.}
-\newblock {\em PLoS ONE}, 6(5):e19869.
+\newblock {\em PLOS ONE}, 6(5):e19869.
 
 \bibitem[Bak et~al., 1990]{Bak:1990}
 Bak, P., Chen, K., and Tang, C. (1990).
@@ -57,6 +57,11 @@ Balcan, D. and Vespignani, A. (2011).
 \newblock {Phase transitions in contagion processes mediated by recurrent
   mobility patterns}.
 \newblock {\em Nat. Phys.}, 7(7):581--586.
+
+\bibitem[Ball et~al., 1997]{Ball:1997tq}
+Ball, F., Mollison, D., and Scalia-Tomba, G. (1997).
+\newblock {Epidemics with two levels of mixing}.
+\newblock {\em Ann. Appl. Probab.}, 7(1):46--89.
 
 \bibitem[Banerjee and Jost, 2009]{Banerjee2009}
 Banerjee, A. and Jost, J. (2009).
@@ -128,14 +133,6 @@ Bonacich, P. (2007).
 \newblock {Some unique properties of eigenvector centrality}.
 \newblock {\em Soc. Networks}, 29(4):555--564.
 
-\bibitem[Bos et~al., 2011]{Bos:2011kr}
-Bos, K.~I., Schuenemann, V.~J., Golding, G.~B., Burbano, H.~A., Waglechner, N.,
-  Coombes, B.~K., McPhee, J.~B., DeWitte, S.~N., Meyer, M., Schmedes, S., Wood,
-  J., Earn, D. J.~D., Herring, D.~A., Bauer, P., Poinar, H.~N., and Krause, J.
-  (2011).
-\newblock {A draft genome of Yersinia pestis from victims of the Black Death}.
-\newblock {\em Nature}, pages 1--6.
-
 \bibitem[Brandes, 2001]{Brandes:2001p2757}
 Brandes, U. (2001).
 \newblock {A faster algorithm for betweenness centrality}.
@@ -150,7 +147,7 @@ Brandes, U., Delling, D., Gaertler, M., G{\"o}rke, R., Hoefer, M., Nikoloski,
 
 \bibitem[Broder et~al., 2000]{Broder:2000ej}
 Broder, A., Kumar, R., Maghoul, F., Raghavan, P., Rajagopalan, S., Stata, R.,
-  Tomkins, A., and Wiener, J. (2000).
+  Tomkins, A.~S., and Wiener, J. (2000).
 \newblock {Graph structure in the web}.
 \newblock {\em Comput. Netw.}, 33(1):309--320.
 
@@ -282,12 +279,12 @@ Euler, L. (1736).
 \newblock {Solutio problematis ad geometrian situs pertinentis}.
 \newblock {\em Comm. Acad. Sci. Imp. Petrop.}, 8:128--140.
 
-\bibitem[{EUR-Lex}, 2000]{Euro-Lex}
-{EUR-Lex} (2000).
-\newblock {Directive 2000/15/EC of the European Parliament and the Council of
-  10 April 2000 amending Council Directive 64/432/EEC on health problems
-  affecting intra-community trade in bovine animals and swine}.
-\newblock Technical report.
+\bibitem[EUR-Lex, 2000]{Euro-Lex}
+EUR-Lex (2000).
+\newblock Directive 2000/15/ec of the european parliament and the council of 10
+  april 2000 amending council directive 64/432/eec on health problems affecting
+  intra-community trade in bovine animals and swine.
+\newblock EUR-Lex.
 
 \bibitem[Faloutsos et~al., 1999]{Faloutsos:1999}
 Faloutsos, M., Faloutsos, P., and Faloutsos, C. (1999).
@@ -397,7 +394,8 @@ Guimer{\`a}, R., Sales-Pardo, M., and Amaral, L. A.~N. (2004).
 
 \bibitem[Hagberg, 2012]{networkx:}
 Hagberg, A.~A. (2012).
-\newblock {Networkx: High productivity software for complex networks}.
+\newblock Networkx: High productivity software for complex networks.
+\newblock \verb"http://networkx.lanl.gov".
 
 \bibitem[Hagberg et~al., 2008]{hagberg2008}
 Hagberg, A.~A., Schult, D.~A., and Swart, P.~J. (2008).
@@ -515,7 +513,7 @@ Kleinberg, J.~M., Kumar, R., Raghavan, P., Rajagopalan, S., and Tomkins, A.~S.
 Konschake, M., Lentz, H. H.~K., Conraths, F.~J., H{\"o}vel, P., and Selhorst,
   T. (2013).
 \newblock {On the Robustness of In- and Out-Components in a Temporal Network}.
-\newblock {\em PLoS ONE}, 8(2):e55223.
+\newblock {\em PLOS ONE}, 8(2):e55223.
 
 \bibitem[Krapivsky and Redner, 2001]{Krapivsky:2001bg}
 Krapivsky, P. and Redner, S. (2001).
@@ -605,7 +603,7 @@ Mossong, J., Hens, N., Jit, M., Beutels, P., Auranen, K., Mikolajczyk, R.,
   Massari, M., Salmaso, S., Tomba, G.~S., and Wallinga, J. (2008).
 \newblock {Social contacts and mixing patterns relevant to the spread of
   infectious diseases}.
-\newblock {\em PLoS medicine}, 5(3):e74.
+\newblock {\em PLOS med.}, 5(3):e74.
 
 \bibitem[Newman, 2001]{Newman:2001p}
 Newman, M. E.~J. (2001).
@@ -657,8 +655,8 @@ Noble, J.~V. (1974).
 
 \bibitem[Page, 1997]{PageRank:}
 Page, L. (1997).
-\newblock {Method for node ranking in a linked database}.
-\newblock Technical report.
+\newblock Method for node ranking in a linked database.
+\newblock \emph{Patent} US 6285999.
 
 \bibitem[Pan and Saram{\"a}ki, 2011]{Pan:2011dga}
 Pan, R.~K. and Saram{\"a}ki, J. (2011).
@@ -746,12 +744,12 @@ Skiena, S.~S. (2008).
 \bibitem[{Sociopatterns}, 2012]{sociopatterns.org}
 {Sociopatterns} (2012).
 \newblock {Sociopatterns Foundation}.
-\newblock Technical report.
+\newblock \verb"http://www.sociopatterns.org".
 
 \bibitem[StMELF, 2012]{HI-Tier}
 StMELF, B. (2012).
-\newblock {Herkunftssicherungs und Informationssystem f{\"u}r Tiere}.
-\newblock Technical report.
+\newblock Herkunftssicherungs und informationssystem f{\"u}r tiere.
+\newblock \verb"http://www.hi-tier.de".
 
 \bibitem[Strauss, 1986]{Strauss:86}
 Strauss, D. (1986).

@@ -13,51 +13,46 @@ A level-1 auxiliary file: chapters/Acknowledgements.aux
 The style file: apalike.bst
 A level-1 auxiliary file: chapters/declaration.aux
 A level-1 auxiliary file: chapters/list_of_publications.aux
+A level-1 auxiliary file: chapters/CV.aux
 Database file #1: bibliography.bib
-Warning--empty institution in Euro-Lex
-Warning--empty journal in networkx:
-Warning--empty institution in PageRank:
-Warning--empty institution in sociopatterns.org
-Warning--empty institution in HI-Tier
 You've used 148 entries,
             1935 wiz_defined-function locations,
-            1385 strings with 26799 characters,
-and the built_in function-call counts, 60755 in all, are:
-= -- 5964
-> -- 2536
-< -- 93
-+ -- 854
-- -- 853
-* -- 5371
-:= -- 10601
-add.period$ -- 449
+            1391 strings with 26640 characters,
+and the built_in function-call counts, 60228 in all, are:
+= -- 5936
+> -- 2471
+< -- 92
++ -- 828
+- -- 827
+* -- 5309
+:= -- 10508
+add.period$ -- 450
 call.type$ -- 148
-change.case$ -- 1157
+change.case$ -- 1140
 chr.to.int$ -- 147
-cite$ -- 153
-duplicate$ -- 2148
-empty$ -- 4233
-format.name$ -- 1079
-if$ -- 11750
+cite$ -- 148
+duplicate$ -- 2136
+empty$ -- 4215
+format.name$ -- 1053
+if$ -- 11656
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 157
-newline$ -- 742
+missing$ -- 156
+newline$ -- 743
 num.names$ -- 446
-pop$ -- 900
+pop$ -- 873
 preamble$ -- 1
-purify$ -- 1164
+purify$ -- 1151
 quote$ -- 0
-skip$ -- 1634
+skip$ -- 1626
 stack$ -- 0
-substring$ -- 4651
-swap$ -- 216
-text.length$ -- 9
+substring$ -- 4654
+swap$ -- 211
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 860
-warning$ -- 5
-while$ -- 515
+warning$ -- 0
+while$ -- 514
 width$ -- 0
-write$ -- 1917
-(There were 5 warnings)
+write$ -- 1919

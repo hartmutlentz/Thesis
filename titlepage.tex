@@ -1,3 +1,5 @@
+%\newgeometry{left=0.5cm,right=0.5cm}
+
 \makeatletter
 \begin{titlepage}
 \begin{spacing}{1}
@@ -17,7 +19,6 @@
 % content ......................
 \begin{center}
 {\LARGE \textbf{\ifx\Hu@doctitle\empty\default{doctitle}\else\Hu@doctitle\fi}}
-
 %\ifx\Hu@docsubtitle\empty\default{docsubtitle}\else\Hu@docsubtitle\fi
 
 \so{DISSERTATION}
@@ -58,7 +59,7 @@ Gutachter:
 \end{tplist}
 
 \begin{exlist}
-  \item[\color{black}{eingereicht am:}] \ifx\Hu@datesubmitted\empty\default{datesubmitted}\else\Hu@datesubmitted\fi % wenn nicht in der Prüfungsordnung, die Zeile bitte auskommentieren
+%  \item[\color{black}{eingereicht am:}] \ifx\Hu@datesubmitted\empty\default{datesubmitted}\else\Hu@datesubmitted\fi % wenn nicht in der Prüfungsordnung, die Zeile bitte auskommentieren
   \item[\color{black}{Tag der m\"undlichen Pr\"ufung:}] \ifx\Hu@dateexam\empty\default{dateexam}\else\Hu@dateexam\fi
 \end{exlist}
 
@@ -67,3 +68,5 @@ Gutachter:
 \end{spacing}
 \end{titlepage}
 \makeatother
+
+%\restoregeometry

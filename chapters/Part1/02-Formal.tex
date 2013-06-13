@@ -93,7 +93,7 @@ To begin with, we analyze the fixed points of the system, i.e. $(S_*,I_*,R_*)$ w
 \frac{dI_*}{dt} = \alpha S_*I_* -\gamma I_* =0,\; \;\;
 \frac{dR_*}{dt} = \gamma I_* = 0.
 \end{equation}
-It follows from the last equation that $I_*=0$ at the fixed point, where $S_*$ and $R_*$ can be arbitrary.
+It follows from the last equation that $I_*=0$ at the fixed point, where $S_*$ and $R_*$ can be arbitrary as long as $S_*+R_*=N$.
 Hence, $(S_*,0,R_*)$ is a fixed point.
 
 Let us first analyze the stability of the fixed point in the early phase of an infection.
@@ -118,7 +118,7 @@ The basic reproduction number describes the average number of follow-up infectio
 It is one of the main goals in epidemiology to bring down the basic reproduction number of a disease below the critical value $R_0=1$.
 As one can immediately see from Equation~\eqref{eq:r0}, this can be done by reducing the infection rate $\alpha $ or by increasing the immunization rate $\gamma $.
 This is the reason for the implementation of mass vaccination.
-Vaccination basically decreases the size of the initial susceptible population $S_*$ .
+Vaccination basically decreases the size of the initial susceptible population $S_0=S_*$.
 A reduction of the infection rate can be achieved by increasing hygiene standards or appropriate behavior, say wearing warm clothes in winter time to avoid common cold.
 The immunization rate can be increased by drugs.
 
@@ -214,10 +214,10 @@ In the next section, we briefly report important results in complex network rese
 
 \section{Network theory}\label{sec:network_theory}
 As we have pointed out in the previous section, standard epidemic models make use of the random mixing assumption.
-This assumption is reasonable, if no further information about the contact structure within a population is available.
+This assumption holds, if no further information about the contact structure within a population is available.
 The random mixing assumption yields a worst case scenario of the infection dynamics.
 Even an overestimation of the outbreak size can be corrected by introducing smaller, effective disease parameters.
-However, the random mixing assumption does not allow for non heterogeneous mixing, since each individual is considered equal.
+However, the random mixing assumption does not allow for non homogeneous mixing, since each individual is considered equal.
 The equality of links between individuals is not a reasonable assumption for many epidemic substrates.
 Examples of epidemic substrates are contact structures of humans, livestock trade or links between computers.
 Apparently, connections are not purely random in these systems so that there are certain rules for the occurrence of links.
@@ -334,9 +334,9 @@ Consequently, it can be used to model diffusion processes on graphs in analogy t
 The spectra of adjacency and Laplace matrices also contain information about the evolution/history of networks \citep{Banerjee2009}.
 
 \subsection{Network measures}\label{sec:network_measures}
-Before we address ourselves to models of real world networks, we have to introduce methods to measure structural properties of networks.
+Before we address ourselves to models of real world networks, we may introduce methods to measure structural properties of networks.
 On the microscopic scale, this can be done in terms of \emph{node centrality} measures.
-These measures are very important to assess the importance of single nodes in the network.
+These measures are crucial to assess the importance of single nodes in the network.
 On the macroscopic scale, we are interested in the large-scale properties of networks, i.e. percolation, distributions of centralities, connected components, or other large scale structures.
 
 Implementations of appropriate data structures for the computation of network measures are briefly summarized in Appendix \ref{sec:implementation}.
@@ -403,7 +403,7 @@ c(i)=\frac{N-1}{ \sum _j  d_{ij}}
 \end{equation}
 where $d_{ij}$ is the distance between nodes $i$ and $j$.
 Some tools for an efficient computation of shortest-path distances are summarized in Section~\ref{sec:implementation}.
-It should be noted that the distance between two nodes is defined to be infinite, if the underlying network is not connected.
+It should be noted that the distance between two nodes is defined to be infinite, if they are located in different components.
 In this case, the corresponding terms are ignored and do not contribute to the sum in Equation~\eqref{eq:closeness}.
 Thus the closeness is computed for each connected component separately.
 
@@ -477,7 +477,7 @@ Therefore, we restrict ourselves to a discussion of the degree distribution bein
 
 \paragraph{Degree Distribution\color{Cayenne}{.}}
 In the simplest case, that all nodes of a graph have the same degree, the graph is called \emph{regular}.
-Lattices are special cases of regular graphs.
+These objects are also called regular lattices.
 In this case, the degree distribution collapses to a single peak without statistical variation.
 
 Observations of real-world networks have shown that some networks exhibit exponential decaying degree distributions, i.e. there is a variance of degrees, but the system possesses a \emph{typical degree}.
@@ -524,8 +524,8 @@ C=\frac{\operatorname{tr}(\mathbf{A}^3)}{\operatorname{sum} (A^2) -\operatorname
 \end{equation}
 where $\operatorname{tr}(\mathbf{A} )$ denotes the trace of $\mathbf{A}$ and $\operatorname{sum} (\mathbf{A})=\sum _{ij} a_{ij}$ is the sum over all elements of $\mathbf{A}$.
 In this work, we focus on the clustering coefficient as a macroscopic property of networks.
-It should be noted that there is also a node clustering coefficient defined by $c_i=\sum _{jl} a_{ij}a_{jl}a_{li}/(k_i (k_i -1))$ \citep{Watts:1998,dynamical_processes}.
-Thus, a network clustering coefficient can also be defined by the average $\mean{c_i}$, which gives slightly different values than \eqref{eq:clustering_coefficient} and should not be mixed up with the latter.
+It should be noted that there is also a \emph{local} clustering coefficient defined by $c_i=\sum _{jl} a_{ij}a_{jl}a_{li}/(k_i (k_i -1))$ \citep{Watts:1998,dynamical_processes}.
+Thus, a network clustering coefficient can also be defined by averaging over all local clustering coefficients $\mean{c_i}$, which gives slightly different values than \eqref{eq:clustering_coefficient} and should not be mixed up with the latter.
 
 The clustering coefficient plays an essential role in the small-world model of networks \citep{Watts:1998}.
 We discuss this model in Section~\ref{sec:network_models}.
@@ -556,7 +556,7 @@ The general component structure of directed networks is discussed in \citep{Doro
 
 \paragraph{Accessibility\color{Cayenne}{.}}
 If we directly connect each node of a network with all other nodes it is connected to by any path, we obtain the \emph{accessibility} of the network.
-Accessibility measures the ability of each node to reach destinations, which is of particular importance for transportation systems \citep{Garrison:1960up,mackewitz}.
+Accessibility measures the ability to reach destinations, which is of particular importance for transportation systems \citep{Garrison:1960up,mackewitz}.
 Mathematically, we define the accessibility graph (also \emph{transitive closure}) of a network as follows:
 Let $G=(V,E)$ be a network.
 Than $G^*=(V,E^*)$ is the accessibility graph of $G$ with $(u,v) \in E^*$, if there is a path from $u$ to $v$.
@@ -718,7 +718,7 @@ Both values are normalized by their corresponding values in the initial lattice,
 
 The degree distribution collapses to a single peak for $p=0$.
 In their paper on the properties of small-world networks \citep{Barrat:2000fj}, the authors showed that the degree distribution converges to a Poisson distribution in the limit $p\rightarrow 1$ and found an analytical approximation for the clustering coefficient for different values of $p$.
-The percolation threshold of small-world networks was investigated in \citep{Sander2002293}, where the authors found the threshold to be reduced for increasing values of $p$.
+The percolation threshold of small-world networks was investigated in \citep{Ball:1997tq,Sander2002293}, where the authors found the threshold to be reduced for increasing values of $p$.
 
 There is no sharp criterion for a network to be called small-world network.
 Instead, a network is called small-world network, if it shows a sufficiently large clustering coefficient \emph{and} a sufficiently low average shortest path length.

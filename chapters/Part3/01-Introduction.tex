@@ -752,6 +752,7 @@ Then the unnormalized accessibility matrix of a temporal networks reads
 =& \mat{I}+\underbrace{ \mat{A}_1+\mat{A}_2+\mat{A}_3+\cdots + \mat{A}_n}_{\mat{A}} + \nonumber \\
 &+ \underbrace{\mat{A}_1\mat{A}_2+\mat{A}_2\mat{A}_3+ \mat{A}_1\mat{A}_3+ \mat{A}_1\mat{A}_2\mat{A}_3 +\cdots }_{\mathcal{O}(\mat{A}_i ^2)}\nonumber .
 \end{align*}
+As the author noticed recently, a similar expression also appears in the temporal generalization of a centrality measure as it was independently found in \citep{Grindrod:2011fg}.
 Since the actual number of paths are not important in this work, we define the the \emph{accessibility matrix of a temporal network} in Boolean notation
 %
 \begin{align}
@@ -763,7 +764,7 @@ Since the actual number of paths are not important in this work, we define the t
 In Equation~\eqref{eq:temporal_accessibility}, the linear terms correspond to the aggregation of the network over $n$ time steps.
 These are all paths of length 1, which are always causal.
 The higher order products always respect the temporal correct order of snapshots, that is $i<j$ for all $\mat{A}_i\mat{A}_j$ and $\mat{A}_i \cdots \mat{A}_j $.
-Analogue to Section~\ref{sec:unfolding_static}, we define the accessibility graph to path duration $n$ as $\mathcal{G}_n ^*$
+Analogue to Section~\ref{sec:unfolding_static}, we define the accessibility graph to path duration $n$ as $\mathcal{G}_n ^*$.
 
 It should be noted that in general the ``real'' accessibility graph of a temporal network is given by $\mathcal{G}_\infty ^*$, since the observation time is limited and might not capture the real timescale of a system.
 Also some systems could be periodic, i.e. $\mathcal{A}_{t+T}=\mathbf{A}_{t}$, but this can not be assumed in the general case.
