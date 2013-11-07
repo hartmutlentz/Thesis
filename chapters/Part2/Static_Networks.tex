@@ -339,7 +339,7 @@ The system \eqref{eq:sir_indices_with_flow_correction} now reads
 \begin{align}\label{eq:sir_no_pacing}
 \partial _t \mat{S} &=\mat{L}\mat{s}- \mathrm{diag} (\mat{s}\mat{F}_s)-\alpha \; \mathrm{diag}(\mat{S}\mat{i}) \nonumber \\
 \partial _t \mat{I} &=\mat{L}\mat{i}- \mathrm{diag} (\mat{s}\mat{F}_i)+\alpha \; \mathrm{diag}(\mat{S}\mat{i}) -\gamma \mat{I} \nonumber \\
-\partial _t \mat{S} &=\mat{L}\mat{r}- \mathrm{diag} (\mat{r}\mat{F}_r) +\gamma \mat{I} .
+\partial _t \mat{R} &=\mat{L}\mat{r}- \mathrm{diag} (\mat{r}\mat{F}_r) +\gamma \mat{I} .
 \end{align}
 This system models an SIR-type epidemic on a metapopulation which is connected by a network structure given by the Laplacian $\mat{L}$.
 Terms of the form $\mat{L}\mat{s}$ correspond to diffusion terms.
@@ -360,7 +360,7 @@ Finally, we use the following outbreak model:
 \begin{align}\label{eq:sir_with_pacing}
 \partial _t \mat{S} &=\mathcal{L}(\tau )\mat{s}- \mathrm{diag} (\mat{s}\mat{F}_s)-\alpha \; \mathrm{diag}(\mat{S}\mat{i}) \nonumber \\
 \partial _t \mat{I} &=\mathcal{L}(\tau )\mat{i}- \mathrm{diag} (\mat{s}\mat{F}_i)+\alpha \; \mathrm{diag}(\mat{S}\mat{i}) -\gamma \mat{I} \nonumber \\
-\partial _t \mat{S} &=\mathcal{L}(\tau )\mat{r}- \mathrm{diag} (\mat{r}\mat{F}_r) +\gamma \mat{I} .
+\partial _t \mat{R} &=\mathcal{L}(\tau )\mat{r}- \mathrm{diag} (\mat{r}\mat{F}_r) +\gamma \mat{I} .
 \end{align}
 %
 In order to analyze the impact of characteristic topological features -- modularity and directionality in particular -- on disease dynamics, we solve the system \eqref{eq:sir_with_pacing} numerically for different computer-generated networks with the desired properties.
