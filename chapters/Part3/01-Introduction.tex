@@ -428,13 +428,13 @@ As a smaller sample is more prone to fluctuations, variations of rank robustness
 The red curve shows an intermediate behavior.
 
 \subsection{Temporal vs. static representation}
-Since the analysis of a temporal network using a data-driven approach is computationally expensive, we compare the node rankings $R_n(k)$ to centrality measures for the static network representation as defined in Section~\ref{sec:micro_measures}.
+Since the analysis of a temporal network using a data-driven approach is computationally expensive, we compare the node rankings $R_n(d)$ to centrality measures for the static network representation as defined in Section~\ref{sec:micro_measures}.
 We denote the upper $\tau $ nodes according to a static centrality measure as $C_\tau $.
 Note that $C_\tau $ does not depend on the infectious period, since the latter plays no role in static networks.
 In this work, we consider betweenness, closeness, degree centrality and range as centrality measures.
 Following Equation~\eqref{eq:rank_intersection}, we define the \emph{centrality intersection} between the outbreak size ranking $R_\tau (d)$ and $C_\tau $ as
 \begin{equation}\label{eq:centrality_intersection}
-I_\tau (k)=\frac{R_\tau (d) \cap C_\tau}{\abs{C_\tau}},
+I_\tau (d)=\frac{R_\tau (d) \cap C_\tau}{\abs{C_\tau}},
 \end{equation}
 where $C_\tau $ is a substitute for the upper $\tau $ nodes of one particular centrality measure listed above.
 %
